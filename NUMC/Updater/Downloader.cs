@@ -35,7 +35,7 @@ namespace NUMC.Updater
 
             Random random = new Random();
 
-            file = new FileInfo(Path.Combine(Path.GetTempPath(), $"tmp_{version.Version.Replace(".", "")}_{random.Next(000000, 999999)}.tmp"));
+            file = new FileInfo(Path.Combine(Path.GetTempPath(), $"tmp_{version.Version.Replace(".", "")}_{random.Next(000000, 999999)}.exe"));
 
             client.DownloadProgressChanged += Client_DownloadProgressChanged;
             client.DownloadFileCompleted += Client_DownloadFileCompleted;
