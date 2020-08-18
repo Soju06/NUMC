@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C3AB2BBE-5499-4C6D-B319-A6E9DDE94450}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NUMC</RootNamespace>
+    <AssemblyName>NUMC</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\NUMC_ICON.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DarkUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DarkUI.2.0.2\lib\DarkUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Desion\Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Desion\NUMPadUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Desion\NUMPadUI.Designer.cs">
+      <DependentUpon>NUMPadUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Desion\TitleBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Desion\TitleBar.designer.cs">
+      <DependentUpon>TitleBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\CustomKeyDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\CustomKeyDialog.Designer.cs">
+      <DependentUpon>CustomKeyDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\JsonEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\JsonEditorDialog.Designer.cs">
+      <DependentUpon>JsonEditorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\EnumDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\EnumDialog.Designer.cs">
+      <DependentUpon>EnumDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\FunctionAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\FunctionAddDialog.Designer.cs">
+      <DependentUpon>FunctionAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\GotoFunctionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\GotoFunctionDialog.Designer.cs">
+      <DependentUpon>GotoFunctionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\TextInputAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\TextInputAddDialog.Designer.cs">
+      <DependentUpon>TextInputAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\DelayAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\DelayAddDialog.Designer.cs">
+      <DependentUpon>DelayAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\KeyAddDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\KeyAddDialog.Designer.cs">
+      <DependentUpon>KeyAddDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\MacroSettingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\MacroSettingDialog.Designer.cs">
+      <DependentUpon>MacroSettingDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\ProgramInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\ProgramInformation.Designer.cs">
+      <DependentUpon>ProgramInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reference\GlobalHook\Enums.cs" />
+    <Compile Include="Reference\GlobalHook\KeyboardHook.cs" />
+    <Compile Include="Reference\GlobalHook\KeyboardSimulation.cs" />
+    <Compile Include="Reference\GlobalHook\WinAPI.cs" />
+    <Compile Include="Language\Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reference\WindowsInput\IInputDeviceStateAdaptor.cs" />
+    <Compile Include="Reference\WindowsInput\IInputMessageDispatcher.cs" />
+    <Compile Include="Reference\WindowsInput\IInputSimulator.cs" />
+    <Compile Include="Reference\WindowsInput\IKeyboardSimulator.cs" />
+    <Compile Include="Reference\WindowsInput\IMouseSimulator.cs" />
+    <Compile Include="Reference\WindowsInput\InputBuilder.cs" />
+    <Compile Include="Reference\WindowsInput\InputSimulator.cs" />
+    <Compile Include="Reference\WindowsInput\KeyboardSimulator.cs" />
+    <Compile Include="Reference\WindowsInput\MouseButton.cs" />
+    <Compile Include="Reference\WindowsInput\MouseSimulator.cs" />
+    <Compile Include="Reference\WindowsInput\Native\HARDWAREINPUT.cs" />
+    <Compile Include="Reference\WindowsInput\Native\INPUT.cs" />
+    <Compile Include="Reference\WindowsInput\Native\InputType.cs" />
+    <Compile Include="Reference\WindowsInput\Native\KEYBDINPUT.cs" />
+    <Compile Include="Reference\WindowsInput\Native\KeyboardFlag.cs" />
+    <Compile Include="Reference\WindowsInput\Native\MouseFlag.cs" />
+    <Compile Include="Reference\WindowsInput\Native\MOUSEINPUT.cs" />
+    <Compile Include="Reference\WindowsInput\Native\MOUSEKEYBDHARDWAREINPUT.cs" />
+    <Compile Include="Reference\WindowsInput\Native\NativeMethods.cs" />
+    <Compile Include="Reference\WindowsInput\Native\VirtualKeyCode.cs" />
+    <Compile Include="Reference\WindowsInput\Native\XButton.cs" />
+    <Compile Include="Reference\WindowsInput\WindowsInputDeviceStateAdaptor.cs" />
+    <Compile Include="Reference\WindowsInput\WindowsInputMessageDispatcher.cs" />
+    <Compile Include="Script\Json.cs" />
+    <Compile Include="Script\Macro.cs" />
+    <Compile Include="Script\Menu.cs" />
+    <Compile Include="Script\Object.cs" />
+    <Compile Include="Script\Script.cs" />
+    <Compile Include="Setting\Setting.cs" />
+    <Compile Include="Updater\Downloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updater\Downloader.Designer.cs">
+      <DependentUpon>Downloader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updater\UpdateDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updater\UpdateDialog.Designer.cs">
+      <DependentUpon>UpdateDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updater\Updater.cs" />
+    <Compile Include="WinUtils\FormUtils.cs" />
+    <Compile Include="WinUtils\WinAPI.cs" />
+    <Compile Include="WinUtils\WinVer.cs" />
+    <Compile Include="Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Desion\Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desion\NUMPadUI.resx">
+      <DependentUpon>NUMPadUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desion\TitleBar.resx">
+      <DependentUpon>TitleBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\CustomKeyDialog.resx">
+      <DependentUpon>CustomKeyDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\JsonEditorDialog.resx">
+      <DependentUpon>JsonEditorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\EnumDialog.resx">
+      <DependentUpon>EnumDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\Macro\FunctionAddDialog.resx">
+      <DependentUpon>FunctionAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\Macro\GotoFunctionDialog.resx">
+      <DependentUpon>GotoFunctionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\Macro\TextInputAddDialog.resx">
+      <DependentUpon>TextInputAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\Macro\DelayAddDialog.resx">
+      <DependentUpon>DelayAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\Macro\KeyAddDialog.resx">
+      <DependentUpon>KeyAddDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\Macro\MacroSettingDialog.resx">
+      <DependentUpon>MacroSettingDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\ProgramInformation.resx">
+      <DependentUpon>ProgramInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\ko-KR.resx" />
+    <EmbeddedResource Include="Language\Language.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Updater\Downloader.resx">
+      <DependentUpon>Downloader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updater\UpdateDialog.resx">
+      <DependentUpon>UpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Reference\README.md" />
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NUMC_ICON.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NUMC_SMALL_ICON.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reference\DarkUI.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
