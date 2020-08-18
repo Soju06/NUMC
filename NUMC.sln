@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUMC", "NUMC\NUMC.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{6F78A50C-CF28-4CC6-B748-DAF0C4C00776}"
 	ProjectSection(SolutionItems) = preProject
-		LICENSE.md = LICENSE.md
+		README.md = README.md
 		Updates.json = Updates.json
 	EndProjectSection
 EndProject

@@ -9,7 +9,7 @@ namespace NUMC.Forms.Dialogs.Macro
     public partial class KeyAddDialog : DarkDialog
     {
         public Keys Key { get; internal set; }
-        public KeyboardEventType KeystrokeType { get; internal set; }
+        public KeyboardEventType KeystrokeType { get; internal set; } = KeyboardEventType.KEYCLICK;
 
         public KeyAddDialog()
         {
@@ -61,6 +61,7 @@ namespace NUMC.Forms.Dialogs.Macro
         {
             if (((DarkRadioButton)sender).Checked)
             {
+                MessageBox.Show(((KeyboardEventType)((DarkRadioButton)sender).Tag).ToString());
                 KeystrokeType = (KeyboardEventType)((DarkRadioButton)sender).Tag;
             }
         }

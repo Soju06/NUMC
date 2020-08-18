@@ -35,10 +35,13 @@ namespace NUMC.Script
             string line;
             List<Function> functions = GetFunctions(code);
 
-            int length;
+            int length, i = 0;
 
-            for (int i = 0; i < code.Length; i++)
+            while (true)
             {
+                if (i < 0 || i >= code.Length)
+                    break;
+
                 // 코드가 없으면
                 if (string.IsNullOrWhiteSpace(code[i]))
                     continue;
@@ -57,9 +60,9 @@ namespace NUMC.Script
                     {
                         for (int fs = 0; fs < functions.Count; fs++)
                         {
-                            if (functions[i].name == data)
+                            if (functions[fs].name == data)
                             {
-                                i = functions[i].line;
+                                i = functions[fs].line;
                                 continue;
                             }
                         }
@@ -116,6 +119,8 @@ namespace NUMC.Script
                         break;
                     }
                 }
+
+                i++;
             }
 
             isRunning = false;

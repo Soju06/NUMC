@@ -117,4 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="githubBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAWBJREFUWEftlzFOAzEQRZeKu6ShpKWgp+QWHAUuxgEovNkEbZCQuAPsbL4TZ/I9
+        2MYGIe2TXuP5M38VKrpSxo37tESsLaw4RazXg5WUiHPlsKM1xPk82KGaoiYNdqCFqLNhiy1FLYctiNYs
+        1bdXdzlu+hs2m8sZKWGWscTagZTMDAuKGFeDdYgYH2EhEeNqsA4R4z0s4EWkGqzDi8h/+qDBrRCpCu2a
+        NIfiHGgA6/IuHyTstu6R9Yl/9Qvd6S7v8icTWJd3+SCBdXnTAhVhHV5E7JCI2I9ht0MR+z4oIloMu6lF
+        dA8bhG96lgq7wUT8SCyg370YR2E7llg7JRbS7+EsBtuJiZVzrGDsPcaUew53LLHCyQob7Ib+St9iIm5T
+        tKQYt/21vqNFNA12IPAFsShT5lbtnIhYHuwQ/EAkyvRP4T3Zm0WknJKjU+Yhdyebw/HBPeEpyvt6fdHs
+        Q36PrvsCywj8jWqk53QAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

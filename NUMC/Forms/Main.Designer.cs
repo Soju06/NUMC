@@ -45,9 +45,10 @@
             this.LanguageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.NExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.NumPadUI = new NUMC.Desion.NUMPadUI();
             this.TitleBar = new Design.TitleBar();
-            this.GCTimer = new System.Windows.Forms.Timer(this.components);
+            this.InfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ApplicationContextMenu.SuspendLayout();
             this.NUMContextMenu.SuspendLayout();
             this.NotifyIconContextMenu.SuspendLayout();
@@ -140,12 +141,13 @@
             this.NotifyIconContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenToolStripMenuItem,
             this.StartProgramMenuItem,
+            this.InfoToolStripMenuItem,
             this.toolStripSeparator3,
             this.LanguageMenuItem,
             this.toolStripSeparator4,
             this.NExitToolStripMenuItem});
             this.NotifyIconContextMenu.Name = "NotifyIconContextMenu";
-            this.NotifyIconContextMenu.Size = new System.Drawing.Size(151, 106);
+            this.NotifyIconContextMenu.Size = new System.Drawing.Size(151, 128);
             // 
             // OpenToolStripMenuItem
             // 
@@ -198,6 +200,11 @@
             this.NExitToolStripMenuItem.Tag = "Exit";
             this.NExitToolStripMenuItem.Text = "종료";
             // 
+            // GCTimer
+            // 
+            this.GCTimer.Interval = 100000;
+            this.GCTimer.Tick += new System.EventHandler(this.GCTimer_Tick);
+            // 
             // NumPadUI
             // 
             this.NumPadUI.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -227,10 +234,14 @@
             this.TitleBar.TabIndex = 0;
             this.TitleBar.Title = "";
             // 
-            // GCTimer
+            // InfoToolStripMenuItem
             // 
-            this.GCTimer.Interval = 10000;
-            this.GCTimer.Tick += new System.EventHandler(this.GCTimer_Tick);
+            this.InfoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.InfoToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
+            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.InfoToolStripMenuItem.Tag = "Info";
+            this.InfoToolStripMenuItem.Text = "정보";
             // 
             // Main
             // 
@@ -281,6 +292,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem MacroToolStripMenuItem;
         private System.Windows.Forms.Timer GCTimer;
+        private System.Windows.Forms.ToolStripMenuItem InfoToolStripMenuItem;
     }
 }
 

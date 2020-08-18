@@ -406,4 +406,8 @@ Mouse over here and press the key</value>
     <value>Add Text Input Wizard</value>
     <comment>텍스트 입력 추가 마법사</comment>
   </data>
+  <data name="Program_Info" xml:space="preserve">
+    <value>Info</value>
+    <comment>정보</comment>
+  </data>
 </root>

@@ -18,6 +18,7 @@ namespace NUMC
 
         private readonly Script.Script Script = new Script.Script();
         private Keys SelectedKey;
+        private bool InfoShowed = false;
 
         public Main()
         {
@@ -155,6 +156,7 @@ namespace NUMC
             OpenToolStripMenuItem.Text = Language.Language.Program_Open;
             StartProgramMenuItem.Text = Language.Language.Main_StartProgram;
             MacroToolStripMenuItem.Text = Language.Language.Main_Macro;
+            InfoToolStripMenuItem.Text = Language.Language.Program_Info;
             Text = Setting.Setting.TITLE_NAME;
             TitleBar.Title = Setting.Setting.GetTitleName(Language.Language.Main_Title);
 
@@ -334,10 +336,23 @@ namespace NUMC
                     Application.Exit();
                     break;
 
+                case "Info":
+                    if (InfoShowed)
+                        return;
+
+                    InfoShowed = true;
+                    using (ProgramInformation dialog = new ProgramInformation())
+                    {
+                        dialog.ShowDialog();
+                    }
+                    InfoShowed = false;
+                    break;
+
                 case "JsonEdit":
                     if (DarkMessageBox.ShowWarning(Language.Language.Message_Warning_Menu,
                         Setting.Setting.TITLE_NAME, DarkDialogButton.YesNo) != DialogResult.Yes)
                         return;
+
                     using (JsonEditorDialog jsonDialog = new JsonEditorDialog(Script))
                     {
                         if (jsonDialog.ShowDialog() == DialogResult.OK)
@@ -460,8 +475,19 @@ namespace NUMC
                 }
             }
 
-            if (!s && keyObject.KeyScript != null)
+            if (!s && keyObject.KeyScript != null &&
+                keyObject.KeyScript.Length >= 1 && 
+                (keyObject.KeyScript[0].SendKeys != null ||
+                keyObject.KeyScript[0].VirtualKey != null))
                 CustomKeyToolStripMenuItem.Checked = true;
+
+            if (keyObject.KeyScript != null &&
+                keyObject.KeyScript.Length >= 1 &&
+                keyObject.KeyScript[0] != null &&
+                keyObject.KeyScript[0].Macro != null)
+            {
+                MacroToolStripMenuItem.Checked = true;
+            }
         }
 
         #endregion Set_NUMContextMenu_Checked

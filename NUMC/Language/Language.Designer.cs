@@ -572,6 +572,15 @@ namespace NUMC.Language {
         }
         
         /// <summary>
+        ///   Info과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Program_Info {
+            get {
+                return ResourceManager.GetString("Program_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Move down과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Program_Movedown {

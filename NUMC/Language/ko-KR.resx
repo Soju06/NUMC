@@ -371,6 +371,10 @@
     <value>파일</value>
     <comment>파일</comment>
   </data>
+  <data name="Program_Info" xml:space="preserve">
+    <value>정보</value>
+    <comment>정보</comment>
+  </data>
   <data name="Program_Movedown" xml:space="preserve">
     <value>아래로 이동</value>
     <comment>아래로 이동</comment>
