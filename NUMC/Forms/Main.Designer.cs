@@ -41,6 +41,7 @@
             this.NotifyIconContextMenu = new DarkUI.Controls.DarkContextMenu();
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StartProgramMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LanguageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -48,7 +49,6 @@
             this.GCTimer = new System.Windows.Forms.Timer(this.components);
             this.NumPadUI = new NUMC.Desion.NUMPadUI();
             this.TitleBar = new Design.TitleBar();
-            this.InfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ApplicationContextMenu.SuspendLayout();
             this.NUMContextMenu.SuspendLayout();
             this.NotifyIconContextMenu.SuspendLayout();
@@ -100,14 +100,14 @@
             this.MacroToolStripMenuItem,
             this.toolStripSeparator1});
             this.NUMContextMenu.Name = "NUMContextMenu";
-            this.NUMContextMenu.Size = new System.Drawing.Size(164, 55);
+            this.NUMContextMenu.Size = new System.Drawing.Size(181, 77);
             // 
             // CustomKeyToolStripMenuItem
             // 
             this.CustomKeyToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CustomKeyToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.CustomKeyToolStripMenuItem.Name = "CustomKeyToolStripMenuItem";
-            this.CustomKeyToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.CustomKeyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.CustomKeyToolStripMenuItem.Text = "사용자 지정 키...";
             // 
             // MacroToolStripMenuItem
@@ -115,7 +115,7 @@
             this.MacroToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MacroToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.MacroToolStripMenuItem.Name = "MacroToolStripMenuItem";
-            this.MacroToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.MacroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.MacroToolStripMenuItem.Text = "매크로...";
             // 
             // toolStripSeparator1
@@ -124,7 +124,7 @@
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // notifyIcon
             // 
@@ -166,6 +166,15 @@
             this.StartProgramMenuItem.Size = new System.Drawing.Size(150, 22);
             this.StartProgramMenuItem.Tag = "StartProgram";
             this.StartProgramMenuItem.Text = "시작 프로그램";
+            // 
+            // InfoToolStripMenuItem
+            // 
+            this.InfoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.InfoToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
+            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.InfoToolStripMenuItem.Tag = "Info";
+            this.InfoToolStripMenuItem.Text = "정보";
             // 
             // toolStripSeparator3
             // 
@@ -233,15 +242,6 @@
             this.TitleBar.Size = new System.Drawing.Size(404, 27);
             this.TitleBar.TabIndex = 0;
             this.TitleBar.Title = "";
-            // 
-            // InfoToolStripMenuItem
-            // 
-            this.InfoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.InfoToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
-            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.InfoToolStripMenuItem.Tag = "Info";
-            this.InfoToolStripMenuItem.Text = "정보";
             // 
             // Main
             // 
