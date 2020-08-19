@@ -34,6 +34,7 @@ namespace NUMC.Updater
             {
                 if (Update == null)
                     GetUpdates();
+
                 return Version.TryParse(Update.Last_Version, out Version last) && last > Assembly.GetExecutingAssembly().GetName().Version;
             }
             catch { }
