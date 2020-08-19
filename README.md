@@ -21,7 +21,7 @@
 
 ![ComboBox](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/3.png)
 
-왼쪽 위의 콤보 박스로 사용자 지정 키 방식을 변경할 수 있습니다
+왼쪽 위의 콤보 박스로 사용자 지정 키 방식을 변경할 수 있습니다.   
 가상 동시 입력, 가상 키는 마우스를 텍스트 박스에 올려두면 키 후킹을 사용할 수 있습니다.
 기본 키는 [System.Windows.Forms.SendKeys.SendWait](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys.send?view=netcore-3.1)를 참조하세요.
 
@@ -37,7 +37,7 @@
 
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/5.png)
 
-레이블에 마우스를 올려두면 키 후킹을 사용할 수 있습니다.
+레이블에 마우스를 올려두면 키 후킹을 사용할 수 있습니다.   
 키 클릭, 키 누르기, 키 떼기를 선택할 수 있습니다.
 
 #### 텍스트 입력 추가
@@ -57,6 +57,7 @@
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/8.png)
 
 **함수로 이동** 사용 시 지정한 이름의 함수 위치로 헤더가 이동합니다.
+
 #### 함수로 이동
 
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/9.png)
@@ -83,7 +84,7 @@
 
 ![NotifyIcon](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/11.png)
 
-알림 아이콘을 더블 클릭하여 설정을 띄웁니다.
+알림 아이콘을 더블 클릭하여 설정을 띄웁니다.   
 알림 아이콘을 우클릭 하여 컨텍스트 메뉴를 띄웁니다.
 
 ![ContextMenu](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/12.png)
@@ -98,8 +99,8 @@ Json 편집기를 사용할 수 있습니다.
 
 ## 프로그램
 ### 프로그램 종속성
-동적 라이브러리 없이 단일 프로그램으로 실행이 가능합니다.
-프로그램에 모든 설정은 (파일 이름).json 으로 저장됩니다. (**NUMC.json**)
+동적 라이브러리 없이 단일 프로그램으로 실행이 가능합니다.   
+프로그램에 모든 설정은 (파일 이름).json 으로 저장됩니다. (**NUMC.json**)   
 설정 파일을 제거하면 설정은 초기화 됩니다.
 
 ## 설정 파일
