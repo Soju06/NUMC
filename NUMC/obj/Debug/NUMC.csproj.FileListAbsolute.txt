@@ -2,7 +2,6 @@ V:\c#\NUMC\NUMC\bin\Debug\NUMC.exe.config
 V:\c#\NUMC\NUMC\bin\Debug\NUMC.exe
 V:\c#\NUMC\NUMC\bin\Debug\NUMC.pdb
 V:\c#\NUMC\NUMC\bin\Debug\DarkUI.dll
-V:\c#\NUMC\NUMC\obj\Debug\NUMC.csprojAssemblyReference.cache
 V:\c#\NUMC\NUMC\obj\Debug\Design.TitleBar.resources
 V:\c#\NUMC\NUMC\obj\Debug\NUMC.Properties.Resources.resources
 V:\c#\NUMC\NUMC\obj\Debug\NUMC.csproj.GenerateResource.cache

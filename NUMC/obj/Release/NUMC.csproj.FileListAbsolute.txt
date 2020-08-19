@@ -23,6 +23,5 @@ V:\c#\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.FunctionAddDialog.resources
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.GotoFunctionDialog.resources
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.TextInputAddDialog.resources
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.ProgramInformation.resources
-V:\c#\NUMC\NUMC\obj\Release\NUMC.csprojAssemblyReference.cache
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Updater.Downloader.resources
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Updater.UpdateDialog.resources
