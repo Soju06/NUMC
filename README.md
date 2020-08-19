@@ -22,7 +22,7 @@
 ![ComboBox](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/3.png)
 
 왼쪽 위의 콤보 박스로 사용자 지정 키 방식을 변경할 수 있습니다.   
-가상 동시 입력, 가상 키는 마우스를 텍스트 박스에 올려두면 키 후킹을 사용할 수 있습니다.
+가상 동시 입력, 가상 키는 텍스트 박스에 마우스를 올려두면 키 후킹을 사용할 수 있습니다.
 기본 키는 [System.Windows.Forms.SendKeys.SendWait](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys.send?view=netcore-3.1)를 참조하세요.
 
 ### 매크로 지정 방법
