@@ -196,7 +196,7 @@ Do you want to continue?</value>
   </data>
   <data name="Sample_Menu_Items" xml:space="preserve">
     <value>Undo|Redo|Enlarge brush|Shrink brush|Zoom in|Zoom out|Brush|Eraser|Paint|Hand|Magnifier|Disabled (ignore key)|Disable</value>
-    <comment>실행 취소|다시 실행|브러쉬 확대|브러시 축소|확대|축소|브러시|지우개|페인트|손|돋보기|사용 안함 (키  무시)|사용 안함</comment>
+    <comment>실행 취소|다시 실행|브러쉬 확대|브러쉬 축소|확대|축소|브러시|지우개|페인트|손|돋보기|사용 안함 (키  무시)|사용 안함</comment>
   </data>
   <data name="Setting_Portable" xml:space="preserve">
     <value>Portable</value>
