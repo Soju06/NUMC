@@ -49,11 +49,11 @@ namespace NUMC
                             {
                                 try
                                 {
-                                    File.Copy(Application.ExecutablePath, args[i]);
+                                    File.Copy(Application.ExecutablePath, args[i], true);
                                     Process.Start(args[i], "-PS");
                                     break;
                                 }
-                                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+                                catch { }
 
                                 Thread.Sleep(1000);
                             }
