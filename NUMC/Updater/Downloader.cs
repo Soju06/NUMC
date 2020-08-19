@@ -63,8 +63,8 @@ namespace NUMC.Updater
             {
                 Invoke(new MethodInvoker(delegate ()
                 {
-                    Process.Start(file.FullName, $"-CP {Application.ExecutablePath}");
-                    Application.Exit();
+                    Process.Start(file.FullName, $"-CP \"{Application.ExecutablePath}\"");
+                    Environment.Exit(0);
                 }));
             }
             catch { }

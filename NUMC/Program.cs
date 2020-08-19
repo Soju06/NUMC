@@ -45,18 +45,22 @@ namespace NUMC
                         try
                         {
                             int MaxTryCount = 20, tc = 0;
-                            while (tc++ >= MaxTryCount)
+                            while (tc++ <= MaxTryCount)
                             {
                                 try
                                 {
                                     File.Copy(Application.ExecutablePath, args[i]);
                                     Process.Start(args[i], "-PS");
-                                    Environment.Exit(0);
+                                    break;
                                 }
-                                catch { Thread.Sleep(1000); }
+                                catch { }
+
+                                Thread.Sleep(1000);
                             }
                         }
                         catch { }
+
+                        Environment.Exit(0);
                     }
                 }
             }
