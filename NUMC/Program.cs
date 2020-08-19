@@ -18,14 +18,14 @@ namespace NUMC
         {
             AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(ResolveAssembly);
 
-            CheckArgs();
+            Start();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());
         }
 
-        public static void CheckArgs()
+        public static void Start()
         {
             string[] args = Environment.GetCommandLineArgs();
             bool PS = false;
@@ -51,7 +51,7 @@ namespace NUMC
                                 {
                                     File.Copy(Application.ExecutablePath, args[i]);
                                     Process.Start(args[i], "-PS");
-                                    Application.Exit();
+                                    Environment.Exit(0);
                                 }
                                 catch { Thread.Sleep(1000); }
                             }
@@ -62,7 +62,14 @@ namespace NUMC
             }
 
             if (!PS && Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
-                Application.Exit();
+            {
+                IntPtr hWnd = WinUtils.WinAPI.FindWindow(null, Assembly.GetExecutingAssembly().GetName().Name);
+                if (!hWnd.Equals(IntPtr.Zero))
+                    WinUtils.WinAPI.ShowWindowAsync(hWnd, WinUtils.WinAPI.SW_SHOWNORMAL);
+                WinUtils.WinAPI.SetForegroundWindow(hWnd);
+
+                Environment.Exit(0);
+            }
         }
 
         private static Assembly ResolveAssembly(object sender, ResolveEventArgs args)
