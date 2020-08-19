@@ -53,7 +53,7 @@ namespace NUMC
                                     Process.Start(args[i], "-PS");
                                     break;
                                 }
-                                catch { }
+                                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
                                 Thread.Sleep(1000);
                             }
