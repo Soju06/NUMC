@@ -410,4 +410,8 @@ Mouse over here and press the key</value>
     <value>Info</value>
     <comment>정보</comment>
   </data>
+  <data name="Main_KeyIgnore" xml:space="preserve">
+    <value>Key Ignore</value>
+    <comment>키 무시</comment>
+  </data>
 </root>

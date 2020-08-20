@@ -14,9 +14,10 @@ namespace NUMC
 {
     public partial class Main : Form
     {
-        private readonly int SampleItemCount = 2;
+        private readonly int SampleItemCount = 4;
 
         private readonly Script.Script Script = new Script.Script();
+
         private Keys SelectedKey;
         private bool InfoShowed = false;
 
@@ -28,8 +29,6 @@ namespace NUMC
             InitializeLanguage();
             InitializeSampleItems();
             InitializeEvents();
-
-            GCTimer.Start();
 
             CheckUpdate();
         }
@@ -157,6 +156,8 @@ namespace NUMC
             StartProgramMenuItem.Text = Language.Language.Main_StartProgram;
             MacroToolStripMenuItem.Text = Language.Language.Main_Macro;
             InfoToolStripMenuItem.Text = Language.Language.Program_Info;
+            KeyIgnoreToolStripMenuItem.Text = Language.Language.Main_KeyIgnore;
+
             Text = Setting.Setting.TITLE_NAME;
             TitleBar.Title = Setting.Setting.GetTitleName(Language.Language.Main_Title);
 
@@ -298,21 +299,24 @@ namespace NUMC
         {
             ToolStripMenuItem menu = (ToolStripMenuItem)sender;
 
-            // 샘플 이라면
-            if (menu.Tag != null && menu.Tag.GetType().FullName == typeof(KeyObject).FullName)
+            if (menu.Tag != null && menu.Tag.GetType().FullName == typeof(KeyObject).FullName) // Sample
             {
                 KeyObject SampleScript = (KeyObject)menu.Tag;
                 KeyObject script = Script.Object.GetKeyObject(SelectedKey, false);
                 script.KeyScript = SampleScript.KeyScript;
                 script.Ignore = SampleScript.Ignore;
             }
-            else if (menu == CustomKeyToolStripMenuItem) // 사용자 지정이라면
+            else if (menu == CustomKeyToolStripMenuItem) // Custom Key
             {
                 Open_KeySetting_Dialog();
             }
-            else if (menu == MacroToolStripMenuItem)
+            else if (menu == MacroToolStripMenuItem) // Macro
             {
                 Open_MacroSetting_Dialog();
+            }
+            else if(menu == KeyIgnoreToolStripMenuItem) // Key Ignore
+            {
+                SetKeyIgnore(!menu.Checked);
             }
 
             SaveSetting();
@@ -414,6 +418,8 @@ namespace NUMC
 
         #endregion Open_KeySetting_Dialog
 
+        #region Open_MacroSetting_Dialog
+
         private void Open_MacroSetting_Dialog()
         {
             if (DarkMessageBox.ShowWarning(Language.Language.Message_Warning_Menu,
@@ -433,11 +439,14 @@ namespace NUMC
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
+
                 }
             }
 
             GC.Collect(1);
         }
+
+        #endregion
 
         #region NumPadUI_MouseClick
 
@@ -465,6 +474,7 @@ namespace NUMC
             string kobj = serializer.Serialize(keyObject);
             keyObject.Key = keys;
 
+            // Sample
             for (int i = 0; i < NUMContextMenu.Items.Count; i++)
             {
                 if (NUMContextMenu.Items[i].GetType() == typeof(ToolStripMenuItem))
@@ -475,12 +485,14 @@ namespace NUMC
                 }
             }
 
+            // Custom key
             if (!s && keyObject.KeyScript != null &&
                 keyObject.KeyScript.Length >= 1 && 
                 (keyObject.KeyScript[0].SendKeys != null ||
                 keyObject.KeyScript[0].VirtualKey != null))
                 CustomKeyToolStripMenuItem.Checked = true;
 
+            // Macro
             if (keyObject.KeyScript != null &&
                 keyObject.KeyScript.Length >= 1 &&
                 keyObject.KeyScript[0] != null &&
@@ -488,6 +500,9 @@ namespace NUMC
             {
                 MacroToolStripMenuItem.Checked = true;
             }
+
+            // KeyIgnore
+            KeyIgnoreToolStripMenuItem.Checked = keyObject.Ignore;
         }
 
         #endregion Set_NUMContextMenu_Checked
@@ -508,10 +523,7 @@ namespace NUMC
 
         #endregion NotifyIcon
 
-        private void GCTimer_Tick(object sender, EventArgs e)
-        {
-            GC.Collect();
-        }
+        #region CheckUpdate
 
         private void CheckUpdate()
         {
@@ -530,5 +542,17 @@ namespace NUMC
             };
             thread.Start();
         }
+
+        #endregion
+
+        #region KeyIgnore
+
+        private void SetKeyIgnore(bool ignore)
+        {
+            Keys keys = SelectedKey;
+            Script.Object.GetKeyObject(keys, false).Ignore = ignore;
+        }
+
+        #endregion
     }
 }

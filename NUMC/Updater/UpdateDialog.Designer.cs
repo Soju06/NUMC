@@ -32,6 +32,7 @@
             this.NoteBox = new System.Windows.Forms.RichTextBox();
             this.SubtitleLabel = new DarkUI.Controls.DarkLabel();
             this.TitleLabel = new DarkUI.Controls.DarkLabel();
+            this.Label1 = new DarkUI.Controls.DarkLabel();
             this.SuspendLayout();
             // 
             // titleBar
@@ -89,12 +90,24 @@
             this.TitleLabel.Text = "Null";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Label1
+            // 
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Label1.Location = new System.Drawing.Point(12, 519);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(574, 24);
+            this.Label1.TabIndex = 8;
+            this.Label1.Text = "Do you want to continue?";
+            this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // UpdateDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 552);
             this.ControlBox = false;
+            this.Controls.Add(this.Label1);
             this.Controls.Add(this.SubtitleLabel);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.NoteBox);
@@ -114,6 +127,7 @@
             this.Controls.SetChildIndex(this.NoteBox, 0);
             this.Controls.SetChildIndex(this.TitleLabel, 0);
             this.Controls.SetChildIndex(this.SubtitleLabel, 0);
+            this.Controls.SetChildIndex(this.Label1, 0);
             this.ResumeLayout(false);
 
         }
@@ -124,5 +138,6 @@
         private System.Windows.Forms.RichTextBox NoteBox;
         private DarkUI.Controls.DarkLabel SubtitleLabel;
         private DarkUI.Controls.DarkLabel TitleLabel;
+        private DarkUI.Controls.DarkLabel Label1;
     }
 }

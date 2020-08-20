@@ -25,3 +25,4 @@ V:\c#\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.TextInputAddDialog.resource
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.ProgramInformation.resources
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Updater.Downloader.resources
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Updater.UpdateDialog.resources
+V:\c#\NUMC\NUMC\obj\Release\NUMC.csprojAssemblyReference.cache

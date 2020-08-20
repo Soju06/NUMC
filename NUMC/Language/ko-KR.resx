@@ -299,6 +299,10 @@
     <value>Json 편집기</value>
     <comment>Json 편집기</comment>
   </data>
+  <data name="Main_KeyIgnore" xml:space="preserve">
+    <value>키 무시</value>
+    <comment>키 무시</comment>
+  </data>
   <data name="Main_Macro" xml:space="preserve">
     <value>매크로...</value>
     <comment>매크로...</comment>

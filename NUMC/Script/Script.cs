@@ -13,7 +13,7 @@ namespace NUMC.Script
             Simulator = new InputSimulator();
         }
 
-        public void StopInput()
+        public void StopInput() // 모든 키 떼기
         {
             foreach (WindowsInput.Native.VirtualKeyCode item in Enum.GetValues(typeof(WindowsInput.Native.VirtualKeyCode)))
             {
@@ -90,8 +90,15 @@ namespace NUMC.Script
                             for (int i = 0; i < script.VirtualKey.Keys.Length; i++)
                                 Simulator.Keyboard.KeyDown(script.VirtualKey.Keys[i]);
                         if (script.Type == "VirtualSendKeys")
+                        {
+                            // 키 누름
                             for (int i = 0; i < script.VirtualKey.Keys.Length; i++)
-                                Simulator.Keyboard.KeyPress(script.VirtualKey.Keys[i]);
+                                Simulator.Keyboard.KeyDown(script.VirtualKey.Keys[i]);
+
+                            // 키 뗌
+                            for (int i = 0; i < script.VirtualKey.Keys.Length; i++)
+                                Simulator.Keyboard.KeyUp(script.VirtualKey.Keys[i]);
+                        }
                     }
 
                     // 독립 코드 실행

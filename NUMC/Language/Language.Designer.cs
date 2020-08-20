@@ -439,6 +439,15 @@ namespace NUMC.Language {
         }
         
         /// <summary>
+        ///   Key Ignore과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_KeyIgnore {
+            get {
+                return ResourceManager.GetString("Main_KeyIgnore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Macro...과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_Macro {
