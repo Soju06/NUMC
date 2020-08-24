@@ -29,6 +29,7 @@ namespace NUMC
             InitializeLanguage();
             InitializeSampleItems();
             InitializeEvents();
+            InitializeHandler();
 
             CheckUpdate();
         }
@@ -218,14 +219,7 @@ namespace NUMC
         {
             NumPadUI.MouseClick += NumPadUI_MouseClick;
 
-            // NUMContextMenu
-            for (int i = 0; i < NUMContextMenu.Items.Count; i++)
-            {
-                if (NUMContextMenu.Items[i].GetType() == typeof(ToolStripMenuItem))
-                {
-                    NUMContextMenu.Items[i].Click += KeySetting_MenuItem_Click;
-                }
-            }
+            InitializeNUMEvents();
 
             // ApplicationContextMenu
             for (int i = 0; i < ApplicationContextMenu.Items.Count; i++)
@@ -250,7 +244,28 @@ namespace NUMC
             KeyboardHook.HookStart();
         }
 
+        private void InitializeNUMEvents()
+        {
+            // NUMContextMenu
+            for (int i = 0; i < NUMContextMenu.Items.Count; i++)
+            {
+                if (NUMContextMenu.Items[i].GetType() == typeof(ToolStripMenuItem))
+                {
+                    NUMContextMenu.Items[i].Click += KeySetting_MenuItem_Click;
+                }
+            }
+        }
+
         #endregion Initialize_Events
+
+        #region Initialize_Handler
+
+        private void InitializeHandler()
+        {
+            Handler.Handler.LoadSetting += Handler_LoadSetting;
+        }
+
+        #endregion Initialize_Handler
 
         #endregion Initialize
 
@@ -260,6 +275,7 @@ namespace NUMC
         {
             InitializeLanguage();
             InitializeSampleItems();
+            InitializeNUMEvents();
             GC.Collect();
         }
 
@@ -439,14 +455,13 @@ namespace NUMC
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-
                 }
             }
 
             GC.Collect(1);
         }
 
-        #endregion
+        #endregion Open_MacroSetting_Dialog
 
         #region NumPadUI_MouseClick
 
@@ -487,7 +502,7 @@ namespace NUMC
 
             // Custom key
             if (!s && keyObject.KeyScript != null &&
-                keyObject.KeyScript.Length >= 1 && 
+                keyObject.KeyScript.Length >= 1 &&
                 (keyObject.KeyScript[0].SendKeys != null ||
                 keyObject.KeyScript[0].VirtualKey != null))
                 CustomKeyToolStripMenuItem.Checked = true;
@@ -543,7 +558,7 @@ namespace NUMC
             thread.Start();
         }
 
-        #endregion
+        #endregion CheckUpdate
 
         #region KeyIgnore
 
@@ -553,6 +568,20 @@ namespace NUMC
             Script.Object.GetKeyObject(keys, false).Ignore = ignore;
         }
 
-        #endregion
+        #endregion KeyIgnore
+
+        #region Handler
+
+        private void Handler_LoadSetting(string path)
+        {
+            Invoke(new MethodInvoker(delegate ()
+            {
+                Setting.Setting.KEY_SETTING_PATH = path;
+                InitializeSetting();
+                ReloadLanguage();
+            }));
+        }
+
+        #endregion Handler
     }
 }

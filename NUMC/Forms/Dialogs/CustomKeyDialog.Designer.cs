@@ -36,7 +36,6 @@
             this.RemoveButton = new DarkUI.Controls.DarkButton();
             this.TipBox = new System.Windows.Forms.ToolTip(this.components);
             this.TipLabel = new DarkUI.Controls.DarkLabel();
-            this.titleBar = new Design.TitleBar();
             this.SuspendLayout();
             // 
             // KeyboardTypeComboBox
@@ -117,23 +116,6 @@
             this.TipLabel.Size = new System.Drawing.Size(478, 88);
             this.TipLabel.TabIndex = 13;
             // 
-            // titleBar
-            // 
-            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.titleBar.CloseBox = true;
-            this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleBar.ForeColor = System.Drawing.Color.White;
-            this.titleBar.Form = null;
-            this.titleBar.Location = new System.Drawing.Point(0, 0);
-            this.titleBar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.titleBar.MaximizeBox = false;
-            this.titleBar.MinimizeBox = false;
-            this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(817, 28);
-            this.titleBar.TabIndex = 8;
-            this.titleBar.Title = "";
-            // 
             // CustomKeyDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -146,7 +128,6 @@
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.ScriptTextBox);
             this.Controls.Add(this.KeyboardTypeComboBox);
-            this.Controls.Add(this.titleBar);
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -158,7 +139,6 @@
             this.Text = "CustomKey";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomKey_FormClosing);
             this.Load += new System.EventHandler(this.CustomKey_Load);
-            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.KeyboardTypeComboBox, 0);
             this.Controls.SetChildIndex(this.ScriptTextBox, 0);
             this.Controls.SetChildIndex(this.ClearButton, 0);
@@ -171,8 +151,6 @@
         }
 
         #endregion
-
-        private Design.TitleBar titleBar;
         private DarkUI.Controls.DarkComboBox KeyboardTypeComboBox;
         private DarkUI.Controls.DarkTextBox ScriptTextBox;
         private DarkUI.Controls.DarkButton ClearButton;

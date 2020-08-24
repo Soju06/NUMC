@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.textBox = new DarkUI.Controls.DarkTextBox();
-            this.titleBar = new Design.TitleBar();
             this.SuspendLayout();
             // 
             // textBox
@@ -44,30 +43,12 @@
             this.textBox.TabIndex = 3;
             this.textBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
-            // titleBar
-            // 
-            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.titleBar.CloseBox = true;
-            this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.titleBar.ForeColor = System.Drawing.Color.White;
-            this.titleBar.Form = null;
-            this.titleBar.Location = new System.Drawing.Point(0, 0);
-            this.titleBar.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.titleBar.MaximizeBox = false;
-            this.titleBar.MinimizeBox = false;
-            this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(253, 28);
-            this.titleBar.TabIndex = 2;
-            this.titleBar.Title = "";
-            // 
             // FunctionAddDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(253, 118);
             this.Controls.Add(this.textBox);
-            this.Controls.Add(this.titleBar);
             this.DialogButtons = DarkUI.Forms.DarkDialogButton.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -79,7 +60,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KeyAddDialog";
-            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.textBox, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -87,8 +67,6 @@
         }
 
         #endregion
-
-        private Design.TitleBar titleBar;
         private DarkUI.Controls.DarkTextBox textBox;
     }
 }

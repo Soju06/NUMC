@@ -1,10 +1,10 @@
-﻿using DarkUI.Forms;
+﻿using NUMC.Desion;
 using System;
 using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class DelayAddDialog : DarkDialog
+    public partial class DelayAddDialog : NDialog
     {
         public int Delay { get; internal set; }
 

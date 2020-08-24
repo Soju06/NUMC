@@ -46,6 +46,7 @@
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(37, 22);
             this.CloseButton.TabIndex = 0;
+            this.CloseButton.TabStop = false;
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseClick);
             // 
@@ -61,6 +62,7 @@
             this.MaximizeButton.Name = "MaximizeButton";
             this.MaximizeButton.Size = new System.Drawing.Size(37, 22);
             this.MaximizeButton.TabIndex = 1;
+            this.MaximizeButton.TabStop = false;
             this.MaximizeButton.UseVisualStyleBackColor = true;
             this.MaximizeButton.Click += new System.EventHandler(this.MaximizeClick);
             // 
@@ -76,6 +78,7 @@
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.Size = new System.Drawing.Size(37, 22);
             this.MinimizeButton.TabIndex = 2;
+            this.MinimizeButton.TabStop = false;
             this.MinimizeButton.UseVisualStyleBackColor = true;
             this.MinimizeButton.Click += new System.EventHandler(this.MinimizeClick);
             // 

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.titleBar = new Design.TitleBar();
             this.MainComboBox = new DarkUI.Controls.DarkComboBox();
             this.TypeRadio_1 = new DarkUI.Controls.DarkRadioButton();
             this.TypeRadio_2 = new DarkUI.Controls.DarkRadioButton();
@@ -37,23 +36,6 @@
             this.TipBox = new System.Windows.Forms.ToolTip(this.components);
             this.TipLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // titleBar
-            // 
-            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.titleBar.CloseBox = true;
-            this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.titleBar.ForeColor = System.Drawing.Color.White;
-            this.titleBar.Form = null;
-            this.titleBar.Location = new System.Drawing.Point(0, 0);
-            this.titleBar.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.titleBar.MaximizeBox = false;
-            this.titleBar.MinimizeBox = false;
-            this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(330, 28);
-            this.titleBar.TabIndex = 2;
-            this.titleBar.Title = "";
             // 
             // MainComboBox
             // 
@@ -136,7 +118,6 @@
             this.Controls.Add(this.TypeRadio_1);
             this.Controls.Add(this.TipLabel);
             this.Controls.Add(this.MainComboBox);
-            this.Controls.Add(this.titleBar);
             this.DialogButtons = DarkUI.Forms.DarkDialogButton.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -150,7 +131,6 @@
             this.Text = "KeyAddDialog";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KeyAddDialog_FormClosing);
             this.Load += new System.EventHandler(this.KeyAddDialog_Load);
-            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.MainComboBox, 0);
             this.Controls.SetChildIndex(this.TipLabel, 0);
             this.Controls.SetChildIndex(this.TypeRadio_1, 0);
@@ -161,8 +141,6 @@
         }
 
         #endregion
-
-        private Design.TitleBar titleBar;
         private DarkUI.Controls.DarkComboBox MainComboBox;
         private DarkUI.Controls.DarkRadioButton TypeRadio_1;
         private DarkUI.Controls.DarkRadioButton TypeRadio_2;

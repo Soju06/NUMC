@@ -29,29 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramInformation));
-            this.titleBar = new Design.TitleBar();
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.githubBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.githubBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // titleBar
-            // 
-            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.titleBar.CloseBox = true;
-            this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.titleBar.ForeColor = System.Drawing.Color.White;
-            this.titleBar.Form = null;
-            this.titleBar.Location = new System.Drawing.Point(0, 0);
-            this.titleBar.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.titleBar.MaximizeBox = false;
-            this.titleBar.MinimizeBox = false;
-            this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(480, 28);
-            this.titleBar.TabIndex = 3;
-            this.titleBar.Title = "";
             // 
             // darkLabel1
             // 
@@ -95,7 +77,6 @@
             this.Controls.Add(this.githubBox);
             this.Controls.Add(this.darkLabel2);
             this.Controls.Add(this.darkLabel1);
-            this.Controls.Add(this.titleBar);
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -106,7 +87,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Information";
-            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.darkLabel1, 0);
             this.Controls.SetChildIndex(this.darkLabel2, 0);
             this.Controls.SetChildIndex(this.githubBox, 0);
@@ -116,8 +96,6 @@
         }
 
         #endregion
-
-        private Design.TitleBar titleBar;
         private DarkUI.Controls.DarkLabel darkLabel1;
         private DarkUI.Controls.DarkLabel darkLabel2;
         private System.Windows.Forms.PictureBox githubBox;

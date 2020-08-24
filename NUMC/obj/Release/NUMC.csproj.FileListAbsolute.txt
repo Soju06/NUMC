@@ -26,3 +26,5 @@ V:\c#\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.ProgramInformation.resources
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Updater.Downloader.resources
 V:\c#\NUMC\NUMC\obj\Release\NUMC.Updater.UpdateDialog.resources
 V:\c#\NUMC\NUMC\obj\Release\NUMC.csprojAssemblyReference.cache
+V:\c#\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.SetSettingDialog.resources
+V:\c#\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.RunFileDialog.resources

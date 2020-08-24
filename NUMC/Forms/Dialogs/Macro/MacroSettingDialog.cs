@@ -1,6 +1,6 @@
 ﻿using DarkUI.Controls;
-using DarkUI.Forms;
 using Hook;
+using NUMC.Desion;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class MacroSettingDialog : DarkDialog
+    public partial class MacroSettingDialog : NDialog
     {
         public KeyScript KeyScript { get; internal set; }
 
@@ -35,12 +35,32 @@ namespace NUMC.Forms.Dialogs.Macro
             MovedownButton.Text = Language.Language.Program_Movedown;
             RemoveButton.Text = Language.Language.MacroSettingDialog_Remove;
             RemoveAllButton.Text = Language.Language.MacroSettingDialog_RemoveAll;
+            ModuleButton.Text = Language.Language.MacroSettingDialog_Modules;
+            // MW1
+            ChangeSettingButton.Text = Language.Language.MacroSettingDialog_LoadSetting;
 
             btnOk.Click += BtnOk_Click;
 
             if (keyScript.Macro != null && keyScript.Macro.Code.Length >= 1)
             {
                 SetItems(keyScript.Macro.Code.Split('\n'));
+            }
+
+            InitializeModules();
+        }
+
+        private void InitializeModules()
+        {
+            List<Script._Macro.IMacroModule> modules = Script._Macro.Menu.GET_ALL_MACRO_MODULE();
+
+            for (int i = 0; i < modules.Count; i++)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(modules[i].BUTTON_NAME)
+                {
+                    Tag = modules[i]
+                };
+                ModuleContextMenu.Items.Add(item);
+                item.Click += ModuleItem_Click;
             }
         }
 
@@ -118,6 +138,11 @@ namespace NUMC.Forms.Dialogs.Macro
         private void AddExit()
         {
             AddEvents(Language.Language.Program_Exit, Script.Macro.CreateExit());
+        }
+
+        private void AddLoadSetting(string path)
+        {
+            AddEvents($"{Language.Language.MacroSettingDialog_LoadSetting} ({path})", Script.Macro.CreateLoadSetting(path));
         }
 
         private void AddEvents(string Name, string code)
@@ -314,7 +339,7 @@ namespace NUMC.Forms.Dialogs.Macro
                 // 시간 초기화
                 for (int i = 0; i < KeyUDDelays.Count; i++)
                 {
-                    if(KeyUDDelays[i].Stopwatch != null)
+                    if (KeyUDDelays[i].Stopwatch != null)
                         KeyUDDelays[i].Stopwatch.Restart();
                 }
             }
@@ -445,6 +470,24 @@ namespace NUMC.Forms.Dialogs.Macro
                     {
                         AddExit();
                     }
+                    // NW1
+                    // Load Setting
+                    else if (line[0] == '[')
+                    {
+                        AddLoadSetting(data);
+                    }
+                    else
+                    {
+                        List<Script._Macro.IMacroModule> modules = Script._Macro.Menu.GET_ALL_MACRO_MODULE();
+
+                        for (int m = 0; m < modules.Count; m++)
+                        {
+                            if (modules[m].MODULE_NAME == line[0] && modules[m].CODE_RESULT(data, ref Code, out string NAME, out string RCODE))
+                            {
+                                AddEvents(NAME, RCODE);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -452,6 +495,36 @@ namespace NUMC.Forms.Dialogs.Macro
         private void RemoveAllButton_Click(object sender, EventArgs e)
         {
             EventsView.Items.Clear();
+        }
+
+        private void ChangeSettingButton_Click(object sender, EventArgs e)
+        {
+            using (SetSettingDialog dialog = new SetSettingDialog())
+            {
+                if (dialog.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.Path))
+                {
+                    AddLoadSetting(dialog.Path);
+                }
+            }
+        }
+
+        private void ModuleButton_Click(object sender, EventArgs e)
+        {
+            ModuleContextMenu.Show(MousePosition);
+        }
+
+        private void ModuleItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            string[] code = GetCodes();
+            if (item.Tag != null)
+            {
+                Script._Macro.IMacroModule module = ((Script._Macro.IMacroModule)item.Tag);
+                if (module.SHOW_DIALOG(ref code, out string NAME, out string RCODE))
+                {
+                    AddEvents(NAME, RCODE);
+                }
+            }
         }
     }
 }

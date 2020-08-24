@@ -28,29 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.titleBar = new Design.TitleBar();
             this.NoteBox = new System.Windows.Forms.RichTextBox();
             this.SubtitleLabel = new DarkUI.Controls.DarkLabel();
             this.TitleLabel = new DarkUI.Controls.DarkLabel();
             this.Label1 = new DarkUI.Controls.DarkLabel();
             this.SuspendLayout();
-            // 
-            // titleBar
-            // 
-            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.titleBar.CloseBox = true;
-            this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.titleBar.ForeColor = System.Drawing.Color.White;
-            this.titleBar.Form = null;
-            this.titleBar.Location = new System.Drawing.Point(0, 0);
-            this.titleBar.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.titleBar.MaximizeBox = false;
-            this.titleBar.MinimizeBox = false;
-            this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(800, 28);
-            this.titleBar.TabIndex = 4;
-            this.titleBar.Title = "";
             // 
             // NoteBox
             // 
@@ -111,7 +93,6 @@
             this.Controls.Add(this.SubtitleLabel);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.NoteBox);
-            this.Controls.Add(this.titleBar);
             this.DialogButtons = DarkUI.Forms.DarkDialogButton.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -123,7 +104,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Note";
-            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.NoteBox, 0);
             this.Controls.SetChildIndex(this.TitleLabel, 0);
             this.Controls.SetChildIndex(this.SubtitleLabel, 0);
@@ -133,8 +113,6 @@
         }
 
         #endregion
-
-        private Design.TitleBar titleBar;
         private System.Windows.Forms.RichTextBox NoteBox;
         private DarkUI.Controls.DarkLabel SubtitleLabel;
         private DarkUI.Controls.DarkLabel TitleLabel;

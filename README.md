@@ -7,7 +7,7 @@
 
 ### 키 지정 방법
 
-![enter image description here](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/1.png)
+![Form](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/1.png)
 
 [Form](https://github.com/SojuShoveling/NUMC/blob/master/Images/SCREENSHOT/1.png) 에서 지정하고 싶은 키를 마우스 클릭합니다.
 

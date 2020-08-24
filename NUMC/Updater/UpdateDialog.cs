@@ -1,8 +1,8 @@
-﻿using DarkUI.Forms;
+﻿using NUMC.Desion;
 
 namespace NUMC.Updater
 {
-    public partial class UpdateDialog : DarkDialog
+    public partial class UpdateDialog : NDialog
     {
         public UpdateDialog(Version_History version)
         {

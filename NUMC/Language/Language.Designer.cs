@@ -385,6 +385,24 @@ namespace NUMC.Language {
         }
         
         /// <summary>
+        ///   Change Settings과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MacroSettingDialog_LoadSetting {
+            get {
+                return ResourceManager.GetString("MacroSettingDialog_LoadSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Modules...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MacroSettingDialog_Modules {
+            get {
+                return ResourceManager.GetString("MacroSettingDialog_Modules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Event removal과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string MacroSettingDialog_Remove {
@@ -399,6 +417,15 @@ namespace NUMC.Language {
         internal static string MacroSettingDialog_RemoveAll {
             get {
                 return ResourceManager.GetString("MacroSettingDialog_RemoveAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   File Execution과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MacroSettingDialog_RunFile {
+            get {
+                return ResourceManager.GetString("MacroSettingDialog_RunFile", resourceCulture);
             }
         }
         
@@ -644,11 +671,38 @@ namespace NUMC.Language {
         }
         
         /// <summary>
+        ///   Add Run File Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string RunFileDialog_Title {
+            get {
+                return ResourceManager.GetString("RunFileDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Undo|Redo|Enlarge brush|Shrink brush|Zoom in|Zoom out|Brush|Eraser|Paint|Hand|Magnifier|Disabled (ignore key)|Disable과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Sample_Menu_Items {
             get {
                 return ResourceManager.GetString("Sample_Menu_Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Drop the file here과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SetSettingDialog_DropLabel {
+            get {
+                return ResourceManager.GetString("SetSettingDialog_DropLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Add Settings Change Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SetSettingDialog_Title {
+            get {
+                return ResourceManager.GetString("SetSettingDialog_Title", resourceCulture);
             }
         }
         

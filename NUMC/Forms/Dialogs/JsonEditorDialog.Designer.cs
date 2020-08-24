@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.titleBar = new Design.TitleBar();
             this.CodeTextBox = new DarkUI.Controls.DarkTextBox();
             this.ToolsMenuStrip = new DarkUI.Controls.DarkMenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,23 +46,6 @@
             this.FindVirtualKeyButton = new DarkUI.Controls.DarkButton();
             this.ToolsMenuStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // titleBar
-            // 
-            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.titleBar.CloseBox = true;
-            this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.titleBar.ForeColor = System.Drawing.Color.White;
-            this.titleBar.Form = null;
-            this.titleBar.Location = new System.Drawing.Point(0, 0);
-            this.titleBar.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.titleBar.MaximizeBox = false;
-            this.titleBar.MinimizeBox = false;
-            this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(1249, 28);
-            this.titleBar.TabIndex = 3;
-            this.titleBar.Title = "";
             // 
             // CodeTextBox
             // 
@@ -240,7 +222,6 @@
             this.Controls.Add(this.FindKeyButton);
             this.Controls.Add(this.CleanUpButton);
             this.Controls.Add(this.EditingModeCheckBox);
-            this.Controls.Add(this.titleBar);
             this.Controls.Add(this.CodeTextBox);
             this.Controls.Add(this.ToolsMenuStrip);
             this.DialogButtons = DarkUI.Forms.DarkDialogButton.OkCancel;
@@ -257,7 +238,6 @@
             this.Load += new System.EventHandler(this.EditJsonDialog_Load);
             this.Controls.SetChildIndex(this.ToolsMenuStrip, 0);
             this.Controls.SetChildIndex(this.CodeTextBox, 0);
-            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.EditingModeCheckBox, 0);
             this.Controls.SetChildIndex(this.CleanUpButton, 0);
             this.Controls.SetChildIndex(this.FindKeyButton, 0);
@@ -270,8 +250,6 @@
         }
 
         #endregion
-
-        private Design.TitleBar titleBar;
         private DarkUI.Controls.DarkTextBox CodeTextBox;
         private DarkUI.Controls.DarkMenuStrip ToolsMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;

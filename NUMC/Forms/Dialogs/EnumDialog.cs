@@ -1,12 +1,10 @@
-﻿using DarkUI.Forms;
+﻿using NUMC.Desion;
 using System;
 using System.Diagnostics;
-using System.Windows.Forms;
-using WindowsInput.Native;
 
 namespace NUMC.Forms.Dialogs
 {
-    public partial class EnumDialog : DarkDialog
+    public partial class EnumDialog : NDialog
     {
         public Type EnumType { get; internal set; }
         public object SelectItem { get; internal set; }
@@ -34,7 +32,7 @@ namespace NUMC.Forms.Dialogs
 
         private void InfoButton_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrWhiteSpace(InfoURI))
+            if (!string.IsNullOrWhiteSpace(InfoURI))
                 Process.Start(new ProcessStartInfo(InfoURI));
         }
 

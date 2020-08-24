@@ -103,14 +103,14 @@
             this.KeyIgnoreToolStripMenuItem,
             this.toolStripSeparator5});
             this.NUMContextMenu.Name = "NUMContextMenu";
-            this.NUMContextMenu.Size = new System.Drawing.Size(181, 106);
+            this.NUMContextMenu.Size = new System.Drawing.Size(164, 84);
             // 
             // CustomKeyToolStripMenuItem
             // 
             this.CustomKeyToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CustomKeyToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.CustomKeyToolStripMenuItem.Name = "CustomKeyToolStripMenuItem";
-            this.CustomKeyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CustomKeyToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.CustomKeyToolStripMenuItem.Text = "사용자 지정 키...";
             // 
             // MacroToolStripMenuItem
@@ -118,7 +118,7 @@
             this.MacroToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MacroToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.MacroToolStripMenuItem.Name = "MacroToolStripMenuItem";
-            this.MacroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MacroToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.MacroToolStripMenuItem.Text = "매크로...";
             // 
             // toolStripSeparator1
@@ -127,14 +127,14 @@
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
             // 
             // KeyIgnoreToolStripMenuItem
             // 
             this.KeyIgnoreToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.KeyIgnoreToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.KeyIgnoreToolStripMenuItem.Name = "KeyIgnoreToolStripMenuItem";
-            this.KeyIgnoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.KeyIgnoreToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.KeyIgnoreToolStripMenuItem.Text = "키 무시";
             // 
             // toolStripSeparator5
@@ -143,7 +143,7 @@
             this.toolStripSeparator5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripSeparator5.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(160, 6);
             // 
             // notifyIcon
             // 

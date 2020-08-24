@@ -275,6 +275,14 @@
     <value>모든 키 떼기</value>
     <comment>모든 키 떼기</comment>
   </data>
+  <data name="MacroSettingDialog_LoadSetting" xml:space="preserve">
+    <value>설정 변경</value>
+    <comment>설정 변경</comment>
+  </data>
+  <data name="MacroSettingDialog_Modules" xml:space="preserve">
+    <value>모듈...</value>
+    <comment>모듈...</comment>
+  </data>
   <data name="MacroSettingDialog_Remove" xml:space="preserve">
     <value>이벤트 제거</value>
     <comment>이벤트 제거</comment>
@@ -282,6 +290,10 @@
   <data name="MacroSettingDialog_RemoveAll" xml:space="preserve">
     <value>이벤트 모두 제거</value>
     <comment>이벤트 모두 제거</comment>
+  </data>
+  <data name="MacroSettingDialog_RunFile" xml:space="preserve">
+    <value>파일 실행</value>
+    <comment>파일 실행</comment>
   </data>
   <data name="MacroSettingDialog_TextInput" xml:space="preserve">
     <value>텍스트 입력</value>
@@ -403,9 +415,21 @@
     <value>저장</value>
     <comment>저장</comment>
   </data>
+  <data name="RunFileDialog_Title" xml:space="preserve">
+    <value>파일 실행 추가 마법사</value>
+    <comment>파일 실행 추가 마법사</comment>
+  </data>
   <data name="Sample_Menu_Items" xml:space="preserve">
     <value>실행 취소|다시 실행|브러쉬 확대|브러쉬 축소|확대|축소|브러시|지우개|페인트|손|돋보기|사용 안함 (키  무시)|사용 안함</value>
     <comment>실행 취소|다시 실행|브러쉬 확대|브러쉬 축소|확대|축소|브러시|지우개|페인트|손|돋보기|사용 안함 (키  무시)|사용 안함</comment>
+  </data>
+  <data name="SetSettingDialog_DropLabel" xml:space="preserve">
+    <value>여기에 파일을 올려주세요</value>
+    <comment>여기에 파일을 올려주세요</comment>
+  </data>
+  <data name="SetSettingDialog_Title" xml:space="preserve">
+    <value>설정 변경 추가 마법사</value>
+    <comment>설정 변경 추가 마법사</comment>
   </data>
   <data name="Setting_Portable" xml:space="preserve">
     <value>포터블</value>

@@ -1,6 +1,7 @@
 ﻿using DarkUI.Controls;
 using DarkUI.Forms;
 using Hook;
+using NUMC.Desion;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -9,7 +10,7 @@ using WindowsInput.Native;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class FunctionAddDialog : DarkDialog
+    public partial class FunctionAddDialog : NDialog
     {
         public string name { get; internal set; }
 

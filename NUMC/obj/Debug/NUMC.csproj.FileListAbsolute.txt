@@ -34,3 +34,6 @@ V:\c#\NUMC\NUMC\obj\Debug\NUMC.Language.ko-KR.resources
 V:\c#\NUMC\NUMC\obj\Debug\NUMC.Language.Language.resources
 V:\c#\NUMC\NUMC\obj\Debug\NUMC.Updater.Downloader.resources
 V:\c#\NUMC\NUMC\obj\Debug\NUMC.Updater.UpdateDialog.resources
+V:\c#\NUMC\NUMC\obj\Debug\NUMC.Forms.Dialogs.Macro.SetSettingDialog.resources
+V:\c#\NUMC\NUMC\obj\Debug\NUMC.csprojAssemblyReference.cache
+V:\c#\NUMC\NUMC\obj\Debug\NUMC.Forms.Dialogs.Macro.RunFileDialog.resources

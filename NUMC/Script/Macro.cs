@@ -35,7 +35,7 @@ namespace NUMC.Script
             string line;
             List<Function> functions = GetFunctions(code);
 
-            int length, i = 0;
+            long length, i = 0;
 
             while (true)
             {
@@ -118,6 +118,30 @@ namespace NUMC.Script
                     {
                         break;
                     }
+                    // NW1
+                    // Load Setting
+                    else if (line[0] == '[')
+                    {
+                        Handler.Handler.LoadSettings(data);
+                    }
+                    else
+                    {
+                        List<_Macro.IMacroModule> modules = _Macro.Menu.GET_ALL_MACRO_MODULE();
+
+                        for (int m = 0; m < modules.Count; m++)
+                        {
+                            if (modules[m].MODULE_NAME == line[0])
+                            {
+                                if (modules[m].GET_FULL_CODE)
+                                    modules[m].RUN_CODE(data, ref code, ref i);
+                                else
+                                {
+                                    string[] tmp = null;
+                                    modules[m].RUN_CODE(data, ref tmp, ref i);
+                                }
+                            }
+                        }
+                    }
                 }
 
                 i++;
@@ -177,6 +201,12 @@ namespace NUMC.Script
             return "!";
         }
 
+        // NW1
+        public static string CreateLoadSetting(string path)
+        {
+            return "[" + path;
+        }
+
         public static List<Function> GetFunctions(string[] code)
         {
             string line;
@@ -203,7 +233,7 @@ namespace NUMC.Script
             return functions;
         }
 
-        public static int GetDelay(string line)
+        public static int GetInt(string line)
         {
             if (line.Length > 1)
             {
@@ -231,7 +261,7 @@ namespace NUMC.Script
             return Keys.None;
         }
 
-        public static string GetTexts(string line)
+        public static string GetString(string line)
         {
             if (line.Length > 1)
                 return line.Substring(1);

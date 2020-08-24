@@ -1,4 +1,5 @@
 ﻿using DarkUI.Forms;
+using NUMC.Desion;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using WindowsInput.Native;
 
 namespace NUMC.Forms.Dialogs
 {
-    public partial class JsonEditorDialog : DarkDialog
+    public partial class JsonEditorDialog : NDialog
     {
         private readonly Script.Script Script = new Script.Script();
 

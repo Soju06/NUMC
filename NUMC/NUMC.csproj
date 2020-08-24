@@ -55,6 +55,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Images.resx</DependentUpon>
     </Compile>
+    <Compile Include="Desion\NDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Desion\NUMPadUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,6 +100,18 @@
     <Compile Include="Forms\Dialogs\Macro\GotoFunctionDialog.Designer.cs">
       <DependentUpon>GotoFunctionDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dialogs\Macro\RunFileDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\RunFileDialog.Designer.cs">
+      <DependentUpon>RunFileDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\SetSettingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\Macro\SetSettingDialog.Designer.cs">
+      <DependentUpon>SetSettingDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dialogs\Macro\TextInputAddDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +142,7 @@
     <Compile Include="Forms\Dialogs\ProgramInformation.Designer.cs">
       <DependentUpon>ProgramInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Handler\Handler.cs" />
     <Compile Include="Reference\GlobalHook\Enums.cs" />
     <Compile Include="Reference\GlobalHook\KeyboardHook.cs" />
     <Compile Include="Reference\GlobalHook\KeyboardSimulation.cs" />
@@ -161,6 +177,9 @@
     <Compile Include="Reference\WindowsInput\WindowsInputMessageDispatcher.cs" />
     <Compile Include="Script\Json.cs" />
     <Compile Include="Script\Macro.cs" />
+    <Compile Include="Script\_Macro\BASIC_MACRO.cs" />
+    <Compile Include="Script\_Macro\Menu.cs" />
+    <Compile Include="Script\_Macro\MacroModule.cs" />
     <Compile Include="Script\Menu.cs" />
     <Compile Include="Script\Object.cs" />
     <Compile Include="Script\Script.cs" />
@@ -213,6 +232,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\Macro\GotoFunctionDialog.resx">
       <DependentUpon>GotoFunctionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\Macro\RunFileDialog.resx">
+      <DependentUpon>RunFileDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\Macro\SetSettingDialog.resx">
+      <DependentUpon>SetSettingDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\Macro\TextInputAddDialog.resx">
       <DependentUpon>TextInputAddDialog.cs</DependentUpon>

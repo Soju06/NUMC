@@ -1,9 +1,10 @@
 ﻿using DarkUI.Forms;
+using NUMC.Desion;
 using System;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class GotoFunctionDialog : DarkDialog
+    public partial class GotoFunctionDialog : NDialog
     {
         public string name { get; internal set; }
 

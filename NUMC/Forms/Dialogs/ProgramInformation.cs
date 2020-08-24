@@ -1,4 +1,5 @@
 ﻿using DarkUI.Forms;
+using NUMC.Desion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs
 {
-    public partial class ProgramInformation : DarkDialog
+    public partial class ProgramInformation : NDialog
     {
         public ProgramInformation()
         {

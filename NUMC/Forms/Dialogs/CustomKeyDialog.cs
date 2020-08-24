@@ -1,5 +1,5 @@
-﻿using DarkUI.Forms;
-using Hook;
+﻿using Hook;
+using NUMC.Desion;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using WindowsInput.Native;
 
 namespace NUMC.Forms.Dialogs
 {
-    public partial class CustomKeyDialog : DarkDialog
+    public partial class CustomKeyDialog : NDialog
     {
         public string[,] Types = new string[4, 3]
         {

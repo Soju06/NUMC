@@ -1,12 +1,12 @@
 ﻿using DarkUI.Controls;
-using DarkUI.Forms;
 using Hook;
+using NUMC.Desion;
 using System;
 using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class KeyAddDialog : DarkDialog
+    public partial class KeyAddDialog : NDialog
     {
         public Keys Key { get; internal set; }
         public KeyboardEventType KeystrokeType { get; internal set; } = KeyboardEventType.KEYCLICK;

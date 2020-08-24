@@ -414,4 +414,28 @@ Mouse over here and press the key</value>
     <value>Key Ignore</value>
     <comment>키 무시</comment>
   </data>
+  <data name="MacroSettingDialog_LoadSetting" xml:space="preserve">
+    <value>Change Settings</value>
+    <comment>설정 변경</comment>
+  </data>
+  <data name="SetSettingDialog_DropLabel" xml:space="preserve">
+    <value>Drop the file here</value>
+    <comment>여기에 파일을 올려주세요</comment>
+  </data>
+  <data name="SetSettingDialog_Title" xml:space="preserve">
+    <value>Add Settings Change Wizard</value>
+    <comment>설정 변경 추가 마법사</comment>
+  </data>
+  <data name="MacroSettingDialog_Modules" xml:space="preserve">
+    <value>Modules...</value>
+    <comment>모듈...</comment>
+  </data>
+  <data name="MacroSettingDialog_RunFile" xml:space="preserve">
+    <value>File Execution</value>
+    <comment>파일 실행</comment>
+  </data>
+  <data name="RunFileDialog_Title" xml:space="preserve">
+    <value>Add Run File Wizard</value>
+    <comment>파일 실행 추가 마법사</comment>
+  </data>
 </root>
