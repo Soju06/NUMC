@@ -1,7 +1,8 @@
-﻿using DarkUI.Forms;
-using System;
+﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using NUMC.Design.Bright;
 using WindowsInput;
 
 namespace NUMC.Script
@@ -105,14 +106,12 @@ namespace NUMC.Script
 
                     if (script.Macro != null && script.Macro.Code.Length >= 1)
                     {
-                        Thread thread = new Thread(() =>
+                        Task task = new Task(delegate () 
                         {
-                            script.Macro.Compiler(Simulator);
-                        })
-                        {
-                            IsBackground = true
-                        };
-                        thread.Start();
+                            script.Macro.Compiler(Simulator); 
+                        });
+
+                        task.Start();
                     }
                 }
                 else // 키를 때었을때
@@ -127,7 +126,8 @@ namespace NUMC.Script
             }
             catch (Exception ex)
             {
-                DarkMessageBox.ShowError(ex.ToString(), Setting.Setting.GetTitleName("RunScript"));
+                MessageBox.Show(ex.ToString(), Setting.Setting.GetTitleName("RunScript"),
+                    System.Windows.Forms.MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -1,4 +1,4 @@
-﻿using NUMC.Desion;
+﻿using NUMC.Design;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -42,7 +42,7 @@ namespace NUMC.Updater
             {
                 Invoke(new MethodInvoker(delegate ()
                 {
-                    progressBar1.Value = e.ProgressPercentage;
+                    progressBar.Value = e.ProgressPercentage * 0.01;
                     darkLabel2.Text = $"{e.ProgressPercentage} / 100%";
                     darkLabel1.Text = $"{e.BytesReceived}Bytes / {e.TotalBytesToReceive}Bytes";
                 }));

@@ -1,7 +1,7 @@
-﻿using DarkUI.Forms;
-using Hook;
+﻿using Hook;
 using NUMC.Forms.Dialogs;
 using NUMC.Script;
+using NUMC.Design.Bright;
 using System;
 using System.Drawing;
 using System.IO;
@@ -9,29 +9,32 @@ using System.Linq;
 using System.Threading;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using NUMC.Menu;
 
 namespace NUMC
 {
-    public partial class Main : Form
+    public partial class Main : Design.Form
     {
-        private readonly int SampleItemCount = 4;
-
         private readonly Script.Script Script = new Script.Script();
 
         private Keys SelectedKey;
         private bool InfoShowed = false;
+        ToolStripMenuItem StPgItem = null;
 
         public Main()
         {
             InitializeComponent();
             InitializeForm();
+            InitializeHandler();
             InitializeSetting();
             InitializeLanguage();
-            InitializeSampleItems();
+            InitializeLanguageMenu();
+            InitializeNotifyMenu();
+            InitializeMenu();
             InitializeEvents();
-            InitializeHandler();
 
             CheckUpdate();
+
         }
 
         #region FormEvents
@@ -51,53 +54,6 @@ namespace NUMC
         }
 
         #endregion Main_FormClosing
-
-        #region Form_Resize
-
-        private const int cGrip = 16;
-        private const int cCaption = 32;
-
-        private readonly Pen Pen = new Pen(Color.FromArgb(34, 34, 34));
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            Rectangle rc = new Rectangle(ClientSize.Width - cGrip, ClientSize.Height - cGrip, cGrip, cGrip);
-            ControlPaint.DrawSizeGrip(e.Graphics, BackColor, rc);
-            rc = new Rectangle(0, 0, ClientSize.Width, cCaption);
-            e.Graphics.FillRectangle(Pen.Brush, rc);
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x84)
-            {  // Trap WM_NCHITTEST
-                Point pos = new Point(m.LParam.ToInt32());
-                pos = PointToClient(pos);
-                if (pos.Y < cCaption)
-                {
-                    m.Result = (IntPtr)2;
-                    return;
-                }
-                if (pos.X >= ClientSize.Width - cGrip && pos.Y >= ClientSize.Height - cGrip)
-                {
-                    m.Result = (IntPtr)17;
-                    return;
-                }
-            }
-            base.WndProc(ref m);
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= 0x20000;
-                return cp;
-            }
-        }
-
-        #endregion Form_Resize
 
         #endregion FormEvents
 
@@ -133,17 +89,11 @@ namespace NUMC
 
         private void InitializeForm()
         {
-            TitleBar.Form = this;
-            FormBorderStyle = FormBorderStyle.None;
-            DoubleBuffered = true;
-            SetStyle(ControlStyles.ResizeRedraw, true);
-
-            SetStyle(ControlStyles.DoubleBuffer, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
+            titleBar.MaximizeBox = false;
+            titleBar.MinimizeBox = false;
         }
 
-        #endregion Initialize_Form
+        #endregion
 
         #region Initialize_Language
 
@@ -151,18 +101,44 @@ namespace NUMC
         {
             JsonEditToolStripMenuItem.Text = Language.Language.Main_JsonEditor;
             ExitToolStripMenuItem.Text = Language.Language.Program_Exit;
-            NExitToolStripMenuItem.Text = Language.Language.Program_Exit;
-            CustomKeyToolStripMenuItem.Text = Language.Language.Main_CustomKey;
-            OpenToolStripMenuItem.Text = Language.Language.Program_Open;
-            StartProgramMenuItem.Text = Language.Language.Main_StartProgram;
-            MacroToolStripMenuItem.Text = Language.Language.Main_Macro;
-            InfoToolStripMenuItem.Text = Language.Language.Program_Info;
-            KeyIgnoreToolStripMenuItem.Text = Language.Language.Main_KeyIgnore;
+
+            NotifyIconContextMenu.Items.Clear();
+            NotifyIconContextMenu.AddItem(Language.Language.Program_Open, "Open");
+            NotifyIconContextMenu.AddItem(Language.Language.Main_StartProgram, "StartProgram");
+            NotifyIconContextMenu.AddItem(Language.Language.Program_Info, "Info");
+            NotifyIconContextMenu.AddSeparator();
+            NotifyIconContextMenu.AddItem("Language", "Language");
+            NotifyIconContextMenu.AddSeparator();
+            NotifyIconContextMenu.AddItem(Language.Language.Program_Exit, "Exit");
+
 
             Text = Setting.Setting.TITLE_NAME;
-            TitleBar.Title = Setting.Setting.GetTitleName(Language.Language.Main_Title);
+            titleBar.Title = Setting.Setting.GetTitleName(Language.Language.Main_Title);
+        }
 
-            LanguageMenuItem.DropDownItems.Clear();
+        #endregion Initialize_Language
+
+        #region Initialize_Notify_Menu
+
+        private void InitializeNotifyMenu()
+        {
+            for (int i = 0; i < NotifyIconContextMenu.Items.Count; i++)
+                if (NotifyIconContextMenu.Items[i].GetType() == typeof(ToolStripMenuItem))
+                    NotifyIconContextMenu.Items[i].Click += Application_MenuItem_Click;
+        }
+
+        #endregion
+
+        #region Initialize_Language_Menu
+
+        private void InitializeLanguageMenu()
+        {
+            ToolStripMenuItem langitem = null;
+            for (int i = 0; i < NotifyIconContextMenu.Items.Count; i++)
+                if (NotifyIconContextMenu.Items[i].Tag != null && NotifyIconContextMenu.Items[i].Tag.ToString() == "Language")
+                    langitem = (ToolStripMenuItem)NotifyIconContextMenu.Items[i];
+
+            langitem.DropDownItems.Clear();
 
             string cl = Setting.Setting.Languages.Import();
 
@@ -173,11 +149,37 @@ namespace NUMC
                 item.Checked = (string)item.Tag == cl;
                 item.Click += Language_MenuItem_Click;
 
-                LanguageMenuItem.DropDownItems.Add(item);
+                langitem.DropDownItems.Add(item);
             }
+
         }
 
-        #endregion Initialize_Language
+        #endregion Initialize_Language_Menu
+
+        #region Initialize_Menu
+
+        private void InitializeMenu()
+        {
+            NUMContextMenu.Items.Clear();
+
+            IMM[] modules = Module.GetModules();
+
+            for (int i = 0; i < modules.Length; i++)
+            {
+                NUMContextMenu.Items.AddRange(modules[i].Menus);
+            }
+
+            InitializeSampleItems();
+
+
+            for (int i = 0; i < NotifyIconContextMenu.Items.Count; i++)
+                if (NotifyIconContextMenu.Items[i].Tag != null && NotifyIconContextMenu.Items[i].Tag.ToString() == "StartProgram")
+                    StPgItem = (ToolStripMenuItem)NotifyIconContextMenu.Items[i];
+
+            StPgItem.Checked = Setting.Setting.StartProgram;
+        }
+
+        #endregion
 
         #region Initialize_Setting
 
@@ -193,8 +195,6 @@ namespace NUMC
             }
 
             Setting.Setting.Languages.Change(Script.Object.Language);
-
-            StartProgramMenuItem.Checked = Setting.Setting.StartProgram;
         }
 
         #endregion Initialize_Setting
@@ -203,11 +203,6 @@ namespace NUMC
 
         private void InitializeSampleItems()
         {
-            while (NUMContextMenu.Items.Count > SampleItemCount + 1)
-            {
-                NUMContextMenu.Items.RemoveAt(SampleItemCount + 1);
-            }
-
             NUMContextMenu.Items.AddRange(NUMC.Script.Menu.GetSampleItems());
         }
 
@@ -227,15 +222,6 @@ namespace NUMC
                 if (ApplicationContextMenu.Items[i].GetType() == typeof(ToolStripMenuItem))
                 {
                     ApplicationContextMenu.Items[i].Click += Application_MenuItem_Click;
-                }
-            }
-
-            // NotifyIconContextMenu
-            for (int i = 0; i < NotifyIconContextMenu.Items.Count; i++)
-            {
-                if (NotifyIconContextMenu.Items[i].GetType() == typeof(ToolStripMenuItem))
-                {
-                    NotifyIconContextMenu.Items[i].Click += Application_MenuItem_Click;
                 }
             }
 
@@ -263,7 +249,9 @@ namespace NUMC
         private void InitializeHandler()
         {
             Handler.Handler.LoadSetting += Handler_LoadSetting;
+            Handler.Handler.G_etScript += Handler_GetScript;
         }
+
 
         #endregion Initialize_Handler
 
@@ -274,8 +262,10 @@ namespace NUMC
         private void ReloadLanguage()
         {
             InitializeLanguage();
-            InitializeSampleItems();
+            InitializeLanguageMenu();
+            InitializeNotifyMenu();
             InitializeNUMEvents();
+            InitializeMenu();
             GC.Collect();
         }
 
@@ -296,8 +286,8 @@ namespace NUMC
             }
             catch (Exception ex)
             {
-                if (DarkMessageBox.ShowError($"{Language.Language.Message_Error_LoadSetting_Fail}\n{ex.Message.Split('\n')[0]}",
-                    Setting.Setting.TITLE_NAME, DarkDialogButton.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show($"{Language.Language.Message_Error_LoadSetting_Fail}\n{ex.Message.Split('\n')[0]}",
+                    Setting.Setting.TITLE_NAME, System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     Script.Object.Reset();
                     SaveSetting();
@@ -315,24 +305,15 @@ namespace NUMC
         {
             ToolStripMenuItem menu = (ToolStripMenuItem)sender;
 
-            if (menu.Tag != null && menu.Tag.GetType().FullName == typeof(KeyObject).FullName) // Sample
+            if (menu.Tag != null)
             {
-                KeyObject SampleScript = (KeyObject)menu.Tag;
-                KeyObject script = Script.Object.GetKeyObject(SelectedKey, false);
-                script.KeyScript = SampleScript.KeyScript;
-                script.Ignore = SampleScript.Ignore;
-            }
-            else if (menu == CustomKeyToolStripMenuItem) // Custom Key
-            {
-                Open_KeySetting_Dialog();
-            }
-            else if (menu == MacroToolStripMenuItem) // Macro
-            {
-                Open_MacroSetting_Dialog();
-            }
-            else if(menu == KeyIgnoreToolStripMenuItem) // Key Ignore
-            {
-                SetKeyIgnore(!menu.Checked);
+                if (menu.Tag.GetType() == typeof(KeyObject)) // Sample
+                {
+                    KeyObject SampleScript = (KeyObject)menu.Tag;
+                    KeyObject script = Script.Object.GetKeyObject(SelectedKey, false);
+                    script.KeyScript = SampleScript.KeyScript;
+                    script.Ignore = SampleScript.Ignore;
+                }
             }
 
             SaveSetting();
@@ -369,23 +350,18 @@ namespace NUMC
                     break;
 
                 case "JsonEdit":
-                    if (DarkMessageBox.ShowWarning(Language.Language.Message_Warning_Menu,
-                        Setting.Setting.TITLE_NAME, DarkDialogButton.YesNo) != DialogResult.Yes)
-                        return;
-
                     using (JsonEditorDialog jsonDialog = new JsonEditorDialog(Script))
                     {
                         if (jsonDialog.ShowDialog() == DialogResult.OK)
                         {
                             LoadSetting();
                         }
-                        GC.Collect();
                     }
                     break;
 
                 case "StartProgram":
-                    Setting.Setting.StartProgram = !StartProgramMenuItem.Checked;
-                    StartProgramMenuItem.Checked = Setting.Setting.StartProgram;
+                    Setting.Setting.StartProgram = !StPgItem.Checked;
+                    StPgItem.Checked = Setting.Setting.StartProgram;
                     break;
             }
         }
@@ -408,61 +384,6 @@ namespace NUMC
 
         #endregion ToolStripMenuItem_Click
 
-        #region Open_KeySetting_Dialog
-
-        private void Open_KeySetting_Dialog()
-        {
-            Keys keys = SelectedKey;
-            KeyObject keyObject = Script.Object.GetKeyObject(keys, false);
-            KeyScript keyScript;
-
-            if (keyObject != null && keyObject.KeyScript != null && keyObject.KeyScript.Length >= 1)
-                keyScript = keyObject.KeyScript[0];
-            else
-                keyScript = (keyObject.KeyScript = new KeyScript[] { new KeyScript() })[0];
-
-            using (CustomKeyDialog customKey = new CustomKeyDialog(keyScript))
-            {
-                if (customKey.ShowDialog() == DialogResult.OK)
-                {
-                    // 확인
-                }
-            }
-
-            GC.Collect(1);
-        }
-
-        #endregion Open_KeySetting_Dialog
-
-        #region Open_MacroSetting_Dialog
-
-        private void Open_MacroSetting_Dialog()
-        {
-            if (DarkMessageBox.ShowWarning(Language.Language.Message_Warning_Menu,
-                Setting.Setting.TITLE_NAME, DarkDialogButton.YesNo) != DialogResult.Yes)
-                return;
-
-            Keys keys = SelectedKey;
-            KeyObject keyObject = Script.Object.GetKeyObject(keys, false);
-            KeyScript keyScript;
-
-            if (keyObject != null && keyObject.KeyScript != null && keyObject.KeyScript.Length >= 1)
-                keyScript = keyObject.KeyScript[0];
-            else
-                keyScript = (keyObject.KeyScript = new KeyScript[] { new KeyScript() })[0];
-
-            using (Forms.Dialogs.Macro.MacroSettingDialog dialog = new Forms.Dialogs.Macro.MacroSettingDialog(keyScript))
-            {
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                }
-            }
-
-            GC.Collect(1);
-        }
-
-        #endregion Open_MacroSetting_Dialog
-
         #region NumPadUI_MouseClick
 
         private void NumPadUI_MouseClick(Keys Key, MouseButtons Button)
@@ -478,46 +399,43 @@ namespace NUMC
 
         private void Set_NUMContextMenu_Checked()
         {
-            bool s = false;
-
             Keys keys = SelectedKey;
             KeyObject keyObject = Script.Object.GetKeyObject(keys, false);
 
-            keyObject.Key = 0;
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-            string kobj = serializer.Serialize(keyObject);
-            keyObject.Key = keys;
-
-            // Sample
             for (int i = 0; i < NUMContextMenu.Items.Count; i++)
             {
-                if (NUMContextMenu.Items[i].GetType() == typeof(ToolStripMenuItem))
+                if (NUMContextMenu.Items[i].GetType() == typeof(ToolStripMenuItem) && NUMContextMenu.Items[i].Tag != null)
                 {
-                    KeyObject menuObject = (KeyObject)NUMContextMenu.Items[i].Tag;
-                    if (((ToolStripMenuItem)NUMContextMenu.Items[i]).Checked = serializer.Serialize(menuObject) == kobj)
-                        s = true;
+                    // Sample
+                    if (NUMContextMenu.Items[i].Tag.GetType() == typeof(KeyObject))
+                    {
+
+                        keyObject.Key = 0;
+                        JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+                        string kobj = serializer.Serialize(keyObject);
+                        keyObject.Key = keys;
+
+                        KeyObject menuObject = (KeyObject)NUMContextMenu.Items[i].Tag;
+                        ((ToolStripMenuItem)NUMContextMenu.Items[i]).Checked = serializer.Serialize(menuObject) == kobj;
+                    }
                 }
             }
 
-            // Custom key
-            if (!s && keyObject.KeyScript != null &&
-                keyObject.KeyScript.Length >= 1 &&
-                (keyObject.KeyScript[0].SendKeys != null ||
-                keyObject.KeyScript[0].VirtualKey != null))
-                CustomKeyToolStripMenuItem.Checked = true;
+            IMM[] modules = Module.GetModules();
 
-            // Macro
-            if (keyObject.KeyScript != null &&
-                keyObject.KeyScript.Length >= 1 &&
-                keyObject.KeyScript[0] != null &&
-                keyObject.KeyScript[0].Macro != null)
+            for (int i = 0; i < modules.Length; i++)
             {
-                MacroToolStripMenuItem.Checked = true;
+                try
+                {
+                    modules[i].MenuClicking(keyObject, keys);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(string.Format(Language.Language.Module_Exception, modules[i].GetType().Name, ex.Message, ex),
+                        Setting.Setting.TITLE_NAME);
+                }
             }
-
-            // KeyIgnore
-            KeyIgnoreToolStripMenuItem.Checked = keyObject.Ignore;
         }
 
         #endregion Set_NUMContextMenu_Checked
@@ -560,16 +478,6 @@ namespace NUMC
 
         #endregion CheckUpdate
 
-        #region KeyIgnore
-
-        private void SetKeyIgnore(bool ignore)
-        {
-            Keys keys = SelectedKey;
-            Script.Object.GetKeyObject(keys, false).Ignore = ignore;
-        }
-
-        #endregion KeyIgnore
-
         #region Handler
 
         private void Handler_LoadSetting(string path)
@@ -580,6 +488,12 @@ namespace NUMC
                 InitializeSetting();
                 ReloadLanguage();
             }));
+        }
+
+
+        private Script.Script Handler_GetScript()
+        {
+            return Script;
         }
 
         #endregion Handler

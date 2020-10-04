@@ -1,5 +1,5 @@
-﻿using DarkUI.Forms;
-using NUMC.Desion;
+﻿using NUMC.Design;
+using NUMC.Design.Bright;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -20,35 +20,39 @@ namespace NUMC.Forms.Dialogs
         {
             Script = script;
             InitializeComponent();
+            InitializeMenu();
             InitializeEvents();
             LoadSetting();
 
-            titleBar.Form = this;
             titleBar.Title = Setting.Setting.GetTitleName(Language.Language.JsonEditorDialog_Title);
+            CodeTextBox.ScrollBars = ScrollBars.Vertical;
+        }
 
+        private void InitializeMenu()
+        {
             FileToolStripMenuItem.Text = Language.Language.Program_File_Button;
             EditToolStripMenuItem.Text = Language.Language.Program_Edit_Button;
-            SaveMenuItem.Text = Language.Language.Program_Save_Button;
-            ExitMenuItem.Text = Language.Language.Program_Exit;
 
-            SaveAndApplyMenuItem.Text = Language.Language.JsonEditorDialog_SaveAndApply;
-            NewCustomKeyMenuItem.Text = Language.Language.JsonEditorDialog_NewCustomKey;
-            NewWhiteListKeyMenuItem.Text = Language.Language.JsonEditorDialog_NewWhiteListKey;
+            FileToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = Language.Language.Program_Save_Button, Tag = "Save", ShortcutKeys = Keys.Control | Keys.S });
+            FileToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = Language.Language.JsonEditorDialog_SaveAndApply, Tag = "SaveAndApply", ShortcutKeys = Keys.Control | Keys.A });
+            FileToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
+            FileToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = Language.Language.Program_Exit, Tag = "Exit", ShortcutKeys = Keys.Alt | Keys.F4 });
+
+            EditToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = Language.Language.JsonEditorDialog_NewCustomKey, Tag = "NewCustomKey" });
+            EditToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = Language.Language.JsonEditorDialog_NewWhiteListKey, Tag = "NewWhiteListKey" });
+
             EditingModeCheckBox.Text = Language.Language.JsonEditorDialog_EditingMode;
             CleanUpButton.Text = Language.Language.JsonEditorDialog_CleanUp;
             FindKeyButton.Text = Language.Language.JsonEditorDialog_FindKey;
-            FindVirtualKeyButton.Text = Language.Language.JsonEditorDialog_FindVirtualKey;
-
-            CodeTextBox.ScrollBars = ScrollBars.Vertical;
         }
 
         private void InitializeEvents()
         {
-            SaveMenuItem.Click += ToolsMenuStrip_Click;
-            SaveAndApplyMenuItem.Click += ToolsMenuStrip_Click;
-            ExitMenuItem.Click += ToolsMenuStrip_Click;
-            NewCustomKeyMenuItem.Click += ToolsMenuStrip_Click;
-            NewWhiteListKeyMenuItem.Click += ToolsMenuStrip_Click;
+            for (int i = 0; i < FileToolStripMenuItem.DropDownItems.Count; i++)
+                FileToolStripMenuItem.DropDownItems[i].Click += ToolsMenuStrip_Click;
+
+            for (int i = 0; i < EditToolStripMenuItem.DropDownItems.Count; i++)
+                EditToolStripMenuItem.DropDownItems[i].Click += ToolsMenuStrip_Click;
         }
 
         private void SaveSetting()
@@ -84,8 +88,8 @@ namespace NUMC.Forms.Dialogs
                     }
                     catch (Exception ex)
                     {
-                        if (DarkMessageBox.ShowError($"{Language.Language.Message_Error_LoadSetting_Fail}\n{ex.Message.Split('\n')[0]}",
-                            Assembly.GetExecutingAssembly().GetName().Name, DarkDialogButton.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show($"{Language.Language.Message_Error_LoadSetting_Fail}\n{ex.Message.Split('\n')[0]}",
+                            Assembly.GetExecutingAssembly().GetName().Name, System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                         {
                             Script.Object.Reset();
                             SaveSetting();
@@ -156,8 +160,6 @@ namespace NUMC.Forms.Dialogs
                     // 확인
                 }
             }
-
-            GC.Collect(1);
         }
 
         private void EditJsonDialog_Load(object sender, EventArgs e)
@@ -169,7 +171,7 @@ namespace NUMC.Forms.Dialogs
         {
             if (EditingModeCheckBox.Checked)
             {
-                if (DarkMessageBox.ShowWarning(Language.Language.Message_Warning_Editing, Text, DarkDialogButton.YesNo) != DialogResult.Yes)
+                if (MessageBox.Show(Language.Language.Message_Warning_Editing, Text, System.Windows.Forms.MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     EditingModeCheckBox.Checked = false;
                 }
@@ -183,7 +185,7 @@ namespace NUMC.Forms.Dialogs
             string old = CodeTextBox.Text;
             CodeTextBox.Text = Json.BeautifierJson(old);
 
-            if (DarkMessageBox.ShowInformation(Language.Language.Message_Information_ThisSetting, Text, DarkDialogButton.YesNo) != DialogResult.Yes)
+            if (MessageBox.Show(Language.Language.Message_Information_ThisSetting, Text, System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes)
                 CodeTextBox.Text = old;
         }
 
@@ -207,22 +209,11 @@ namespace NUMC.Forms.Dialogs
             }
         }
 
-        private void FindVirtualKeyButton_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(CodeTextBox.SelectedText))
-            {
-                if (int.TryParse(CodeTextBox.SelectedText, out int result))
-                {
-                    TipBox.SetToolTip((Control)sender, $"Index: {result}\nVirtualKeys: {(VirtualKeyCode)result}");
-                }
-            }
-        }
-
         private void EditJsonDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (File.ReadAllText(Setting.Setting.KEY_SETTING_PATH) != CodeTextBox.Text)
             {
-                DialogResult result = DarkMessageBox.ShowInformation(Language.Language.Message_Information_SaveThisSetting, Text, DarkDialogButton.YesNoCancel);
+                DialogResult result = MessageBox.Show(Language.Language.Message_Information_SaveThisSetting, Text, System.Windows.Forms.MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
                     File.WriteAllText(Setting.Setting.KEY_SETTING_PATH, CodeTextBox.Text);

@@ -29,35 +29,45 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.KeyboardTypeComboBox = new DarkUI.Controls.DarkComboBox();
-            this.ScriptTextBox = new DarkUI.Controls.DarkTextBox();
-            this.ClearButton = new DarkUI.Controls.DarkButton();
-            this.AddButton = new DarkUI.Controls.DarkButton();
-            this.RemoveButton = new DarkUI.Controls.DarkButton();
+            this.KeyboardTypeComboBox = new NUMC.Design.Bright.BrightComboBox();
+            this.ScriptTextBox = new NUMC.Design.Bright.BrightTextBox();
+            this.ClearButton = new NUMC.Design.Bright.BrightButton();
+            this.AddButton = new NUMC.Design.Bright.BrightButton();
+            this.RemoveButton = new NUMC.Design.Bright.BrightButton();
             this.TipBox = new System.Windows.Forms.ToolTip(this.components);
-            this.TipLabel = new DarkUI.Controls.DarkLabel();
+            this.TipLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // titleBar
+            // 
+            this.titleBar.CloseBox = true;
+            this.titleBar.MaximumSize = new System.Drawing.Size(0, 35);
+            this.titleBar.MinimumSize = new System.Drawing.Size(205, 35);
+            this.titleBar.Size = new System.Drawing.Size(817, 35);
             // 
             // KeyboardTypeComboBox
             // 
             this.KeyboardTypeComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.KeyboardTypeComboBox.FormattingEnabled = true;
-            this.KeyboardTypeComboBox.Location = new System.Drawing.Point(12, 36);
+            this.KeyboardTypeComboBox.Location = new System.Drawing.Point(12, 45);
             this.KeyboardTypeComboBox.Name = "KeyboardTypeComboBox";
-            this.KeyboardTypeComboBox.Size = new System.Drawing.Size(185, 26);
+            this.KeyboardTypeComboBox.Size = new System.Drawing.Size(388, 26);
             this.KeyboardTypeComboBox.TabIndex = 9;
             this.KeyboardTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.KeyboardTypeComboBox_SelectedIndexChanged);
             // 
             // ScriptTextBox
             // 
-            this.ScriptTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.ScriptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScriptTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.ScriptTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ScriptTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.ScriptTextBox.Location = new System.Drawing.Point(12, 72);
+            this.ScriptTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ScriptTextBox.Location = new System.Drawing.Point(12, 155);
             this.ScriptTextBox.MaxLength = 2000;
             this.ScriptTextBox.Multiline = true;
             this.ScriptTextBox.Name = "ScriptTextBox";
-            this.ScriptTextBox.Size = new System.Drawing.Size(793, 237);
+            this.ScriptTextBox.Size = new System.Drawing.Size(793, 273);
             this.ScriptTextBox.TabIndex = 10;
             this.ScriptTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyTextBox_KeyDown);
             this.ScriptTextBox.MouseEnter += new System.EventHandler(this.KeyTextBox_Enter);
@@ -66,30 +76,33 @@
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(496, 315);
+            this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearButton.Location = new System.Drawing.Point(12, 122);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Padding = new System.Windows.Forms.Padding(5);
-            this.ClearButton.Size = new System.Drawing.Size(99, 23);
+            this.ClearButton.Size = new System.Drawing.Size(99, 27);
             this.ClearButton.TabIndex = 11;
             this.ClearButton.Text = "초기화";
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(706, 315);
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddButton.Location = new System.Drawing.Point(301, 122);
             this.AddButton.Name = "AddButton";
             this.AddButton.Padding = new System.Windows.Forms.Padding(5);
-            this.AddButton.Size = new System.Drawing.Size(99, 23);
+            this.AddButton.Size = new System.Drawing.Size(99, 27);
             this.AddButton.TabIndex = 12;
             this.AddButton.Text = "추가";
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(601, 315);
+            this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemoveButton.Location = new System.Drawing.Point(157, 122);
             this.RemoveButton.Name = "RemoveButton";
             this.RemoveButton.Padding = new System.Windows.Forms.Padding(5);
-            this.RemoveButton.Size = new System.Drawing.Size(99, 23);
+            this.RemoveButton.Size = new System.Drawing.Size(99, 27);
             this.RemoveButton.TabIndex = 12;
             this.RemoveButton.Text = "제거";
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
@@ -106,39 +119,30 @@
             // 
             // TipLabel
             // 
-            this.TipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TipLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.TipLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.TipLabel.Location = new System.Drawing.Point(12, 315);
+            this.TipLabel.Location = new System.Drawing.Point(406, 42);
             this.TipLabel.Name = "TipLabel";
-            this.TipLabel.Size = new System.Drawing.Size(478, 88);
+            this.TipLabel.Size = new System.Drawing.Size(399, 110);
             this.TipLabel.TabIndex = 13;
             // 
             // CustomKeyDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 410);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(817, 483);
             this.Controls.Add(this.TipLabel);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.ScriptTextBox);
             this.Controls.Add(this.KeyboardTypeComboBox);
-            this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "CustomKeyDialog";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Resizing = false;
             this.Text = "CustomKey";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomKey_FormClosing);
             this.Load += new System.EventHandler(this.CustomKey_Load);
+            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.KeyboardTypeComboBox, 0);
             this.Controls.SetChildIndex(this.ScriptTextBox, 0);
             this.Controls.SetChildIndex(this.ClearButton, 0);
@@ -151,12 +155,13 @@
         }
 
         #endregion
-        private DarkUI.Controls.DarkComboBox KeyboardTypeComboBox;
-        private DarkUI.Controls.DarkTextBox ScriptTextBox;
-        private DarkUI.Controls.DarkButton ClearButton;
-        private DarkUI.Controls.DarkButton AddButton;
-        private DarkUI.Controls.DarkButton RemoveButton;
+
+        private Design.Bright.BrightComboBox KeyboardTypeComboBox;
+        private Design.Bright.BrightTextBox ScriptTextBox;
+        private Design.Bright.BrightButton ClearButton;
+        private Design.Bright.BrightButton AddButton;
+        private Design.Bright.BrightButton RemoveButton;
         private System.Windows.Forms.ToolTip TipBox;
-        private DarkUI.Controls.DarkLabel TipLabel;
+        private System.Windows.Forms.Label TipLabel;
     }
 }

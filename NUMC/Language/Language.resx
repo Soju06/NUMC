@@ -438,4 +438,10 @@ Mouse over here and press the key</value>
     <value>Add Run File Wizard</value>
     <comment>파일 실행 추가 마법사</comment>
   </data>
+  <data name="Module_Exception" xml:space="preserve">
+    <value>Exception {1} occurred in module {0}.
+{2}</value>
+    <comment>{0} 모듈에서 {1} 예외가 발생하였습니다.
+{2}</comment>
+  </data>
 </root>

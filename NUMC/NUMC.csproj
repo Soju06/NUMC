@@ -39,9 +39,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DarkUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DarkUI.2.0.2\lib\DarkUI.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -50,24 +47,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Desion\Images.Designer.cs">
+    <Compile Include="Design\Bright\BrightButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightControlState.cs" />
+    <Compile Include="Design\Bright\BrightDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightDialog.designer.cs">
+      <DependentUpon>BrightDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\Bright\BrightListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightMenuRenderer.cs" />
+    <Compile Include="Design\Bright\BrightMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightScrollView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\BrightTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Bright\Colors.cs" />
+    <Compile Include="Design\Bright\Consts.cs" />
+    <Compile Include="Design\Bright\Icons.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Design\Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\Images.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Images.resx</DependentUpon>
     </Compile>
-    <Compile Include="Desion\NDialog.cs">
+    <Compile Include="Design\NDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Desion\NUMPadUI.cs">
+    <Compile Include="Design\ProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Desion\NUMPadUI.Designer.cs">
+    <Compile Include="Design\ProgressBar.Designer.cs">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\NUMPadUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\NUMPadUI.Designer.cs">
       <DependentUpon>NUMPadUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Desion\TitleBar.cs">
+    <Compile Include="Design\Resources\Images.cs" />
+    <Compile Include="Design\Resources\Render.cs" />
+    <Compile Include="Design\TitleBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Desion\TitleBar.designer.cs">
+    <Compile Include="Design\TitleBar.designer.cs">
       <DependentUpon>TitleBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\CustomKeyDialog.cs">
@@ -143,6 +196,11 @@
       <DependentUpon>ProgramInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Handler\Handler.cs" />
+    <Compile Include="Menu\IMM.cs" />
+    <Compile Include="Menu\Module.cs" />
+    <Compile Include="Menu\Modules\CustomKey.cs" />
+    <Compile Include="Menu\Modules\KeyIgnore.cs" />
+    <Compile Include="Menu\Modules\Macro.cs" />
     <Compile Include="Reference\GlobalHook\Enums.cs" />
     <Compile Include="Reference\GlobalHook\KeyboardHook.cs" />
     <Compile Include="Reference\GlobalHook\KeyboardSimulation.cs" />
@@ -199,7 +257,6 @@
     <Compile Include="Updater\Updater.cs" />
     <Compile Include="WinUtils\FormUtils.cs" />
     <Compile Include="WinUtils\WinAPI.cs" />
-    <Compile Include="WinUtils\WinVer.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,14 +265,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Desion\Images.resx">
+    <EmbeddedResource Include="Design\Bright\BrightDialog.resx">
+      <DependentUpon>BrightDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\Bright\Icons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\Images.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Images.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Desion\NUMPadUI.resx">
+    <EmbeddedResource Include="Design\NUMPadUI.resx">
       <DependentUpon>NUMPadUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Desion\TitleBar.resx">
+    <EmbeddedResource Include="Design\TitleBar.resx">
       <DependentUpon>TitleBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\CustomKeyDialog.resx">
@@ -277,7 +341,6 @@
     <EmbeddedResource Include="Updater\UpdateDialog.resx">
       <DependentUpon>UpdateDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -293,7 +356,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Reference\README.md" />
-    <None Include="Resources\info.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NUMC_ICON.ico" />
@@ -302,7 +364,41 @@
     <None Include="Resources\NUMC_SMALL_ICON.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reference\DarkUI.dll" />
+    <None Include="Resources\close_16px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximize_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scrollbar_arrow_hot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scrollbar_arrow_standard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scrollbar_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scrollbar_arrow_clicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

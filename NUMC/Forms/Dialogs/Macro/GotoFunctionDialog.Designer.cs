@@ -28,8 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FunctionsComboBox = new DarkUI.Controls.DarkComboBox();
+            this.FunctionsComboBox = new NUMC.Design.Bright.BrightComboBox();
             this.SuspendLayout();
+            // 
+            // titleBar
+            // 
+            this.titleBar.CloseBox = true;
+            this.titleBar.MaximumSize = new System.Drawing.Size(0, 35);
+            this.titleBar.Size = new System.Drawing.Size(330, 35);
             // 
             // FunctionsComboBox
             // 
@@ -37,7 +43,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FunctionsComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.FunctionsComboBox.FormattingEnabled = true;
-            this.FunctionsComboBox.Location = new System.Drawing.Point(12, 37);
+            this.FunctionsComboBox.Location = new System.Drawing.Point(12, 45);
             this.FunctionsComboBox.Name = "FunctionsComboBox";
             this.FunctionsComboBox.Size = new System.Drawing.Size(306, 26);
             this.FunctionsComboBox.TabIndex = 3;
@@ -47,20 +53,22 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 118);
+            this.ClientSize = new System.Drawing.Size(330, 141);
             this.Controls.Add(this.FunctionsComboBox);
-            this.DialogButtons = DarkUI.Forms.DarkDialogButton.OkCancel;
+            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "GotoFunctionDialog";
             this.Text = "KeyAddDialog";
             this.Load += new System.EventHandler(this.GotoFunctionDialog_Load);
+            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.FunctionsComboBox, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private DarkUI.Controls.DarkComboBox FunctionsComboBox;
+
+        private Design.Bright.BrightComboBox FunctionsComboBox;
     }
 }

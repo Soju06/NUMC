@@ -572,6 +572,16 @@ namespace NUMC.Language {
         }
         
         /// <summary>
+        ///   Exception {1} occurred in module {0}.
+        ///{2}과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Module_Exception {
+            get {
+                return ResourceManager.GetString("Module_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Add과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Program_Add_Button {

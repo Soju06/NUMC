@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramInformation));
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel1 = new System.Windows.Forms.Label();
+            this.darkLabel2 = new System.Windows.Forms.Label();
             this.githubBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.githubBox)).BeginInit();
             this.SuspendLayout();
@@ -38,7 +38,6 @@
             // darkLabel1
             // 
             this.darkLabel1.Font = new System.Drawing.Font("Segoe UI Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkLabel1.ForeColor = System.Drawing.Color.Gainsboro;
             this.darkLabel1.Location = new System.Drawing.Point(12, 34);
             this.darkLabel1.Name = "darkLabel1";
             this.darkLabel1.Size = new System.Drawing.Size(456, 46);
@@ -49,7 +48,6 @@
             // darkLabel2
             // 
             this.darkLabel2.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold);
-            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel2.Location = new System.Drawing.Point(12, 80);
             this.darkLabel2.Name = "darkLabel2";
             this.darkLabel2.Size = new System.Drawing.Size(456, 22);
@@ -96,8 +94,9 @@
         }
 
         #endregion
-        private DarkUI.Controls.DarkLabel darkLabel1;
-        private DarkUI.Controls.DarkLabel darkLabel2;
+
+        private System.Windows.Forms.Label darkLabel1;
+        private System.Windows.Forms.Label darkLabel2;
         private System.Windows.Forms.PictureBox githubBox;
     }
 }

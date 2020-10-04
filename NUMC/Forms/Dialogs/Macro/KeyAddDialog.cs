@@ -1,6 +1,6 @@
-﻿using DarkUI.Controls;
-using Hook;
-using NUMC.Desion;
+﻿using Hook;
+using NUMC.Design;
+using NUMC.Design.Bright;
 using System;
 using System.Windows.Forms;
 
@@ -59,11 +59,8 @@ namespace NUMC.Forms.Dialogs.Macro
 
         private void TypeRadio_Changed(object sender, EventArgs e)
         {
-            if (((DarkRadioButton)sender).Checked)
-            {
-                MessageBox.Show(((KeyboardEventType)((DarkRadioButton)sender).Tag).ToString());
-                KeystrokeType = (KeyboardEventType)((DarkRadioButton)sender).Tag;
-            }
+            if (((BrightRadioButton)sender).Checked)
+                KeystrokeType = (KeyboardEventType)((BrightRadioButton)sender).Tag;
         }
 
         private void TipLabel_MouseHover(object sender, EventArgs e)

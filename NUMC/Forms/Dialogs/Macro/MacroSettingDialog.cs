@@ -1,6 +1,6 @@
-﻿using DarkUI.Controls;
-using Hook;
-using NUMC.Desion;
+﻿using Hook;
+using NUMC.Design;
+using NUMC.Design.Bright;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -147,7 +147,7 @@ namespace NUMC.Forms.Dialogs.Macro
 
         private void AddEvents(string Name, string code)
         {
-            EventsView.Items.Add(new DarkListItem(Name) { Tag = code });
+            EventsView.Items.Add(new BrightListItem(Name) { Tag = code });
         }
 
         private void AddDelayButton_Click(object sender, EventArgs e)
@@ -179,7 +179,7 @@ namespace NUMC.Forms.Dialogs.Macro
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    AddTextInput(dialog.text);
+                    AddTextInput(dialog.Value);
                 }
             }
         }
@@ -190,17 +190,17 @@ namespace NUMC.Forms.Dialogs.Macro
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (string.IsNullOrWhiteSpace(dialog.name))
+                    if (string.IsNullOrWhiteSpace(dialog.Value))
                         return;
 
                     // 중복 확인
                     foreach (var item in Script.Macro.GetFunctions(GetCodes()))
                     {
-                        if (item.name == dialog.name)
+                        if (item.name == dialog.Value)
                             return;
                     }
 
-                    AddFunction(dialog.name);
+                    AddFunction(dialog.Value);
                 }
             }
         }
@@ -211,10 +211,10 @@ namespace NUMC.Forms.Dialogs.Macro
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (string.IsNullOrWhiteSpace(dialog.name))
+                    if (string.IsNullOrWhiteSpace(dialog.Value))
                         return;
 
-                    AddGotoFunction(dialog.name);
+                    AddGotoFunction(dialog.Value);
                 }
             }
         }

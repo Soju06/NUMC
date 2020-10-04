@@ -29,32 +29,35 @@
         private void InitializeComponent()
         {
             this.NoteBox = new System.Windows.Forms.RichTextBox();
-            this.SubtitleLabel = new DarkUI.Controls.DarkLabel();
-            this.TitleLabel = new DarkUI.Controls.DarkLabel();
-            this.Label1 = new DarkUI.Controls.DarkLabel();
+            this.SubtitleLabel = new System.Windows.Forms.Label();
+            this.TitleLabel = new System.Windows.Forms.Label();
+            this.Label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // titleBar
+            // 
+            this.titleBar.CloseBox = true;
+            this.titleBar.MaximumSize = new System.Drawing.Size(0, 35);
+            this.titleBar.Size = new System.Drawing.Size(800, 35);
             // 
             // NoteBox
             // 
             this.NoteBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(53)))), ((int)(((byte)(55)))));
             this.NoteBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NoteBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoteBox.ForeColor = System.Drawing.Color.White;
-            this.NoteBox.Location = new System.Drawing.Point(12, 107);
+            this.NoteBox.Location = new System.Drawing.Point(12, 113);
             this.NoteBox.Name = "NoteBox";
             this.NoteBox.ReadOnly = true;
-            this.NoteBox.Size = new System.Drawing.Size(776, 397);
+            this.NoteBox.Size = new System.Drawing.Size(776, 384);
             this.NoteBox.TabIndex = 5;
             this.NoteBox.Text = "Null";
             // 
             // SubtitleLabel
             // 
             this.SubtitleLabel.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold);
-            this.SubtitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.SubtitleLabel.Location = new System.Drawing.Point(12, 82);
+            this.SubtitleLabel.Location = new System.Drawing.Point(12, 88);
             this.SubtitleLabel.Name = "SubtitleLabel";
             this.SubtitleLabel.Size = new System.Drawing.Size(776, 22);
             this.SubtitleLabel.TabIndex = 6;
@@ -64,8 +67,7 @@
             // TitleLabel
             // 
             this.TitleLabel.Font = new System.Drawing.Font("Segoe UI Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.TitleLabel.Location = new System.Drawing.Point(12, 36);
+            this.TitleLabel.Location = new System.Drawing.Point(12, 42);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(776, 46);
             this.TitleLabel.TabIndex = 7;
@@ -75,8 +77,7 @@
             // Label1
             // 
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.Label1.Location = new System.Drawing.Point(12, 519);
+            this.Label1.Location = new System.Drawing.Point(20, 517);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(574, 24);
             this.Label1.TabIndex = 8;
@@ -88,22 +89,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 552);
-            this.ControlBox = false;
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.SubtitleLabel);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.NoteBox);
-            this.DialogButtons = DarkUI.Forms.DarkDialogButton.OkCancel;
-            this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "UpdateDialog";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Resizing = false;
             this.Text = "Update Note";
+            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.NoteBox, 0);
             this.Controls.SetChildIndex(this.TitleLabel, 0);
             this.Controls.SetChildIndex(this.SubtitleLabel, 0);
@@ -114,8 +109,8 @@
 
         #endregion
         private System.Windows.Forms.RichTextBox NoteBox;
-        private DarkUI.Controls.DarkLabel SubtitleLabel;
-        private DarkUI.Controls.DarkLabel TitleLabel;
-        private DarkUI.Controls.DarkLabel Label1;
+        private System.Windows.Forms.Label SubtitleLabel;
+        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label Label1;
     }
 }

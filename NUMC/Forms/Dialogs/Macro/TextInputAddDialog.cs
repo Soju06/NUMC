@@ -1,12 +1,11 @@
-﻿using DarkUI.Forms;
-using NUMC.Desion;
+﻿using NUMC.Design;
 using System;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
     public partial class TextInputAddDialog : NDialog
     {
-        public string text { get; internal set; }
+        public string Value { get; internal set; }
 
         public TextInputAddDialog(string text)
         {
@@ -20,7 +19,7 @@ namespace NUMC.Forms.Dialogs.Macro
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            text = textBox.Text;
+            Value = textBox.Text;
         }
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.MainComboBox = new DarkUI.Controls.DarkComboBox();
-            this.TypeRadio_1 = new DarkUI.Controls.DarkRadioButton();
-            this.TypeRadio_2 = new DarkUI.Controls.DarkRadioButton();
-            this.TypeRadio_0 = new DarkUI.Controls.DarkRadioButton();
+            this.MainComboBox = new Design.Bright.BrightComboBox();
+            this.TypeRadio_1 = new Design.Bright.BrightRadioButton();
+            this.TypeRadio_2 = new Design.Bright.BrightRadioButton();
+            this.TypeRadio_0 = new Design.Bright.BrightRadioButton();
             this.TipBox = new System.Windows.Forms.ToolTip(this.components);
             this.TipLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -86,7 +86,6 @@
             // TipBox
             // 
             this.TipBox.AutoPopDelay = 100000;
-            this.TipBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.TipBox.ForeColor = System.Drawing.Color.Gainsboro;
             this.TipBox.InitialDelay = 300;
             this.TipBox.IsBalloon = true;
@@ -97,7 +96,6 @@
             // 
             this.TipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TipLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.TipLabel.Location = new System.Drawing.Point(12, 34);
             this.TipLabel.Name = "TipLabel";
             this.TipLabel.Size = new System.Drawing.Size(306, 40);
@@ -118,7 +116,7 @@
             this.Controls.Add(this.TypeRadio_1);
             this.Controls.Add(this.TipLabel);
             this.Controls.Add(this.MainComboBox);
-            this.DialogButtons = DarkUI.Forms.DarkDialogButton.OkCancel;
+            this.DialogButtons = Design.Bright.MessageBoxButtons.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -141,10 +139,11 @@
         }
 
         #endregion
-        private DarkUI.Controls.DarkComboBox MainComboBox;
-        private DarkUI.Controls.DarkRadioButton TypeRadio_1;
-        private DarkUI.Controls.DarkRadioButton TypeRadio_2;
-        private DarkUI.Controls.DarkRadioButton TypeRadio_0;
+
+        private Design.Bright.BrightComboBox MainComboBox;
+        private Design.Bright.BrightRadioButton TypeRadio_1;
+        private Design.Bright.BrightRadioButton TypeRadio_2;
+        private Design.Bright.BrightRadioButton TypeRadio_0;
         private System.Windows.Forms.ToolTip TipBox;
         private System.Windows.Forms.Label TipLabel;
     }

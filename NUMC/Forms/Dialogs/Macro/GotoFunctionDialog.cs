@@ -1,12 +1,11 @@
-﻿using DarkUI.Forms;
-using NUMC.Desion;
+﻿using NUMC.Design;
 using System;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
     public partial class GotoFunctionDialog : NDialog
     {
-        public string name { get; internal set; }
+        public string Value { get; internal set; }
 
         public GotoFunctionDialog(Script.Macro.Function[] functions)
         {
@@ -30,7 +29,7 @@ namespace NUMC.Forms.Dialogs.Macro
 
         private void FunctionsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            name = (string)FunctionsComboBox.SelectedItem;
+            Value = (string)FunctionsComboBox.SelectedItem;
         }
     }
 }

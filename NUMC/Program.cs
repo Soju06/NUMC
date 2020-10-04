@@ -67,11 +67,6 @@ namespace NUMC
 
             if (!PS && Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
-                IntPtr hWnd = WinUtils.WinAPI.FindWindow(null, Assembly.GetExecutingAssembly().GetName().Name);
-                if (!hWnd.Equals(IntPtr.Zero))
-                    WinUtils.WinAPI.ShowWindowAsync(hWnd, WinUtils.WinAPI.SW_SHOWNORMAL);
-                WinUtils.WinAPI.SetForegroundWindow(hWnd);
-
                 Environment.Exit(0);
             }
         }

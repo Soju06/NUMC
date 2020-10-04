@@ -1,7 +1,5 @@
-﻿using DarkUI.Controls;
-using DarkUI.Forms;
-using Hook;
-using NUMC.Desion;
+﻿using Hook;
+using NUMC.Design;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -12,7 +10,7 @@ namespace NUMC.Forms.Dialogs.Macro
 {
     public partial class FunctionAddDialog : NDialog
     {
-        public string name { get; internal set; }
+        public string Value { get; internal set; }
 
         public FunctionAddDialog()
         {
@@ -24,7 +22,7 @@ namespace NUMC.Forms.Dialogs.Macro
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            name = textBox.Text;
+            Value = textBox.Text;
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using DarkUI.Forms;
-using NUMC.Desion;
+﻿using NUMC.Design;
+using NUMC.Design.Bright;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -57,8 +57,8 @@ namespace NUMC.Forms.Dialogs.Macro
             }
             catch (Exception ex)
             {
-                if (DarkMessageBox.ShowError($"{Language.Language.Message_Error_LoadSetting_Fail}\n{ex.Message.Split('\n')[0]}",
-                    Assembly.GetExecutingAssembly().GetName().Name, DarkDialogButton.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show($"{Language.Language.Message_Error_LoadSetting_Fail}\n{ex.Message.Split('\n')[0]}",
+                    Assembly.GetExecutingAssembly().GetName().Name, System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     script.Reset();
 

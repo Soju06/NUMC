@@ -1,4 +1,4 @@
-﻿using NUMC.Desion;
+﻿using NUMC.Design;
 
 namespace NUMC.Updater
 {

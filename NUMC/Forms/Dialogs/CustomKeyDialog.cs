@@ -1,5 +1,5 @@
 ﻿using Hook;
-using NUMC.Desion;
+using NUMC.Design;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -133,6 +133,7 @@ namespace NUMC.Forms.Dialogs
             hook = false;
             TipLabel.Text = Types[KeyboardTypeComboBox.SelectedIndex, 2];
             ScriptTextBox.Text = string.Empty;
+            ScriptTextBox.ReadOnly = VirtualMode;
         }
 
         private void KeyTextBox_MouseHover(object sender, EventArgs e)

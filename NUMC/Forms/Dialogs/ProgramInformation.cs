@@ -1,5 +1,4 @@
-﻿using DarkUI.Forms;
-using NUMC.Desion;
+﻿using NUMC.Design;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +23,8 @@ namespace NUMC.Forms.Dialogs
 
             darkLabel1.Text = Assembly.GetExecutingAssembly().GetName().Name;
             darkLabel2.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+            githubBox.Image = Design.Resources.Render.ColorChange((Bitmap)githubBox.Image, Color.FromArgb(70, 70, 70));
         }
 
         private void GithubBox_Click(object sender, EventArgs e)

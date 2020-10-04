@@ -371,6 +371,12 @@
 이 메뉴를 사용하면 프로그램이 불안전할 수 있습니다!
 계속 하시겠습니까?</comment>
   </data>
+  <data name="Module_Exception" xml:space="preserve">
+    <value>{0} 모듈에서 {1} 예외가 발생하였습니다.
+{2}</value>
+    <comment>{0} 모듈에서 {1} 예외가 발생하였습니다.
+{2}</comment>
+  </data>
   <data name="Program_Add_Button" xml:space="preserve">
     <value>추가</value>
     <comment>추가</comment>

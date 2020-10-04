@@ -1,7 +1,7 @@
-﻿using DarkUI.Forms;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Diagnostics;
+using NUMC.Design.Bright;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
@@ -29,7 +29,8 @@ namespace NUMC.Setting
             }
             catch (Exception ex)
             {
-                DarkMessageBox.ShowError($"{Language.Language.Message_Error_CheckStartProgram_Fail}\n{ex.Message}", TITLE_NAME);
+                MessageBox.Show($"{Language.Language.Message_Error_CheckStartProgram_Fail}\n{ex.Message}", TITLE_NAME,
+                        System.Windows.Forms.MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -59,7 +60,8 @@ namespace NUMC.Setting
                 }
                 catch (Exception ex)
                 {
-                    DarkMessageBox.ShowError($"{Language.Language.Message_Error_ChangeStartProgram_Fail}\n{ex.Message}", TITLE_NAME);
+                    MessageBox.Show($"{Language.Language.Message_Error_ChangeStartProgram_Fail}\n{ex.Message}", TITLE_NAME,
+                        System.Windows.Forms.MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

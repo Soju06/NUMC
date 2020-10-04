@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput;
 
@@ -72,7 +73,7 @@ namespace NUMC.Script
                     {
                         if (int.TryParse(data, out int delay))
                         {
-                            Thread.Sleep(delay);
+                            Task.Delay(delay).Wait();
                         }
                     }
                     // keyDown
