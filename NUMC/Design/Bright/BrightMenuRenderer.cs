@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace NUMC.Design.Bright
@@ -29,7 +28,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Initialisation Region
 
         #region Render Region
 
@@ -106,7 +105,6 @@ namespace NUMC.Design.Bright
 
             if (e.Item.Enabled)
             {
-                
                 var bgColor = e.Item.Selected ? Colors.GreyHighlight : e.Item.BackColor;
 
                 // Normal item
@@ -131,6 +129,6 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Render Region
     }
 }

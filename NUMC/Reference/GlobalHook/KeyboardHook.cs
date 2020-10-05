@@ -60,12 +60,4 @@ namespace Hook
             UnhookWindowsHookEx(_hookID);
         }
     }
-
-    public class D
-    {
-        public void S()
-        {
-            var hookStruct = Marshal.PtrToStructure<KBDLLHOOKSTRUCT>((IntPtr)0);
-        }
-    }
 }

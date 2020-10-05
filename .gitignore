@@ -1,3 +1,4 @@
-.vs/\
-Release\NUMC.json
-Debug\NUMC.json
+.vs/
+Release/NUMC.json
+Debug/NUMC.json
+NUMC/obj

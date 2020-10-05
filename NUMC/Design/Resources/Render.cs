@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace NUMC.Design.Resources
 {
@@ -73,8 +68,8 @@ namespace NUMC.Design.Resources
 
             for (int x = 0; x < bitmap.Width; x++)
                 for (int y = 0; y < bitmap.Height; y++)
-                    after.SetPixel (
-                        x, y, Color.FromArgb (
+                    after.SetPixel(
+                        x, y, Color.FromArgb(
                             bitmap.GetPixel(x, y).A,
                             color
                         )

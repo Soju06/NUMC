@@ -414,7 +414,7 @@ Mouse over here and press the key</value>
     <value>Key Ignore</value>
     <comment>키 무시</comment>
   </data>
-  <data name="MacroSettingDialog_LoadSetting" xml:space="preserve">
+  <data name="MacroSettingDialog_ChangeSetting" xml:space="preserve">
     <value>Change Settings</value>
     <comment>설정 변경</comment>
   </data>

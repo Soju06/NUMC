@@ -14,7 +14,7 @@ namespace NUMC.Design.Bright
                      ControlStyles.UserPaint, true);
         }
 
-        #endregion
+        #endregion Constructor Region
 
         #region Paint Region
 
@@ -55,6 +55,6 @@ namespace NUMC.Design.Bright
             // Absorb event
         }
 
-        #endregion
+        #endregion Paint Region
     }
 }

@@ -105,7 +105,7 @@ Example: Single key press
 ```csharp
 public void PressTheSpacebar()
 {
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.SPACE);
+  InputSimulator.SimulateKeyPress(Keys.SPACE);
 }
 ```
 
@@ -115,14 +115,14 @@ Example: Key-down and Key-up
 public void ShoutHello()
 {
   // Simulate each key stroke
-  InputSimulator.SimulateKeyDown(VirtualKeyCode.SHIFT);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_H);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_E);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_L);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_L);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_O);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_1);
-  InputSimulator.SimulateKeyUp(VirtualKeyCode.SHIFT);
+  InputSimulator.SimulateKeyDown(Keys.SHIFT);
+  InputSimulator.SimulateKeyPress(Keys.VK_H);
+  InputSimulator.SimulateKeyPress(Keys.VK_E);
+  InputSimulator.SimulateKeyPress(Keys.VK_L);
+  InputSimulator.SimulateKeyPress(Keys.VK_L);
+  InputSimulator.SimulateKeyPress(Keys.VK_O);
+  InputSimulator.SimulateKeyPress(Keys.VK_1);
+  InputSimulator.SimulateKeyUp(Keys.SHIFT);
 
   // Alternatively you can simulate text entry to acheive the same end result
   InputSimulator.SimulateTextEntry("HELLO!");
@@ -135,19 +135,19 @@ Example: Modified keystrokes such as CTRL-C
 public void SimulateSomeModifiedKeystrokes()
 {
   // CTRL-C (effectively a copy command in many situations)
-  InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_C);
+  InputSimulator.SimulateModifiedKeyStroke(Keys.CONTROL, Keys.VK_C);
 
   // You can simulate chords with multiple modifiers
   // For example CTRL-K-C whic is simulated as
   // CTRL-down, K, C, CTRL-up
-  InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.CONTROL, new [] {VirtualKeyCode.VK_K, VirtualKeyCode.VK_C});
+  InputSimulator.SimulateModifiedKeyStroke(Keys.CONTROL, new [] {Keys.VK_K, Keys.VK_C});
 
   // You can simulate complex chords with multiple modifiers and key presses
   // For example CTRL-ALT-SHIFT-ESC-K which is simulated as
   // CTRL-down, ALT-down, SHIFT-down, press ESC, press K, SHIFT-up, ALT-up, CTRL-up
   InputSimulator.SimulateModifiedKeyStroke(
-    new[] { VirtualKeyCode.CONTROL, VirtualKeyCode.MENU, VirtualKeyCode.SHIFT },
-    new[] { VirtualKeyCode.ESCAPE, VirtualKeyCode.VK_K });
+    new[] { Keys.CONTROL, Keys.MENU, Keys.SHIFT },
+    new[] { Keys.ESCAPE, Keys.VK_K });
 }
 ```
 
@@ -166,10 +166,10 @@ Example: Determine the state of different types of keys
 public void GetKeyStatus()
 {
   // Determines if the shift key is currently down
-  var isShiftKeyDown = InputSimulator.IsKeyDown(VirtualKeyCode.SHIFT);
+  var isShiftKeyDown = InputSimulator.IsKeyDown(Keys.SHIFT);
 
   // Determines if the caps lock key is currently in effect (toggled on)
-  var isCapsLockOn = InputSimulator.IsTogglingKeyInEffect(VirtualKeyCode.CAPITAL);
+  var isCapsLockOn = InputSimulator.IsTogglingKeyInEffect(Keys.CAPITAL);
 }
 ```
 

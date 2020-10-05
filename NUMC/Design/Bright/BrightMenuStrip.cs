@@ -12,7 +12,7 @@ namespace NUMC.Design.Bright
             Padding = new Padding(3, 2, 0, 2);
         }
 
-        #endregion
+        #endregion Constructor Region
 
         public void AddSeparator()
         {

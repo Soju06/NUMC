@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NUMC.Design.Bright;
 using WindowsInput;
 
 namespace NUMC.Script
@@ -16,7 +14,7 @@ namespace NUMC.Script
 
         public void StopInput() // 모든 키 떼기
         {
-            foreach (WindowsInput.Native.VirtualKeyCode item in Enum.GetValues(typeof(WindowsInput.Native.VirtualKeyCode)))
+            foreach (System.Windows.Forms.Keys item in Enum.GetValues(typeof(System.Windows.Forms.Keys)))
             {
                 if (Simulator.InputDeviceState.IsKeyDown(item))
                     Simulator.Keyboard.KeyUp(item);
@@ -106,9 +104,9 @@ namespace NUMC.Script
 
                     if (script.Macro != null && script.Macro.Code.Length >= 1)
                     {
-                        Task task = new Task(delegate () 
+                        Task task = new Task(delegate ()
                         {
-                            script.Macro.Compiler(Simulator); 
+                            script.Macro.Compiler(Simulator);
                         });
 
                         task.Start();

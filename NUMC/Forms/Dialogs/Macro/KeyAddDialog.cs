@@ -15,8 +15,6 @@ namespace NUMC.Forms.Dialogs.Macro
         {
             InitializeComponent();
 
-            TipLabel.Text = Language.Language.KeyAddDialog_TipLabel;
-
             titleBar.Form = this;
             titleBar.Title = Setting.Setting.GetTitleName(Language.Language.KeyAddDialog_Title);
 
@@ -34,17 +32,12 @@ namespace NUMC.Forms.Dialogs.Macro
 
             TypeRadio_0.Checked = true;
 
-            KeyboardHook.KeyDown += KeyboardHook_KeyDown;
+            hookingControl.KeyChanged += HookingControl_KeyChanged;
         }
 
-        private bool KeyboardHook_KeyDown(int vkCode)
+        private void HookingControl_KeyChanged(Keys key)
         {
-            if (hook)
-            {
-                MainComboBox.SelectedItem = (Keys)vkCode;
-            }
-
-            return !hook;
+            MainComboBox.SelectedItem = key;
         }
 
         private void MainComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,27 +56,9 @@ namespace NUMC.Forms.Dialogs.Macro
                 KeystrokeType = (KeyboardEventType)((BrightRadioButton)sender).Tag;
         }
 
-        private void TipLabel_MouseHover(object sender, EventArgs e)
-        {
-            TipBox.ToolTipTitle = Language.Language.CustomKeyDialog_KeyHook_Tip_Title;
-            TipBox.SetToolTip((Control)sender, Language.Language.CustomKeyDialog_KeyHook_Tip_Caption);
-        }
-
-        private bool hook = false;
-
-        private void TipLabel_Enter(object sender, EventArgs e)
-        {
-            hook = true;
-        }
-
-        private void TipLabel_Leave(object sender, EventArgs e)
-        {
-            hook = false;
-        }
-
         private void KeyAddDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            KeyboardHook.KeyDown -= KeyboardHook_KeyDown;
+            hookingControl.UnHook();
         }
     }
 }

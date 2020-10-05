@@ -9,10 +9,9 @@ namespace NUMC.Design.Bright
         public BrightContextMenu()
         {
             Renderer = new BrightMenuRenderer();
-            
         }
 
-        #endregion
+        #endregion Constructor Region
 
         public void AddSeparator()
         {

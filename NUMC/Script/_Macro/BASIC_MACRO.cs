@@ -82,4 +82,56 @@ namespace NUMC.Script._Macro
             }
         }
     }
+
+    public class CHANGE_SETTING : IMacroModule
+    {
+        public string BUTTON_NAME => Language.Language.MacroSettingDialog_ChangeSetting;
+
+        public bool GET_FULL_CODE => false;
+
+        public char MODULE_NAME => '[';
+
+        public bool CODE_RESULT(string DATA, ref string[] FULL_CODE, out string NAME, out string RCODE)
+        {
+            NAME = null;
+            RCODE = null;
+
+            if (DATA == null || string.IsNullOrWhiteSpace(DATA))
+                return false;
+
+            NAME = $"{Language.Language.MacroSettingDialog_ChangeSetting} ({DATA})";
+            RCODE = CreateCode(DATA);
+
+            return true;
+        }
+
+        public void RUN_CODE(string DATA, ref string[] FULL_CODE, ref long CURRENT_LINE)
+        {
+            Handler.Handler.LoadSettings(DATA);
+        }
+
+        public bool SHOW_DIALOG(ref string[] FULL_CODE, out string NAME, out string RCODE)
+        {
+            using (SetSettingDialog dialog = new SetSettingDialog())
+            {
+                if (dialog.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.Path))
+                {
+                    NAME = $"{Language.Language.MacroSettingDialog_ChangeSetting} ({dialog.Path})";
+                    RCODE = CreateCode(dialog.Path);
+
+                    return true;
+                }
+            }
+
+            NAME = null;
+            RCODE = null;
+
+            return false;
+        }
+
+        private string CreateCode(string file)
+        {
+            return "[" + file;
+        }
+    }
 }

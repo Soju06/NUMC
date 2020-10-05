@@ -13,7 +13,7 @@ namespace NUMC.Design.Bright
 
         private bool _spacePressed;
 
-        #endregion
+        #endregion Field Region
 
         #region Property Region
 
@@ -129,7 +129,7 @@ namespace NUMC.Design.Bright
             get { return false; }
         }
 
-        #endregion
+        #endregion Property Region
 
         #region Constructor Region
 
@@ -141,7 +141,7 @@ namespace NUMC.Design.Bright
                      ControlStyles.UserPaint, true);
         }
 
-        #endregion
+        #endregion Constructor Region
 
         #region Method Region
 
@@ -154,7 +154,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Method Region
 
         #region Event Handler Region
 
@@ -270,7 +270,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Event Handler Region
 
         #region Paint Region
 
@@ -344,6 +344,6 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Paint Region
     }
 }

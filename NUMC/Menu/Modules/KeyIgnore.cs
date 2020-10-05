@@ -1,11 +1,5 @@
-﻿using NUMC.Design.Bright;
-using NUMC.Forms.Dialogs;
-using NUMC.Script;
+﻿using NUMC.Script;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NUMC.Menu.Modules

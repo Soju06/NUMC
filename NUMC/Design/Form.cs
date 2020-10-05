@@ -57,7 +57,8 @@ namespace NUMC.Design
 
         public Pen Pen = new Pen(Color.White);
         private bool _resizing = true;
-        public bool Resizing 
+
+        public bool Resizing
         {
             get
             {

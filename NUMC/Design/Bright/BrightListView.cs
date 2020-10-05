@@ -15,7 +15,7 @@ namespace NUMC.Design.Bright
 
         public event EventHandler SelectedIndicesChanged;
 
-        #endregion
+        #endregion Event Region
 
         #region Field Region
 
@@ -27,7 +27,7 @@ namespace NUMC.Design.Bright
         private int _anchoredItemStart = -1;
         private int _anchoredItemEnd = -1;
 
-        #endregion
+        #endregion Field Region
 
         #region Property Region
 
@@ -79,7 +79,7 @@ namespace NUMC.Design.Bright
         [DefaultValue(false)]
         public bool ShowIcons { get; set; }
 
-        #endregion
+        #endregion Property Region
 
         #region Constructor Region
 
@@ -89,7 +89,7 @@ namespace NUMC.Design.Bright
             _selectedIndices = new List<int>();
         }
 
-        #endregion
+        #endregion Constructor Region
 
         #region Event Handler Region
 
@@ -233,7 +233,7 @@ namespace NUMC.Design.Bright
             EnsureVisible();
         }
 
-        #endregion
+        #endregion Event Handler Region
 
         #region Method Region
 
@@ -476,7 +476,7 @@ namespace NUMC.Design.Bright
             return result;
         }
 
-        #endregion
+        #endregion Method Region
 
         #region Paint Region
 
@@ -540,7 +540,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Paint Region
     }
 
     public class BrightListItem
@@ -549,13 +549,13 @@ namespace NUMC.Design.Bright
 
         public event EventHandler TextChanged;
 
-        #endregion
+        #endregion Event Region
 
         #region Field Region
 
         private string _text;
 
-        #endregion
+        #endregion Field Region
 
         #region Property Region
 
@@ -580,7 +580,7 @@ namespace NUMC.Design.Bright
 
         public object Tag { get; set; }
 
-        #endregion
+        #endregion Property Region
 
         #region Constructor Region
 
@@ -596,6 +596,6 @@ namespace NUMC.Design.Bright
             Text = text;
         }
 
-        #endregion
+        #endregion Constructor Region
     }
 }

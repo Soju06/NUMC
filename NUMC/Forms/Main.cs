@@ -1,15 +1,13 @@
 ﻿using Hook;
 using NUMC.Forms.Dialogs;
+using NUMC.Menu;
 using NUMC.Script;
-using NUMC.Design.Bright;
 using System;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
-using NUMC.Menu;
 
 namespace NUMC
 {
@@ -19,7 +17,7 @@ namespace NUMC
 
         private Keys SelectedKey;
         private bool InfoShowed = false;
-        ToolStripMenuItem StPgItem = null;
+        private ToolStripMenuItem StPgItem = null;
 
         public Main()
         {
@@ -34,7 +32,6 @@ namespace NUMC
             InitializeEvents();
 
             CheckUpdate();
-
         }
 
         #region FormEvents
@@ -93,7 +90,7 @@ namespace NUMC
             titleBar.MinimizeBox = false;
         }
 
-        #endregion
+        #endregion Initialize_Form
 
         #region Initialize_Language
 
@@ -111,7 +108,6 @@ namespace NUMC
             NotifyIconContextMenu.AddSeparator();
             NotifyIconContextMenu.AddItem(Language.Language.Program_Exit, "Exit");
 
-
             Text = Setting.Setting.TITLE_NAME;
             titleBar.Title = Setting.Setting.GetTitleName(Language.Language.Main_Title);
         }
@@ -127,7 +123,7 @@ namespace NUMC
                     NotifyIconContextMenu.Items[i].Click += Application_MenuItem_Click;
         }
 
-        #endregion
+        #endregion Initialize_Notify_Menu
 
         #region Initialize_Language_Menu
 
@@ -151,7 +147,6 @@ namespace NUMC
 
                 langitem.DropDownItems.Add(item);
             }
-
         }
 
         #endregion Initialize_Language_Menu
@@ -171,7 +166,6 @@ namespace NUMC
 
             InitializeSampleItems();
 
-
             for (int i = 0; i < NotifyIconContextMenu.Items.Count; i++)
                 if (NotifyIconContextMenu.Items[i].Tag != null && NotifyIconContextMenu.Items[i].Tag.ToString() == "StartProgram")
                     StPgItem = (ToolStripMenuItem)NotifyIconContextMenu.Items[i];
@@ -179,7 +173,7 @@ namespace NUMC
             StPgItem.Checked = Setting.Setting.StartProgram;
         }
 
-        #endregion
+        #endregion Initialize_Menu
 
         #region Initialize_Setting
 
@@ -251,7 +245,6 @@ namespace NUMC
             Handler.Handler.LoadSetting += Handler_LoadSetting;
             Handler.Handler.G_etScript += Handler_GetScript;
         }
-
 
         #endregion Initialize_Handler
 
@@ -409,7 +402,6 @@ namespace NUMC
                     // Sample
                     if (NUMContextMenu.Items[i].Tag.GetType() == typeof(KeyObject))
                     {
-
                         keyObject.Key = 0;
                         JavaScriptSerializer serializer = new JavaScriptSerializer();
 
@@ -460,7 +452,7 @@ namespace NUMC
 
         private void CheckUpdate()
         {
-            Thread thread = new Thread(() =>
+            new Task(delegate ()
             {
                 if (Updater.Updater.CheckUpdates())
                 {
@@ -469,11 +461,7 @@ namespace NUMC
                         Updater.Updater.StartUpdate();
                     }));
                 }
-            })
-            {
-                IsBackground = true
-            };
-            thread.Start();
+            }).Start();
         }
 
         #endregion CheckUpdate
@@ -489,7 +477,6 @@ namespace NUMC
                 ReloadLanguage();
             }));
         }
-
 
         private Script.Script Handler_GetScript()
         {

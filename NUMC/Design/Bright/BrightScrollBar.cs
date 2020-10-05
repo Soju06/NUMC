@@ -11,7 +11,7 @@ namespace NUMC.Design.Bright
 
         public event EventHandler<ScrollValueEventArgs> ValueChanged;
 
-        #endregion
+        #endregion Event Region
 
         #region Field Region
 
@@ -43,7 +43,7 @@ namespace NUMC.Design.Bright
 
         private readonly Timer _scrollTimer;
 
-        #endregion
+        #endregion Field Region
 
         #region Property Region
 
@@ -137,7 +137,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Property Region
 
         #region Constructor Region
 
@@ -156,7 +156,7 @@ namespace NUMC.Design.Bright
             _scrollTimer.Tick += ScrollTimerTick;
         }
 
-        #endregion
+        #endregion Constructor Region
 
         #region Event Handler Region
 
@@ -344,7 +344,7 @@ namespace NUMC.Design.Bright
                 ScrollBy(1);
         }
 
-        #endregion
+        #endregion Event Handler Region
 
         #region Method Region
 
@@ -416,7 +416,7 @@ namespace NUMC.Design.Bright
         }
 
         private void UpdateThumb(bool forceRefresh = false)
-        { 
+        {
             if (ViewSize >= Maximum)
                 return;
 
@@ -463,7 +463,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Method Region
 
         #region Paint Region
 
@@ -533,7 +533,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Paint Region
     }
 
     public abstract class BrightScrollBase : Control
@@ -541,9 +541,10 @@ namespace NUMC.Design.Bright
         #region Event Region
 
         public event EventHandler ViewportChanged;
+
         public event EventHandler ContentSizeChanged;
 
-        #endregion
+        #endregion Event Region
 
         #region Field Region
 
@@ -562,10 +563,9 @@ namespace NUMC.Design.Bright
 
         private bool _hideScrollBars = true;
 
-        #endregion
+        #endregion Field Region
 
         #region Property Region
-
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -631,7 +631,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Property Region
 
         #region Constructor Region
 
@@ -659,7 +659,7 @@ namespace NUMC.Design.Bright
             _dragTimer.Tick += DragTimer_Tick;
         }
 
-        #endregion
+        #endregion Constructor Region
 
         #region Method Region
 
@@ -794,7 +794,7 @@ namespace NUMC.Design.Bright
             return new Rectangle(new Point(rect.Left - Viewport.Left, rect.Top - Viewport.Top), rect.Size);
         }
 
-        #endregion
+        #endregion Method Region
 
         #region Event Handler Region
 
@@ -949,7 +949,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Event Handler Region
     }
 
     public enum BrightScrollOrientation

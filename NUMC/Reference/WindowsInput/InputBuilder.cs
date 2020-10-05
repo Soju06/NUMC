@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using WindowsInput.Native;
 
 namespace WindowsInput
@@ -69,7 +70,7 @@ namespace WindowsInput
         }
 
         /// <summary>
-        /// Determines if the <see cref="VirtualKeyCode"/> is an ExtendedKey
+        /// Determines if the <see cref="Keys"/> is an ExtendedKey
         /// </summary>
         /// <param name="keyCode">The key code.</param>
         /// <returns>true if the key code is an extended key; otherwise, false.</returns>
@@ -78,26 +79,26 @@ namespace WindowsInput
         ///
         /// See http://msdn.microsoft.com/en-us/library/ms646267(v=vs.85).aspx Section "Extended-Key Flag"
         /// </remarks>
-        public static bool IsExtendedKey(VirtualKeyCode keyCode)
+        public static bool IsExtendedKey(Keys keyCode)
         {
-            if (keyCode == VirtualKeyCode.MENU ||
-                keyCode == VirtualKeyCode.RMENU ||
-                keyCode == VirtualKeyCode.CONTROL ||
-                keyCode == VirtualKeyCode.RCONTROL ||
-                keyCode == VirtualKeyCode.INSERT ||
-                keyCode == VirtualKeyCode.DELETE ||
-                keyCode == VirtualKeyCode.HOME ||
-                keyCode == VirtualKeyCode.END ||
-                keyCode == VirtualKeyCode.PRIOR ||
-                keyCode == VirtualKeyCode.NEXT ||
-                keyCode == VirtualKeyCode.RIGHT ||
-                keyCode == VirtualKeyCode.UP ||
-                keyCode == VirtualKeyCode.LEFT ||
-                keyCode == VirtualKeyCode.DOWN ||
-                keyCode == VirtualKeyCode.NUMLOCK ||
-                keyCode == VirtualKeyCode.CANCEL ||
-                keyCode == VirtualKeyCode.SNAPSHOT ||
-                keyCode == VirtualKeyCode.DIVIDE)
+            if (keyCode == Keys.Menu ||
+                keyCode == Keys.RMenu ||
+                keyCode == Keys.Control ||
+                keyCode == Keys.RControlKey ||
+                keyCode == Keys.Insert ||
+                keyCode == Keys.Delete ||
+                keyCode == Keys.Home ||
+                keyCode == Keys.End ||
+                keyCode == Keys.Prior ||
+                keyCode == Keys.Next ||
+                keyCode == Keys.Right ||
+                keyCode == Keys.Up ||
+                keyCode == Keys.Left ||
+                keyCode == Keys.Down ||
+                keyCode == Keys.NumLock ||
+                keyCode == Keys.Cancel ||
+                keyCode == Keys.Snapshot ||
+                keyCode == Keys.Divide)
             {
                 return true;
             }
@@ -110,9 +111,9 @@ namespace WindowsInput
         /// <summary>
         /// Adds a key down to the list of <see cref="INPUT"/> messages.
         /// </summary>
-        /// <param name="keyCode">The <see cref="VirtualKeyCode"/>.</param>
+        /// <param name="keyCode">The <see cref="Keys"/>.</param>
         /// <returns>This <see cref="InputBuilder"/> instance.</returns>
-        public InputBuilder AddKeyDown(VirtualKeyCode keyCode)
+        public InputBuilder AddKeyDown(Keys keyCode)
         {
             var down =
                 new INPUT
@@ -139,9 +140,9 @@ namespace WindowsInput
         /// <summary>
         /// Adds a key up to the list of <see cref="INPUT"/> messages.
         /// </summary>
-        /// <param name="keyCode">The <see cref="VirtualKeyCode"/>.</param>
+        /// <param name="keyCode">The <see cref="Keys"/>.</param>
         /// <returns>This <see cref="InputBuilder"/> instance.</returns>
-        public InputBuilder AddKeyUp(VirtualKeyCode keyCode)
+        public InputBuilder AddKeyUp(Keys keyCode)
         {
             var up =
                 new INPUT
@@ -170,9 +171,9 @@ namespace WindowsInput
         /// <summary>
         /// Adds a key press to the list of <see cref="INPUT"/> messages which is equivalent to a key down followed by a key up.
         /// </summary>
-        /// <param name="keyCode">The <see cref="VirtualKeyCode"/>.</param>
+        /// <param name="keyCode">The <see cref="Keys"/>.</param>
         /// <returns>This <see cref="InputBuilder"/> instance.</returns>
-        public InputBuilder AddKeyPress(VirtualKeyCode keyCode)
+        public InputBuilder AddKeyPress(Keys keyCode)
         {
             AddKeyDown(keyCode);
             AddKeyUp(keyCode);

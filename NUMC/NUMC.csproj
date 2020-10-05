@@ -123,6 +123,18 @@
     <Compile Include="Design\TitleBar.designer.cs">
       <DependentUpon>TitleBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Controls\FileDropControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\FileDropControl.Designer.cs">
+      <DependentUpon>FileDropControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\HookingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\HookingControl.Designer.cs">
+      <DependentUpon>HookingControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dialogs\CustomKeyDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,11 +147,11 @@
     <Compile Include="Forms\Dialogs\JsonEditorDialog.Designer.cs">
       <DependentUpon>JsonEditorDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dialogs\EnumDialog.cs">
+    <Compile Include="Forms\Dialogs\KeyDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dialogs\EnumDialog.Designer.cs">
-      <DependentUpon>EnumDialog.cs</DependentUpon>
+    <Compile Include="Forms\Dialogs\KeyDialog.Designer.cs">
+      <DependentUpon>KeyDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\Macro\FunctionAddDialog.cs">
       <SubType>Form</SubType>
@@ -229,7 +241,6 @@
     <Compile Include="Reference\WindowsInput\Native\MOUSEINPUT.cs" />
     <Compile Include="Reference\WindowsInput\Native\MOUSEKEYBDHARDWAREINPUT.cs" />
     <Compile Include="Reference\WindowsInput\Native\NativeMethods.cs" />
-    <Compile Include="Reference\WindowsInput\Native\VirtualKeyCode.cs" />
     <Compile Include="Reference\WindowsInput\Native\XButton.cs" />
     <Compile Include="Reference\WindowsInput\WindowsInputDeviceStateAdaptor.cs" />
     <Compile Include="Reference\WindowsInput\WindowsInputMessageDispatcher.cs" />
@@ -237,7 +248,7 @@
     <Compile Include="Script\Macro.cs" />
     <Compile Include="Script\_Macro\BASIC_MACRO.cs" />
     <Compile Include="Script\_Macro\Menu.cs" />
-    <Compile Include="Script\_Macro\MacroModule.cs" />
+    <Compile Include="Script\_Macro\IMacroModule.cs" />
     <Compile Include="Script\Menu.cs" />
     <Compile Include="Script\Object.cs" />
     <Compile Include="Script\Script.cs" />
@@ -282,14 +293,20 @@
     <EmbeddedResource Include="Design\TitleBar.resx">
       <DependentUpon>TitleBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\FileDropControl.resx">
+      <DependentUpon>FileDropControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\HookingControl.resx">
+      <DependentUpon>HookingControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\CustomKeyDialog.resx">
       <DependentUpon>CustomKeyDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\JsonEditorDialog.resx">
       <DependentUpon>JsonEditorDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\EnumDialog.resx">
-      <DependentUpon>EnumDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Dialogs\KeyDialog.resx">
+      <DependentUpon>KeyDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\Macro\FunctionAddDialog.resx">
       <DependentUpon>FunctionAddDialog.cs</DependentUpon>

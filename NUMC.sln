@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{6F78A50C
 		LICENSE = LICENSE
 		README.md = README.md
 		Updates.json = Updates.json
+		Updates.old.json = Updates.old.json
 	EndProjectSection
 EndProject
 Global

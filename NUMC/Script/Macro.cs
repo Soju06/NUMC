@@ -1,7 +1,6 @@
 ﻿using Hook;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput;
@@ -81,7 +80,7 @@ namespace NUMC.Script
                     {
                         if (int.TryParse(data, out int key))
                         {
-                            simulator.Keyboard.KeyDown((WindowsInput.Native.VirtualKeyCode)key);
+                            simulator.Keyboard.KeyDown((Keys)key);
                         }
                     }
                     // keyUp
@@ -89,7 +88,7 @@ namespace NUMC.Script
                     {
                         if (int.TryParse(data, out int key))
                         {
-                            simulator.Keyboard.KeyUp((WindowsInput.Native.VirtualKeyCode)key);
+                            simulator.Keyboard.KeyUp((Keys)key);
                         }
                     }
                     // keyClick
@@ -108,7 +107,7 @@ namespace NUMC.Script
                     // keyUp All
                     else if (line[0] == '^')
                     {
-                        foreach (WindowsInput.Native.VirtualKeyCode item in Enum.GetValues(typeof(WindowsInput.Native.VirtualKeyCode)))
+                        foreach (Keys item in Enum.GetValues(typeof(Keys)))
                         {
                             if (simulator.InputDeviceState.IsKeyDown(item))
                                 simulator.Keyboard.KeyUp(item);
@@ -118,12 +117,6 @@ namespace NUMC.Script
                     else if (line[0] == '!')
                     {
                         break;
-                    }
-                    // NW1
-                    // Load Setting
-                    else if (line[0] == '[')
-                    {
-                        Handler.Handler.LoadSettings(data);
                     }
                     else
                     {
@@ -200,12 +193,6 @@ namespace NUMC.Script
         public static string CreateExit()
         {
             return "!";
-        }
-
-        // NW1
-        public static string CreateLoadSetting(string path)
-        {
-            return "[" + path;
         }
 
         public static List<Function> GetFunctions(string[] code)

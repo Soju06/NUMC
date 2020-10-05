@@ -322,6 +322,15 @@ namespace NUMC.Language {
         }
         
         /// <summary>
+        ///   Change Settings과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MacroSettingDialog_ChangeSetting {
+            get {
+                return ResourceManager.GetString("MacroSettingDialog_ChangeSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Delay과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string MacroSettingDialog_Delay {
@@ -381,15 +390,6 @@ namespace NUMC.Language {
         internal static string MacroSettingDialog_KeyUpAll {
             get {
                 return ResourceManager.GetString("MacroSettingDialog_KeyUpAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Change Settings과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_LoadSetting {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_LoadSetting", resourceCulture);
             }
         }
         

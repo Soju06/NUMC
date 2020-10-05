@@ -42,7 +42,6 @@
             this.AddExitButton = new NUMC.Design.Bright.BrightButton();
             this.AddTextInputButton = new NUMC.Design.Bright.BrightButton();
             this.RemoveAllButton = new NUMC.Design.Bright.BrightButton();
-            this.ChangeSettingButton = new NUMC.Design.Bright.BrightButton();
             this.ModuleButton = new NUMC.Design.Bright.BrightButton();
             this.ModuleContextMenu = new NUMC.Design.Bright.BrightContextMenu();
             this.SuspendLayout();
@@ -115,7 +114,7 @@
             // MovedownButton
             // 
             this.MovedownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MovedownButton.Location = new System.Drawing.Point(413, 377);
+            this.MovedownButton.Location = new System.Drawing.Point(413, 333);
             this.MovedownButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.MovedownButton.Name = "MovedownButton";
             this.MovedownButton.Padding = new System.Windows.Forms.Padding(5);
@@ -127,7 +126,7 @@
             // MoveupButton
             // 
             this.MoveupButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MoveupButton.Location = new System.Drawing.Point(413, 347);
+            this.MoveupButton.Location = new System.Drawing.Point(413, 303);
             this.MoveupButton.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.MoveupButton.Name = "MoveupButton";
             this.MoveupButton.Padding = new System.Windows.Forms.Padding(5);
@@ -207,22 +206,10 @@
             this.RemoveAllButton.Text = "이벤트 모두 제거";
             this.RemoveAllButton.Click += new System.EventHandler(this.RemoveAllButton_Click);
             // 
-            // ChangeSettingButton
-            // 
-            this.ChangeSettingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeSettingButton.Location = new System.Drawing.Point(413, 303);
-            this.ChangeSettingButton.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
-            this.ChangeSettingButton.Name = "ChangeSettingButton";
-            this.ChangeSettingButton.Padding = new System.Windows.Forms.Padding(5);
-            this.ChangeSettingButton.Size = new System.Drawing.Size(127, 24);
-            this.ChangeSettingButton.TabIndex = 12;
-            this.ChangeSettingButton.Text = "설정 변경";
-            this.ChangeSettingButton.Click += new System.EventHandler(this.ChangeSettingButton_Click);
-            // 
             // ModuleButton
             // 
             this.ModuleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModuleButton.Location = new System.Drawing.Point(413, 421);
+            this.ModuleButton.Location = new System.Drawing.Point(413, 377);
             this.ModuleButton.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.ModuleButton.Name = "ModuleButton";
             this.ModuleButton.Padding = new System.Windows.Forms.Padding(5);
@@ -246,7 +233,6 @@
             this.Controls.Add(this.AddTextInputButton);
             this.Controls.Add(this.MoveupButton);
             this.Controls.Add(this.ModuleButton);
-            this.Controls.Add(this.ChangeSettingButton);
             this.Controls.Add(this.MovedownButton);
             this.Controls.Add(this.RemoveAllButton);
             this.Controls.Add(this.RemoveButton);
@@ -271,7 +257,6 @@
             this.Controls.SetChildIndex(this.RemoveButton, 0);
             this.Controls.SetChildIndex(this.RemoveAllButton, 0);
             this.Controls.SetChildIndex(this.MovedownButton, 0);
-            this.Controls.SetChildIndex(this.ChangeSettingButton, 0);
             this.Controls.SetChildIndex(this.ModuleButton, 0);
             this.Controls.SetChildIndex(this.MoveupButton, 0);
             this.Controls.SetChildIndex(this.AddTextInputButton, 0);
@@ -293,7 +278,6 @@
         private Design.Bright.BrightButton AddTextInputButton;
         private Design.Bright.BrightButton RemoveAllButton;
         private Design.Bright.BrightButton AddDelayButton;
-        private Design.Bright.BrightButton ChangeSettingButton;
         private Design.Bright.BrightButton ModuleButton;
         private Design.Bright.BrightContextMenu ModuleContextMenu;
     }

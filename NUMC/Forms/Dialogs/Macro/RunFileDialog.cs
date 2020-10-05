@@ -1,7 +1,5 @@
 ﻿using NUMC.Design;
 using System;
-using System.IO;
-using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
@@ -16,48 +14,14 @@ namespace NUMC.Forms.Dialogs.Macro
 
             titleBar.Form = this;
             titleBar.Title = Setting.Setting.GetTitleName(Language.Language.RunFileDialog_Title);
-            DropButton.Text = Language.Language.SetSettingDialog_DropLabel;
+
+            fileDropControl.FileChanged += FileDropControl_FileChanged;
+            fileDropControl.Filter = "All Files|*.*";
         }
 
-        private void DropButton_DragEnter(object sender, DragEventArgs e)
+        private void FileDropControl_FileChanged(object sender, EventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-            else
-                e.Effect = DragDropEffects.None;
-        }
-
-        private void DropButton_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (files.Length >= 1)
-                ConfirmProcessing(files[0]);
-        }
-
-        private void ConfirmProcessing(string file)
-        {
-            if (!File.Exists(file))
-                return;
-
-            try
-            {
-                FileInfo info = new FileInfo(file);
-
-                DropButton.Text = info.Name;
-
-                Path = info.FullName;
-            }
-            catch { }
-        }
-
-        private void DropButton_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog dialog = new OpenFileDialog())
-            {
-                dialog.Filter = "All Files|*.*";
-                if (dialog.ShowDialog() == DialogResult.OK)
-                    ConfirmProcessing(dialog.FileName);
-            }
+            Path = fileDropControl.File;
         }
 
         private void ArgsTextBox_TextChanged(object sender, EventArgs e)

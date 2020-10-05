@@ -11,7 +11,7 @@ namespace NUMC.Design.Bright
         private MessageBoxButtons _dialogButtons = MessageBoxButtons.Ok;
         private readonly List<BrightButton> _buttons;
 
-        #endregion
+        #endregion Field Region
 
         #region Button Region
 
@@ -24,7 +24,7 @@ namespace NUMC.Design.Bright
         protected BrightButton btnRetry;
         protected BrightButton btnIgnore;
 
-        #endregion
+        #endregion Button Region
 
         #region Property Region
 
@@ -63,7 +63,7 @@ namespace NUMC.Design.Bright
             private set { base.CancelButton = value; }
         }
 
-        #endregion
+        #endregion Property Region
 
         #region Constructor Region
 
@@ -78,7 +78,7 @@ namespace NUMC.Design.Bright
                 };
         }
 
-        #endregion
+        #endregion Constructor Region
 
         #region Event Handler Region
 
@@ -89,7 +89,7 @@ namespace NUMC.Design.Bright
             SetButtons();
         }
 
-        #endregion
+        #endregion Event Handler Region
 
         #region Method Region
 
@@ -104,17 +104,20 @@ namespace NUMC.Design.Bright
                     ShowButton(btnOk, true);
                     AcceptButton = btnOk;
                     break;
+
                 case MessageBoxButtons.Close:
                     ShowButton(btnClose, true);
                     AcceptButton = btnClose;
                     CancelButton = btnClose;
                     break;
+
                 case MessageBoxButtons.OkCancel:
                     ShowButton(btnOk);
                     ShowButton(btnCancel, true);
                     AcceptButton = btnOk;
                     CancelButton = btnCancel;
                     break;
+
                 case MessageBoxButtons.AbortRetryIgnore:
                     ShowButton(btnAbort);
                     ShowButton(btnRetry);
@@ -122,18 +125,21 @@ namespace NUMC.Design.Bright
                     AcceptButton = btnAbort;
                     CancelButton = btnIgnore;
                     break;
+
                 case MessageBoxButtons.RetryCancel:
                     ShowButton(btnRetry);
                     ShowButton(btnCancel, true);
                     AcceptButton = btnRetry;
                     CancelButton = btnCancel;
                     break;
+
                 case MessageBoxButtons.YesNo:
                     ShowButton(btnYes);
                     ShowButton(btnNo, true);
                     AcceptButton = btnYes;
                     CancelButton = btnNo;
                     break;
+
                 case MessageBoxButtons.YesNoCancel:
                     ShowButton(btnYes);
                     ShowButton(btnNo);
@@ -170,7 +176,7 @@ namespace NUMC.Design.Bright
             TotalButtonSize = width;
         }
 
-        #endregion
+        #endregion Method Region
     }
 
     public enum MessageBoxButtons

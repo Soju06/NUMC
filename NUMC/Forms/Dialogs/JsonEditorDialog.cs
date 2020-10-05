@@ -1,5 +1,4 @@
 ﻿using NUMC.Design;
-using NUMC.Design.Bright;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using WindowsInput.Native;
 
 namespace NUMC.Forms.Dialogs
 {
@@ -113,7 +111,7 @@ namespace NUMC.Forms.Dialogs
 
         private void NewCustomKey()
         {
-            using (EnumDialog key = new EnumDialog(typeof(Keys), Language.Language.KeyAddDialog_Title))
+            using (KeyDialog key = new KeyDialog())
             {
                 if (key.ShowDialog() == DialogResult.OK)
                 {
@@ -129,12 +127,12 @@ namespace NUMC.Forms.Dialogs
 
         private void NewWhiteListKey()
         {
-            using (EnumDialog key = new EnumDialog(typeof(Keys), Language.Language.KeyAddDialog_Title))
+            using (KeyDialog key = new KeyDialog())
             {
                 if (key.ShowDialog() == DialogResult.OK)
                 {
                     List<Keys> keys = Script.Object.WVKeys.ToList();
-                    keys.Add((Keys)key.SelectItem);
+                    keys.Add(key.SelectItem);
                     Script.Object.WVKeys = keys.ToArray();
 
                     SaveSetting();
@@ -211,6 +209,12 @@ namespace NUMC.Forms.Dialogs
 
         private void EditJsonDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (!File.Exists(Setting.Setting.KEY_SETTING_PATH))
+            {
+                SaveSetting();
+                return;
+            }
+
             if (File.ReadAllText(Setting.Setting.KEY_SETTING_PATH) != CodeTextBox.Text)
             {
                 DialogResult result = MessageBox.Show(Language.Language.Message_Information_SaveThisSetting, Text, System.Windows.Forms.MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);

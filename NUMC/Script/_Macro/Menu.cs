@@ -10,7 +10,8 @@ namespace NUMC.Script._Macro
             {
                 return new IMacroModule[]
                 {
-                    new RUN_FILE()
+                    new RUN_FILE(),
+                    new CHANGE_SETTING()
                 };
             }
         }

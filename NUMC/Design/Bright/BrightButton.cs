@@ -18,7 +18,7 @@ namespace NUMC.Design.Bright
         private readonly int _padding = Consts.Padding / 2;
         private int _imagePadding = 5; // Consts.Padding / 2
 
-        #endregion
+        #endregion Field Region
 
         #region Designer Property Region
 
@@ -68,7 +68,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Designer Property Region
 
         #region Code Property Region
 
@@ -125,7 +125,7 @@ namespace NUMC.Design.Bright
             get { return false; }
         }
 
-        #endregion
+        #endregion Code Property Region
 
         #region Constructor Region
 
@@ -142,7 +142,7 @@ namespace NUMC.Design.Bright
             Padding = new Padding(_padding);
         }
 
-        #endregion
+        #endregion Constructor Region
 
         #region Method Region
 
@@ -155,7 +155,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Method Region
 
         #region Event Handler Region
 
@@ -294,7 +294,7 @@ namespace NUMC.Design.Bright
             Invalidate();
         }
 
-        #endregion
+        #endregion Event Handler Region
 
         #region Paint Region
 
@@ -319,6 +319,7 @@ namespace NUMC.Design.Bright
                         case BrightControlState.Hover:
                             fillColor = _isDefault ? Colors.BlueBackground : Colors.LighterBackground;
                             break;
+
                         case BrightControlState.Pressed:
                             fillColor = _isDefault ? Colors.BrightBackground : Colors.BrightBackground;
                             break;
@@ -331,9 +332,11 @@ namespace NUMC.Design.Bright
                         case BrightControlState.Normal:
                             fillColor = Colors.GreyBackground;
                             break;
+
                         case BrightControlState.Hover:
                             fillColor = Colors.MediumBackground;
                             break;
+
                         case BrightControlState.Pressed:
                             fillColor = Colors.BrightBackground;
                             break;
@@ -377,14 +380,17 @@ namespace NUMC.Design.Bright
                         textOffsetY = (Image.Size.Height / 2) + (ImagePadding / 2);
                         y -= ((int)(stringSize.Height / 2) + (ImagePadding / 2));
                         break;
+
                     case TextImageRelation.TextAboveImage:
                         textOffsetY = ((Image.Size.Height / 2) + (ImagePadding / 2)) * -1;
                         y += ((int)(stringSize.Height / 2) + (ImagePadding / 2));
                         break;
+
                     case TextImageRelation.ImageBeforeText:
                         textOffsetX = Image.Size.Width + (ImagePadding * 2);
                         x = ImagePadding;
                         break;
+
                     case TextImageRelation.TextBeforeImage:
                         x += (int)stringSize.Width;
                         break;
@@ -410,7 +416,7 @@ namespace NUMC.Design.Bright
             }
         }
 
-        #endregion
+        #endregion Paint Region
     }
 
     public enum BrightButtonStyle

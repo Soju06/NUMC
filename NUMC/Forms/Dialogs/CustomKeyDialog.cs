@@ -105,13 +105,13 @@ namespace NUMC.Forms.Dialogs
         {
             if (hook && VirtualMode && ScriptTextBox.Text.Split(',').Length <= 25)
             {
-                AddVirtualKey((VirtualKeyCode)vkCode);
+                AddVirtualKey((Keys)vkCode);
             }
 
             return !hook;
         }
 
-        private void AddVirtualKey(VirtualKeyCode keyCode)
+        private void AddVirtualKey(Keys keyCode)
         {
             if (string.IsNullOrWhiteSpace(ScriptTextBox.Text))
                 ScriptTextBox.AppendText((keyCode).ToString());
@@ -191,23 +191,23 @@ namespace NUMC.Forms.Dialogs
             if (ScriptTextBox.Text.Split(',').Length > 25)
                 return;
 
-            using (EnumDialog addDialog = new EnumDialog(typeof(VirtualKeyCode), Language.Language.KeyAddDialog_Title, @"http://www.kbdedit.com/manual/low_level_vk_list.html"))
+            using (KeyDialog addDialog = new KeyDialog())
             {
                 if (addDialog.ShowDialog() == DialogResult.OK)
                 {
-                    AddVirtualKey((VirtualKeyCode)addDialog.SelectItem);
+                    AddVirtualKey((Keys)addDialog.SelectItem);
                 }
                 addDialog.Dispose();
             }
         }
 
-        private VirtualKeyCode[] GetVirtualKeys()
+        private Keys[] GetVirtualKeys()
         {
-            List<VirtualKeyCode> virtualKeys = new List<VirtualKeyCode>();
+            List<Keys> virtualKeys = new List<Keys>();
             string[] ary = ScriptTextBox.Text.Replace(" ", "").Split(',');
             for (int i = 0; i < ary.Length; i++)
             {
-                if (Enum.TryParse(ary[i], out VirtualKeyCode keyCode))
+                if (Enum.TryParse(ary[i], out Keys keyCode))
                     virtualKeys.Add(keyCode);
             }
 
@@ -228,7 +228,7 @@ namespace NUMC.Forms.Dialogs
             {
                 if (VirtualMode)
                 {
-                    VirtualKeyCode[] virtualKeys = GetVirtualKeys();
+                    Keys[] virtualKeys = GetVirtualKeys();
 
                     KeyScript.SendKeys = null;
 

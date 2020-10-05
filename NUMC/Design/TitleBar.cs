@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using WinUtils;
-using System.Drawing;
 
 namespace NUMC.Design
 {
     public partial class TitleBar : UserControl
     {
         public event EventHandler IconClick;
+
         public System.Windows.Forms.Form Form { get; set; } = null;
 
         public TitleBar()
@@ -48,7 +49,6 @@ namespace NUMC.Design
             }
             catch
             {
-
             }
         }
 
@@ -218,6 +218,7 @@ namespace NUMC.Design
         private bool _icon_isBright;
         private Bitmap _iconB;
         private Bitmap _icon;
+
         public Bitmap Icon
         {
             get

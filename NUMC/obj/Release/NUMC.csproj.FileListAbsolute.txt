@@ -33,7 +33,6 @@ V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Design.Images.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Design.NUMPadUI.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.CustomKeyDialog.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.JsonEditorDialog.resources
-V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.EnumDialog.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.FunctionAddDialog.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.GotoFunctionDialog.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.RunFileDialog.resources
@@ -44,7 +43,6 @@ V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.KeyAddDialog.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.Macro.MacroSettingDialog.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.ProgramInformation.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Main.resources
-V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Language.ko-KR.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Language.Language.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Properties.Resources.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Updater.Downloader.resources
@@ -59,3 +57,7 @@ V:\Csharp\NUMC\Release\NUMC.exe
 V:\Csharp\NUMC\Release\NUMC.pdb
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Design.Bright.BrightDialog.resources
 V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Design.Bright.Icons.resources
+V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Controls.FileDropControl.resources
+V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Controls.HookingControl.resources
+V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Forms.Dialogs.KeyDialog.resources
+V:\Csharp\NUMC\NUMC\obj\Release\NUMC.Language.ko-KR.resources

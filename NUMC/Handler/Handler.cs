@@ -5,6 +5,7 @@ namespace NUMC.Handler
     public class Handler
     {
         public static event LoadSetting LoadSetting;
+
         internal static event GetScript G_etScript;
 
         public static void LoadSettings(string path)
@@ -24,5 +25,6 @@ namespace NUMC.Handler
     }
 
     public delegate void LoadSetting(string path);
+
     internal delegate Script.Script GetScript();
 }

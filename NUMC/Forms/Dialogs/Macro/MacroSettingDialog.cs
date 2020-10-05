@@ -36,8 +36,6 @@ namespace NUMC.Forms.Dialogs.Macro
             RemoveButton.Text = Language.Language.MacroSettingDialog_Remove;
             RemoveAllButton.Text = Language.Language.MacroSettingDialog_RemoveAll;
             ModuleButton.Text = Language.Language.MacroSettingDialog_Modules;
-            // MW1
-            ChangeSettingButton.Text = Language.Language.MacroSettingDialog_LoadSetting;
 
             btnOk.Click += BtnOk_Click;
 
@@ -138,11 +136,6 @@ namespace NUMC.Forms.Dialogs.Macro
         private void AddExit()
         {
             AddEvents(Language.Language.Program_Exit, Script.Macro.CreateExit());
-        }
-
-        private void AddLoadSetting(string path)
-        {
-            AddEvents($"{Language.Language.MacroSettingDialog_LoadSetting} ({path})", Script.Macro.CreateLoadSetting(path));
         }
 
         private void AddEvents(string Name, string code)
@@ -470,12 +463,6 @@ namespace NUMC.Forms.Dialogs.Macro
                     {
                         AddExit();
                     }
-                    // NW1
-                    // Load Setting
-                    else if (line[0] == '[')
-                    {
-                        AddLoadSetting(data);
-                    }
                     else
                     {
                         List<Script._Macro.IMacroModule> modules = Script._Macro.Menu.GET_ALL_MACRO_MODULE();
@@ -495,17 +482,6 @@ namespace NUMC.Forms.Dialogs.Macro
         private void RemoveAllButton_Click(object sender, EventArgs e)
         {
             EventsView.Items.Clear();
-        }
-
-        private void ChangeSettingButton_Click(object sender, EventArgs e)
-        {
-            using (SetSettingDialog dialog = new SetSettingDialog())
-            {
-                if (dialog.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.Path))
-                {
-                    AddLoadSetting(dialog.Path);
-                }
-            }
         }
 
         private void ModuleButton_Click(object sender, EventArgs e)

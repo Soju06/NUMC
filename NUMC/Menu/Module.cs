@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace NUMC.Menu
 {
@@ -25,7 +21,7 @@ namespace NUMC.Menu
 
         public static IMM[] GetModules()
         {
-            if(Modules == null)
+            if (Modules == null)
             {
                 Modules = new List<IMM>();
 

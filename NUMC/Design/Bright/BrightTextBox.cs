@@ -14,6 +14,6 @@ namespace NUMC.Design.Bright
             BorderStyle = BorderStyle.FixedSingle;
         }
 
-        #endregion
+        #endregion Constructor Region
     }
 }

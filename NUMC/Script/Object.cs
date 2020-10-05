@@ -163,11 +163,11 @@ namespace NUMC.Script
         {
         }
 
-        public VirtualKey(WindowsInput.Native.VirtualKeyCode[] keys)
+        public VirtualKey(Keys[] keys)
         {
             Keys = keys;
         }
 
-        public WindowsInput.Native.VirtualKeyCode[] Keys { get; set; }
+        public Keys[] Keys { get; set; }
     }
 }

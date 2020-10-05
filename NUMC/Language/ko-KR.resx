@@ -247,6 +247,10 @@
     <value>텍스트 입력 추가</value>
     <comment>텍스트 입력 추가</comment>
   </data>
+  <data name="MacroSettingDialog_ChangeSetting" xml:space="preserve">
+    <value>설정 변경</value>
+    <comment>설정 변경</comment>
+  </data>
   <data name="MacroSettingDialog_Delay" xml:space="preserve">
     <value>지연</value>
     <comment>지연</comment>
@@ -274,10 +278,6 @@
   <data name="MacroSettingDialog_KeyUpAll" xml:space="preserve">
     <value>모든 키 떼기</value>
     <comment>모든 키 떼기</comment>
-  </data>
-  <data name="MacroSettingDialog_LoadSetting" xml:space="preserve">
-    <value>설정 변경</value>
-    <comment>설정 변경</comment>
   </data>
   <data name="MacroSettingDialog_Modules" xml:space="preserve">
     <value>모듈...</value>

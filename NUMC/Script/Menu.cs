@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using WindowsInput.Native;
 
 namespace NUMC.Script
 {
@@ -20,17 +19,17 @@ namespace NUMC.Script
 
             KeyObject[] KeyObjects = new KeyObject[]
             {
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.CONTROL, VirtualKeyCode.VK_Z }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.CONTROL, VirtualKeyCode.SHIFT, VirtualKeyCode.VK_Z }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.OEM_6 }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.OEM_4 }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.CONTROL, VirtualKeyCode.OEM_PLUS }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.CONTROL, VirtualKeyCode.OEM_MINUS }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.VK_B }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.VK_E }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.VK_G }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.SPACE }),
-                NewKeyObjectVirtualKey(new VirtualKeyCode[] { VirtualKeyCode.VK_Z }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.Control, Keys.Z }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.Control, Keys.Shift, Keys.Z }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.Oem6 }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.Oem4 }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.Control, Keys.Oemplus }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.Control, Keys.OemMinus }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.B }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.E }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.G }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.Space }),
+                NewKeyObjectVirtualKey(new Keys[] { Keys.Z }),
                 DisableDisabledIgnoreMenuItem(),
                 DisableMenuItem()
             };
@@ -57,7 +56,7 @@ namespace NUMC.Script
             return SampleItems.ToArray();
         }
 
-        public static KeyObject NewKeyObjectVirtualKey(VirtualKeyCode[] virtualKeys)
+        public static KeyObject NewKeyObjectVirtualKey(Keys[] virtualKeys)
         {
             return new KeyObject
             (
