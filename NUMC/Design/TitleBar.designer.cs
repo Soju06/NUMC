@@ -43,10 +43,10 @@ namespace NUMC.Design
             this.CloseButton.FlatAppearance.BorderSize = 0;
             this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseButton.Location = new System.Drawing.Point(103, 0);
+            this.CloseButton.Location = new System.Drawing.Point(108, 0);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(51, 35);
+            this.CloseButton.Size = new System.Drawing.Size(46, 32);
             this.CloseButton.TabIndex = 0;
             this.CloseButton.TabStop = false;
             this.CloseButton.UseVisualStyleBackColor = true;
@@ -59,10 +59,10 @@ namespace NUMC.Design
             this.MaximizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.MaximizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(46)))));
             this.MaximizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MaximizeButton.Location = new System.Drawing.Point(52, 0);
+            this.MaximizeButton.Location = new System.Drawing.Point(62, 0);
             this.MaximizeButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeButton.Name = "MaximizeButton";
-            this.MaximizeButton.Size = new System.Drawing.Size(51, 35);
+            this.MaximizeButton.Size = new System.Drawing.Size(46, 32);
             this.MaximizeButton.TabIndex = 1;
             this.MaximizeButton.TabStop = false;
             this.MaximizeButton.UseVisualStyleBackColor = true;
@@ -75,10 +75,10 @@ namespace NUMC.Design
             this.MinimizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.MinimizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(46)))));
             this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MinimizeButton.Location = new System.Drawing.Point(1, 0);
+            this.MinimizeButton.Location = new System.Drawing.Point(16, 0);
             this.MinimizeButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimizeButton.Name = "MinimizeButton";
-            this.MinimizeButton.Size = new System.Drawing.Size(51, 35);
+            this.MinimizeButton.Size = new System.Drawing.Size(46, 32);
             this.MinimizeButton.TabIndex = 2;
             this.MinimizeButton.TabStop = false;
             this.MinimizeButton.UseVisualStyleBackColor = true;
@@ -87,9 +87,9 @@ namespace NUMC.Design
             // TitleLabel
             // 
             this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TitleLabel.Location = new System.Drawing.Point(48, 0);
+            this.TitleLabel.Location = new System.Drawing.Point(46, 0);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(0, 35);
+            this.TitleLabel.Size = new System.Drawing.Size(0, 32);
             this.TitleLabel.TabIndex = 3;
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TitleLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TitleBarMouseClick);
@@ -105,7 +105,7 @@ namespace NUMC.Design
             this.IconButton.Location = new System.Drawing.Point(0, 0);
             this.IconButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.IconButton.Name = "IconButton";
-            this.IconButton.Size = new System.Drawing.Size(48, 35);
+            this.IconButton.Size = new System.Drawing.Size(46, 32);
             this.IconButton.TabIndex = 4;
             this.IconButton.TabStop = false;
             this.IconButton.UseVisualStyleBackColor = true;
@@ -125,9 +125,9 @@ namespace NUMC.Design
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.MaximumSize = new System.Drawing.Size(0, 35);
-            this.MinimumSize = new System.Drawing.Size(154, 35);
+            this.MinimumSize = new System.Drawing.Size(154, 32);
             this.Name = "TitleBar";
-            this.Size = new System.Drawing.Size(154, 35);
+            this.Size = new System.Drawing.Size(154, 32);
             this.Load += new System.EventHandler(this.TitleBar_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TitleBarMouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleBarMouseDown);

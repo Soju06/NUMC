@@ -14,7 +14,7 @@ namespace NUMC.Script
 
         public void StopInput() // 모든 키 떼기
         {
-            foreach (System.Windows.Forms.Keys item in Enum.GetValues(typeof(System.Windows.Forms.Keys)))
+            foreach (Keys item in Enum.GetValues(typeof(Keys)))
             {
                 if (Simulator.InputDeviceState.IsKeyDown(item))
                     Simulator.Keyboard.KeyUp(item);
@@ -125,7 +125,7 @@ namespace NUMC.Script
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), Setting.Setting.GetTitleName("RunScript"),
-                    System.Windows.Forms.MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

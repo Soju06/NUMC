@@ -35,6 +35,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.githubBox)).BeginInit();
             this.SuspendLayout();
             // 
+            // titleBar
+            // 
+            this.titleBar.CloseBox = true;
+            this.titleBar.MaximumSize = new System.Drawing.Size(0, 35);
+            this.titleBar.MinimumSize = new System.Drawing.Size(888, 32);
+            this.titleBar.Size = new System.Drawing.Size(888, 32);
+            // 
             // darkLabel1
             // 
             this.darkLabel1.Font = new System.Drawing.Font("Segoe UI Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -71,20 +78,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 154);
-            this.ControlBox = false;
             this.Controls.Add(this.githubBox);
             this.Controls.Add(this.darkLabel2);
             this.Controls.Add(this.darkLabel1);
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "ProgramInformation";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Information";
+            this.Controls.SetChildIndex(this.titleBar, 0);
             this.Controls.SetChildIndex(this.darkLabel1, 0);
             this.Controls.SetChildIndex(this.darkLabel2, 0);
             this.Controls.SetChildIndex(this.githubBox, 0);

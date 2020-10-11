@@ -19,6 +19,8 @@ namespace NUMC.Design
                 Controls[i].MouseDown += TitleBar_MouseDown;
             MouseDown += TitleBar_MouseDown;
 
+            IconButton.Enabled = false;
+
             SetColor();
 
             BackColorChanged += TitleBar_BackColorChanged;

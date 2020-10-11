@@ -37,7 +37,8 @@
             // 
             this.titleBar.CloseBox = true;
             this.titleBar.MaximumSize = new System.Drawing.Size(0, 35);
-            this.titleBar.Size = new System.Drawing.Size(572, 30);
+            this.titleBar.MinimumSize = new System.Drawing.Size(888, 32);
+            this.titleBar.Size = new System.Drawing.Size(888, 32);
             // 
             // ArgsTextBox
             // 
@@ -66,6 +67,7 @@
             // 
             // fileDropControl
             // 
+            this.fileDropControl.AllowExtensions = null;
             this.fileDropControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -85,7 +87,6 @@
             this.Controls.Add(this.fileDropControl);
             this.Controls.Add(this.darkLabel1);
             this.Controls.Add(this.ArgsTextBox);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.Ok;
             this.Name = "RunFileDialog";
             this.Text = "RunFileDialog";
             this.Controls.SetChildIndex(this.titleBar, 0);

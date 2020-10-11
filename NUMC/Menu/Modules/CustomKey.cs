@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Menu.Modules
 {
-    public class CustomKey : IMM
+    public class CustomKey : IMenuModule
     {
         public CustomKey()
         {

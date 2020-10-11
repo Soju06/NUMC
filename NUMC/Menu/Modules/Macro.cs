@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Menu.Modules
 {
-    public class Macro : IMM
+    public class Macro : IMenuModule
     {
         public Macro()
         {
@@ -53,6 +53,7 @@ namespace NUMC.Menu.Modules
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
+
                 }
             }
         }

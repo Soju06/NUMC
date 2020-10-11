@@ -50,7 +50,8 @@
             // 
             this.titleBar.CloseBox = true;
             this.titleBar.MaximumSize = new System.Drawing.Size(0, 35);
-            this.titleBar.Size = new System.Drawing.Size(548, 35);
+            this.titleBar.MinimumSize = new System.Drawing.Size(888, 32);
+            this.titleBar.Size = new System.Drawing.Size(888, 35);
             // 
             // EventsView
             // 

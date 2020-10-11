@@ -35,10 +35,12 @@
             // 
             this.titleBar.CloseBox = true;
             this.titleBar.MaximumSize = new System.Drawing.Size(0, 35);
-            this.titleBar.Size = new System.Drawing.Size(436, 35);
+            this.titleBar.MinimumSize = new System.Drawing.Size(888, 32);
+            this.titleBar.Size = new System.Drawing.Size(888, 35);
             // 
             // fileDropControl
             // 
+            this.fileDropControl.AllowExtensions = null;
             this.fileDropControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace NUMC.Script._Macro
+namespace NUMC.Macro
 {
     public class RUN_FILE : IMacroModule
     {

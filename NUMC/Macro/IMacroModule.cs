@@ -1,4 +1,4 @@
-﻿namespace NUMC.Script._Macro
+﻿namespace NUMC.Macro
 {
     public interface IMacroModule
     {

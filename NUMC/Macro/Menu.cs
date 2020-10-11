@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NUMC.Script._Macro
+namespace NUMC.Macro
 {
     public class Menu
     {
@@ -16,14 +16,6 @@ namespace NUMC.Script._Macro
             }
         }
 
-        public static IMacroModule[] FILE_MACRO_MODULES
-        {
-            get
-            {
-                return null;
-            }
-        }
-
         private static List<IMacroModule> modules;
 
         public static List<IMacroModule> GET_ALL_MACRO_MODULE()
@@ -34,6 +26,11 @@ namespace NUMC.Script._Macro
             modules = new List<IMacroModule>();
 
             modules.AddRange(BASIC_MACRO_MODULE);
+
+            var items = Plugin.Handler.ExtractPlugin<IMacroModule>();
+
+            if (items != null)
+                modules.AddRange(items);
 
             return modules;
         }

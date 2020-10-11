@@ -4,13 +4,13 @@ namespace NUMC.Menu
 {
     public static class Module
     {
-        private static List<IMM> Modules;
+        private static List<IMenuModule> Modules;
 
-        public static IMM[] BASIC_MACRO_MODULE
+        public static IMenuModule[] BASIC_MACRO_MODULE
         {
             get
             {
-                return new IMM[]
+                return new IMenuModule[]
                 {
                     new Modules.CustomKey(),
                     new Modules.Macro(),
@@ -19,13 +19,18 @@ namespace NUMC.Menu
             }
         }
 
-        public static IMM[] GetModules()
+        public static IMenuModule[] GetModules()
         {
             if (Modules == null)
             {
-                Modules = new List<IMM>();
+                Modules = new List<IMenuModule>();
 
                 Modules.AddRange(BASIC_MACRO_MODULE);
+
+                var items = Plugin.Handler.ExtractPlugin<IMenuModule>();
+
+                if(items != null)
+                    Modules.AddRange(items);
             }
 
             return Modules.ToArray();

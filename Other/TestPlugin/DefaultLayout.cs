@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
+using NUMC.Forms.Controls;
 
-namespace NUMC.Design
+namespace NUMC.Forms.Controls
 {
-    public partial class NUMPadUI : UserControl
+    public partial class DefaultLayout : UserControl, IKeyboardLayout
     {
-        new public event NPClick Click;
+        new public event Click Click;
+        new public event MouseClick MouseClick;
+        new public event DoubleClick DoubleClick;
 
-        new public event NPMouseClick MouseClick;
-
-        new public event NPDoubleClick DoubleClick;
-
-        private readonly Keys[] VKeys = new Keys[]
+        public Keys[] VKeys { get; } = new Keys[]
         {
             Keys.NumLock,
             Keys.Divide,
@@ -32,7 +31,7 @@ namespace NUMC.Design
             Keys.Decimal
         };
 
-        public NUMPadUI()
+        public DefaultLayout()
         {
             InitializeComponent();
             InitializeEvents();
@@ -68,10 +67,4 @@ namespace NUMC.Design
             DoubleClick?.Invoke(VKeys[Controls.IndexOf((Control)sender)]);
         }
     }
-
-    public delegate void NPClick(Keys Key);
-
-    public delegate void NPMouseClick(Keys Key, MouseButtons Button);
-
-    public delegate void NPDoubleClick(Keys Key);
 }

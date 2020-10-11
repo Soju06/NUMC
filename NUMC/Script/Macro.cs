@@ -11,6 +11,7 @@ namespace NUMC.Script
     {
         public Macro()
         {
+
         }
 
         public Macro(string code, bool ad)
@@ -120,7 +121,7 @@ namespace NUMC.Script
                     }
                     else
                     {
-                        List<_Macro.IMacroModule> modules = _Macro.Menu.GET_ALL_MACRO_MODULE();
+                        List<NUMC.Macro.IMacroModule> modules = NUMC.Macro.Menu.GET_ALL_MACRO_MODULE();
 
                         for (int m = 0; m < modules.Count; m++)
                         {

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Menu.Modules
 {
-    public class KeyIgnore : IMM
+    public class KeyIgnore : IMenuModule
     {
         public KeyIgnore()
         {

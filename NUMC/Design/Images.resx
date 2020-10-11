@@ -130,10 +130,13 @@
   <data name="minimize_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimize_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NUMC_ICON" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NUMC_ICON.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="NUMC_ICON_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NUMC_ICON_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NUMC_PNG_ICON" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NUMC_PNG_ICON.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NUMC_SMALL_ICON" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NUMC_SMALL_ICON.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\NUMC_SMALL_ICON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -101,22 +101,32 @@ namespace NUMC.Design {
         }
         
         /// <summary>
-        ///   (아이콘)과(와) 유사한 System.Drawing.Icon 형식의 지역화된 리소스를 찾습니다.
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Icon NUMC_ICON {
+        internal static System.Drawing.Bitmap NUMC_ICON_24px {
             get {
-                object obj = ResourceManager.GetObject("NUMC_ICON", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                object obj = ResourceManager.GetObject("NUMC_ICON_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   (아이콘)과(와) 유사한 System.Drawing.Icon 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Icon NUMC_SMALL_ICON {
+        internal static System.Drawing.Icon NUMC_PNG_ICON {
+            get {
+                object obj = ResourceManager.GetObject("NUMC_PNG_ICON", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap NUMC_SMALL_ICON {
             get {
                 object obj = ResourceManager.GetObject("NUMC_SMALL_ICON", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

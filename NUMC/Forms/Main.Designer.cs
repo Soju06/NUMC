@@ -35,8 +35,8 @@
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.NotifyIconContextMenu = new NUMC.Design.Bright.BrightContextMenu();
-            this.NumPadUI = new NUMC.Design.NUMPadUI();
             this.NUMContextMenu = new NUMC.Design.Bright.BrightContextMenu();
+            this.KeyboardLayout = new NUMC.Forms.Controls.KeyboardLayoutControl();
             this.ApplicationContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +89,6 @@
             // notifyIcon
             // 
             this.notifyIcon.ContextMenuStrip = this.NotifyIconContextMenu;
-            this.notifyIcon.Icon = global::NUMC.Design.Images.NUMC_SMALL_ICON;
             this.notifyIcon.Text = "NUMC Service";
             this.notifyIcon.Visible = true;
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseClick);
@@ -99,19 +98,7 @@
             this.NotifyIconContextMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.NotifyIconContextMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.NotifyIconContextMenu.Name = "NotifyIconContextMenu";
-            this.NotifyIconContextMenu.Size = new System.Drawing.Size(181, 26);
-            // 
-            // NumPadUI
-            // 
-            this.NumPadUI.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.NumPadUI.BackColor = System.Drawing.Color.Transparent;
-            this.NumPadUI.ContextMenuStrip = this.ApplicationContextMenu;
-            this.NumPadUI.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.NumPadUI.Location = new System.Drawing.Point(12, 42);
-            this.NumPadUI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.NumPadUI.Name = "NumPadUI";
-            this.NumPadUI.Size = new System.Drawing.Size(382, 392);
-            this.NumPadUI.TabIndex = 1;
+            this.NotifyIconContextMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // NUMContextMenu
             // 
@@ -120,22 +107,34 @@
             this.NUMContextMenu.Name = "NUMContextMenu";
             this.NUMContextMenu.Size = new System.Drawing.Size(61, 4);
             // 
+            // KeyboardLayout
+            // 
+            this.KeyboardLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.KeyboardLayout.BackColor = System.Drawing.Color.Transparent;
+            this.KeyboardLayout.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.KeyboardLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.KeyboardLayout.Location = new System.Drawing.Point(12, 43);
+            this.KeyboardLayout.Name = "KeyboardLayout";
+            this.KeyboardLayout.Size = new System.Drawing.Size(382, 396);
+            this.KeyboardLayout.TabIndex = 4;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(406, 445);
+            this.ClientSize = new System.Drawing.Size(406, 451);
             this.ContextMenuStrip = this.ApplicationContextMenu;
-            this.Controls.Add(this.NumPadUI);
-            this.Icon = global::NUMC.Design.Images.NUMC_ICON;
+            this.Controls.Add(this.KeyboardLayout);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.MaximumSize = new System.Drawing.Size(709, 603);
-            this.MinimumSize = new System.Drawing.Size(406, 445);
+            this.MaximumSize = new System.Drawing.Size(406, 451);
+            this.MinimumSize = new System.Drawing.Size(406, 451);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
-            this.Controls.SetChildIndex(this.NumPadUI, 0);
+            this.Controls.SetChildIndex(this.KeyboardLayout, 0);
             this.Controls.SetChildIndex(this.titleBar, 0);
             this.ApplicationContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -143,8 +142,6 @@
         }
 
         #endregion
-
-        private Design.NUMPadUI NumPadUI;
         private Design.Bright.BrightContextMenu ApplicationContextMenu;
         private System.Windows.Forms.ToolStripMenuItem JsonEditToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -152,6 +149,7 @@
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private Design.Bright.BrightContextMenu NUMContextMenu;
         private Design.Bright.BrightContextMenu NotifyIconContextMenu;
+        private Forms.Controls.KeyboardLayoutControl KeyboardLayout;
     }
 }
 

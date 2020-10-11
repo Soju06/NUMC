@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\NUMC_ICON.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\NUMC_PNG_ICON.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constant.cs" />
     <Compile Include="Design\Bright\BrightButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -109,11 +110,11 @@
     <Compile Include="Design\ProgressBar.Designer.cs">
       <DependentUpon>ProgressBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Design\NUMPadUI.cs">
+    <Compile Include="Forms\Controls\DefaultLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Design\NUMPadUI.Designer.cs">
-      <DependentUpon>NUMPadUI.cs</DependentUpon>
+    <Compile Include="Forms\Controls\DefaultLayout.Designer.cs">
+      <DependentUpon>DefaultLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\Resources\Images.cs" />
     <Compile Include="Design\Resources\Render.cs" />
@@ -134,6 +135,10 @@
     </Compile>
     <Compile Include="Forms\Controls\HookingControl.Designer.cs">
       <DependentUpon>HookingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\IKeyboardLayout.cs" />
+    <Compile Include="Forms\Controls\KeyboardLayoutControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\Dialogs\CustomKeyDialog.cs">
       <SubType>Form</SubType>
@@ -208,11 +213,12 @@
       <DependentUpon>ProgramInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Handler\Handler.cs" />
-    <Compile Include="Menu\IMM.cs" />
+    <Compile Include="Menu\IMenuModule.cs" />
     <Compile Include="Menu\Module.cs" />
     <Compile Include="Menu\Modules\CustomKey.cs" />
     <Compile Include="Menu\Modules\KeyIgnore.cs" />
     <Compile Include="Menu\Modules\Macro.cs" />
+    <Compile Include="Plugin\Handler.cs" />
     <Compile Include="Reference\GlobalHook\Enums.cs" />
     <Compile Include="Reference\GlobalHook\KeyboardHook.cs" />
     <Compile Include="Reference\GlobalHook\KeyboardSimulation.cs" />
@@ -246,9 +252,9 @@
     <Compile Include="Reference\WindowsInput\WindowsInputMessageDispatcher.cs" />
     <Compile Include="Script\Json.cs" />
     <Compile Include="Script\Macro.cs" />
-    <Compile Include="Script\_Macro\BASIC_MACRO.cs" />
-    <Compile Include="Script\_Macro\Menu.cs" />
-    <Compile Include="Script\_Macro\IMacroModule.cs" />
+    <Compile Include="Macro\BASIC_MACRO.cs" />
+    <Compile Include="Macro\Menu.cs" />
+    <Compile Include="Macro\IMacroModule.cs" />
     <Compile Include="Script\Menu.cs" />
     <Compile Include="Script\Object.cs" />
     <Compile Include="Script\Script.cs" />
@@ -287,8 +293,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Images.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Design\NUMPadUI.resx">
-      <DependentUpon>NUMPadUI.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Controls\DefaultLayout.resx">
+      <DependentUpon>DefaultLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\TitleBar.resx">
       <DependentUpon>TitleBar.cs</DependentUpon>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\HookingControl.resx">
       <DependentUpon>HookingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\KeyboardLayoutControl.resx">
+      <DependentUpon>KeyboardLayoutControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\CustomKeyDialog.resx">
       <DependentUpon>CustomKeyDialog.cs</DependentUpon>
@@ -375,12 +384,6 @@
     <None Include="Reference\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NUMC_ICON.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\NUMC_SMALL_ICON.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\close_16px.png" />
   </ItemGroup>
   <ItemGroup>
@@ -416,6 +419,14 @@
   <ItemGroup>
     <None Include="Resources\error.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\NUMC_SMALL_ICON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NUMC_PNG_ICON.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NUMC_ICON_24px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

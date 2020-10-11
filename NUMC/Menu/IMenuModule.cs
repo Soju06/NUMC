@@ -2,7 +2,7 @@
 
 namespace NUMC.Menu
 {
-    public interface IMM
+    public interface IMenuModule
     {
         ToolStripItem[] Menus { get; }
 

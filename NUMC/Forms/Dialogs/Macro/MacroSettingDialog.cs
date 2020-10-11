@@ -49,7 +49,7 @@ namespace NUMC.Forms.Dialogs.Macro
 
         private void InitializeModules()
         {
-            List<Script._Macro.IMacroModule> modules = Script._Macro.Menu.GET_ALL_MACRO_MODULE();
+            List<NUMC.Macro.IMacroModule> modules = NUMC.Macro.Menu.GET_ALL_MACRO_MODULE();
 
             for (int i = 0; i < modules.Count; i++)
             {
@@ -465,7 +465,7 @@ namespace NUMC.Forms.Dialogs.Macro
                     }
                     else
                     {
-                        List<Script._Macro.IMacroModule> modules = Script._Macro.Menu.GET_ALL_MACRO_MODULE();
+                        List<NUMC.Macro.IMacroModule> modules = NUMC.Macro.Menu.GET_ALL_MACRO_MODULE();
 
                         for (int m = 0; m < modules.Count; m++)
                         {
@@ -495,7 +495,7 @@ namespace NUMC.Forms.Dialogs.Macro
             string[] code = GetCodes();
             if (item.Tag != null)
             {
-                Script._Macro.IMacroModule module = ((Script._Macro.IMacroModule)item.Tag);
+                NUMC.Macro.IMacroModule module = ((NUMC.Macro.IMacroModule)item.Tag);
                 if (module.SHOW_DIALOG(ref code, out string NAME, out string RCODE))
                 {
                     AddEvents(NAME, RCODE);

@@ -35,6 +35,9 @@ namespace NUMC.Forms.Dialogs
             FileToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = Language.Language.JsonEditorDialog_SaveAndApply, Tag = "SaveAndApply", ShortcutKeys = Keys.Control | Keys.A });
             FileToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
             FileToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = Language.Language.Program_Exit, Tag = "Exit", ShortcutKeys = Keys.Alt | Keys.F4 });
+#if DEBUG
+            FileToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = "GC Collect", Tag = "GCCollect" });
+#endif
 
             EditToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = Language.Language.JsonEditorDialog_NewCustomKey, Tag = "NewCustomKey" });
             EditToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem() { Text = Language.Language.JsonEditorDialog_NewWhiteListKey, Tag = "NewWhiteListKey" });
@@ -106,6 +109,11 @@ namespace NUMC.Forms.Dialogs
                 case "NewWhiteListKey":
                     NewWhiteListKey();
                     break;
+#if DEBUG
+                case "GCCollect":
+                    GC.Collect();
+                    break;
+#endif
             }
         }
 

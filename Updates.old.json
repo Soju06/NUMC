@@ -28,6 +28,13 @@
       "SubTitle": "1.0.3-beta.0 - Design Update",
       "Release_Notes": "{\\rtf1\\ansi\\ansicpg949\\deff0\\nouicompat\\deflang1033\\deflangfe1042{\\fonttbl{\\f0\\fnil\\fcharset129 \\\u0027b8\\\u0027bc\\\u0027c0\\\u0027ba \\\u0027b0\\\u0027ed\\\u0027b5\\\u0027f1;}}\n{\\colortbl ;\\red51\\green51\\blue51;}\n{\\*\\generator Riched20 10.0.19041}\\viewkind4\\uc1 \n\\pard\\sl240\\slmult1\\cf1\\b\\f0\\fs28\\lang1042\\\u0027b5\\\u0027f0\\\u0027c0\\\u0027da\\\u0027c0\\\u0027ce \\\u0027be\\\u0027f7\\\u0027b5\\\u0027a5\\\u0027c0\\\u0027cc\\\u0027c6\\\u0027ae\\par\n\\fs20\\\u0027c5\\\u0027b0 \\\u0027bc\\\u0027b3\\\u0027c1\\\u0027a4 \\\u0027b8\\\u0027de\\\u0027b4\\\u0027ba \\\u0027b8\\\u0027f0\\\u0027b5\\\u0027e2\\\u0027c8\\\u0027ad\\b0\\lang18\\par\n}",
       "Portable_Download": "https://raw.github.com/SojuShoveling/NUMC/master/History/1.0.3.0/NUMC.exe"
+    },
+    {
+      "Version": "1.0.3.1",
+      "Title": "NUMC 1.0.3-beta.1",
+      "SubTitle": "1.0.3-beta.1 - Bug fix",
+      "Release_Notes": "{\\rtf1\\ansi\\ansicpg949\\deff0\\nouicompat\\deflang1033\\deflangfe1042{\\fonttbl{\\f0\\fnil\\fcharset129 \\\u0027b8\\\u0027bc\\\u0027c0\\\u0027ba \\\u0027b0\\\u0027ed\\\u0027b5\\\u0027f1;}}\n{\\colortbl ;\\red51\\green51\\blue51;}\n{\\*\\generator Riched20 10.0.19041}\\viewkind4\\uc1 \n\\pard\\sl240\\slmult1\\cf1\\b\\f0\\fs28\\lang1042\\\u0027b9\\\u0027f6\\\u0027b1\\\u0027d7 \\\u0027bc\\\u0027f6\\\u0027c1\\\u0027a4\\par\n\\b0\\fs20\\\u0027b1\\\u0027e2\\\u0027b4\\\u0027c9 \\\u0027b0\\\u0027b3\\\u0027c6\\\u0027ed\\lang18\\par\n}",
+      "Portable_Download": "https://raw.github.com/SojuShoveling/NUMC/master/History/1.0.3.1/NUMC.exe"
     }
   ]
 }

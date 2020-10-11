@@ -1,6 +1,6 @@
-﻿namespace NUMC.Design
+﻿namespace NUMC.Forms.Controls
 {
-    partial class NUMPadUI
+    partial class DefaultLayout
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Button1 = new Design.Bright.BrightButton();
-            this.Button2 = new Design.Bright.BrightButton();
-            this.Button3 = new Design.Bright.BrightButton();
-            this.Button4 = new Design.Bright.BrightButton();
-            this.Button5 = new Design.Bright.BrightButton();
-            this.Button6 = new Design.Bright.BrightButton();
-            this.Button7 = new Design.Bright.BrightButton();
-            this.Button8 = new Design.Bright.BrightButton();
-            this.Button9 = new Design.Bright.BrightButton();
-            this.Button10 = new Design.Bright.BrightButton();
-            this.Button11 = new Design.Bright.BrightButton();
-            this.Button12 = new Design.Bright.BrightButton();
-            this.Button13 = new Design.Bright.BrightButton();
-            this.Button14 = new Design.Bright.BrightButton();
-            this.Button15 = new Design.Bright.BrightButton();
-            this.Button16 = new Design.Bright.BrightButton();
-            this.Button17 = new Design.Bright.BrightButton();
+            this.Button1 = new NUMC.Design.Bright.BrightButton();
+            this.Button2 = new NUMC.Design.Bright.BrightButton();
+            this.Button3 = new NUMC.Design.Bright.BrightButton();
+            this.Button4 = new NUMC.Design.Bright.BrightButton();
+            this.Button5 = new NUMC.Design.Bright.BrightButton();
+            this.Button6 = new NUMC.Design.Bright.BrightButton();
+            this.Button7 = new NUMC.Design.Bright.BrightButton();
+            this.Button8 = new NUMC.Design.Bright.BrightButton();
+            this.Button9 = new NUMC.Design.Bright.BrightButton();
+            this.Button10 = new NUMC.Design.Bright.BrightButton();
+            this.Button11 = new NUMC.Design.Bright.BrightButton();
+            this.Button12 = new NUMC.Design.Bright.BrightButton();
+            this.Button13 = new NUMC.Design.Bright.BrightButton();
+            this.Button14 = new NUMC.Design.Bright.BrightButton();
+            this.Button15 = new NUMC.Design.Bright.BrightButton();
+            this.Button16 = new NUMC.Design.Bright.BrightButton();
+            this.Button17 = new NUMC.Design.Bright.BrightButton();
             this.SuspendLayout();
             // 
             // Button1
             // 
             this.Button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Button1.Location = new System.Drawing.Point(6, 7);
+            this.Button1.Location = new System.Drawing.Point(23, 43);
             this.Button1.Name = "Button1";
             this.Button1.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button1.Size = new System.Drawing.Size(88, 71);
@@ -61,7 +61,7 @@
             // 
             this.Button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button2.Location = new System.Drawing.Point(100, 7);
+            this.Button2.Location = new System.Drawing.Point(163, 46);
             this.Button2.Name = "Button2";
             this.Button2.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button2.Size = new System.Drawing.Size(88, 71);
@@ -72,7 +72,7 @@
             // 
             this.Button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button3.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button3.Location = new System.Drawing.Point(194, 7);
+            this.Button3.Location = new System.Drawing.Point(452, 46);
             this.Button3.Name = "Button3";
             this.Button3.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button3.Size = new System.Drawing.Size(88, 71);
@@ -83,7 +83,7 @@
             // 
             this.Button4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button4.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button4.Location = new System.Drawing.Point(288, 7);
+            this.Button4.Location = new System.Drawing.Point(643, 11);
             this.Button4.Name = "Button4";
             this.Button4.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button4.Size = new System.Drawing.Size(88, 71);
@@ -94,18 +94,18 @@
             // 
             this.Button5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button5.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button5.Location = new System.Drawing.Point(6, 84);
+            this.Button5.Location = new System.Drawing.Point(50, 127);
             this.Button5.Name = "Button5";
             this.Button5.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button5.Size = new System.Drawing.Size(88, 71);
             this.Button5.TabIndex = 0;
-            this.Button5.Text = "7";
+            this.Button5.Text = "w";
             // 
             // Button6
             // 
             this.Button6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button6.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button6.Location = new System.Drawing.Point(100, 84);
+            this.Button6.Location = new System.Drawing.Point(258, 145);
             this.Button6.Name = "Button6";
             this.Button6.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button6.Size = new System.Drawing.Size(88, 71);
@@ -116,7 +116,7 @@
             // 
             this.Button7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button7.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button7.Location = new System.Drawing.Point(194, 84);
+            this.Button7.Location = new System.Drawing.Point(294, 29);
             this.Button7.Name = "Button7";
             this.Button7.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button7.Size = new System.Drawing.Size(88, 71);
@@ -127,7 +127,7 @@
             // 
             this.Button8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button8.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button8.Location = new System.Drawing.Point(288, 84);
+            this.Button8.Location = new System.Drawing.Point(558, 106);
             this.Button8.Name = "Button8";
             this.Button8.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button8.Size = new System.Drawing.Size(88, 148);
@@ -138,18 +138,18 @@
             // 
             this.Button9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button9.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button9.Location = new System.Drawing.Point(6, 161);
+            this.Button9.Location = new System.Drawing.Point(143, 196);
             this.Button9.Name = "Button9";
             this.Button9.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button9.Size = new System.Drawing.Size(88, 71);
             this.Button9.TabIndex = 0;
-            this.Button9.Text = "4";
+            this.Button9.Text = "a";
             // 
             // Button10
             // 
             this.Button10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button10.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button10.Location = new System.Drawing.Point(100, 161);
+            this.Button10.Location = new System.Drawing.Point(267, 264);
             this.Button10.Name = "Button10";
             this.Button10.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button10.Size = new System.Drawing.Size(88, 71);
@@ -160,7 +160,7 @@
             // 
             this.Button11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button11.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button11.Location = new System.Drawing.Point(194, 161);
+            this.Button11.Location = new System.Drawing.Point(378, 141);
             this.Button11.Name = "Button11";
             this.Button11.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button11.Size = new System.Drawing.Size(88, 71);
@@ -171,18 +171,18 @@
             // 
             this.Button12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button12.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button12.Location = new System.Drawing.Point(6, 238);
+            this.Button12.Location = new System.Drawing.Point(68, 268);
             this.Button12.Name = "Button12";
             this.Button12.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button12.Size = new System.Drawing.Size(88, 71);
             this.Button12.TabIndex = 0;
-            this.Button12.Text = "1";
+            this.Button12.Text = "s";
             // 
             // Button13
             // 
             this.Button13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button13.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button13.Location = new System.Drawing.Point(100, 238);
+            this.Button13.Location = new System.Drawing.Point(322, 363);
             this.Button13.Name = "Button13";
             this.Button13.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button13.Size = new System.Drawing.Size(88, 71);
@@ -193,7 +193,7 @@
             // 
             this.Button14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button14.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button14.Location = new System.Drawing.Point(194, 238);
+            this.Button14.Location = new System.Drawing.Point(431, 264);
             this.Button14.Name = "Button14";
             this.Button14.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button14.Size = new System.Drawing.Size(88, 71);
@@ -203,36 +203,36 @@
             // Button15
             // 
             this.Button15.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Button15.Location = new System.Drawing.Point(288, 238);
+            this.Button15.Location = new System.Drawing.Point(608, 286);
             this.Button15.Name = "Button15";
             this.Button15.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button15.Size = new System.Drawing.Size(88, 148);
             this.Button15.TabIndex = 0;
-            this.Button15.Text = "Enter";
+            this.Button15.Text = "s";
             // 
             // Button16
             // 
             this.Button16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button16.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button16.Location = new System.Drawing.Point(6, 315);
+            this.Button16.Location = new System.Drawing.Point(22, 376);
             this.Button16.Name = "Button16";
             this.Button16.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button16.Size = new System.Drawing.Size(182, 71);
             this.Button16.TabIndex = 0;
-            this.Button16.Text = "0";
+            this.Button16.Text = "a";
             // 
             // Button17
             // 
             this.Button17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Button17.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.Button17.Location = new System.Drawing.Point(194, 315);
+            this.Button17.Location = new System.Drawing.Point(451, 354);
             this.Button17.Name = "Button17";
             this.Button17.Padding = new System.Windows.Forms.Padding(9, 12, 9, 12);
             this.Button17.Size = new System.Drawing.Size(88, 71);
             this.Button17.TabIndex = 0;
-            this.Button17.Text = ".";
+            this.Button17.Text = "n";
             // 
-            // NUMPadUI
+            // DefaultLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -255,8 +255,9 @@
             this.Controls.Add(this.Button16);
             this.Controls.Add(this.Button17);
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.Name = "NUMPadUI";
-            this.Size = new System.Drawing.Size(382, 392);
+            this.MaximumSize = new System.Drawing.Size(751, 456);
+            this.Name = "DefaultLayout";
+            this.Size = new System.Drawing.Size(751, 456);
             this.ResumeLayout(false);
 
         }

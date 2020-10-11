@@ -88,6 +88,9 @@ namespace NUMC
         {
             titleBar.MaximizeBox = false;
             titleBar.MinimizeBox = false;
+
+            notifyIcon.Icon = System.Drawing.Icon.FromHandle(Design.Images.NUMC_SMALL_ICON.GetHicon());
+            Icon = System.Drawing.Icon.FromHandle(Design.Images.NUMC_ICON_24px.GetHicon());
         }
 
         #endregion Initialize_Form
@@ -157,7 +160,7 @@ namespace NUMC
         {
             NUMContextMenu.Items.Clear();
 
-            IMM[] modules = Module.GetModules();
+            IMenuModule[] modules = Module.GetModules();
 
             for (int i = 0; i < modules.Length; i++)
             {
@@ -206,7 +209,7 @@ namespace NUMC
 
         private void InitializeEvents()
         {
-            NumPadUI.MouseClick += NumPadUI_MouseClick;
+            KeyboardLayout.MouseClick += Layout_MouseClick;
 
             InitializeNUMEvents();
 
@@ -379,7 +382,7 @@ namespace NUMC
 
         #region NumPadUI_MouseClick
 
-        private void NumPadUI_MouseClick(Keys Key, MouseButtons Button)
+        private void Layout_MouseClick(Keys Key, MouseButtons Button)
         {
             SelectedKey = Key;
             Set_NUMContextMenu_Checked();
@@ -414,7 +417,7 @@ namespace NUMC
                 }
             }
 
-            IMM[] modules = Module.GetModules();
+            IMenuModule[] modules = Module.GetModules();
 
             for (int i = 0; i < modules.Length; i++)
             {

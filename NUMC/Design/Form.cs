@@ -43,7 +43,8 @@ namespace NUMC.Design
         private void NForm_Load(object sender, EventArgs e)
         {
             titleBar.Dock = DockStyle.Top;
-            titleBar.Size = new Size(titleBar.Size.Width, 35);
+            titleBar.MinimumSize = new Size(189, 32);
+            titleBar.Size = new Size(Size.Width, 32);
         }
 
         private void Form_BackColorChanged(object sender, EventArgs e)
