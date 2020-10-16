@@ -167,5 +167,3 @@ Json 편집기를 사용할 수 있습니다.
 ```json
 "Language": "auto" // 언어 | en-us (기본값), ko-kr
 ```
-
-![Logger](https://iplogger.com/1MWdB6.png)
