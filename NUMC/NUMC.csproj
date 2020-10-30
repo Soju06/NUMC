@@ -47,52 +47,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Array\Sort.cs" />
     <Compile Include="Constant.cs" />
-    <Compile Include="Design\Bright\BrightButton.cs">
+    <Compile Include="Design\Controls\Button.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightCheckBox.cs">
+    <Compile Include="Design\Controls\CheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightComboBox.cs">
+    <Compile Include="Design\Controls\ComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightContextMenu.cs">
+    <Compile Include="Design\Controls\ContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightControlState.cs" />
-    <Compile Include="Design\Bright\BrightDialog.cs">
+    <Compile Include="Design\Controls\Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightDialog.designer.cs">
-      <DependentUpon>BrightDialog.cs</DependentUpon>
+    <Compile Include="Design\Controls\Dialog.designer.cs">
+      <DependentUpon>Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Design\Bright\BrightListView.cs">
+    <Compile Include="Design\Controls\ListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightMenuRenderer.cs" />
-    <Compile Include="Design\Bright\BrightMenuStrip.cs">
+    <Compile Include="Design\Controls\MenuRenderer.cs" />
+    <Compile Include="Design\Controls\MenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightRadioButton.cs">
+    <Compile Include="Design\Controls\RadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightScrollBar.cs">
+    <Compile Include="Design\Controls\RichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightScrollView.cs">
+    <Compile Include="Design\Controls\ScrollBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\BrightTextBox.cs">
+    <Compile Include="Design\Controls\ScrollView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Design\Bright\Colors.cs" />
-    <Compile Include="Design\Bright\Consts.cs" />
-    <Compile Include="Design\Bright\Icons.Designer.cs">
+    <Compile Include="Design\Controls\Classes.cs" />
+    <Compile Include="Design\Controls\TextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Controls\UserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\Icons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
+    <Compile Include="Design\Styles.cs" />
     <Compile Include="Design\Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,13 +107,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Images.resx</DependentUpon>
     </Compile>
-    <Compile Include="Design\NDialog.cs">
+    <Compile Include="Design\Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Design\ProgressBar.cs">
+    <Compile Include="Design\Controls\ProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Design\ProgressBar.Designer.cs">
+    <Compile Include="Design\Controls\ProgressBar.Designer.cs">
       <DependentUpon>ProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\DefaultLayout.cs">
@@ -118,10 +124,10 @@
     </Compile>
     <Compile Include="Design\Resources\Images.cs" />
     <Compile Include="Design\Resources\Render.cs" />
-    <Compile Include="Design\TitleBar.cs">
+    <Compile Include="Design\Controls\TitleBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Design\TitleBar.designer.cs">
+    <Compile Include="Design\Controls\TitleBar.designer.cs">
       <DependentUpon>TitleBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\FileDropControl.cs">
@@ -213,16 +219,20 @@
       <DependentUpon>ProgramInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Handler\Handler.cs" />
-    <Compile Include="Menu\IMenuModule.cs" />
-    <Compile Include="Menu\Module.cs" />
+    <Compile Include="Language\Language.cs" />
+    <Compile Include="Menu\IKeyMenuModule.cs" />
+    <Compile Include="Menu\IApplicationMenuModule.cs" />
+    <Compile Include="Menu\INotifyMenuModule.cs" />
+    <Compile Include="Menu\Modules\ApplicationMenu.cs" />
     <Compile Include="Menu\Modules\CustomKey.cs" />
     <Compile Include="Menu\Modules\KeyIgnore.cs" />
     <Compile Include="Menu\Modules\Macro.cs" />
+    <Compile Include="Menu\MenuStripSupport.cs" />
+    <Compile Include="Menu\Modules\NotifyMenu.cs" />
     <Compile Include="Plugin\Handler.cs" />
     <Compile Include="Reference\GlobalHook\Enums.cs" />
     <Compile Include="Reference\GlobalHook\KeyboardHook.cs" />
     <Compile Include="Reference\GlobalHook\KeyboardSimulation.cs" />
-    <Compile Include="Reference\GlobalHook\WinAPI.cs" />
     <Compile Include="Language\Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -253,7 +263,6 @@
     <Compile Include="Script\Json.cs" />
     <Compile Include="Script\Macro.cs" />
     <Compile Include="Macro\BASIC_MACRO.cs" />
-    <Compile Include="Macro\Menu.cs" />
     <Compile Include="Macro\IMacroModule.cs" />
     <Compile Include="Script\Menu.cs" />
     <Compile Include="Script\Object.cs" />
@@ -282,12 +291,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Design\Bright\BrightDialog.resx">
-      <DependentUpon>BrightDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Design\Controls\Dialog.resx">
+      <DependentUpon>Dialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Design\Bright\Icons.resx">
+    <EmbeddedResource Include="Design\Icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\Controls\RadioButton.resx">
+      <DependentUpon>RadioButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\Images.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -296,7 +308,7 @@
     <EmbeddedResource Include="Forms\Controls\DefaultLayout.resx">
       <DependentUpon>DefaultLayout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Design\TitleBar.resx">
+    <EmbeddedResource Include="Design\Controls\TitleBar.resx">
       <DependentUpon>TitleBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\FileDropControl.resx">

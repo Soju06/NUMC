@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace TestPlugin
 {
-    public class Asdf : IMenuModule
+    public class Asdf : IKeyMenuModule
     {
         public Asdf()
         {
@@ -26,6 +26,8 @@ namespace TestPlugin
                 return new ToolStripItem[] { Item };
             }
         }
+
+        public int Index => 5;
 
         public void MenuClicking(KeyObject keyObject, Keys selectedKey)
         {

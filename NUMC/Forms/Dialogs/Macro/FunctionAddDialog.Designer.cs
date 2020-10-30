@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox = new NUMC.Design.Bright.BrightTextBox();
+            this.textBox = new Design.Controls.TextBox();
             this.SuspendLayout();
             // 
             // titleBar
@@ -40,9 +40,7 @@
             // 
             // textBox
             // 
-            this.textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.textBox.Location = new System.Drawing.Point(12, 45);
             this.textBox.MaxLength = 30;
             this.textBox.Name = "textBox";
@@ -56,7 +54,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(253, 141);
             this.Controls.Add(this.textBox);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
+            this.DialogButtons = NUMC.Design.Controls.MessageBoxButtons.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FunctionAddDialog";
@@ -70,6 +68,6 @@
 
         #endregion
 
-        private Design.Bright.BrightTextBox textBox;
+        private Design.Controls.TextBox textBox;
     }
 }

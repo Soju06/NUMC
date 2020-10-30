@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DelayTextBox = new NUMC.Design.Bright.BrightTextBox();
+            this.DelayTextBox = new Design.Controls.TextBox();
             this.darkLabel1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -40,9 +40,7 @@
             // 
             // DelayTextBox
             // 
-            this.DelayTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.DelayTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DelayTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.DelayTextBox.Location = new System.Drawing.Point(12, 45);
             this.DelayTextBox.Name = "DelayTextBox";
             this.DelayTextBox.Size = new System.Drawing.Size(250, 25);
@@ -67,7 +65,7 @@
             this.ClientSize = new System.Drawing.Size(313, 141);
             this.Controls.Add(this.darkLabel1);
             this.Controls.Add(this.DelayTextBox);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
+            this.DialogButtons = NUMC.Design.Controls.MessageBoxButtons.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "DelayAddDialog";
@@ -83,7 +81,7 @@
 
         #endregion
 
-        private Design.Bright.BrightTextBox DelayTextBox;
+        private Design.Controls.TextBox DelayTextBox;
         private System.Windows.Forms.Label darkLabel1;
     }
 }

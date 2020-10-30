@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace NUMC
 {
@@ -14,7 +9,7 @@ namespace NUMC
             public const int TitleBarHeight = 35;
             public const int PaddingSize = 12;
 
-            public static readonly Padding Padding = 
+            public static readonly Padding Padding =
                 new Padding(PaddingSize, TitleBarHeight + PaddingSize, PaddingSize, PaddingSize);
         }
     }

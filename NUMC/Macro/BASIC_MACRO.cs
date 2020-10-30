@@ -6,6 +6,8 @@ namespace NUMC.Macro
 {
     public class RUN_FILE : IMacroModule
     {
+        public int Index => 0;
+
         public string BUTTON_NAME => Language.Language.MacroSettingDialog_RunFile;
 
         public bool GET_FULL_CODE => false;
@@ -85,6 +87,7 @@ namespace NUMC.Macro
 
     public class CHANGE_SETTING : IMacroModule
     {
+        public int Index => 1;
         public string BUTTON_NAME => Language.Language.MacroSettingDialog_ChangeSetting;
 
         public bool GET_FULL_CODE => false;

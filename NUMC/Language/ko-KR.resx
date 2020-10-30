@@ -117,23 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CustomKeyDialog_KeyHook_Tip_Caption" xml:space="preserve">
-    <value>텍스트 박스에 마우스가 있으면 키 후킹을 시작합니다.
-후킹 중 입니다.</value>
-    <comment>텍스트 박스에 마우스가 있으면 키 후킹을 시작합니다.
-후킹 중 입니다.</comment>
+  <data name="ApplicationMenu_CurrentSettings" xml:space="preserve">
+    <value>현재 설정: {0}</value>
+    <comment>현재 설정: {0}</comment>
   </data>
   <data name="CustomKeyDialog_KeyHook_Tip_Title" xml:space="preserve">
     <value>후킹을 사용하려면...</value>
     <comment>후킹을 사용하려면...</comment>
-  </data>
-  <data name="CustomKeyDialog_SendKeys_Caption" xml:space="preserve">
-    <value>일부 특수키 사용이 불가능 합니다. (WinKey)
-짧은 문자열 입력, 간단한 단축키 지정에 접합합니다.
-눌렀다 떼기가 불가능합니다.</value>
-    <comment>일부 특수키 사용이 불가능 합니다. (WinKey)
-짧은 문자열 입력, 간단한 단축키 지정에 접합합니다.
-눌렀다 떼기가 불가능합니다.</comment>
   </data>
   <data name="CustomKeyDialog_SendKeys_Name" xml:space="preserve">
     <value>기본 키</value>
@@ -151,27 +141,9 @@
     <value>키 설정 마법사</value>
     <comment>키 설정 마법사</comment>
   </data>
-  <data name="CustomKeyDialog_VirtualKey_Caption" xml:space="preserve">
-    <value>키보드 전체를 제어할 수 있습니다.
-눌렀다 떼기를 지원합니다.
-단축키 지정에 적합합니다.
-문자열 입력에 부적합합니다.</value>
-    <comment>키보드 전체를 제어할 수 있습니다.
-눌렀다 떼기를 지원합니다.
-단축키 지정에 적합합니다.
-문자열 입력에 부적합합니다.</comment>
-  </data>
   <data name="CustomKeyDialog_VirtualKey_Name" xml:space="preserve">
     <value>가상 키</value>
     <comment>가상 키</comment>
-  </data>
-  <data name="CustomKeyDialog_VirtualSendKeys_Caption" xml:space="preserve">
-    <value>키보드 전체를 제어할 수 있습니다.
-눌렀다 떼기를 사용하지 않은 단일 단축키에 적합합니다.
-눌렀다 떼기가 불가능합니다.</value>
-    <comment>키보드 전체를 제어할 수 있습니다.
-눌렀다 떼기를 사용하지 않은 단일 단축키에 적합합니다.
-눌렀다 떼기가 불가능합니다.</comment>
   </data>
   <data name="CustomKeyDialog_VirtualSendKeys_Name" xml:space="preserve">
     <value>가상 동시 입력</value>

@@ -58,7 +58,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(436, 215);
             this.Controls.Add(this.fileDropControl);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
+            this.DialogButtons = NUMC.Design.Controls.MessageBoxButtons.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SetSettingDialog";

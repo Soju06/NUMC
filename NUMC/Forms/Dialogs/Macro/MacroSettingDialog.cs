@@ -1,6 +1,6 @@
 ﻿using Hook;
-using NUMC.Design;
-using NUMC.Design.Bright;
+using NUMC.Design.Controls;
+using NUMC.Macro;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -9,9 +9,11 @@ using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class MacroSettingDialog : NDialog
+    public partial class MacroSettingDialog : Design.Dialog
     {
         public KeyScript KeyScript { get; internal set; }
+
+        private IMacroModule[] MacroModules;
 
         public MacroSettingDialog(KeyScript keyScript)
         {
@@ -49,23 +51,17 @@ namespace NUMC.Forms.Dialogs.Macro
 
         private void InitializeModules()
         {
-            List<NUMC.Macro.IMacroModule> modules = NUMC.Macro.Menu.GET_ALL_MACRO_MODULE();
+            MacroModules = Plugin.Handler.ExtractPlugin<IMacroModule>();
 
-            for (int i = 0; i < modules.Count; i++)
+            for (int i = 0; i < MacroModules.Length; i++)
             {
-                ToolStripMenuItem item = new ToolStripMenuItem(modules[i].BUTTON_NAME)
+                ToolStripMenuItem item = new ToolStripMenuItem(MacroModules[i].BUTTON_NAME)
                 {
-                    Tag = modules[i]
+                    Tag = MacroModules[i]
                 };
                 ModuleContextMenu.Items.Add(item);
                 item.Click += ModuleItem_Click;
             }
-        }
-
-        private void EventsView_MouseHover(object sender, EventArgs e)
-        {
-            TipBox.ToolTipTitle = Language.Language.CustomKeyDialog_KeyHook_Tip_Title;
-            TipBox.SetToolTip((Control)sender, Language.Language.CustomKeyDialog_KeyHook_Tip_Caption);
         }
 
         private void AddKeystrokeButton_Click(object sender, EventArgs e)
@@ -465,11 +461,9 @@ namespace NUMC.Forms.Dialogs.Macro
                     }
                     else
                     {
-                        List<NUMC.Macro.IMacroModule> modules = NUMC.Macro.Menu.GET_ALL_MACRO_MODULE();
-
-                        for (int m = 0; m < modules.Count; m++)
+                        for (int m = 0; m < MacroModules.Length; m++)
                         {
-                            if (modules[m].MODULE_NAME == line[0] && modules[m].CODE_RESULT(data, ref Code, out string NAME, out string RCODE))
+                            if (MacroModules[m].MODULE_NAME == line[0] && MacroModules[m].CODE_RESULT(data, ref Code, out string NAME, out string RCODE))
                             {
                                 AddEvents(NAME, RCODE);
                             }

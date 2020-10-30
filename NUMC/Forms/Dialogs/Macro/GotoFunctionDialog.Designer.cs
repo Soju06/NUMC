@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FunctionsComboBox = new NUMC.Design.Bright.BrightComboBox();
+            this.FunctionsComboBox = new NUMC.Design.Controls.ComboBox();
             this.SuspendLayout();
             // 
             // titleBar
@@ -56,7 +56,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(330, 141);
             this.Controls.Add(this.FunctionsComboBox);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
+            this.DialogButtons = NUMC.Design.Controls.MessageBoxButtons.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "GotoFunctionDialog";
@@ -70,6 +70,6 @@
 
         #endregion
 
-        private Design.Bright.BrightComboBox FunctionsComboBox;
+        private Design.Controls.ComboBox FunctionsComboBox;
     }
 }

@@ -94,7 +94,7 @@
             this.Controls.Add(this.SubtitleLabel);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.NoteBox);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
+            this.DialogButtons = NUMC.Design.Controls.MessageBoxButtons.OkCancel;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UpdateDialog";
             this.Resizing = false;

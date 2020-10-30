@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainComboBox = new NUMC.Design.Bright.BrightComboBox();
-            this.TypeRadio_1 = new NUMC.Design.Bright.BrightRadioButton();
-            this.TypeRadio_2 = new NUMC.Design.Bright.BrightRadioButton();
-            this.TypeRadio_0 = new NUMC.Design.Bright.BrightRadioButton();
+            this.MainComboBox = new NUMC.Design.Controls.ComboBox();
+            this.TypeRadio_1 = new Design.Controls.RadioButton();
+            this.TypeRadio_2 = new Design.Controls.RadioButton();
+            this.TypeRadio_0 = new Design.Controls.RadioButton();
             this.hookingControl = new NUMC.Forms.Controls.HookingControl();
             this.SuspendLayout();
             // 
@@ -107,7 +107,7 @@
             this.Controls.Add(this.TypeRadio_0);
             this.Controls.Add(this.TypeRadio_1);
             this.Controls.Add(this.MainComboBox);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
+            this.DialogButtons = NUMC.Design.Controls.MessageBoxButtons.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "KeyAddDialog";
@@ -126,10 +126,10 @@
 
         #endregion
 
-        private Design.Bright.BrightComboBox MainComboBox;
-        private Design.Bright.BrightRadioButton TypeRadio_1;
-        private Design.Bright.BrightRadioButton TypeRadio_2;
-        private Design.Bright.BrightRadioButton TypeRadio_0;
+        private Design.Controls.ComboBox MainComboBox;
+        private Design.Controls.RadioButton TypeRadio_1;
+        private Design.Controls.RadioButton TypeRadio_2;
+        private Design.Controls.RadioButton TypeRadio_0;
         private Controls.HookingControl hookingControl;
     }
 }

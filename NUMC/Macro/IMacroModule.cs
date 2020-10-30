@@ -1,6 +1,6 @@
 ﻿namespace NUMC.Macro
 {
-    public interface IMacroModule
+    public interface IMacroModule : Array.ISortIndex
     {
         string BUTTON_NAME { get; }
 

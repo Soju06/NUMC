@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Menu.Modules
 {
-    public class CustomKey : IMenuModule
+    public class CustomKey : IKeyMenuModule
     {
         public CustomKey()
         {
@@ -17,8 +17,10 @@ namespace NUMC.Menu.Modules
             Item.Click += Item_Click;
         }
 
+        public int Index => 0;
+        public KeyObject KeyObject;
+
         private readonly ToolStripMenuItem Item;
-        private KeyObject KeyObject;
 
         public ToolStripItem[] Menus
         {

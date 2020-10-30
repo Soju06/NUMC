@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs
 {
-    public partial class JsonEditorDialog : NDialog
+    public partial class JsonEditorDialog : Dialog
     {
         private readonly Script.Script Script = new Script.Script();
 
@@ -58,15 +58,15 @@ namespace NUMC.Forms.Dialogs
 
         private void SaveSetting()
         {
-            File.WriteAllText(Setting.Setting.KEY_SETTING_PATH, Script.Object.ToString());
+            File.WriteAllText(Setting.Setting.KeySettingPath, Script.Object.ToString());
         }
 
         private void LoadSetting()
         {
-            if (File.Exists(Setting.Setting.KEY_SETTING_PATH))
+            if (File.Exists(Setting.Setting.KeySettingPath))
             {
                 Point point = CodeTextBox.AutoScrollOffset;
-                CodeTextBox.Text = File.ReadAllText(Setting.Setting.KEY_SETTING_PATH);
+                CodeTextBox.Text = File.ReadAllText(Setting.Setting.KeySettingPath);
                 CodeTextBox.AutoScrollOffset = point;
             }
         }
@@ -78,13 +78,13 @@ namespace NUMC.Forms.Dialogs
             switch (menu.Tag)
             {
                 case "Save":
-                    File.WriteAllText(Setting.Setting.KEY_SETTING_PATH, CodeTextBox.Text);
+                    File.WriteAllText(Setting.Setting.KeySettingPath, CodeTextBox.Text);
                     break;
 
                 case "SaveAndApply":
                     try
                     {
-                        File.WriteAllText(Setting.Setting.KEY_SETTING_PATH, CodeTextBox.Text);
+                        File.WriteAllText(Setting.Setting.KeySettingPath, CodeTextBox.Text);
                         Script.Object.SetScript(CodeTextBox.Text);
                     }
                     catch (Exception ex)
@@ -217,18 +217,18 @@ namespace NUMC.Forms.Dialogs
 
         private void EditJsonDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!File.Exists(Setting.Setting.KEY_SETTING_PATH))
+            if (!File.Exists(Setting.Setting.KeySettingPath))
             {
                 SaveSetting();
                 return;
             }
 
-            if (File.ReadAllText(Setting.Setting.KEY_SETTING_PATH) != CodeTextBox.Text)
+            if (File.ReadAllText(Setting.Setting.KeySettingPath) != CodeTextBox.Text)
             {
                 DialogResult result = MessageBox.Show(Language.Language.Message_Information_SaveThisSetting, Text, System.Windows.Forms.MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
-                    File.WriteAllText(Setting.Setting.KEY_SETTING_PATH, CodeTextBox.Text);
+                    File.WriteAllText(Setting.Setting.KeySettingPath, CodeTextBox.Text);
                 }
                 else if (result == DialogResult.Cancel)
                 {

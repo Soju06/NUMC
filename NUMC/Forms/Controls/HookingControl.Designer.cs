@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label = new System.Windows.Forms.Label();
-            this.TipBox = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label
@@ -44,16 +42,6 @@
             this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
             this.label.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
-            this.label.MouseHover += new System.EventHandler(this.Label_MouseHover);
-            // 
-            // TipBox
-            // 
-            this.TipBox.AutoPopDelay = 100000;
-            this.TipBox.ForeColor = System.Drawing.Color.Gainsboro;
-            this.TipBox.InitialDelay = 300;
-            this.TipBox.IsBalloon = true;
-            this.TipBox.ReshowDelay = 100;
-            this.TipBox.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // HookingControl
             // 
@@ -71,6 +59,5 @@
         #endregion
 
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.ToolTip TipBox;
     }
 }

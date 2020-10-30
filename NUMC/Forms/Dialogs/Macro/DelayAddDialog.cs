@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class DelayAddDialog : NDialog
+    public partial class DelayAddDialog : Dialog
     {
         public int Delay { get; internal set; }
 

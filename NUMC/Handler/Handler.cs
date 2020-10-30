@@ -1,30 +1,56 @@
 ﻿using System;
+using System.IO;
 
 namespace NUMC.Handler
 {
-    public class Handler
+    public static class Handler
     {
-        public static event LoadSetting LoadSetting;
+        public static event LoadSettingHandler LoadSetting;
 
-        internal static event GetScript G_etScript;
+        public static event ShowHandler Show;
+
+        internal static event GetScriptHandler G_etScript;
 
         public static void LoadSettings(string path)
         {
-            LoadSetting(path);
+            if (!File.Exists(path))
+                return;
+
+            LoadSetting?.Invoke(path);
         }
 
-        public static Script.ScriptObject GetScript()
+        public static Script.Script GetScript()
         {
-            Delegate[] delegates = G_etScript.GetInvocationList();
+               Delegate[] delegates = G_etScript.GetInvocationList();
 
             if (delegates.Length >= 1)
-                return (Script.ScriptObject)delegates[0].DynamicInvoke();
+                return (Script.Script)delegates[0].DynamicInvoke();
 
             return null;
         }
+
+        public static void Showing()
+        {
+            Show?.Invoke();
+        }
+
+        public static class Setting
+        {
+            public static event ShowHandler Save;
+            public static event ShowHandler Load;
+
+            public static void Saving() =>
+                Save?.Invoke();
+
+            public static void Loading() =>
+                Load?.Invoke();
+
+            public delegate void SaveHandler();
+            public delegate void LoadHandler();
+        }
+
+        public delegate void ShowHandler();
+        public delegate void LoadSettingHandler(string path);
+        internal delegate Script.Script GetScriptHandler();
     }
-
-    public delegate void LoadSetting(string path);
-
-    internal delegate Script.Script GetScript();
 }

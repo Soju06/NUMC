@@ -1,4 +1,5 @@
 ﻿using Hook;
+using NUMC.Macro;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,7 +12,6 @@ namespace NUMC.Script
     {
         public Macro()
         {
-
         }
 
         public Macro(string code, bool ad)
@@ -34,9 +34,9 @@ namespace NUMC.Script
             isRunning = true;
 
             string line;
+            long i = 0;
             List<Function> functions = GetFunctions(code);
-
-            long length, i = 0;
+            var modules = Plugin.Handler.ExtractPlugin<IMacroModule>();
 
             while (true)
             {
@@ -49,10 +49,7 @@ namespace NUMC.Script
 
                 line = code[i].TrimStart().Split(new string[] { "//" }, StringSplitOptions.None)[0];
 
-                // 자주 사용되는 변수
-                length = line.Length;
-
-                if (length > 1)
+                if (line.Length > 1)
                 {
                     string data = line.Substring(1);
 
@@ -121,9 +118,7 @@ namespace NUMC.Script
                     }
                     else
                     {
-                        List<NUMC.Macro.IMacroModule> modules = NUMC.Macro.Menu.GET_ALL_MACRO_MODULE();
-
-                        for (int m = 0; m < modules.Count; m++)
+                        for (int m = 0; m < modules.Length; m++)
                         {
                             if (modules[m].MODULE_NAME == line[0])
                             {
@@ -203,7 +198,6 @@ namespace NUMC.Script
 
             for (int i = 0; i < code.Length; i++)
             {
-                // 코드가 없으면
                 if (string.IsNullOrWhiteSpace(code[i]))
                     continue;
 

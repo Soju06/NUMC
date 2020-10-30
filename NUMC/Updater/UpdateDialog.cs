@@ -2,7 +2,7 @@
 
 namespace NUMC.Updater
 {
-    public partial class UpdateDialog : NDialog
+    public partial class UpdateDialog : Dialog
     {
         public UpdateDialog(Version_History version)
         {

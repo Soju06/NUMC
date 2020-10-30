@@ -30,7 +30,7 @@
         {
             this.darkLabel1 = new System.Windows.Forms.Label();
             this.darkLabel2 = new System.Windows.Forms.Label();
-            this.progressBar = new NUMC.Design.ProgressBar();
+            this.progressBar = new NUMC.Design.Controls.ProgressBar();
             this.SuspendLayout();
             // 
             // titleBar
@@ -76,7 +76,7 @@
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.darkLabel2);
             this.Controls.Add(this.darkLabel1);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.Close;
+            this.DialogButtons = NUMC.Design.Controls.MessageBoxButtons.Close;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Downloader";
@@ -92,6 +92,6 @@
         #endregion
         private System.Windows.Forms.Label darkLabel1;
         private System.Windows.Forms.Label darkLabel2;
-        private Design.ProgressBar progressBar;
+        private Design.Controls.ProgressBar progressBar;
     }
 }

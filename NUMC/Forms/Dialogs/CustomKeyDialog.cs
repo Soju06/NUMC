@@ -4,33 +4,28 @@ using NUMC.Script;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using WindowsInput.Native;
 
 namespace NUMC.Forms.Dialogs
 {
-    public partial class CustomKeyDialog : NDialog
+    public partial class CustomKeyDialog : Dialog
     {
-        public string[,] Types = new string[4, 3]
+        public string[,] Types = new string[4, 2]
         {
             {
                 "SendKeys",
-                Language.Language.CustomKeyDialog_SendKeys_Name,
-                Language.Language.CustomKeyDialog_SendKeys_Caption
+                Language.Language.CustomKeyDialog_SendKeys_Name
             },
             {
                 "VirtualSendKeys",
-                Language.Language.CustomKeyDialog_VirtualSendKeys_Name,
-                Language.Language.CustomKeyDialog_VirtualSendKeys_Caption
+                Language.Language.CustomKeyDialog_VirtualSendKeys_Name
             },
             {
                 "TextEntry",
-                Language.Language.CustomKeyDialog_TextEntry_Name,
-                Language.Language.CustomKeyDialog_TextEntry_Caption
+                Language.Language.CustomKeyDialog_TextEntry_Name
             },
             {
                 "VirtualKey",
-                Language.Language.CustomKeyDialog_VirtualKey_Name,
-                Language.Language.CustomKeyDialog_VirtualKey_Caption
+                Language.Language.CustomKeyDialog_VirtualKey_Name
             }
         };
 
@@ -131,18 +126,8 @@ namespace NUMC.Forms.Dialogs
         private void KeyboardTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             hook = false;
-            TipLabel.Text = Types[KeyboardTypeComboBox.SelectedIndex, 2];
             ScriptTextBox.Text = string.Empty;
             ScriptTextBox.ReadOnly = VirtualMode;
-        }
-
-        private void KeyTextBox_MouseHover(object sender, EventArgs e)
-        {
-            if (VirtualMode)
-            {
-                TipBox.ToolTipTitle = Language.Language.CustomKeyDialog_KeyHook_Tip_Title;
-                TipBox.SetToolTip((Control)sender, Language.Language.CustomKeyDialog_KeyHook_Tip_Caption);
-            }
         }
 
         private bool hook = false;

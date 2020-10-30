@@ -3,7 +3,7 @@ using System;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class GotoFunctionDialog : NDialog
+    public partial class GotoFunctionDialog : Dialog
     {
         public string Value { get; internal set; }
 

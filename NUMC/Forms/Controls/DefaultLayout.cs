@@ -4,10 +4,12 @@ using NUMC.Forms.Controls;
 
 namespace NUMC.Forms.Controls
 {
-    public partial class DefaultLayout : UserControl, IKeyboardLayout
+    public partial class DefaultLayout : Design.Controls.UserControl, IKeyboardLayout
     {
         new public event Click Click;
+
         new public event MouseClick MouseClick;
+
         new public event DoubleClick DoubleClick;
 
         public Keys[] VKeys { get; } = new Keys[]
@@ -37,9 +39,7 @@ namespace NUMC.Forms.Controls
             InitializeEvents();
 
             for (int i = 0; i < Controls.Count; i++)
-            {
                 Controls[i].Tag = VKeys[i];
-            }
         }
 
         private void InitializeEvents()

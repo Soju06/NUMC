@@ -1,0 +1,601 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace NUMC.Design.Controls
+{
+    public class ListView : ScrollView
+    {
+        #region Event Region
+
+        public event EventHandler SelectedIndicesChanged;
+
+        #endregion Event Region
+
+        #region Field Region
+
+        private int _itemHeight = 20;
+        private readonly int _iconSize = 16;
+
+        private ObservableCollection<BrightListItem> _items;
+        private readonly List<int> _selectedIndices;
+        private int _anchoredItemStart = -1;
+        private int _anchoredItemEnd = -1;
+
+        #endregion Field Region
+
+        #region Property Region
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public ObservableCollection<BrightListItem> Items
+        {
+            get { return _items; }
+            set
+            {
+                if (_items != null)
+                    _items.CollectionChanged -= Items_CollectionChanged;
+
+                _items = value;
+
+                _items.CollectionChanged += Items_CollectionChanged;
+
+                UpdateListBox();
+            }
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public List<int> SelectedIndices
+        {
+            get { return _selectedIndices; }
+        }
+
+        [Category("Appearance")]
+        [Description("Determines the height of the individual list view items.")]
+        [DefaultValue(20)]
+        public int ItemHeight
+        {
+            get { return _itemHeight; }
+            set
+            {
+                _itemHeight = value;
+                UpdateListBox();
+            }
+        }
+
+        [Category("Behaviour")]
+        [Description("Determines whether multiple list view items can be selected at once.")]
+        [DefaultValue(false)]
+        public bool MultiSelect { get; set; }
+
+        [Category("Appearance")]
+        [Description("Determines whether icons are rendered with the list items.")]
+        [DefaultValue(false)]
+        public bool ShowIcons { get; set; }
+
+        #endregion Property Region
+
+        #region Constructor Region
+
+        public ListView()
+        {
+            Items = new ObservableCollection<BrightListItem>();
+            _selectedIndices = new List<int>();
+        }
+
+        #endregion Constructor Region
+
+        #region Event Handler Region
+
+        private void Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                using (var g = CreateGraphics())
+                {
+                    // Set the area size of all new items
+                    foreach (BrightListItem item in e.NewItems)
+                    {
+                        item.TextChanged += Item_TextChanged;
+                        UpdateItemSize(item, g);
+                    }
+                }
+
+                // Find the starting index of the new item list and update anything past that
+                if (e.NewStartingIndex < (Items.Count - 1))
+                {
+                    for (var i = e.NewStartingIndex; i <= Items.Count - 1; i++)
+                    {
+                        UpdateItemPosition(Items[i], i);
+                    }
+                }
+            }
+
+            if (e.OldItems != null)
+            {
+                foreach (BrightListItem item in e.OldItems)
+                    item.TextChanged -= Item_TextChanged;
+
+                // Find the starting index of the old item list and update anything past that
+                if (e.OldStartingIndex < (Items.Count - 1))
+                {
+                    for (var i = e.OldStartingIndex; i <= Items.Count - 1; i++)
+                    {
+                        UpdateItemPosition(Items[i], i);
+                    }
+                }
+            }
+
+            if (Items.Count == 0)
+            {
+                if (_selectedIndices.Count > 0)
+                {
+                    _selectedIndices.Clear();
+
+                    SelectedIndicesChanged?.Invoke(this, null);
+                }
+            }
+
+            UpdateContentSize();
+        }
+
+        private void Item_TextChanged(object sender, EventArgs e)
+        {
+            var item = (BrightListItem)sender;
+
+            UpdateItemSize(item);
+            UpdateContentSize(item);
+            Invalidate();
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+
+            if (Items.Count == 0)
+                return;
+
+            if (e.Button != MouseButtons.Left && e.Button != MouseButtons.Right)
+                return;
+
+            var pos = OffsetMousePosition;
+
+            var range = ItemIndexesInView().ToList();
+
+            var top = range.Min();
+            var bottom = range.Max();
+            var width = Math.Max(ContentSize.Width, Viewport.Width);
+
+            for (var i = top; i <= bottom; i++)
+            {
+                var rect = new Rectangle(0, i * ItemHeight, width, ItemHeight);
+
+                if (rect.Contains(pos))
+                {
+                    if (MultiSelect && ModifierKeys == Keys.Shift)
+                        SelectAnchoredRange(i);
+                    else if (MultiSelect && ModifierKeys == Keys.Control)
+                        ToggleItem(i);
+                    else
+                        SelectItem(i);
+                }
+            }
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+
+            if (Items.Count == 0)
+                return;
+
+            if (e.KeyCode != Keys.Down && e.KeyCode != Keys.Up)
+                return;
+
+            if (MultiSelect && ModifierKeys == Keys.Shift)
+            {
+                if (e.KeyCode == Keys.Up)
+                {
+                    if (_anchoredItemEnd - 1 >= 0)
+                    {
+                        SelectAnchoredRange(_anchoredItemEnd - 1);
+                        EnsureVisible();
+                    }
+                }
+                else if (e.KeyCode == Keys.Down)
+                {
+                    if (_anchoredItemEnd + 1 <= Items.Count - 1)
+                    {
+                        SelectAnchoredRange(_anchoredItemEnd + 1);
+                    }
+                }
+            }
+            else
+            {
+                if (e.KeyCode == Keys.Up)
+                {
+                    if (_anchoredItemEnd - 1 >= 0)
+                        SelectItem(_anchoredItemEnd - 1);
+                }
+                else if (e.KeyCode == Keys.Down)
+                {
+                    if (_anchoredItemEnd + 1 <= Items.Count - 1)
+                        SelectItem(_anchoredItemEnd + 1);
+                }
+            }
+
+            EnsureVisible();
+        }
+
+        #endregion Event Handler Region
+
+        #region Method Region
+
+        public int GetItemIndex(BrightListItem item)
+        {
+            return Items.IndexOf(item);
+        }
+
+        public void SelectItem(int index)
+        {
+            if (index < 0 || index > Items.Count - 1)
+                throw new IndexOutOfRangeException($"Value '{index}' is outside of valid range.");
+
+            _selectedIndices.Clear();
+            _selectedIndices.Add(index);
+
+            SelectedIndicesChanged?.Invoke(this, null);
+
+            _anchoredItemStart = index;
+            _anchoredItemEnd = index;
+
+            Invalidate();
+        }
+
+        public void SelectItems(IEnumerable<int> indexes)
+        {
+            _selectedIndices.Clear();
+
+            var list = indexes.ToList();
+
+            foreach (var index in list)
+            {
+                if (index < 0 || index > Items.Count - 1)
+                    throw new IndexOutOfRangeException($"Value '{index}' is outside of valid range.");
+
+                _selectedIndices.Add(index);
+            }
+
+            SelectedIndicesChanged?.Invoke(this, null);
+
+            _anchoredItemStart = list[list.Count - 1];
+            _anchoredItemEnd = list[list.Count - 1];
+
+            Invalidate();
+        }
+
+        public void ToggleItem(int index)
+        {
+            if (_selectedIndices.Contains(index))
+            {
+                _selectedIndices.Remove(index);
+
+                // If we just removed both the anchor start AND end then reset them
+                if (_anchoredItemStart == index && _anchoredItemEnd == index)
+                {
+                    if (_selectedIndices.Count > 0)
+                    {
+                        _anchoredItemStart = _selectedIndices[0];
+                        _anchoredItemEnd = _selectedIndices[0];
+                    }
+                    else
+                    {
+                        _anchoredItemStart = -1;
+                        _anchoredItemEnd = -1;
+                    }
+                }
+
+                // If we just removed the anchor start then update it accordingly
+                if (_anchoredItemStart == index)
+                {
+                    if (_anchoredItemEnd < index)
+                        _anchoredItemStart = index - 1;
+                    else if (_anchoredItemEnd > index)
+                        _anchoredItemStart = index + 1;
+                    else
+                        _anchoredItemStart = _anchoredItemEnd;
+                }
+
+                // If we just removed the anchor end then update it accordingly
+                if (_anchoredItemEnd == index)
+                {
+                    if (_anchoredItemStart < index)
+                        _anchoredItemEnd = index - 1;
+                    else if (_anchoredItemStart > index)
+                        _anchoredItemEnd = index + 1;
+                    else
+                        _anchoredItemEnd = _anchoredItemStart;
+                }
+            }
+            else
+            {
+                _selectedIndices.Add(index);
+                _anchoredItemStart = index;
+                _anchoredItemEnd = index;
+            }
+
+            SelectedIndicesChanged?.Invoke(this, null);
+
+            Invalidate();
+        }
+
+        public void SelectItems(int startRange, int endRange)
+        {
+            _selectedIndices.Clear();
+
+            if (startRange == endRange)
+                _selectedIndices.Add(startRange);
+
+            if (startRange < endRange)
+            {
+                for (var i = startRange; i <= endRange; i++)
+                    _selectedIndices.Add(i);
+            }
+            else if (startRange > endRange)
+            {
+                for (var i = startRange; i >= endRange; i--)
+                    _selectedIndices.Add(i);
+            }
+
+            SelectedIndicesChanged?.Invoke(this, null);
+
+            Invalidate();
+        }
+
+        private void SelectAnchoredRange(int index)
+        {
+            _anchoredItemEnd = index;
+            SelectItems(_anchoredItemStart, index);
+        }
+
+        private void UpdateListBox()
+        {
+            using (var g = CreateGraphics())
+            {
+                for (var i = 0; i <= Items.Count - 1; i++)
+                {
+                    var item = Items[i];
+                    UpdateItemSize(item, g);
+                    UpdateItemPosition(item, i);
+                }
+            }
+
+            UpdateContentSize();
+        }
+
+        private void UpdateItemSize(BrightListItem item)
+        {
+            using (var g = CreateGraphics())
+            {
+                UpdateItemSize(item, g);
+            }
+        }
+
+        private void UpdateItemSize(BrightListItem item, Graphics g)
+        {
+            var size = g.MeasureString(item.Text, Font);
+            size.Width++;
+
+            if (ShowIcons)
+                size.Width += _iconSize + 8;
+
+            item.Area = new Rectangle(item.Area.Left, item.Area.Top, (int)size.Width, item.Area.Height);
+        }
+
+        private void UpdateItemPosition(BrightListItem item, int index)
+        {
+            item.Area = new Rectangle(2, (index * ItemHeight), item.Area.Width, ItemHeight);
+        }
+
+        private void UpdateContentSize()
+        {
+            var highestWidth = 0;
+
+            foreach (var item in Items)
+            {
+                if (item.Area.Right + 1 > highestWidth)
+                    highestWidth = item.Area.Right + 1;
+            }
+
+            var width = highestWidth;
+            var height = Items.Count * ItemHeight;
+
+            if (ContentSize.Width != width || ContentSize.Height != height)
+            {
+                ContentSize = new Size(width, height);
+                Invalidate();
+            }
+        }
+
+        private void UpdateContentSize(BrightListItem item)
+        {
+            var itemWidth = item.Area.Right + 1;
+
+            if (itemWidth == ContentSize.Width)
+            {
+                UpdateContentSize();
+                return;
+            }
+
+            if (itemWidth > ContentSize.Width)
+            {
+                ContentSize = new Size(itemWidth, ContentSize.Height);
+                Invalidate();
+            }
+        }
+
+        public void EnsureVisible()
+        {
+            if (SelectedIndices.Count == 0)
+                return;
+
+            int itemTop;
+            if (!MultiSelect)
+                itemTop = SelectedIndices[0] * ItemHeight;
+            else
+                itemTop = _anchoredItemEnd * ItemHeight;
+
+            var itemBottom = itemTop + ItemHeight;
+
+            if (itemTop < Viewport.Top)
+                VScrollTo(itemTop);
+
+            if (itemBottom > Viewport.Bottom)
+                VScrollTo(itemBottom - Viewport.Height);
+        }
+
+        private IEnumerable<int> ItemIndexesInView()
+        {
+            var top = (Viewport.Top / ItemHeight) - 1;
+
+            if (top < 0)
+                top = 0;
+
+            var bottom = ((Viewport.Top + Viewport.Height) / ItemHeight) + 1;
+
+            if (bottom > Items.Count)
+                bottom = Items.Count;
+
+            var result = Enumerable.Range(top, bottom - top);
+            return result;
+        }
+
+        #endregion Method Region
+
+        #region Paint Region
+
+        protected override void PaintContent(Graphics g)
+        {
+            var range = ItemIndexesInView().ToList();
+
+            if (range.Count == 0)
+                return;
+
+            var top = range.Min();
+            var bottom = range.Max();
+
+            for (var i = top; i <= bottom; i++)
+            {
+                var width = Math.Max(ContentSize.Width, Viewport.Width);
+                var rect = new Rectangle(0, i * ItemHeight, width, ItemHeight);
+
+                // Background
+                var odd = i % 2 != 0;
+                var bgColor = !odd ? Styles.ListView.HeaderBackgroundColor : Styles.ListView.BackgroundColor;
+
+                if (SelectedIndices.Count > 0 && SelectedIndices.Contains(i))
+                    bgColor = Focused ? Styles.Control.ColorSelectionBackgroundColor : Styles.Control.SelectionBackgroundColor;
+
+                using (var b = new SolidBrush(bgColor))
+                {
+                    g.FillRectangle(b, rect);
+                }
+
+                // DEBUG: Border
+                /*using (var p = new Pen(Colors.BrightBorder))
+                {
+                    g.DrawLine(p, new Point(rect.Left, rect.Bottom - 1), new Point(rect.Right, rect.Bottom - 1));
+                }*/
+
+                // Icon
+                if (ShowIcons && Items[i].Icon != null)
+                {
+                    g.DrawImageUnscaled(Items[i].Icon, new Point(rect.Left + 5, rect.Top + (rect.Height / 2) - (_iconSize / 2)));
+                }
+
+                // Text
+                using (var b = new SolidBrush(Items[i].TextColor))
+                {
+                    var stringFormat = new StringFormat
+                    {
+                        Alignment = StringAlignment.Near,
+                        LineAlignment = StringAlignment.Center
+                    };
+
+                    var modFont = new Font(Font, Items[i].FontStyle);
+
+                    var modRect = new Rectangle(rect.Left + 2, rect.Top, rect.Width, rect.Height);
+
+                    if (ShowIcons)
+                        modRect.X += _iconSize + 8;
+
+                    g.DrawString(Items[i].Text, modFont, b, modRect, stringFormat);
+                }
+            }
+        }
+
+        #endregion Paint Region
+    }
+
+    public class BrightListItem
+    {
+        #region Event Region
+
+        public event EventHandler TextChanged;
+
+        #endregion Event Region
+
+        #region Field Region
+
+        private string _text;
+
+        #endregion Field Region
+
+        #region Property Region
+
+        public string Text
+        {
+            get { return _text; }
+            set
+            {
+                _text = value;
+
+                TextChanged?.Invoke(this, new EventArgs());
+            }
+        }
+
+        public Rectangle Area { get; set; }
+
+        public Color TextColor { get; set; }
+
+        public FontStyle FontStyle { get; set; }
+
+        public Bitmap Icon { get; set; }
+
+        public object Tag { get; set; }
+
+        #endregion Property Region
+
+        #region Constructor Region
+
+        public BrightListItem()
+        {
+            TextColor = Styles.Control.Color;
+            FontStyle = FontStyle.Regular;
+        }
+
+        public BrightListItem(string text)
+            : this()
+        {
+            Text = text;
+        }
+
+        #endregion Constructor Region
+    }
+}

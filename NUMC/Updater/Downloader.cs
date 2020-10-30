@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Updater
 {
-    public partial class Downloader : NDialog
+    public partial class Downloader : Dialog
     {
         private readonly WebClient client = new WebClient();
         private readonly FileInfo file;

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.CodeTextBox = new NUMC.Design.Bright.BrightTextBox();
-            this.ToolsMenuStrip = new NUMC.Design.Bright.BrightMenuStrip();
+            this.CodeTextBox = new Design.Controls.TextBox();
+            this.ToolsMenuStrip = new NUMC.Design.Controls.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditingModeCheckBox = new NUMC.Design.Bright.BrightCheckBox();
-            this.CleanUpButton = new NUMC.Design.Bright.BrightButton();
-            this.FindKeyButton = new NUMC.Design.Bright.BrightButton();
+            this.EditingModeCheckBox = new NUMC.Design.Controls.CheckBox();
+            this.CleanUpButton = new NUMC.Design.Controls.Button();
+            this.FindKeyButton = new NUMC.Design.Controls.Button();
             this.TipBox = new System.Windows.Forms.ToolTip(this.components);
             this.ToolsMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -51,10 +51,8 @@
             this.CodeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CodeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.CodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CodeTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CodeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.CodeTextBox.Location = new System.Drawing.Point(12, 62);
             this.CodeTextBox.Multiline = true;
             this.CodeTextBox.Name = "CodeTextBox";
@@ -66,9 +64,7 @@
             // ToolsMenuStrip
             // 
             this.ToolsMenuStrip.AutoSize = false;
-            this.ToolsMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ToolsMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.ToolsMenuStrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.ToolsMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
             this.EditToolStripMenuItem});
@@ -81,16 +77,12 @@
             // 
             // FileToolStripMenuItem
             // 
-            this.FileToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.FileToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.FileToolStripMenuItem.Text = "File (&F)";
             // 
             // EditToolStripMenuItem
             // 
-            this.EditToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.EditToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             this.EditToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.EditToolStripMenuItem.Text = "Edit (&E)";
@@ -145,7 +137,7 @@
             this.Controls.Add(this.EditingModeCheckBox);
             this.Controls.Add(this.ToolsMenuStrip);
             this.Controls.Add(this.CodeTextBox);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
+            this.DialogButtons = NUMC.Design.Controls.MessageBoxButtons.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Name = "JsonEditorDialog";
             this.Text = "EditJsonDialog";
@@ -165,13 +157,14 @@
         }
 
         #endregion
-        private Design.Bright.BrightTextBox CodeTextBox;
-        private Design.Bright.BrightMenuStrip ToolsMenuStrip;
+
+        private Design.Controls.TextBox CodeTextBox;
+        private Design.Controls.MenuStrip ToolsMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
-        private Design.Bright.BrightCheckBox EditingModeCheckBox;
-        private Design.Bright.BrightButton CleanUpButton;
-        private Design.Bright.BrightButton FindKeyButton;
+        private Design.Controls.CheckBox EditingModeCheckBox;
+        private Design.Controls.Button CleanUpButton;
+        private Design.Controls.Button FindKeyButton;
         private System.Windows.Forms.ToolTip TipBox;
     }
 }

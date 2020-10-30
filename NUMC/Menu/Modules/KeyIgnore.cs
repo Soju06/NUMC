@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Menu.Modules
 {
-    public class KeyIgnore : IMenuModule
+    public class KeyIgnore : IKeyMenuModule
     {
         public KeyIgnore()
         {
@@ -17,6 +17,8 @@ namespace NUMC.Menu.Modules
 
             Item.Click += Item_Click;
         }
+
+        public int Index => 2;
 
         private readonly ToolStripMenuItem Item;
         private readonly ToolStripSeparator Item1;

@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Button1 = new NUMC.Design.Bright.BrightButton();
-            this.Button2 = new NUMC.Design.Bright.BrightButton();
-            this.Button3 = new NUMC.Design.Bright.BrightButton();
-            this.Button4 = new NUMC.Design.Bright.BrightButton();
-            this.Button5 = new NUMC.Design.Bright.BrightButton();
-            this.Button6 = new NUMC.Design.Bright.BrightButton();
-            this.Button7 = new NUMC.Design.Bright.BrightButton();
-            this.Button8 = new NUMC.Design.Bright.BrightButton();
-            this.Button9 = new NUMC.Design.Bright.BrightButton();
-            this.Button10 = new NUMC.Design.Bright.BrightButton();
-            this.Button11 = new NUMC.Design.Bright.BrightButton();
-            this.Button12 = new NUMC.Design.Bright.BrightButton();
-            this.Button13 = new NUMC.Design.Bright.BrightButton();
-            this.Button14 = new NUMC.Design.Bright.BrightButton();
-            this.Button15 = new NUMC.Design.Bright.BrightButton();
-            this.Button16 = new NUMC.Design.Bright.BrightButton();
-            this.Button17 = new NUMC.Design.Bright.BrightButton();
+            this.Button1 = new NUMC.Design.Controls.Button();
+            this.Button2 = new NUMC.Design.Controls.Button();
+            this.Button3 = new NUMC.Design.Controls.Button();
+            this.Button4 = new NUMC.Design.Controls.Button();
+            this.Button5 = new NUMC.Design.Controls.Button();
+            this.Button6 = new NUMC.Design.Controls.Button();
+            this.Button7 = new NUMC.Design.Controls.Button();
+            this.Button8 = new NUMC.Design.Controls.Button();
+            this.Button9 = new NUMC.Design.Controls.Button();
+            this.Button10 = new NUMC.Design.Controls.Button();
+            this.Button11 = new NUMC.Design.Controls.Button();
+            this.Button12 = new NUMC.Design.Controls.Button();
+            this.Button13 = new NUMC.Design.Controls.Button();
+            this.Button14 = new NUMC.Design.Controls.Button();
+            this.Button15 = new NUMC.Design.Controls.Button();
+            this.Button16 = new NUMC.Design.Controls.Button();
+            this.Button17 = new NUMC.Design.Controls.Button();
             this.SuspendLayout();
             // 
             // Button1
@@ -264,22 +264,22 @@
 
         #endregion
 
-        private Design.Bright.BrightButton Button1;
-        private Design.Bright.BrightButton Button2;
-        private Design.Bright.BrightButton Button3;
-        private Design.Bright.BrightButton Button4;
-        private Design.Bright.BrightButton Button5;
-        private Design.Bright.BrightButton Button6;
-        private Design.Bright.BrightButton Button7;
-        private Design.Bright.BrightButton Button8;
-        private Design.Bright.BrightButton Button9;
-        private Design.Bright.BrightButton Button10;
-        private Design.Bright.BrightButton Button11;
-        private Design.Bright.BrightButton Button12;
-        private Design.Bright.BrightButton Button13;
-        private Design.Bright.BrightButton Button14;
-        private Design.Bright.BrightButton Button15;
-        private Design.Bright.BrightButton Button16;
-        private Design.Bright.BrightButton Button17;
+        private Design.Controls.Button Button1;
+        private Design.Controls.Button Button2;
+        private Design.Controls.Button Button3;
+        private Design.Controls.Button Button4;
+        private Design.Controls.Button Button5;
+        private Design.Controls.Button Button6;
+        private Design.Controls.Button Button7;
+        private Design.Controls.Button Button8;
+        private Design.Controls.Button Button9;
+        private Design.Controls.Button Button10;
+        private Design.Controls.Button Button11;
+        private Design.Controls.Button Button12;
+        private Design.Controls.Button Button13;
+        private Design.Controls.Button Button14;
+        private Design.Controls.Button Button15;
+        private Design.Controls.Button Button16;
+        private Design.Controls.Button Button17;
     }
 }

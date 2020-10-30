@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.EventsView = new NUMC.Design.Bright.BrightListView();
-            this.AddDelayButton = new NUMC.Design.Bright.BrightButton();
-            this.RemoveButton = new NUMC.Design.Bright.BrightButton();
-            this.AddKeystrokeButton = new NUMC.Design.Bright.BrightButton();
+            this.EventsView = new NUMC.Design.Controls.ListView();
+            this.AddDelayButton = new NUMC.Design.Controls.Button();
+            this.RemoveButton = new NUMC.Design.Controls.Button();
+            this.AddKeystrokeButton = new NUMC.Design.Controls.Button();
             this.TipBox = new System.Windows.Forms.ToolTip(this.components);
-            this.MovedownButton = new NUMC.Design.Bright.BrightButton();
-            this.MoveupButton = new NUMC.Design.Bright.BrightButton();
-            this.AddFunctionButton = new NUMC.Design.Bright.BrightButton();
-            this.GotoFunctionButton = new NUMC.Design.Bright.BrightButton();
-            this.AddKeyUpAllButton = new NUMC.Design.Bright.BrightButton();
-            this.AddExitButton = new NUMC.Design.Bright.BrightButton();
-            this.AddTextInputButton = new NUMC.Design.Bright.BrightButton();
-            this.RemoveAllButton = new NUMC.Design.Bright.BrightButton();
-            this.ModuleButton = new NUMC.Design.Bright.BrightButton();
-            this.ModuleContextMenu = new NUMC.Design.Bright.BrightContextMenu();
+            this.MovedownButton = new NUMC.Design.Controls.Button();
+            this.MoveupButton = new NUMC.Design.Controls.Button();
+            this.AddFunctionButton = new NUMC.Design.Controls.Button();
+            this.GotoFunctionButton = new NUMC.Design.Controls.Button();
+            this.AddKeyUpAllButton = new NUMC.Design.Controls.Button();
+            this.AddExitButton = new NUMC.Design.Controls.Button();
+            this.AddTextInputButton = new NUMC.Design.Controls.Button();
+            this.RemoveAllButton = new NUMC.Design.Controls.Button();
+            this.ModuleButton = new NUMC.Design.Controls.Button();
+            this.ModuleContextMenu = new NUMC.Design.Controls.ContextMenuStrip();
             this.SuspendLayout();
             // 
             // titleBar
@@ -58,20 +58,18 @@
             this.EventsView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EventsView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.EventsView.Location = new System.Drawing.Point(12, 45);
             this.EventsView.Name = "EventsView";
-            this.EventsView.Size = new System.Drawing.Size(395, 487);
+            this.EventsView.Size = new System.Drawing.Size(489, 487);
             this.EventsView.TabIndex = 10;
             this.EventsView.Text = "darkListView1";
             this.EventsView.MouseEnter += new System.EventHandler(this.EventsView_MouseEnter);
             this.EventsView.MouseLeave += new System.EventHandler(this.EventsView_MouseLeave);
-            this.EventsView.MouseHover += new System.EventHandler(this.EventsView_MouseHover);
             // 
             // AddDelayButton
             // 
             this.AddDelayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddDelayButton.Location = new System.Drawing.Point(413, 111);
+            this.AddDelayButton.Location = new System.Drawing.Point(507, 111);
             this.AddDelayButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.AddDelayButton.Name = "AddDelayButton";
             this.AddDelayButton.Padding = new System.Windows.Forms.Padding(5);
@@ -83,7 +81,7 @@
             // RemoveButton
             // 
             this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveButton.Location = new System.Drawing.Point(413, 474);
+            this.RemoveButton.Location = new System.Drawing.Point(507, 474);
             this.RemoveButton.Name = "RemoveButton";
             this.RemoveButton.Padding = new System.Windows.Forms.Padding(5);
             this.RemoveButton.Size = new System.Drawing.Size(127, 24);
@@ -94,7 +92,7 @@
             // AddKeystrokeButton
             // 
             this.AddKeystrokeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddKeystrokeButton.Location = new System.Drawing.Point(413, 51);
+            this.AddKeystrokeButton.Location = new System.Drawing.Point(507, 51);
             this.AddKeystrokeButton.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.AddKeystrokeButton.Name = "AddKeystrokeButton";
             this.AddKeystrokeButton.Padding = new System.Windows.Forms.Padding(5);
@@ -115,7 +113,7 @@
             // MovedownButton
             // 
             this.MovedownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MovedownButton.Location = new System.Drawing.Point(413, 333);
+            this.MovedownButton.Location = new System.Drawing.Point(507, 333);
             this.MovedownButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.MovedownButton.Name = "MovedownButton";
             this.MovedownButton.Padding = new System.Windows.Forms.Padding(5);
@@ -127,7 +125,7 @@
             // MoveupButton
             // 
             this.MoveupButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MoveupButton.Location = new System.Drawing.Point(413, 303);
+            this.MoveupButton.Location = new System.Drawing.Point(507, 303);
             this.MoveupButton.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.MoveupButton.Name = "MoveupButton";
             this.MoveupButton.Padding = new System.Windows.Forms.Padding(5);
@@ -139,7 +137,7 @@
             // AddFunctionButton
             // 
             this.AddFunctionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddFunctionButton.Location = new System.Drawing.Point(413, 155);
+            this.AddFunctionButton.Location = new System.Drawing.Point(507, 155);
             this.AddFunctionButton.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.AddFunctionButton.Name = "AddFunctionButton";
             this.AddFunctionButton.Padding = new System.Windows.Forms.Padding(5);
@@ -151,7 +149,7 @@
             // GotoFunctionButton
             // 
             this.GotoFunctionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GotoFunctionButton.Location = new System.Drawing.Point(413, 185);
+            this.GotoFunctionButton.Location = new System.Drawing.Point(507, 185);
             this.GotoFunctionButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.GotoFunctionButton.Name = "GotoFunctionButton";
             this.GotoFunctionButton.Padding = new System.Windows.Forms.Padding(5);
@@ -163,7 +161,7 @@
             // AddKeyUpAllButton
             // 
             this.AddKeyUpAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddKeyUpAllButton.Location = new System.Drawing.Point(413, 229);
+            this.AddKeyUpAllButton.Location = new System.Drawing.Point(507, 229);
             this.AddKeyUpAllButton.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.AddKeyUpAllButton.Name = "AddKeyUpAllButton";
             this.AddKeyUpAllButton.Padding = new System.Windows.Forms.Padding(5);
@@ -175,7 +173,7 @@
             // AddExitButton
             // 
             this.AddExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddExitButton.Location = new System.Drawing.Point(413, 259);
+            this.AddExitButton.Location = new System.Drawing.Point(507, 259);
             this.AddExitButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.AddExitButton.Name = "AddExitButton";
             this.AddExitButton.Padding = new System.Windows.Forms.Padding(5);
@@ -187,7 +185,7 @@
             // AddTextInputButton
             // 
             this.AddTextInputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddTextInputButton.Location = new System.Drawing.Point(413, 81);
+            this.AddTextInputButton.Location = new System.Drawing.Point(507, 81);
             this.AddTextInputButton.Name = "AddTextInputButton";
             this.AddTextInputButton.Padding = new System.Windows.Forms.Padding(5);
             this.AddTextInputButton.Size = new System.Drawing.Size(127, 24);
@@ -198,7 +196,7 @@
             // RemoveAllButton
             // 
             this.RemoveAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveAllButton.Location = new System.Drawing.Point(413, 504);
+            this.RemoveAllButton.Location = new System.Drawing.Point(507, 504);
             this.RemoveAllButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.RemoveAllButton.Name = "RemoveAllButton";
             this.RemoveAllButton.Padding = new System.Windows.Forms.Padding(5);
@@ -210,7 +208,7 @@
             // ModuleButton
             // 
             this.ModuleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModuleButton.Location = new System.Drawing.Point(413, 377);
+            this.ModuleButton.Location = new System.Drawing.Point(507, 377);
             this.ModuleButton.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.ModuleButton.Name = "ModuleButton";
             this.ModuleButton.Padding = new System.Windows.Forms.Padding(5);
@@ -221,16 +219,16 @@
             // 
             // ModuleContextMenu
             // 
-            this.ModuleContextMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ModuleContextMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ModuleContextMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.ModuleContextMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.ModuleContextMenu.Name = "ModuleContextMenu";
-            this.ModuleContextMenu.Size = new System.Drawing.Size(61, 4);
+            this.ModuleContextMenu.Size = new System.Drawing.Size(181, 26);
             // 
             // MacroSettingDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 587);
+            this.ClientSize = new System.Drawing.Size(642, 587);
             this.Controls.Add(this.AddTextInputButton);
             this.Controls.Add(this.MoveupButton);
             this.Controls.Add(this.ModuleButton);
@@ -266,20 +264,20 @@
         }
 
         #endregion
-        private Design.Bright.BrightListView EventsView;
-        private Design.Bright.BrightButton RemoveButton;
-        private Design.Bright.BrightButton AddKeystrokeButton;
+        private Design.Controls.ListView EventsView;
+        private Design.Controls.Button RemoveButton;
+        private Design.Controls.Button AddKeystrokeButton;
         private System.Windows.Forms.ToolTip TipBox;
-        private Design.Bright.BrightButton MovedownButton;
-        private Design.Bright.BrightButton MoveupButton;
-        private Design.Bright.BrightButton AddFunctionButton;
-        private Design.Bright.BrightButton GotoFunctionButton;
-        private Design.Bright.BrightButton AddKeyUpAllButton;
-        private Design.Bright.BrightButton AddExitButton;
-        private Design.Bright.BrightButton AddTextInputButton;
-        private Design.Bright.BrightButton RemoveAllButton;
-        private Design.Bright.BrightButton AddDelayButton;
-        private Design.Bright.BrightButton ModuleButton;
-        private Design.Bright.BrightContextMenu ModuleContextMenu;
+        private Design.Controls.Button MovedownButton;
+        private Design.Controls.Button MoveupButton;
+        private Design.Controls.Button AddFunctionButton;
+        private Design.Controls.Button GotoFunctionButton;
+        private Design.Controls.Button AddKeyUpAllButton;
+        private Design.Controls.Button AddExitButton;
+        private Design.Controls.Button AddTextInputButton;
+        private Design.Controls.Button RemoveAllButton;
+        private Design.Controls.Button AddDelayButton;
+        private Design.Controls.Button ModuleButton;
+        private Design.Controls.ContextMenuStrip ModuleContextMenu;
     }
 }

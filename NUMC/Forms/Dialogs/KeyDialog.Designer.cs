@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainComboBox = new NUMC.Design.Bright.BrightComboBox();
+            this.MainComboBox = new NUMC.Design.Controls.ComboBox();
             this.hookingControl = new NUMC.Forms.Controls.HookingControl();
             this.SuspendLayout();
             // 
@@ -67,7 +67,7 @@
             this.ClientSize = new System.Drawing.Size(313, 183);
             this.Controls.Add(this.hookingControl);
             this.Controls.Add(this.MainComboBox);
-            this.DialogButtons = NUMC.Design.Bright.MessageBoxButtons.OkCancel;
+            this.DialogButtons = NUMC.Design.Controls.MessageBoxButtons.OkCancel;
             this.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "KeyDialog";
@@ -84,7 +84,7 @@
 
         #endregion
 
-        private Design.Bright.BrightComboBox MainComboBox;
+        private Design.Controls.ComboBox MainComboBox;
         private Controls.HookingControl hookingControl;
     }
 }

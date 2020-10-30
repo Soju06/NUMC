@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs
 {
-    public partial class KeyDialog : NDialog
+    public partial class KeyDialog : Dialog
     {
         public Keys SelectItem { get; internal set; }
         public string InfoURI { get; internal set; }

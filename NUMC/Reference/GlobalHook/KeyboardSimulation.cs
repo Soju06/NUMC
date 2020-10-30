@@ -1,4 +1,4 @@
-﻿using static Hook.WinAPI;
+﻿using WinUtils;
 
 namespace Hook
 {
@@ -9,16 +9,16 @@ namespace Hook
             switch (type)
             {
                 case KeyboardEventType.KEYDOWN:
-                    keybd_event((byte)vkCode, 0x00, 0x00, 0);
+                    WinAPI.Keybd_event((byte)vkCode, 0x00, 0x00, 0);
                     break;
 
                 case KeyboardEventType.KEYUP:
-                    keybd_event((byte)vkCode, 0x00, 0x02, 0);
+                    WinAPI.Keybd_event((byte)vkCode, 0x00, 0x02, 0);
                     break;
 
                 case KeyboardEventType.KEYCLICK:
-                    keybd_event((byte)vkCode, 0x00, 0x00, 0);
-                    keybd_event((byte)vkCode, 0x00, 0x02, 0);
+                    WinAPI.Keybd_event((byte)vkCode, 0x00, 0x00, 0);
+                    WinAPI.Keybd_event((byte)vkCode, 0x00, 0x02, 0);
                     break;
             }
         }

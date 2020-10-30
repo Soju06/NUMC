@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUMC.Design.Controls;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -17,9 +18,9 @@ namespace NUMC.Design
             titleBar.TabIndex = 0;
             titleBar.TabStop = false;
             Controls.Add(titleBar);
-            BackColor = Color.White;
+            BackColor = Styles.Form.BackgroundColor;
             Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ForeColor = Color.FromArgb(20, 20, 20);
+            ForeColor = Styles.Form.Color;
             FormBorderStyle = FormBorderStyle.None;
             MinimumSize = new Size(189, 108);
             ResumeLayout(false);
@@ -35,9 +36,7 @@ namespace NUMC.Design
             DoubleBuffered = true;
             SetStyle(ControlStyles.ResizeRedraw, true);
 
-            SetStyle(ControlStyles.DoubleBuffer, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
         }
 
         private void NForm_Load(object sender, EventArgs e)

@@ -61,12 +61,11 @@ namespace NUMC.Language {
         }
         
         /// <summary>
-        ///   If there is a mouse in the text box, key hooking starts.
-        ///Hooking is in progress.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Current Settings: {0}과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string CustomKeyDialog_KeyHook_Tip_Caption {
+        internal static string ApplicationMenu_CurrentSettings {
             get {
-                return ResourceManager.GetString("CustomKeyDialog_KeyHook_Tip_Caption", resourceCulture);
+                return ResourceManager.GetString("ApplicationMenu_CurrentSettings", resourceCulture);
             }
         }
         
@@ -76,17 +75,6 @@ namespace NUMC.Language {
         internal static string CustomKeyDialog_KeyHook_Tip_Title {
             get {
                 return ResourceManager.GetString("CustomKeyDialog_KeyHook_Tip_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Some special keys cannot be used. (WinKey)
-        ///Combines with short text input and simple shortcut designation.
-        ///Press and release is not possible.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CustomKeyDialog_SendKeys_Caption {
-            get {
-                return ResourceManager.GetString("CustomKeyDialog_SendKeys_Caption", resourceCulture);
             }
         }
         
@@ -127,34 +115,11 @@ namespace NUMC.Language {
         }
         
         /// <summary>
-        ///   You can control the entire keyboard.
-        ///Press and release support.
-        ///Suitable for specifying shortcut keys.
-        ///Illegal for text input.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CustomKeyDialog_VirtualKey_Caption {
-            get {
-                return ResourceManager.GetString("CustomKeyDialog_VirtualKey_Caption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Virtual key과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string CustomKeyDialog_VirtualKey_Name {
             get {
                 return ResourceManager.GetString("CustomKeyDialog_VirtualKey_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Allows full keyboard control.
-        ///Suitable for single shortcuts that do not use press and release.
-        ///Press and release is not possible.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CustomKeyDialog_VirtualSendKeys_Caption {
-            get {
-                return ResourceManager.GetString("CustomKeyDialog_VirtualSendKeys_Caption", resourceCulture);
             }
         }
         

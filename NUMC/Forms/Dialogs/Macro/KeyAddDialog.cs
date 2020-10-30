@@ -1,12 +1,10 @@
 ﻿using Hook;
-using NUMC.Design;
-using NUMC.Design.Bright;
 using System;
 using System.Windows.Forms;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class KeyAddDialog : NDialog
+    public partial class KeyAddDialog : Design.Dialog
     {
         public Keys Key { get; internal set; }
         public KeyboardEventType KeystrokeType { get; internal set; } = KeyboardEventType.KEYCLICK;
@@ -52,8 +50,8 @@ namespace NUMC.Forms.Dialogs.Macro
 
         private void TypeRadio_Changed(object sender, EventArgs e)
         {
-            if (((BrightRadioButton)sender).Checked)
-                KeystrokeType = (KeyboardEventType)((BrightRadioButton)sender).Tag;
+            if (((Design.Controls.RadioButton)sender).Checked)
+                KeystrokeType = (KeyboardEventType)((Design.Controls.RadioButton)sender).Tag;
         }
 
         private void KeyAddDialog_FormClosing(object sender, FormClosingEventArgs e)

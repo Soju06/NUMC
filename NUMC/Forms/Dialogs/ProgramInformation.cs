@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace NUMC.Forms.Dialogs
 {
-    public partial class ProgramInformation : NDialog
+    public partial class ProgramInformation : Dialog
     {
         public ProgramInformation()
         {

@@ -3,7 +3,7 @@ using System;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class RunFileDialog : NDialog
+    public partial class RunFileDialog : Dialog
     {
         public string Path { get; internal set; }
         public string Args { get; internal set; }

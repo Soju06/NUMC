@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Forms.Controls
 {
-    public partial class HookingControl : UserControl
+    public partial class HookingControl : Design.Controls.UserControl
     {
         public event KeyChanged KeyChanged;
 
@@ -24,12 +24,6 @@ namespace NUMC.Forms.Controls
                 KeyChanged?.Invoke((Keys)vkCode);
 
             return !hook;
-        }
-
-        private void Label_MouseHover(object sender, EventArgs e)
-        {
-            TipBox.ToolTipTitle = Language.Language.CustomKeyDialog_KeyHook_Tip_Title;
-            TipBox.SetToolTip((Control)sender, Language.Language.CustomKeyDialog_KeyHook_Tip_Caption);
         }
 
         private void Label_MouseEnter(object sender, EventArgs e)

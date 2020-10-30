@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ArgsTextBox = new NUMC.Design.Bright.BrightTextBox();
+            this.ArgsTextBox = new Design.Controls.TextBox();
             this.darkLabel1 = new System.Windows.Forms.Label();
             this.fileDropControl = new NUMC.Forms.Controls.FileDropControl();
             this.SuspendLayout();
@@ -44,10 +44,8 @@
             // 
             this.ArgsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ArgsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.ArgsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ArgsTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ArgsTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ArgsTextBox.Location = new System.Drawing.Point(12, 154);
             this.ArgsTextBox.Name = "ArgsTextBox";
             this.ArgsTextBox.Size = new System.Drawing.Size(548, 29);
@@ -99,7 +97,7 @@
         }
 
         #endregion
-        private Design.Bright.BrightTextBox ArgsTextBox;
+        private Design.Controls.TextBox ArgsTextBox;
         private System.Windows.Forms.Label darkLabel1;
         private Controls.FileDropControl fileDropControl;
     }

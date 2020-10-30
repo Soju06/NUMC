@@ -1,0 +1,9 @@
+V:\Csharp\NUMC\TestProgram\bin\Release\TestProgram.exe.config
+V:\Csharp\NUMC\TestProgram\bin\Release\TestProgram.exe
+V:\Csharp\NUMC\TestProgram\bin\Release\TestProgram.pdb
+V:\Csharp\NUMC\TestProgram\obj\Release\TestProgram.csprojAssemblyReference.cache
+V:\Csharp\NUMC\TestProgram\obj\Release\TestProgram.Properties.Resources.resources
+V:\Csharp\NUMC\TestProgram\obj\Release\TestProgram.csproj.GenerateResource.cache
+V:\Csharp\NUMC\TestProgram\obj\Release\TestProgram.csproj.CoreCompileInputs.cache
+V:\Csharp\NUMC\TestProgram\obj\Release\TestProgram.exe
+V:\Csharp\NUMC\TestProgram\obj\Release\TestProgram.pdb

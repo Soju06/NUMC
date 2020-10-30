@@ -1,10 +1,8 @@
-﻿using System;
+﻿using NUMC.Array;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NUMC.Plugin
@@ -20,9 +18,46 @@ namespace NUMC.Plugin
 
             return PluginDirectory.GetFiles("*.dll");
         }
+
         public static T[] ExtractPlugin<T>()
         {
-            return ExtractPlugin<T>(GetPlugins());
+            var items = new List<T>();
+
+            {
+                var item = ExtractPlugin<T>(Assembly.GetExecutingAssembly());
+
+                if (item != null)
+                    items.AddRange(item);
+            }
+            {
+                var item = ExtractPlugin<T>(GetPlugins());
+
+                if (item != null)
+                    items.AddRange(item);
+            }
+
+            if (items.Count > 1 && typeof(T).GetInterface("ISortIndex") == typeof(ISortIndex))
+            {
+                var ls = new List<ISortIndex>();
+
+                for (int i = 0; i < items.Count; i++)
+                    ls.Add(items[i] as ISortIndex);
+
+                var list = ls.ToArray();
+
+                Sort.QuickSort(list, 0, ls.Count - 1);
+
+                var l = new List<T>();
+
+                for (int i = 0; i < list.Length; i++)
+                    l.Add((T)list[i]);
+
+                // What should I do? 🤔
+
+                return l.ToArray();
+            }
+
+            return items.ToArray();
         }
 
         public static T[] ExtractPlugin<T>(FileInfo[] plugins)
@@ -30,12 +65,10 @@ namespace NUMC.Plugin
             if (plugins == null)
                 return null;
 
-            List<T> ts = new List<T>();
+            var ts = new List<T>();
 
             for (int i = 0; i < plugins.Length; i++)
-            {
                 ts.AddRange(ExtractPlugin<T>(plugins[i]));
-            }
 
             return ts.ToArray();
         }
@@ -45,21 +78,32 @@ namespace NUMC.Plugin
             if (plugin == null || !plugin.Exists)
                 return null;
 
-            Type type = typeof(T);
-            List<T> ts = new List<T>();
             try
             {
-                Assembly assembly = Assembly.LoadFile(plugin.FullName);
-                Type[] types = assembly.GetExportedTypes();
-
-                for (int i = 0; i < types.Length; i++)
-                    if (types[i].GetInterface(type.Name) == type)
-                        ts.Add((T)Activator.CreateInstance(types[i]));
+                return ExtractPlugin<T>(Assembly.LoadFile(plugin.FullName));
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Plugin load failed!\nFileName:{plugin.FullName}\n{ex}", "Plugin Handler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return null;
+        }
+
+        public static T[] ExtractPlugin<T>(Assembly assembly)
+        {
+            if (assembly == null)
+                return null;
+
+            Type type = typeof(T);
+            var ts = new List<T>();
+
+            Type[] types = assembly.GetExportedTypes();
+
+            for (int i = 0; i < types.Length; i++)
+                if (types[i].GetInterface(type.Name) == type)
+                    ts.Add((T)Activator.CreateInstance(types[i]));
+
             return ts.ToArray();
         }
     }

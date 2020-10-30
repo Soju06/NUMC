@@ -9,7 +9,7 @@ namespace NUMC.Updater
 {
     public class Updater
     {
-        public static readonly string CheckURI = @"https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Updates.json";
+        public static readonly string CheckURI = @"https://raw.github.com/SojuShoveling/NUMC/master/Updates.json";
 
         public static Updates Update { get; set; }
 

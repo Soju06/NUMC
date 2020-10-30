@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Forms.Controls
 {
-    public partial class FileDropControl : UserControl
+    public partial class FileDropControl : Design.Controls.UserControl
     {
         public event EventHandler FileChanged;
 

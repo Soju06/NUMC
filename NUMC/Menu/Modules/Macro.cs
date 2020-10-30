@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace NUMC.Menu.Modules
 {
-    public class Macro : IMenuModule
+    public class Macro : IKeyMenuModule
     {
         public Macro()
         {
@@ -24,15 +24,15 @@ namespace NUMC.Menu.Modules
             get
             {
                 Item.Text = Language.Language.Main_Macro;
-
                 return new ToolStripItem[] { Item };
             }
         }
 
+        public int Index => 1;
+
         public void MenuClicking(KeyObject keyObject, Keys selectedKey)
         {
             KeyObject = keyObject;
-
             Item.Checked =
             keyObject.KeyScript != null &&
             keyObject.KeyScript.Length >= 1 &&
@@ -53,7 +53,6 @@ namespace NUMC.Menu.Modules
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-
                 }
             }
         }

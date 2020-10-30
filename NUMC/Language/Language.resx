@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CustomKeyDialog_SendKeys_Caption" xml:space="preserve">
-    <value>Some special keys cannot be used. (WinKey)
-Combines with short text input and simple shortcut designation.
-Press and release is not possible.</value>
-    <comment>일부 특수키 사용이 불가능 합니다. (WinKey)
-짧은 문자열 입력, 간단한 단축키 지정에 접합합니다.
-눌렀다 떼기가 불가능합니다.</comment>
-  </data>
   <data name="CustomKeyDialog_SendKeys_Name" xml:space="preserve">
     <value>Primary key</value>
     <comment>기본 키</comment>
@@ -137,27 +129,9 @@ Press and release is not possible.</value>
     <value>Only string input is possible.</value>
     <comment>문자열 입력만 가능합니다.</comment>
   </data>
-  <data name="CustomKeyDialog_VirtualKey_Caption" xml:space="preserve">
-    <value>You can control the entire keyboard.
-Press and release support.
-Suitable for specifying shortcut keys.
-Illegal for text input.</value>
-    <comment>키보드 전체를 제어할 수 있습니다.
-눌렀다 떼기를 지원합니다.
-단축키 지정에 적합합니다.
-문자열 입력에 부적합합니다.</comment>
-  </data>
   <data name="CustomKeyDialog_VirtualKey_Name" xml:space="preserve">
     <value>Virtual key</value>
     <comment>가상 키</comment>
-  </data>
-  <data name="CustomKeyDialog_VirtualSendKeys_Caption" xml:space="preserve">
-    <value>Allows full keyboard control.
-Suitable for single shortcuts that do not use press and release.
-Press and release is not possible.</value>
-    <comment>키보드 전체를 제어할 수 있습니다.
-눌렀다 떼기를 사용하지 않은 단일 단축키에 적합합니다.
-눌렀다 떼기가 불가능합니다.</comment>
   </data>
   <data name="CustomKeyDialog_VirtualSendKeys_Name" xml:space="preserve">
     <value>Virtual simultaneous input</value>
@@ -201,12 +175,6 @@ Do you want to continue?</value>
   <data name="Setting_Portable" xml:space="preserve">
     <value>Portable</value>
     <comment>포터블</comment>
-  </data>
-  <data name="CustomKeyDialog_KeyHook_Tip_Caption" xml:space="preserve">
-    <value>If there is a mouse in the text box, key hooking starts.
-Hooking is in progress.</value>
-    <comment>텍스트 박스에 마우스가 있으면 키 후킹을 시작합니다.
-후킹 중 입니다.</comment>
   </data>
   <data name="CustomKeyDialog_KeyHook_Tip_Title" xml:space="preserve">
     <value>To use hooking...</value>
@@ -443,5 +411,9 @@ Mouse over here and press the key</value>
 {2}</value>
     <comment>{0} 모듈에서 {1} 예외가 발생하였습니다.
 {2}</comment>
+  </data>
+  <data name="ApplicationMenu_CurrentSettings" xml:space="preserve">
+    <value>Current Settings: {0}</value>
+    <comment>현재 설정: {0}</comment>
   </data>
 </root>

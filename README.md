@@ -1,7 +1,7 @@
 # NUMC
-쉽게 넘패드의 키를 매핑합니다.
+간단하게 넘패드의 키를 매핑합니다.
 
-# 설명
+# 설명 V1.0.3
 
 ## 키 지정
 
@@ -104,8 +104,6 @@ Json 편집기를 사용할 수 있습니다.
 설정 파일을 제거하면 설정은 초기화 됩니다.
 
 # 설명 업데이트 예정
-### 마지막 업데이트
-#### 1.0.0.0
 
 ## 설정 파일
 
@@ -167,5 +165,3 @@ Json 편집기를 사용할 수 있습니다.
 ```json
 "Language": "auto" // 언어 | en-us (기본값), ko-kr
 ```
-
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />이 저작물은 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.

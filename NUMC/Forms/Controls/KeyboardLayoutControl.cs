@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Drawing;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NUMC.Forms.Controls
 {
-    public class KeyboardLayoutControl : UserControl, IKeyboardLayout
+    public class KeyboardLayoutControl : Design.Controls.UserControl, IKeyboardLayout
     {
         new public event Click Click;
+
         new public event MouseClick MouseClick;
+
         new public event DoubleClick DoubleClick;
 
         private IKeyboardLayout _keyboardLayout;
+
         public IKeyboardLayout KeyboardLayout
         {
             get
@@ -80,12 +79,16 @@ namespace NUMC.Forms.Controls
             if (_keyboardLayout == null)
                 return;
 
-            var control = (UserControl)_keyboardLayout;
+            var control = (Design.Controls.UserControl)_keyboardLayout;
             var miniSize = control.MinimumSize.IsEmpty ? control.Size : control.MinimumSize;
             var maxSize = control.MaximumSize.IsEmpty ? control.Size : control.MaximumSize;
+            var size = control.Size;
 
-            form.MinimumSize = CalcSize(miniSize);
             form.MaximumSize = CalcSize(maxSize);
+            form.MinimumSize = CalcSize(miniSize);
+            form.Size = CalcSize(size);
+
+            control.Size = size;
         }
 
         private Size CalcSize(Size insize)
@@ -96,13 +99,13 @@ namespace NUMC.Forms.Controls
 
         private bool SetLayout(IKeyboardLayout layout)
         {
-            if (layout == null || !layout.GetType().IsSubclassOf(typeof(UserControl)))
+            if (layout == null || !layout.GetType().IsSubclassOf(typeof(Design.Controls.UserControl)))
                 return false;
 
             SuspendLayout();
             ClearControls();
 
-            var control = (UserControl)layout;
+            var control = (Design.Controls.UserControl)layout;
 
             Controls.Add(control);
 
@@ -139,10 +142,10 @@ namespace NUMC.Forms.Controls
         {
             IKeyboardLayout[] layouts = Plugin.Handler.ExtractPlugin<IKeyboardLayout>();
 
-            if(layouts != null)
+            if (layouts != null)
                 for (int i = 0; i < layouts.Length; i++)
                 {
-                    if (layouts[i] != null && layouts[i].GetType().IsSubclassOf(typeof(UserControl)))
+                    if (layouts[i] != null && layouts[i].GetType().IsSubclassOf(typeof(Design.Controls.UserControl)))
                     {
                         KeyboardLayout = layouts[i];
                         break;

@@ -1,14 +1,9 @@
-﻿using Hook;
-using NUMC.Design;
+﻿using NUMC.Design;
 using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Windows.Forms;
-using WindowsInput.Native;
 
 namespace NUMC.Forms.Dialogs.Macro
 {
-    public partial class FunctionAddDialog : NDialog
+    public partial class FunctionAddDialog : Dialog
     {
         public string Value { get; internal set; }
 

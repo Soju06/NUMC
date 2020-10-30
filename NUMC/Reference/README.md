@@ -39,7 +39,7 @@ Controls preview
 [DarkUI](http://www.darkui.com/)
 [Nuget](https://www.nuget.org/packages/DarkUI/2.0.2/ReportAbuse)
 [Github](https://github.com/RobinPerris/DarkUI)
-[License MIT](https://licenses.nuget.org/MIT)
+[License MIT](https://raw.githubusercontent.com/RobinPerris/DarkUI/master/LICENSE)
 
 # GlobalHook
 
