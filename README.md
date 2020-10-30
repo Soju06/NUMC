@@ -1,138 +1,138 @@
 # NUMC
-½±°Ô ³ÑÆÐµåÀÇ Å°¸¦ ¸ÅÇÎÇÕ´Ï´Ù.
+ì‰½ê²Œ ë„˜íŒ¨ë“œì˜ í‚¤ë¥¼ ë§¤í•‘í•©ë‹ˆë‹¤.
 
-# ¼³¸í
+# ì„¤ëª…
 
-## Å° ÁöÁ¤
+## í‚¤ ì§€ì •
 
-### Å° ÁöÁ¤ ¹æ¹ý
+### í‚¤ ì§€ì • ë°©ë²•
 
 ![Form](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/1.png)
 
-[Form](https://github.com/SojuShoveling/NUMC/blob/master/Images/SCREENSHOT/1.png) ¿¡¼­ ÁöÁ¤ÇÏ°í ½ÍÀº Å°¸¦ ¸¶¿ì½º Å¬¸¯ÇÕ´Ï´Ù.
+[Form](https://github.com/SojuShoveling/NUMC/blob/master/Images/SCREENSHOT/1.png) ì—ì„œ ì§€ì •í•˜ê³  ì‹¶ì€ í‚¤ë¥¼ ë§ˆìš°ìŠ¤ í´ë¦­í•©ë‹ˆë‹¤.
 
 ![ContextMenu](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/1-1.png)
 
-»ùÇÃ ¾ÆÀÌÅÛÀ» ¼±ÅÃÇÏ°Å³ª »ç¿ëÀÚ ÁöÁ¤ Å°¸¦ ¼±ÅÃÇÕ´Ï´Ù.
+ìƒ˜í”Œ ì•„ì´í…œì„ ì„ íƒí•˜ê±°ë‚˜ ì‚¬ìš©ìž ì§€ì • í‚¤ë¥¼ ì„ íƒí•©ë‹ˆë‹¤.
 
-### »ç¿ëÀÚ ÁöÁ¤ Å° ÁöÁ¤ ¹æ¹ý
+### ì‚¬ìš©ìž ì§€ì • í‚¤ ì§€ì • ë°©ë²•
 
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/2.png)
 
 ![ComboBox](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/3.png)
 
-¿ÞÂÊ À§ÀÇ ÄÞº¸ ¹Ú½º·Î »ç¿ëÀÚ ÁöÁ¤ Å° ¹æ½ÄÀ» º¯°æÇÒ ¼ö ÀÖ½À´Ï´Ù.   
-°¡»ó µ¿½Ã ÀÔ·Â, °¡»ó Å°´Â ÅØ½ºÆ® ¹Ú½º¿¡ ¸¶¿ì½º¸¦ ¿Ã·ÁµÎ¸é Å° ÈÄÅ·À» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
-±âº» Å°´Â [System.Windows.Forms.SendKeys.SendWait](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys.send?view=netcore-3.1)¸¦ ÂüÁ¶ÇÏ¼¼¿ä.
+ì™¼ìª½ ìœ„ì˜ ì½¤ë³´ ë°•ìŠ¤ë¡œ ì‚¬ìš©ìž ì§€ì • í‚¤ ë°©ì‹ì„ ë³€ê²½í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.   
+ê°€ìƒ ë™ì‹œ ìž…ë ¥, ê°€ìƒ í‚¤ëŠ” í…ìŠ¤íŠ¸ ë°•ìŠ¤ì— ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë ¤ë‘ë©´ í‚¤ í›„í‚¹ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+ê¸°ë³¸ í‚¤ëŠ” [System.Windows.Forms.SendKeys.SendWait](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys.send?view=netcore-3.1)ë¥¼ ì°¸ì¡°í•˜ì„¸ìš”.
 
-### ¸ÅÅ©·Î ÁöÁ¤ ¹æ¹ý
+### ë§¤í¬ë¡œ ì§€ì • ë°©ë²•
 
-**¸ÅÅ©·Î¿Í »ùÇÃ Å° ¶Ç´Â »ç¿ëÀÚ ÁöÁ¤Å°´Â Áßº¹ÀÌ °¡´ÉÇÕ´Ï´Ù.**
+**ë§¤í¬ë¡œì™€ ìƒ˜í”Œ í‚¤ ë˜ëŠ” ì‚¬ìš©ìž ì§€ì •í‚¤ëŠ” ì¤‘ë³µì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.**
 
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/4.png)
 
-¸®½ºÆ® ºä¿¡ ¸¶¿ì½º¸¦ ¿Ã·ÁµÎ¸é Å° ÈÄÅ·À» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+ë¦¬ìŠ¤íŠ¸ ë·°ì— ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë ¤ë‘ë©´ í‚¤ í›„í‚¹ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-#### Å° ÀÔ·Â Ãß°¡
+#### í‚¤ ìž…ë ¥ ì¶”ê°€
 
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/5.png)
 
-·¹ÀÌºí¿¡ ¸¶¿ì½º¸¦ ¿Ã·ÁµÎ¸é Å° ÈÄÅ·À» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.   
-Å° Å¬¸¯, Å° ´©¸£±â, Å° ¶¼±â¸¦ ¼±ÅÃÇÒ ¼ö ÀÖ½À´Ï´Ù.
+ë ˆì´ë¸”ì— ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë ¤ë‘ë©´ í‚¤ í›„í‚¹ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.   
+í‚¤ í´ë¦­, í‚¤ ëˆ„ë¥´ê¸°, í‚¤ ë–¼ê¸°ë¥¼ ì„ íƒí•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-#### ÅØ½ºÆ® ÀÔ·Â Ãß°¡
+#### í…ìŠ¤íŠ¸ ìž…ë ¥ ì¶”ê°€
 
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/6.png)
 
-ÅØ½ºÆ® ÀÔ·ÂÀ» Ãß°¡ÇÕ´Ï´Ù.
+í…ìŠ¤íŠ¸ ìž…ë ¥ì„ ì¶”ê°€í•©ë‹ˆë‹¤.
 
-#### Áö¿¬ Ãß°¡
+#### ì§€ì—° ì¶”ê°€
 
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/7.png)
 
-Áö¿¬À» Ãß°¡ÇÕ´Ï´Ù ´ÜÀ§´Â ¹Ð¸®¼¼ÄÁµåÀÔ´Ï´Ù. 1s = 1000ms
+ì§€ì—°ì„ ì¶”ê°€í•©ë‹ˆë‹¤ ë‹¨ìœ„ëŠ” ë°€ë¦¬ì„¸ì»¨ë“œìž…ë‹ˆë‹¤. 1s = 1000ms
 
-#### ÇÔ¼ö Ãß°¡
+#### í•¨ìˆ˜ ì¶”ê°€
 
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/8.png)
 
-**ÇÔ¼ö·Î ÀÌµ¿** »ç¿ë ½Ã ÁöÁ¤ÇÑ ÀÌ¸§ÀÇ ÇÔ¼ö À§Ä¡·Î Çì´õ°¡ ÀÌµ¿ÇÕ´Ï´Ù.
+**í•¨ìˆ˜ë¡œ ì´ë™** ì‚¬ìš© ì‹œ ì§€ì •í•œ ì´ë¦„ì˜ í•¨ìˆ˜ ìœ„ì¹˜ë¡œ í—¤ë”ê°€ ì´ë™í•©ë‹ˆë‹¤.
 
-#### ÇÔ¼ö·Î ÀÌµ¿
+#### í•¨ìˆ˜ë¡œ ì´ë™
 
 ![Dialog](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/9.png)
 
-ÁöÁ¤ÇÑ ÇÔ¼ö·Î ÀÌµ¿ÇÕ´Ï´Ù. **ÇÔ¼ö**¸¦ Ãß°¡ÇÏ¸é ÄÞº¸ ¹Ú½º ¸ñ·Ï¿¡ Ãß°¡µË´Ï´Ù.
+ì§€ì •í•œ í•¨ìˆ˜ë¡œ ì´ë™í•©ë‹ˆë‹¤. **í•¨ìˆ˜**ë¥¼ ì¶”ê°€í•˜ë©´ ì½¤ë³´ ë°•ìŠ¤ ëª©ë¡ì— ì¶”ê°€ë©ë‹ˆë‹¤.
 
-#### ¸ðµçÅ° ¶¼±â
+#### ëª¨ë“ í‚¤ ë–¼ê¸°
 
-ÇÁ·Î±×·¥¿¡¼­ ´©¸¥ Å°¸¦ ¸ðµÎ ¶¼´Â ÀÌº¥Æ®¸¦ Ãß°¡ÇÕ´Ï´Ù.
+í”„ë¡œê·¸ëž¨ì—ì„œ ëˆ„ë¥¸ í‚¤ë¥¼ ëª¨ë‘ ë–¼ëŠ” ì´ë²¤íŠ¸ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 
-#### ³¡³»±â
+#### ëë‚´ê¸°
 
-¸ÅÅ©·Î¸¦ ³¡³»´Â ÀÌº¥Æ®¸¦ Ãß°¡ÇÕ´Ï´Ù.
+ë§¤í¬ë¡œë¥¼ ëë‚´ëŠ” ì´ë²¤íŠ¸ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
 
-#### À§, ¾Æ·¡·Î ÀÌµ¿
+#### ìœ„, ì•„ëž˜ë¡œ ì´ë™
 
-¼±ÅÃÇÑ ÀÌº¥Æ®¸¦ ¿Ã¸®°Å³ª ³»¸³´Ï´Ù.
+ì„ íƒí•œ ì´ë²¤íŠ¸ë¥¼ ì˜¬ë¦¬ê±°ë‚˜ ë‚´ë¦½ë‹ˆë‹¤.
 
-#### ÀÌº¥Æ® Á¦°Å, ÀÌº¥Æ® ¸ðµÎ Á¦°Å
+#### ì´ë²¤íŠ¸ ì œê±°, ì´ë²¤íŠ¸ ëª¨ë‘ ì œê±°
 
-¼±ÅÃÇÑ ÀÌº¥Æ®¸¦ Á¦°ÅÇÏ°Å³ª ¸ðµÎ Á¦°ÅÇÕ´Ï´Ù.
+ì„ íƒí•œ ì´ë²¤íŠ¸ë¥¼ ì œê±°í•˜ê±°ë‚˜ ëª¨ë‘ ì œê±°í•©ë‹ˆë‹¤.
 
-### ¾Ë¸² ¾ÆÀÌÄÜ
+### ì•Œë¦¼ ì•„ì´ì½˜
 
 ![NotifyIcon](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/11.png)
 
-¾Ë¸² ¾ÆÀÌÄÜÀ» ´õºí Å¬¸¯ÇÏ¿© ¼³Á¤À» ¶ç¿ó´Ï´Ù.   
-¾Ë¸² ¾ÆÀÌÄÜÀ» ¿ìÅ¬¸¯ ÇÏ¿© ÄÁÅØ½ºÆ® ¸Þ´º¸¦ ¶ç¿ó´Ï´Ù.
+ì•Œë¦¼ ì•„ì´ì½˜ì„ ë”ë¸” í´ë¦­í•˜ì—¬ ì„¤ì •ì„ ë„ì›ë‹ˆë‹¤.   
+ì•Œë¦¼ ì•„ì´ì½˜ì„ ìš°í´ë¦­ í•˜ì—¬ ì»¨í…ìŠ¤íŠ¸ ë©”ë‰´ë¥¼ ë„ì›ë‹ˆë‹¤.
 
 ![ContextMenu](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/12.png)
 
-½ÃÀÛ ÇÁ·Î±×·¥¿¡ µî·ÏÇÏ°Å³ª ¾ð¾î¸¦ ¹Ù²Ü ¼ö ÀÖ½À´Ï´Ù.
+ì‹œìž‘ í”„ë¡œê·¸ëž¨ì— ë“±ë¡í•˜ê±°ë‚˜ ì–¸ì–´ë¥¼ ë°”ê¿€ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-### °í±Þ ¸Å´º
+### ê³ ê¸‰ ë§¤ë‰´
 
 ![ContextMenu](https://raw.githubusercontent.com/SojuShoveling/NUMC/master/Images/SCREENSHOT/13.png)
 
-Json ÆíÁý±â¸¦ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+Json íŽ¸ì§‘ê¸°ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-## ÇÁ·Î±×·¥
-### ÇÁ·Î±×·¥ Á¾¼Ó¼º
-µ¿Àû ¶óÀÌºê·¯¸® ¾øÀÌ ´ÜÀÏ ÇÁ·Î±×·¥À¸·Î ½ÇÇàÀÌ °¡´ÉÇÕ´Ï´Ù.   
-ÇÁ·Î±×·¥¿¡ ¸ðµç ¼³Á¤Àº (ÆÄÀÏ ÀÌ¸§).json À¸·Î ÀúÀåµË´Ï´Ù. (**NUMC.json**)   
-¼³Á¤ ÆÄÀÏÀ» Á¦°ÅÇÏ¸é ¼³Á¤Àº ÃÊ±âÈ­ µË´Ï´Ù.
+## í”„ë¡œê·¸ëž¨
+### í”„ë¡œê·¸ëž¨ ì¢…ì†ì„±
+ë™ì  ë¼ì´ë¸ŒëŸ¬ë¦¬ ì—†ì´ ë‹¨ì¼ í”„ë¡œê·¸ëž¨ìœ¼ë¡œ ì‹¤í–‰ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.   
+í”„ë¡œê·¸ëž¨ì— ëª¨ë“  ì„¤ì •ì€ (íŒŒì¼ ì´ë¦„).json ìœ¼ë¡œ ì €ìž¥ë©ë‹ˆë‹¤. (**NUMC.json**)   
+ì„¤ì • íŒŒì¼ì„ ì œê±°í•˜ë©´ ì„¤ì •ì€ ì´ˆê¸°í™” ë©ë‹ˆë‹¤.
 
-# ¼³¸í ¾÷µ¥ÀÌÆ® ¿¹Á¤
-### ¸¶Áö¸· ¾÷µ¥ÀÌÆ®
+# ì„¤ëª… ì—…ë°ì´íŠ¸ ì˜ˆì •
+### ë§ˆì§€ë§‰ ì—…ë°ì´íŠ¸
 #### 1.0.0.0
 
-## ¼³Á¤ ÆÄÀÏ
+## ì„¤ì • íŒŒì¼
 
 ### KeyObject Array
 ```json
 "KeyObject": [
 	{
 		"Key": 0, // Keys
-		"Ignore": true, // Å° ¹«½Ã ¿©ºÎ
+		"Ignore": true, // í‚¤ ë¬´ì‹œ ì—¬ë¶€
 		"KeyScript": [
 			{
-				"Type": "", //Å° Å¸ÀÔ SendKeys / VirtualKey
+				"Type": "", //í‚¤ íƒ€ìž… SendKeys / VirtualKey
 				"SendKeys": 
 				{
 					"Text": [ // System.Windows.Forms.SendKeys.SendWait
 						""
 					]
 				},
-				"VirtualKey": // °¡»ó Å°
+				"VirtualKey": // ê°€ìƒ í‚¤
 				{
 					"Keys":	[ // VKeys
 						0
 					]
 				},
-				"Macro": // ¸ÅÅ©·Î
+				"Macro": // ë§¤í¬ë¡œ
 				{
-					"AD": true, // ¾ÈÀü ¸ðµå ÇÑ Å°´ç ÇÑ ½º·¹µå
+					"AD": true, // ì•ˆì „ ëª¨ë“œ í•œ í‚¤ë‹¹ í•œ ìŠ¤ë ˆë“œ
 					"Code": "" // Macro Code
 				}
 			}
@@ -142,7 +142,7 @@ Json ÆíÁý±â¸¦ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
 ```
 ### WVKeys Array
 ```json
-"WVKeys": [ // È­ÀÌÆ® ¸®½ºÆ® Å° | ³ÑÆÐµå Å° ¿Ü ´Ù¸¥ Å° »ç¿ë ½Ã µî·Ï ÇÊ¿ä
+"WVKeys": [ // í™”ì´íŠ¸ ë¦¬ìŠ¤íŠ¸ í‚¤ | ë„˜íŒ¨ë“œ í‚¤ ì™¸ ë‹¤ë¥¸ í‚¤ ì‚¬ìš© ì‹œ ë“±ë¡ í•„ìš”
 	144,
 	111,
 	106,
@@ -165,5 +165,5 @@ Json ÆíÁý±â¸¦ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
 
 ### Language
 ```json
-"Language": "auto" // ¾ð¾î | en-us (±âº»°ª), ko-kr
+"Language": "auto" // ì–¸ì–´ | en-us (ê¸°ë³¸ê°’), ko-kr
 ```
