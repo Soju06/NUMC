@@ -19,6 +19,7 @@ namespace NUMC.Forms.Dialogs.Macro
         {
             KeyScript = keyScript;
             InitializeComponent();
+            InitializeModules();
 
             titleBar.Form = this;
             titleBar.Title = Setting.Setting.GetTitleName(Language.Language.MacroSettingDialog_Title);
@@ -45,8 +46,6 @@ namespace NUMC.Forms.Dialogs.Macro
             {
                 SetItems(keyScript.Macro.Code.Split('\n'));
             }
-
-            InitializeModules();
         }
 
         private void InitializeModules()
@@ -104,40 +103,26 @@ namespace NUMC.Forms.Dialogs.Macro
                 AddEvents(name, line);
         }
 
-        private void AddDelay(int delay)
-        {
+        private void AddDelay(int delay) =>
             AddEvents($"{Language.Language.MacroSettingDialog_Delay} ({delay}ms)", Script.Macro.CreateDelay(delay));
-        }
 
-        private void AddTextInput(string text)
-        {
+        private void AddTextInput(string text) =>
             AddEvents($"{Language.Language.MacroSettingDialog_TextInput} ({text})", Script.Macro.CreateTextEntry(text));
-        }
 
-        private void AddFunction(string name)
-        {
+        private void AddFunction(string name) =>
             AddEvents($"{Language.Language.MacroSettingDialog_Function} ({name})", Script.Macro.CreateFunction(name));
-        }
 
-        private void AddGotoFunction(string name)
-        {
+        private void AddGotoFunction(string name) =>
             AddEvents($"{Language.Language.MacroSettingDialog_GotoFunction} ({name})", Script.Macro.CreateGotoFunction(name));
-        }
 
-        private void AddKeyUpAll()
-        {
+        private void AddKeyUpAll() =>
             AddEvents(Language.Language.MacroSettingDialog_KeyUpAll, Script.Macro.CreateKeyUpAll());
-        }
 
-        private void AddExit()
-        {
+        private void AddExit() =>
             AddEvents(Language.Language.Program_Exit, Script.Macro.CreateExit());
-        }
 
-        private void AddEvents(string Name, string code)
-        {
+        private void AddEvents(string Name, string code) =>
             EventsView.Items.Add(new BrightListItem(Name) { Tag = code });
-        }
 
         private void AddDelayButton_Click(object sender, EventArgs e)
         {
@@ -220,25 +205,17 @@ namespace NUMC.Forms.Dialogs.Macro
             return codes.ToArray();
         }
 
-        private void AddKeyUpAllButton_Click(object sender, EventArgs e)
-        {
+        private void AddKeyUpAllButton_Click(object sender, EventArgs e) =>
             AddKeyUpAll();
-        }
 
-        private void AddExitButton_Click(object sender, EventArgs e)
-        {
+        private void AddExitButton_Click(object sender, EventArgs e) =>
             AddExit();
-        }
 
-        private void MoveupButton_Click(object sender, EventArgs e)
-        {
+        private void MoveupButton_Click(object sender, EventArgs e) =>
             SelectItemMove(false);
-        }
 
-        private void MovedownButton_Click(object sender, EventArgs e)
-        {
+        private void MovedownButton_Click(object sender, EventArgs e) =>
             SelectItemMove(true);
-        }
 
         private void SelectItemMove(bool up)
         {
@@ -261,24 +238,16 @@ namespace NUMC.Forms.Dialogs.Macro
 
         private bool hook = false;
 
-        private void EventsView_MouseEnter(object sender, EventArgs e)
-        {
-            hook = true;
-        }
+        private void EventsView_MouseEnter(object sender, EventArgs e) => hook = true;
 
-        private void EventsView_MouseLeave(object sender, EventArgs e)
-        {
-            hook = false;
-        }
+        private void EventsView_MouseLeave(object sender, EventArgs e) => hook = false;
 
         private readonly List<KeyUDDelay> KeyUDDelays = new List<KeyUDDelay>();
 
         private bool KeyboardHook_KeyDown(int vkCode)
         {
             if (hook)
-            {
                 KeyHookDown((Keys)vkCode);
-            }
 
             return !hook;
         }
@@ -338,9 +307,7 @@ namespace NUMC.Forms.Dialogs.Macro
         private bool KeyboardHook_KeyUp(int vkCode)
         {
             if (hook)
-            {
                 KeyHookUp((Keys)vkCode);
-            }
 
             return !hook;
         }
@@ -473,15 +440,11 @@ namespace NUMC.Forms.Dialogs.Macro
             }
         }
 
-        private void RemoveAllButton_Click(object sender, EventArgs e)
-        {
+        private void RemoveAllButton_Click(object sender, EventArgs e) =>
             EventsView.Items.Clear();
-        }
 
-        private void ModuleButton_Click(object sender, EventArgs e)
-        {
+        private void ModuleButton_Click(object sender, EventArgs e) =>
             ModuleContextMenu.Show(MousePosition);
-        }
 
         private void ModuleItem_Click(object sender, EventArgs e)
         {
@@ -489,7 +452,7 @@ namespace NUMC.Forms.Dialogs.Macro
             string[] code = GetCodes();
             if (item.Tag != null)
             {
-                NUMC.Macro.IMacroModule module = ((NUMC.Macro.IMacroModule)item.Tag);
+                IMacroModule module = ((IMacroModule)item.Tag);
                 if (module.SHOW_DIALOG(ref code, out string NAME, out string RCODE))
                 {
                     AddEvents(NAME, RCODE);

@@ -71,3 +71,4 @@ V:\Csharp\NUMC\NUMC\obj\Debug\NUMC.csproj.GenerateResource.cache
 V:\Csharp\NUMC\NUMC\obj\Debug\NUMC.csproj.CoreCompileInputs.cache
 V:\Csharp\NUMC\NUMC\obj\Debug\NUMC.exe
 V:\Csharp\NUMC\NUMC\obj\Debug\NUMC.pdb
+V:\Csharp\NUMC\NUMC\obj\Debug\NUMC.csprojAssemblyReference.cache
