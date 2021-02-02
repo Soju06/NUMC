@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,10 +20,10 @@ namespace NUMC.Design.Controls
 
         #region Field Region
 
-        private int _itemHeight = 20;
+        private int _itemHeight = 25;
         private readonly int _iconSize = 16;
 
-        private ObservableCollection<BrightListItem> _items;
+        private ObservableCollection<IListViewItem> _items;
         private readonly List<int> _selectedIndices;
         private int _anchoredItemStart = -1;
         private int _anchoredItemEnd = -1;
@@ -33,7 +34,7 @@ namespace NUMC.Design.Controls
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ObservableCollection<BrightListItem> Items
+        public ObservableCollection<IListViewItem> Items
         {
             get { return _items; }
             set
@@ -85,8 +86,11 @@ namespace NUMC.Design.Controls
 
         public ListView()
         {
-            Items = new ObservableCollection<BrightListItem>();
+            Items = new ObservableCollection<IListViewItem>();
             _selectedIndices = new List<int>();
+            BackColor = _styles.ScrollView.BackgroundColor;
+            ForeColor = _styles.ScrollView.Color;
+            Font = _styles.Font;
         }
 
         #endregion Constructor Region
@@ -100,7 +104,7 @@ namespace NUMC.Design.Controls
                 using (var g = CreateGraphics())
                 {
                     // Set the area size of all new items
-                    foreach (BrightListItem item in e.NewItems)
+                    foreach (IListViewItem item in e.NewItems)
                     {
                         item.TextChanged += Item_TextChanged;
                         UpdateItemSize(item, g);
@@ -109,27 +113,19 @@ namespace NUMC.Design.Controls
 
                 // Find the starting index of the new item list and update anything past that
                 if (e.NewStartingIndex < (Items.Count - 1))
-                {
                     for (var i = e.NewStartingIndex; i <= Items.Count - 1; i++)
-                    {
                         UpdateItemPosition(Items[i], i);
-                    }
-                }
             }
 
             if (e.OldItems != null)
             {
-                foreach (BrightListItem item in e.OldItems)
+                foreach (IListViewItem item in e.OldItems)
                     item.TextChanged -= Item_TextChanged;
 
                 // Find the starting index of the old item list and update anything past that
                 if (e.OldStartingIndex < (Items.Count - 1))
-                {
                     for (var i = e.OldStartingIndex; i <= Items.Count - 1; i++)
-                    {
                         UpdateItemPosition(Items[i], i);
-                    }
-                }
             }
 
             if (Items.Count == 0)
@@ -147,7 +143,7 @@ namespace NUMC.Design.Controls
 
         private void Item_TextChanged(object sender, EventArgs e)
         {
-            var item = (BrightListItem)sender;
+            var item = (IListViewItem)sender;
 
             UpdateItemSize(item);
             UpdateContentSize(item);
@@ -237,7 +233,7 @@ namespace NUMC.Design.Controls
 
         #region Method Region
 
-        public int GetItemIndex(BrightListItem item)
+        public int GetItemIndex(IListViewItem item)
         {
             return Items.IndexOf(item);
         }
@@ -379,7 +375,7 @@ namespace NUMC.Design.Controls
             UpdateContentSize();
         }
 
-        private void UpdateItemSize(BrightListItem item)
+        private void UpdateItemSize(IListViewItem item)
         {
             using (var g = CreateGraphics())
             {
@@ -387,7 +383,7 @@ namespace NUMC.Design.Controls
             }
         }
 
-        private void UpdateItemSize(BrightListItem item, Graphics g)
+        private void UpdateItemSize(IListViewItem item, Graphics g)
         {
             var size = g.MeasureString(item.Text, Font);
             size.Width++;
@@ -398,7 +394,7 @@ namespace NUMC.Design.Controls
             item.Area = new Rectangle(item.Area.Left, item.Area.Top, (int)size.Width, item.Area.Height);
         }
 
-        private void UpdateItemPosition(BrightListItem item, int index)
+        private void UpdateItemPosition(IListViewItem item, int index)
         {
             item.Area = new Rectangle(2, (index * ItemHeight), item.Area.Width, ItemHeight);
         }
@@ -423,7 +419,7 @@ namespace NUMC.Design.Controls
             }
         }
 
-        private void UpdateContentSize(BrightListItem item)
+        private void UpdateContentSize(IListViewItem item)
         {
             var itemWidth = item.Area.Right + 1;
 
@@ -487,31 +483,29 @@ namespace NUMC.Design.Controls
             if (range.Count == 0)
                 return;
 
+            //g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
+
             var top = range.Min();
             var bottom = range.Max();
 
-            for (var i = top; i <= bottom; i++)
-            {
+            for (var i = top; i <= bottom; i++) {
                 var width = Math.Max(ContentSize.Width, Viewport.Width);
                 var rect = new Rectangle(0, i * ItemHeight, width, ItemHeight);
 
                 // Background
                 var odd = i % 2 != 0;
-                var bgColor = !odd ? Styles.ListView.HeaderBackgroundColor : Styles.ListView.BackgroundColor;
+                var bgColor = !odd ? _styles.ScrollView.HeaderBackgroundColor : _styles.ScrollView.BackgroundColor;
 
                 if (SelectedIndices.Count > 0 && SelectedIndices.Contains(i))
-                    bgColor = Focused ? Styles.Control.ColorSelectionBackgroundColor : Styles.Control.SelectionBackgroundColor;
+                    bgColor = Focused ? _styles.Control.ColorSelectionBackgroundColor : _styles.Control.EmphaColor;
 
                 using (var b = new SolidBrush(bgColor))
-                {
                     g.FillRectangle(b, rect);
-                }
 
-                // DEBUG: Border
-                /*using (var p = new Pen(Colors.BrightBorder))
+                /* using (var p = new Pen(_styles.Control.ColorSelectionBackgroundColor))
                 {
                     g.DrawLine(p, new Point(rect.Left, rect.Bottom - 1), new Point(rect.Right, rect.Bottom - 1));
-                }*/
+                } */
 
                 // Icon
                 if (ShowIcons && Items[i].Icon != null)
@@ -539,11 +533,10 @@ namespace NUMC.Design.Controls
                 }
             }
         }
-
         #endregion Paint Region
     }
 
-    public class BrightListItem
+    public class ListViewItem : IListViewItem
     {
         #region Event Region
 
@@ -584,18 +577,30 @@ namespace NUMC.Design.Controls
 
         #region Constructor Region
 
-        public BrightListItem()
+        public ListViewItem()
         {
-            TextColor = Styles.Control.Color;
+            TextColor = Styles.GetStyles().ScrollView.Color;
             FontStyle = FontStyle.Regular;
         }
 
-        public BrightListItem(string text)
+        public ListViewItem(string text)
             : this()
         {
             Text = text;
         }
 
         #endregion Constructor Region
+    }
+
+    public interface IListViewItem
+    {
+        event EventHandler TextChanged;
+
+        string Text { get; set; }
+        Rectangle Area { get; set; }
+        Color TextColor { get; set; }
+        FontStyle FontStyle { get; set; }
+        Bitmap Icon { get; set; }
+        object Tag { get; set; }
     }
 }

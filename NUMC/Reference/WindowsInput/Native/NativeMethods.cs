@@ -17,7 +17,7 @@ namespace WindowsInput.Native
         ///
         /// Windows NT/2000/XP: The return value is zero for the following cases:
         /// - The current desktop is not the active desktop
-        /// - The foreground thread belongs to another process and the desktop does not allow the hook or the journal record.
+        /// - The foreground thread belongs to another process and the desktop does not allow the NUMC.Keyboard or the journal record.
         ///
         /// Windows 95/98/Me: The return value is the global asynchronous key state for each virtual key. The system does not check which thread has the keyboard focus.
         ///

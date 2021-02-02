@@ -42,25 +42,14 @@
             this.flowInner.SuspendLayout();
             this.SuspendLayout();
             // 
-            // titleBar
-            // 
-            this.titleBar.CloseBox = true;
-            this.titleBar.Form = this;
-            this.titleBar.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
-            this.titleBar.MaximizeBox = true;
-            this.titleBar.MaximumSize = new System.Drawing.Size(0, 54);
-            this.titleBar.MinimizeBox = true;
-            this.titleBar.MinimumSize = new System.Drawing.Size(205, 35);
-            this.titleBar.Size = new System.Drawing.Size(1023, 35);
-            // 
             // pnlFooter
             // 
             this.pnlFooter.Controls.Add(this.flowInner);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 561);
-            this.pnlFooter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlFooter.Location = new System.Drawing.Point(2, 421);
+            this.pnlFooter.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(1023, 57);
+            this.pnlFooter.Size = new System.Drawing.Size(811, 50);
             this.pnlFooter.TabIndex = 1;
             // 
             // flowInner
@@ -74,113 +63,120 @@
             this.flowInner.Controls.Add(this.btnRetry);
             this.flowInner.Controls.Add(this.btnIgnore);
             this.flowInner.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowInner.Location = new System.Drawing.Point(139, 0);
-            this.flowInner.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.flowInner.Location = new System.Drawing.Point(37, 0);
+            this.flowInner.Margin = new System.Windows.Forms.Padding(0);
             this.flowInner.Name = "flowInner";
-            this.flowInner.Padding = new System.Windows.Forms.Padding(13, 12, 13, 15);
-            this.flowInner.Size = new System.Drawing.Size(884, 57);
+            this.flowInner.Padding = new System.Windows.Forms.Padding(11, 7, 11, 9);
+            this.flowInner.Size = new System.Drawing.Size(774, 50);
             this.flowInner.TabIndex = 10014;
             // 
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(13, 12);
+            this.btnOk.FontSize = 11F;
+            this.btnOk.Location = new System.Drawing.Point(11, 7);
             this.btnOk.Margin = new System.Windows.Forms.Padding(0);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Padding = new System.Windows.Forms.Padding(7, 8, 7, 8);
-            this.btnOk.Size = new System.Drawing.Size(88, 34);
+            this.btnOk.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnOk.Size = new System.Drawing.Size(77, 35);
             this.btnOk.TabIndex = 3;
             this.btnOk.Text = "Ok";
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(101, 12);
+            this.btnCancel.FontSize = 11F;
+            this.btnCancel.Location = new System.Drawing.Point(88, 7);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Padding = new System.Windows.Forms.Padding(7, 8, 7, 8);
-            this.btnCancel.Size = new System.Drawing.Size(88, 34);
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnCancel.Size = new System.Drawing.Size(77, 35);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             // 
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(189, 12);
+            this.btnClose.FontSize = 11F;
+            this.btnClose.Location = new System.Drawing.Point(165, 7);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Padding = new System.Windows.Forms.Padding(7, 8, 7, 8);
-            this.btnClose.Size = new System.Drawing.Size(88, 34);
+            this.btnClose.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnClose.Size = new System.Drawing.Size(77, 35);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             // 
             // btnYes
             // 
             this.btnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.btnYes.Location = new System.Drawing.Point(277, 12);
+            this.btnYes.FontSize = 11F;
+            this.btnYes.Location = new System.Drawing.Point(242, 7);
             this.btnYes.Margin = new System.Windows.Forms.Padding(0);
             this.btnYes.Name = "btnYes";
-            this.btnYes.Padding = new System.Windows.Forms.Padding(7, 8, 7, 8);
-            this.btnYes.Size = new System.Drawing.Size(88, 34);
+            this.btnYes.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnYes.Size = new System.Drawing.Size(77, 35);
             this.btnYes.TabIndex = 6;
             this.btnYes.Text = "Yes";
             // 
             // btnNo
             // 
             this.btnNo.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.btnNo.Location = new System.Drawing.Point(365, 12);
+            this.btnNo.FontSize = 11F;
+            this.btnNo.Location = new System.Drawing.Point(319, 7);
             this.btnNo.Margin = new System.Windows.Forms.Padding(0);
             this.btnNo.Name = "btnNo";
-            this.btnNo.Padding = new System.Windows.Forms.Padding(7, 8, 7, 8);
-            this.btnNo.Size = new System.Drawing.Size(88, 34);
+            this.btnNo.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnNo.Size = new System.Drawing.Size(77, 35);
             this.btnNo.TabIndex = 7;
             this.btnNo.Text = "No";
             // 
             // btnAbort
             // 
             this.btnAbort.DialogResult = System.Windows.Forms.DialogResult.Abort;
-            this.btnAbort.Location = new System.Drawing.Point(453, 12);
+            this.btnAbort.FontSize = 11F;
+            this.btnAbort.Location = new System.Drawing.Point(396, 7);
             this.btnAbort.Margin = new System.Windows.Forms.Padding(0);
             this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Padding = new System.Windows.Forms.Padding(7, 8, 7, 8);
-            this.btnAbort.Size = new System.Drawing.Size(88, 34);
+            this.btnAbort.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnAbort.Size = new System.Drawing.Size(77, 35);
             this.btnAbort.TabIndex = 8;
             this.btnAbort.Text = "Abort";
             // 
             // btnRetry
             // 
             this.btnRetry.DialogResult = System.Windows.Forms.DialogResult.Retry;
-            this.btnRetry.Location = new System.Drawing.Point(541, 12);
+            this.btnRetry.FontSize = 11F;
+            this.btnRetry.Location = new System.Drawing.Point(473, 7);
             this.btnRetry.Margin = new System.Windows.Forms.Padding(0);
             this.btnRetry.Name = "btnRetry";
-            this.btnRetry.Padding = new System.Windows.Forms.Padding(7, 8, 7, 8);
-            this.btnRetry.Size = new System.Drawing.Size(88, 34);
+            this.btnRetry.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnRetry.Size = new System.Drawing.Size(77, 35);
             this.btnRetry.TabIndex = 9;
             this.btnRetry.Text = "Retry";
             // 
             // btnIgnore
             // 
             this.btnIgnore.DialogResult = System.Windows.Forms.DialogResult.Ignore;
-            this.btnIgnore.Location = new System.Drawing.Point(629, 12);
+            this.btnIgnore.FontSize = 11F;
+            this.btnIgnore.Location = new System.Drawing.Point(550, 7);
             this.btnIgnore.Margin = new System.Windows.Forms.Padding(0);
             this.btnIgnore.Name = "btnIgnore";
-            this.btnIgnore.Padding = new System.Windows.Forms.Padding(7, 8, 7, 8);
-            this.btnIgnore.Size = new System.Drawing.Size(88, 34);
+            this.btnIgnore.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnIgnore.Size = new System.Drawing.Size(77, 35);
             this.btnIgnore.TabIndex = 10;
             this.btnIgnore.Text = "Ignore";
             // 
-            // BrightDialog
+            // Dialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1023, 618);
+            this.ClientSize = new System.Drawing.Size(815, 474);
             this.Controls.Add(this.pnlFooter);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(252, 166);
-            this.Name = "BrightDialog";
-            this.Text = "BrightDialog";
-            this.Controls.SetChildIndex(this.pnlFooter, 0);
-            this.Controls.SetChildIndex(this.titleBar, 0);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MinimumSize = new System.Drawing.Size(220, 100);
+            this.Name = "Dialog";
+            this.Padding = new System.Windows.Forms.Padding(2, 59, 2, 3);
+            this.Text = "Design.Dialog";
             this.pnlFooter.ResumeLayout(false);
             this.flowInner.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -1,11 +1,11 @@
-﻿using NUMC.Menu;
+﻿using NUMC.Plugin.Menu;
 using NUMC.Script;
 using System;
 using System.Windows.Forms;
 
 namespace TestPlugin
 {
-    public class Asdf : IKeyMenuModule
+    public class Asdf : IApplicationMenu
     {
         public Asdf()
         {
@@ -19,24 +19,28 @@ namespace TestPlugin
 
         private readonly ToolStripMenuItem Item;
 
-        public ToolStripItem[] Menus
-        {
-            get
-            {
-                return new ToolStripItem[] { Item };
-            }
-        }
+        public ToolStripItem[] Menus => new ToolStripItem[] { Item };
 
         public int Index => 5;
-
-        public void MenuClicking(KeyObject keyObject, Keys selectedKey)
-        {
-            Console.WriteLine("asdsadasdasd");
-        }
-
+        
         private void Item_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("asdasdasdasdasdasdasasdasdasdas");
+            Application.Exit();
+        }
+
+        public void Dispose()
+        {
+
+        }
+
+        public void MenuClicking()
+        {
+
+        }
+
+        public void Initialize(Script script)
+        {
+
         }
     }
 }

@@ -5,13 +5,15 @@ namespace NUMC.Design.Controls
 {
     public abstract class ScrollView : ScrollBase
     {
+        public readonly Styles _styles = Styles.GetStyles();
+
         #region Constructor Region
 
         protected ScrollView()
         {
-            SetStyle(ControlStyles.OptimizedDoubleBuffer |
-                     ControlStyles.ResizeRedraw |
-                     ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.ResizeRedraw | ControlStyles.DoubleBuffer |
+                    ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint |
+                    ControlStyles.SupportsTransparentBackColor, true);
         }
 
         #endregion Constructor Region
@@ -24,11 +26,11 @@ namespace NUMC.Design.Controls
         {
             var g = e.Graphics;
 
+
             // Draw background
-            using (var b = new SolidBrush(BackColor))
-            {
-                g.FillRectangle(b, ClientRectangle);
-            }
+            base.OnPaintBackground(e);
+            //using (var b = new SolidBrush(Color.Transparent))
+            //    g.FillRectangle(b, ClientRectangle);
 
             // Offset the graphics based on the viewport, render the control contents, then reset it.
             g.TranslateTransform(Viewport.Left * -1, Viewport.Top * -1);
@@ -53,6 +55,17 @@ namespace NUMC.Design.Controls
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             // Absorb event
+        }
+
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x20;
+                return cp;
+            }
         }
 
         #endregion Paint Region

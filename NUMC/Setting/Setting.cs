@@ -8,7 +8,7 @@ namespace NUMC.Setting
 {
     public class Setting
     {
-        public static string KeySettingPath = Path.Combine(Application.StartupPath, $"{Process.GetCurrentProcess().ProcessName}.json");
+        public static string KeySettingPath = Path.Combine(Application.StartupPath, $"{Process.GetCurrentProcess().ProcessName}{Constant.Setting.FileExtension}");
 
         public static string TitleName = $"NUMC - {Language.Language.Setting_Portable}";
 

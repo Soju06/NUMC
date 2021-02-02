@@ -27,9 +27,7 @@ namespace WindowsInput
         /// <param name="inputSimulator">The <see cref="IInputSimulator"/> that owns this instance.</param>
         public MouseSimulator(IInputSimulator inputSimulator)
         {
-            if (inputSimulator == null) throw new ArgumentNullException("inputSimulator");
-
-            _inputSimulator = inputSimulator;
+            _inputSimulator = inputSimulator ?? throw new ArgumentNullException("inputSimulator");
             _messageDispatcher = new WindowsInputMessageDispatcher();
         }
 
@@ -41,16 +39,10 @@ namespace WindowsInput
         /// <exception cref="InvalidOperationException">If null is passed as the <paramref name="messageDispatcher"/>.</exception>
         internal MouseSimulator(IInputSimulator inputSimulator, IInputMessageDispatcher messageDispatcher)
         {
-            if (inputSimulator == null)
-                throw new ArgumentNullException("inputSimulator");
-
-            if (messageDispatcher == null)
-                throw new InvalidOperationException(
+            _inputSimulator = inputSimulator ?? throw new ArgumentNullException("inputSimulator");
+            _messageDispatcher = messageDispatcher ?? throw new InvalidOperationException(
                     string.Format("The {0} cannot operate with a null {1}. Please provide a valid {1} instance to use for dispatching {2} messages.",
                     typeof(MouseSimulator).Name, typeof(IInputMessageDispatcher).Name, typeof(INPUT).Name));
-
-            _inputSimulator = inputSimulator;
-            _messageDispatcher = messageDispatcher;
         }
 
         /// <summary>

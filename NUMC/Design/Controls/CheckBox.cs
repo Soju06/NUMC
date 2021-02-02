@@ -10,8 +10,8 @@ namespace NUMC.Design.Controls
         #region Field Region
 
         private ControlState _controlState = ControlState.Normal;
-
         private bool _spacePressed;
+        private readonly Styles _styles = Styles.GetStyles();
 
         #endregion Field Region
 
@@ -281,37 +281,37 @@ namespace NUMC.Design.Controls
 
             var size = Consts.CheckBoxSize;
 
-            var textColor = Styles.Control.Color;
-            var borderColor = Styles.Control.Color;
-            var fillColor = Styles.ComboBox.BackgroundColor;
+            var textColor = _styles.Control.Color;
+            var borderColor = _styles.Control.Color;
+            var fillColor = _styles.ComboBox.BackgroundColor;
 
             if (Enabled)
             {
                 if (Focused)
                 {
-                    borderColor = Styles.Control.EmphaColor;
-                    fillColor = Styles.Control.ColorSelectionBackgroundColor;
+                    borderColor = _styles.Control.EmphaColor;
+                    fillColor = _styles.Control.ColorSelectionBackgroundColor;
                 }
 
                 if (_controlState == ControlState.Hover)
                 {
-                    borderColor = Styles.Control.EmphaColor;
-                    fillColor = Styles.Control.ColorSelectionBackgroundColor;
+                    borderColor = _styles.Control.EmphaColor;
+                    fillColor = _styles.Control.ColorSelectionBackgroundColor;
                 }
                 else if (_controlState == ControlState.Pressed)
                 {
-                    borderColor = Styles.ComboBox.BackgroundColor;
-                    fillColor = Styles.Control.SelectionBackgroundColor;
+                    borderColor = _styles.ComboBox.BackgroundColor;
+                    fillColor = _styles.Control.SelectionBackgroundColor;
                 }
             }
             else
             {
-                textColor = Styles.Control.DisabledColor;
-                borderColor = Styles.ComboBox.BackgroundColor;
-                fillColor = Styles.Control.SelectionBackgroundColor;
+                textColor = _styles.Control.DisabledColor;
+                borderColor = _styles.ComboBox.BackgroundColor;
+                fillColor = _styles.Control.SelectionBackgroundColor;
             }
 
-            using (var b = new SolidBrush(Styles.Control.BackgroundColor))
+            using (var b = new SolidBrush(_styles.Control.BackgroundColor))
             {
                 g.FillRectangle(b, rect);
             }

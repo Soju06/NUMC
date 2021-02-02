@@ -11,12 +11,14 @@ namespace NUMC.Design.Controls
     {
         #region Field Region
 
-        private BrightButtonStyle _style = BrightButtonStyle.Normal;
+        private ButtonStyle _style = ButtonStyle.Normal;
         private bool _isDefault;
         private bool _spacePressed;
 
+        private readonly Styles _styles = Styles.GetStyles();
         private readonly int _padding = Consts.Padding / 2;
         private int _imagePadding = 5; // Consts.Padding / 2
+        private float _fontSize;
 
         #endregion Field Region
 
@@ -32,6 +34,9 @@ namespace NUMC.Design.Controls
             }
         }
 
+        public float FontSize { get => _fontSize; set { if (value == _fontSize) return;
+            _fontSize = value; Font = new System.Drawing.Font(_styles.FontFamily, value, _styles.FontStyle); } }
+
         public new bool Enabled
         {
             get { return base.Enabled; }
@@ -44,8 +49,8 @@ namespace NUMC.Design.Controls
 
         [Category("Appearance")]
         [Description("Determines the style of the button.")]
-        [DefaultValue(BrightButtonStyle.Normal)]
-        public BrightButtonStyle ButtonStyle
+        [DefaultValue(ButtonStyle.Normal)]
+        public ButtonStyle ButtonStyle
         {
             get { return _style; }
             set
@@ -140,6 +145,8 @@ namespace NUMC.Design.Controls
 
             SetButtonState(ControlState.Normal);
             Padding = new Padding(_padding);
+
+            FontSize = _styles.FontSize;
         }
 
         #endregion Constructor Region
@@ -303,51 +310,51 @@ namespace NUMC.Design.Controls
             var g = e.Graphics;
             var rect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
 
-            var textColor = Styles.Control.Color;
-            var borderColor = Styles.Control.SelectionBackgroundColor;
-            var fillColor = _isDefault ? Styles.Button.EmphaBackgroundColor : Styles.Button.BackgroundColor;
+            var textColor = _styles.Control.Color;
+            var borderColor = _styles.Control.SelectionBackgroundColor;
+            var fillColor = _isDefault ? _styles.Button.EmphaBackgroundColor : _styles.Button.BackgroundColor;
 
             if (Enabled)
             {
-                if (ButtonStyle == BrightButtonStyle.Normal)
+                if (ButtonStyle == ButtonStyle.Normal)
                 {
                     if (Focused && TabStop)
-                        borderColor = Styles.Control.EmphaColor;
+                        borderColor = _styles.Control.EmphaColor;
 
                     switch (ButtonState)
                     {
                         case ControlState.Hover:
-                            fillColor = _isDefault ? Styles.Button.DownBackgroundColor : Styles.Button.HoverBackgroundColor;
+                            fillColor = _isDefault ? _styles.Button.DownBackgroundColor : _styles.Button.HoverBackgroundColor;
                             break;
 
                         case ControlState.Pressed:
-                            //fillColor = _isDefault ? Colors.BrightBackground : Colors.BrightBackground;
-                            fillColor = Styles.Button.BackgroundColor;
+                            //fillColor = _isDefault ? Colors.Background : Colors.Background;
+                            fillColor = _styles.Button.BackgroundColor;
                             break;
                     }
                 }
-                else if (ButtonStyle == BrightButtonStyle.Flat)
+                else if (ButtonStyle == ButtonStyle.Flat)
                 {
                     switch (ButtonState)
                     {
                         case ControlState.Normal:
-                            fillColor = Styles.Button.BackgroundColor;
+                            fillColor = _styles.Button.BackgroundColor;
                             break;
 
                         case ControlState.Hover:
-                            fillColor = Styles.Button.HoverBackgroundColor;
+                            fillColor = _styles.Button.HoverBackgroundColor;
                             break;
 
                         case ControlState.Pressed:
-                            fillColor = Styles.Button.PressedBackgroundColor;
+                            fillColor = _styles.Button.PressedBackgroundColor;
                             break;
                     }
                 }
             }
             else
             {
-                textColor = Styles.Control.DisabledColor;
-                fillColor = Styles.Button.HoverBackgroundColor;
+                textColor = _styles.Control.DisabledColor;
+                fillColor = _styles.Button.HoverBackgroundColor;
             }
 
             using (var b = new SolidBrush(fillColor))
@@ -355,7 +362,7 @@ namespace NUMC.Design.Controls
                 g.FillRectangle(b, rect);
             }
 
-            if (ButtonStyle == BrightButtonStyle.Normal)
+            if (ButtonStyle == ButtonStyle.Normal)
             {
                 using (var p = new Pen(borderColor, 1))
                 {
@@ -420,7 +427,7 @@ namespace NUMC.Design.Controls
         #endregion Paint Region
     }
 
-    public enum BrightButtonStyle
+    public enum ButtonStyle
     {
         Normal,
         Flat

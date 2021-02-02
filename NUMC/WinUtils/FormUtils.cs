@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace WinUtils
 {
-    internal class FormUtils
+    public class FormUtils
     {
         public static void DragWindow(IntPtr hwnd)
         {

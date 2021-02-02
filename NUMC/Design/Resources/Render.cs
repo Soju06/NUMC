@@ -52,6 +52,7 @@ namespace NUMC.Design.Resources
             return Color.FromArgb((int)a, (int)r, (int)g, (int)b);
         }
 
+
         public static bool IsBright(Bitmap bitmap)
         {
             return IsBrightColor(Average(bitmap));
@@ -63,6 +64,22 @@ namespace NUMC.Design.Resources
         }
 
         public static Bitmap ColorChange(Bitmap bitmap, Color color)
+        {
+            var after = new Bitmap(bitmap.Width, bitmap.Height);
+
+            for (int x = 0; x < bitmap.Width; x++)
+                for (int y = 0; y < bitmap.Height; y++)
+                {
+                    var p = bitmap.GetPixel(x, y);
+
+                    if (p.A > 0)
+                        after.SetPixel(x, y, Color.FromArgb(p.A, color));
+                }
+
+            return after;
+        }
+
+        public static Bitmap AllColorChange(Bitmap bitmap, Color color)
         {
             Bitmap after = new Bitmap(bitmap.Width, bitmap.Height);
 

@@ -1,0 +1,10 @@
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\bin\Debug\BlurTest.exe.config
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\bin\Debug\BlurTest.exe
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\bin\Debug\BlurTest.pdb
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\obj\Debug\BlurTest.Form1.resources
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\obj\Debug\BlurTest.Form2.resources
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\obj\Debug\BlurTest.Properties.Resources.resources
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\obj\Debug\BlurTest.csproj.GenerateResource.cache
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\obj\Debug\BlurTest.csproj.CoreCompileInputs.cache
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\obj\Debug\BlurTest.exe
+E:\Dev\New folder\BlurTest\BlurTest\BlurTest\obj\Debug\BlurTest.pdb

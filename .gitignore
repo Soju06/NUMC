@@ -1,4 +1,5 @@
 .vs/
-Release/NUMC.json
-Debug/NUMC.json
-NUMC/obj
+NUMC/obj/
+*.ns
+Other/TestPlugin/obj/
+Other/TestProgram/obj/

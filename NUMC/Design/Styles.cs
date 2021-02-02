@@ -1,67 +1,128 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace NUMC.Design
 {
     public class Styles
     {
-        public class Form
-        {
-            public static Color BackgroundColor { get => Color.FromArgb(33, 33, 33); }
-            public static Color Color { get => Color.White; }
-        }
+        private static Styles _styles;
 
-        public class Control
-        {
-            public static Color BackgroundColor { get => Color.FromArgb(40, 40, 40); }
-            public static Color SelectionBackgroundColor { get => Color.FromArgb(50, 50, 50); }
+        public static Styles GetStyles() => _styles ?? (_styles = new Styles());
+        public static void SetStyle(Styles styles) => _styles = styles;
 
-            public static Color Color { get => Color.FromArgb(230, 230, 230); }
-            public static Color DisabledColor { get => Color.FromArgb(190, 190, 190); }
-            public static Color EmphaColor { get => Color.FromArgb(100, 44, 63); }
+        public FontFamily FontFamily { get => _fontFamily; set => _fontFamily = value; }
+        public float FontSize { get => _fontSize; set => _fontSize = value; }
+        public FontStyle FontStyle { get => _fontStyle; set => _fontStyle = value; }
+        public Font Font { get => _font ?? (_font = new Font(FontFamily, FontSize, FontStyle)); set => _font = value; }
 
-            public static Color ColorSelectionBackgroundColor { get => Color.FromArgb(133, 48, 77); }
-        }
+        public StyleObject.Form Form { get => _form ?? (_form = new StyleObject.Form()); set => _form = value; }
+        public StyleObject.Control Control { get => _control ?? (_control = new StyleObject.Control()); set => _control = value; }
+        public StyleObject.Label Label { get => _label ?? (_label = new StyleObject.Label()); set => _label = value; }
+        public StyleObject.UserControl UserControl { get => _userControl ?? (_userControl = new StyleObject.UserControl()); set => _userControl = value; }
+        public StyleObject.Button Button { get => _button ?? (_button = new StyleObject.Button()); set => _button = value; }
+        public StyleObject.ContextMenu ContextMenu { get => _contextMenu ?? (_contextMenu = new StyleObject.ContextMenu()); set => _contextMenu = value; }
+        public StyleObject.ComboBox ComboBox { get => _comboBox ?? (_comboBox = new StyleObject.ComboBox()); set => _comboBox = value; }
+        public StyleObject.RadioButton RadioButton { get => _radioButton ?? (_radioButton = new StyleObject.RadioButton()); set => _radioButton = value; }
+        public StyleObject.ScrollBar ScrollBar { get => _scrollBar ?? (_scrollBar = new StyleObject.ScrollBar()); set => _scrollBar = value; }
+        public StyleObject.ScrollView ScrollView { get => _scrollView ?? (_scrollView = new StyleObject.ScrollView()); set => _scrollView = value; }
 
-        public class UserControl
-        {
-            public static Color BackgroundColor { get => Color.FromArgb(33, 33, 33); }
-            public static Color Color { get => Color.FromArgb(230, 230, 230); }
-        }
+        private FontFamily _fontFamily = new FontFamily("Segoe UI");
+        private float _fontSize = 10F;
+        private FontStyle _fontStyle = FontStyle.Regular;
+        private Font _font;
 
-        public class Button
-        {
-            public static Color BackgroundColor { get => Color.FromArgb(40, 40, 40); }
-            public static Color EmphaBackgroundColor { get => Color.FromArgb(51, 45, 47); }
-            public static Color DownBackgroundColor { get => Color.FromArgb(56, 45, 51); }
-            public static Color HoverBackgroundColor { get => Color.FromArgb(44, 44, 44); }
-            public static Color PressedBackgroundColor { get => Color.FromArgb(50, 50, 50); }
-        }
+        private StyleObject.Form _form;
+        private StyleObject.Control _control;
+        private StyleObject.Label _label;
+        private StyleObject.UserControl _userControl;
+        private StyleObject.Button _button;
+        private StyleObject.ContextMenu _contextMenu;
+        private StyleObject.ComboBox _comboBox;
+        private StyleObject.RadioButton _radioButton;
+        private StyleObject.ScrollBar _scrollBar;
+        private StyleObject.ScrollView _scrollView;
+    }
 
-        public class ContextMenu
-        {
-            public static Color BackgroundColor { get => Color.FromArgb(58, 58, 58); }
-        }
+}
 
-        public class ComboBox
-        {
-            public static Color BackgroundColor { get => Color.FromArgb(55, 55, 55); }
-        }
+namespace NUMC.Design.StyleObject
+{
+    public class Form
+    {
+        public ColorBlend BackgroundGradient { get; set; } = new ColorBlend() {
+                Colors = new Color[] { Color.FromArgb(48, 52, 59), Color.FromArgb(38, 41, 47), 
+                Color.FromArgb(35, 39, 46) }, Positions = new float[] { 0f, 0.4f, 1f } 
+        };
+        public Color[] BorderGradient { get; set; } = new Color[] { 
+            Color.FromArgb(0, 204, 255), Color.FromArgb(51, 103, 255) 
+        };
 
-        public class RadioButton
-        {
-            public static Color BackgroundColor { get => Color.FromArgb(55, 55, 55); }
-        }
+        public Color BackgroundColor { get; set; } = Color.FromArgb(35, 39, 46);
+        public Color TransparentBackColor { get; set; } = Color.FromArgb(120, 51, 58, 64);
+        public Color TitleBarColor { get; set; } = Color.FromArgb(70, 40, 40, 40);
+        public Color Color { get; set; } = Color.White;
+    }
+    public class Control
+    {
+        public Color BackgroundColor { get; set; } = Color.FromArgb(40, 42, 47);
+        public Color SelectionBackgroundColor { get; set; } = Color.FromArgb(50, 53, 59);
 
-        public class ScrollBar
-        {
-            public static Color BackgroundColor { get => Color.FromArgb(52, 52, 52); }
-            public static Color ActiveColor { get => Color.FromArgb(76, 76, 76); }
-        }
+        public Color Color { get; set; } = Color.FromArgb(230, 230, 230);
+        public Color DisabledColor { get; set; } = Color.FromArgb(190, 190, 190);
+        public Color EmphaColor { get; set; } = Color.FromArgb(44, 63, 120);
 
-        public class ListView
-        {
-            public static Color BackgroundColor { get => Color.FromArgb(38, 38, 38); }
-            public static Color HeaderBackgroundColor { get => Color.FromArgb(42, 42, 42); }
-        }
+        public Color ColorSelectionBackgroundColor { get; set; } = Color.FromArgb(50, 78, 140);
+    }
+
+    public class Label
+    {
+        public Color BackgroundColor { get; set; } = Color.Transparent;
+        public Color Color { get; set; } = Color.FromArgb(220, 220, 220);
+    }
+
+    public class UserControl
+    {
+        public Color BackgroundColor { get; set; } = Color.FromArgb(120, 52, 57, 65);
+        public Color Color { get; set; } = Color.FromArgb(230, 230, 230);
+    }
+
+    public class Button
+    {
+        public Color BackgroundColor { get; set; } = Color.FromArgb(40, 42, 46);
+        public Color EmphaBackgroundColor { get; set; } = Color.FromArgb(46, 48, 53);
+        public Color DownBackgroundColor { get; set; } = Color.FromArgb(45, 47, 52);
+        public Color HoverBackgroundColor { get; set; } = Color.FromArgb(44, 47, 51);
+        public Color PressedBackgroundColor { get; set; } = Color.FromArgb(50, 53, 58);
+    }
+
+    public class ContextMenu
+    {
+        public Color BorderColor { get; set; } = Color.FromArgb(58, 62, 67);
+        public Color BackgroundColor { get; set; } = Color.FromArgb(38, 41, 47);
+    }
+
+    public class ComboBox
+    {
+        public Color BackgroundColor { get; set; } = Color.FromArgb(55, 58, 64);
+    }
+
+    public class RadioButton
+    {
+        public Color BackgroundColor { get; set; } = Color.FromArgb(55, 58, 64);
+    }
+
+    public class ScrollBar
+    {
+        public Color BackgroundColor { get; set; } = Color.FromArgb(52, 56, 63);
+        public Color HeaderColor { get; set; } = Color.FromArgb(72, 76, 82);
+        public Color HeaderDownColor { get; set; } = Color.FromArgb(78, 82, 91);
+        public Color ActiveColor { get; set; } = Color.FromArgb(83, 87, 97);
+    }
+
+    public class ScrollView
+    {
+        public Color BackgroundColor { get; set; } = Color.FromArgb(120, 38, 38, 38);
+        public Color Color { get; set; } = Color.FromArgb(225, 225, 225);
+        public Color HeaderBackgroundColor { get; set; } = Color.FromArgb(120, 42, 42, 42);
     }
 }

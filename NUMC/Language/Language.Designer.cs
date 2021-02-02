@@ -22,7 +22,7 @@ namespace NUMC.Language {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Language {
+    public class Language {
         
         public static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace NUMC.Language {
         ///   이 클래스에서 사용하는 캐시된 ResourceManager 인스턴스를 반환합니다.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NUMC.Language.Language", typeof(Language).Assembly);
@@ -51,7 +51,7 @@ namespace NUMC.Language {
         ///   재정의합니다.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,173 +61,128 @@ namespace NUMC.Language {
         }
         
         /// <summary>
+        ///   Installed과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _107 {
+            get {
+                return ResourceManager.GetString("107", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Online과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _108 {
+            get {
+                return ResourceManager.GetString("108", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   All과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _109 {
+            get {
+                return ResourceManager.GetString("109", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   loading plugins information..과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _110 {
+            get {
+                return ResourceManager.GetString("110", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   downloading list..과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _111 {
+            get {
+                return ResourceManager.GetString("111", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Are you sure you want to uninstall the plug-in &apos;{0}&apos;?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _112 {
+            get {
+                return ResourceManager.GetString("112", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Are you sure you want to install the plug-in &apos;{0}&apos;?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _113 {
+            get {
+                return ResourceManager.GetString("113", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Preparing to download...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _114 {
+            get {
+                return ResourceManager.GetString("114", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Downloading... {0]과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _115 {
+            get {
+                return ResourceManager.GetString("115", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Changing name...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _116 {
+            get {
+                return ResourceManager.GetString("116", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cleaning up...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string _117 {
+            get {
+                return ResourceManager.GetString("117", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Current Settings: {0}과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string ApplicationMenu_CurrentSettings {
+        public static string ApplicationMenu_CurrentSettings {
             get {
                 return ResourceManager.GetString("ApplicationMenu_CurrentSettings", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   To use hooking...과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Release all keys과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string CustomKeyDialog_KeyHook_Tip_Title {
+        public static string ApplicationMenu_ReleaseAllKeys {
             get {
-                return ResourceManager.GetString("CustomKeyDialog_KeyHook_Tip_Title", resourceCulture);
+                return ResourceManager.GetString("ApplicationMenu_ReleaseAllKeys", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Primary key과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Please upload your file here과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string CustomKeyDialog_SendKeys_Name {
+        public static string FileDropControl_Text {
             get {
-                return ResourceManager.GetString("CustomKeyDialog_SendKeys_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Only string input is possible.과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CustomKeyDialog_TextEntry_Caption {
-            get {
-                return ResourceManager.GetString("CustomKeyDialog_TextEntry_Caption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   String input과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CustomKeyDialog_TextEntry_Name {
-            get {
-                return ResourceManager.GetString("CustomKeyDialog_TextEntry_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Key Setting Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CustomKeyDialog_Title {
-            get {
-                return ResourceManager.GetString("CustomKeyDialog_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Virtual key과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CustomKeyDialog_VirtualKey_Name {
-            get {
-                return ResourceManager.GetString("CustomKeyDialog_VirtualKey_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Virtual simultaneous input과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string CustomKeyDialog_VirtualSendKeys_Name {
-            get {
-                return ResourceManager.GetString("CustomKeyDialog_VirtualSendKeys_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Add Delay Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string DelayAddDialog_Title {
-            get {
-                return ResourceManager.GetString("DelayAddDialog_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Enum Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string EnumDialog_Title {
-            get {
-                return ResourceManager.GetString("EnumDialog_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Add Function Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string FunctionAddDialog_Title {
-            get {
-                return ResourceManager.GetString("FunctionAddDialog_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Clean up Code과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string JsonEditorDialog_CleanUp {
-            get {
-                return ResourceManager.GetString("JsonEditorDialog_CleanUp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Editing Mode과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string JsonEditorDialog_EditingMode {
-            get {
-                return ResourceManager.GetString("JsonEditorDialog_EditingMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Find Keys Name과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string JsonEditorDialog_FindKey {
-            get {
-                return ResourceManager.GetString("JsonEditorDialog_FindKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Find Virtual Keys Name과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string JsonEditorDialog_FindVirtualKey {
-            get {
-                return ResourceManager.GetString("JsonEditorDialog_FindVirtualKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   New CustomKey과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string JsonEditorDialog_NewCustomKey {
-            get {
-                return ResourceManager.GetString("JsonEditorDialog_NewCustomKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   New WhiteListKey과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string JsonEditorDialog_NewWhiteListKey {
-            get {
-                return ResourceManager.GetString("JsonEditorDialog_NewWhiteListKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Save And Apply과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string JsonEditorDialog_SaveAndApply {
-            get {
-                return ResourceManager.GetString("JsonEditorDialog_SaveAndApply", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Json Editor과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string JsonEditorDialog_Title {
-            get {
-                return ResourceManager.GetString("JsonEditorDialog_Title", resourceCulture);
+                return ResourceManager.GetString("FileDropControl_Text", resourceCulture);
             }
         }
         
@@ -235,232 +190,25 @@ namespace NUMC.Language {
         ///   Select the key to use, or
         ///Mouse over here and press the key과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string KeyAddDialog_TipLabel {
+        public static string HookingControl_Text {
             get {
-                return ResourceManager.GetString("KeyAddDialog_TipLabel", resourceCulture);
+                return ResourceManager.GetString("HookingControl_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Add Key Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Keys과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string KeyAddDialog_Title {
+        public static string KeysDialog_Title {
             get {
-                return ResourceManager.GetString("KeyAddDialog_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Add delay과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_AddDelay {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_AddDelay", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Add Function과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_AddFunction {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_AddFunction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Add Keystroke과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_AddKeystroke {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_AddKeystroke", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Add Text Input과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_AddTextInput {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_AddTextInput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Change Settings과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_ChangeSetting {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_ChangeSetting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Delay과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_Delay {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_Delay", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Function과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_Function {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_Function", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Go to Function과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_GotoFunction {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_GotoFunction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Key Click과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_KeyClick {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_KeyClick", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Key down과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_Keydown {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_Keydown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Key up과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_Keyup {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_Keyup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Release all keys과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_KeyUpAll {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_KeyUpAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Modules...과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_Modules {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_Modules", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Event removal과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_Remove {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_Remove", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Remove all events과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_RemoveAll {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_RemoveAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   File Execution과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_RunFile {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_RunFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Text Input과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_TextInput {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_TextInput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Macro Setting Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MacroSettingDialog_Title {
-            get {
-                return ResourceManager.GetString("MacroSettingDialog_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Custom key...과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_CustomKey {
-            get {
-                return ResourceManager.GetString("Main_CustomKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Json Editor과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_JsonEditor {
-            get {
-                return ResourceManager.GetString("Main_JsonEditor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Key Ignore과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_KeyIgnore {
-            get {
-                return ResourceManager.GetString("Main_KeyIgnore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Macro...과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_Macro {
-            get {
-                return ResourceManager.GetString("Main_Macro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Start Program과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Main_StartProgram {
-            get {
-                return ResourceManager.GetString("Main_StartProgram", resourceCulture);
+                return ResourceManager.GetString("KeysDialog_Title", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Setting과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Main_Title {
+        public static string Main_Title {
             get {
                 return ResourceManager.GetString("Main_Title", resourceCulture);
             }
@@ -469,7 +217,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   Startup program change failed!과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Message_Error_ChangeStartProgram_Fail {
+        public static string Message_Error_ChangeStartProgram_Fail {
             get {
                 return ResourceManager.GetString("Message_Error_ChangeStartProgram_Fail", resourceCulture);
             }
@@ -478,78 +226,64 @@ namespace NUMC.Language {
         /// <summary>
         ///   Startup program verification failed!과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Message_Error_CheckStartProgram_Fail {
+        public static string Message_Error_CheckStartProgram_Fail {
             get {
                 return ResourceManager.GetString("Message_Error_CheckStartProgram_Fail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Failed to load settings!
-        ///Do you want to initialize settings?
-        ///
-        ///Message:과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Failed to load settings!과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Message_Error_LoadSetting_Fail {
+        public static string Message_Error_Load_Setting_Fail {
             get {
-                return ResourceManager.GetString("Message_Error_LoadSetting_Fail", resourceCulture);
+                return ResourceManager.GetString("Message_Error_Load_Setting_Fail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Do you want to save this setting?과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Message_Information_SaveThisSetting {
-            get {
-                return ResourceManager.GetString("Message_Information_SaveThisSetting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Would you like to use this setting?과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Message_Information_ThisSetting {
-            get {
-                return ResourceManager.GetString("Message_Information_ThisSetting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Edit mode is active!
-        ///Editing the settings can cause the program to become unstable!
-        ///Would you like to continue?과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Message_Warning_Editing {
-            get {
-                return ResourceManager.GetString("Message_Warning_Editing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   This menu is for experimentation only!
-        ///Using this menu may make the program unsafe!
-        ///Do you want to continue?과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string Message_Warning_Menu {
-            get {
-                return ResourceManager.GetString("Message_Warning_Menu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Exception {1} occurred in module {0}.
+        ///   {0}
+        ///Plugin with exception: {1}
+        ///Exception full message:
         ///{2}과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Module_Exception {
+        public static string Message_Error_Plugin_Exception {
             get {
-                return ResourceManager.GetString("Module_Exception", resourceCulture);
+                return ResourceManager.GetString("Message_Error_Plugin_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to save settings!과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Message_Error_Save_Setting_Fail {
+            get {
+                return ResourceManager.GetString("Message_Error_Save_Setting_Fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Do you want to reset the settings?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Message_Warning_Reset_Setting {
+            get {
+                return ResourceManager.GetString("Message_Warning_Reset_Setting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Plug-in Manager과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string PluginManager_Menu_Text {
+            get {
+                return ResourceManager.GetString("PluginManager_Menu_Text", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Add과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Add_Button {
+        public static string Program_Add_Button {
             get {
                 return ResourceManager.GetString("Program_Add_Button", resourceCulture);
             }
@@ -558,7 +292,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   Edit과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Edit_Button {
+        public static string Program_Edit_Button {
             get {
                 return ResourceManager.GetString("Program_Edit_Button", resourceCulture);
             }
@@ -567,7 +301,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   Exit과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Exit {
+        public static string Program_Exit {
             get {
                 return ResourceManager.GetString("Program_Exit", resourceCulture);
             }
@@ -576,7 +310,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   File과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_File_Button {
+        public static string Program_File_Button {
             get {
                 return ResourceManager.GetString("Program_File_Button", resourceCulture);
             }
@@ -585,7 +319,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   Info과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Info {
+        public static string Program_Info {
             get {
                 return ResourceManager.GetString("Program_Info", resourceCulture);
             }
@@ -594,7 +328,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   Move down과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Movedown {
+        public static string Program_Movedown {
             get {
                 return ResourceManager.GetString("Program_Movedown", resourceCulture);
             }
@@ -603,7 +337,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   Move up과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Moveup {
+        public static string Program_Moveup {
             get {
                 return ResourceManager.GetString("Program_Moveup", resourceCulture);
             }
@@ -612,7 +346,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   Open과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Open {
+        public static string Program_Open {
             get {
                 return ResourceManager.GetString("Program_Open", resourceCulture);
             }
@@ -621,7 +355,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   Remove과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Remove_Button {
+        public static string Program_Remove_Button {
             get {
                 return ResourceManager.GetString("Program_Remove_Button", resourceCulture);
             }
@@ -630,7 +364,7 @@ namespace NUMC.Language {
         /// <summary>
         ///   Reset과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Reset_Button {
+        public static string Program_Reset_Button {
             get {
                 return ResourceManager.GetString("Program_Reset_Button", resourceCulture);
             }
@@ -639,63 +373,117 @@ namespace NUMC.Language {
         /// <summary>
         ///   Save과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Program_Save_Button {
+        public static string Program_Save_Button {
             get {
                 return ResourceManager.GetString("Program_Save_Button", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Add Run File Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Start Program과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string RunFileDialog_Title {
+        public static string Program_StartProgram {
             get {
-                return ResourceManager.GetString("RunFileDialog_Title", resourceCulture);
+                return ResourceManager.GetString("Program_StartProgram", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Undo|Redo|Enlarge brush|Shrink brush|Zoom in|Zoom out|Brush|Eraser|Paint|Hand|Magnifier|Disabled (ignore key)|Disable과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Script Editor과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Sample_Menu_Items {
+        public static string ScriptEditor_Menu_Text {
             get {
-                return ResourceManager.GetString("Sample_Menu_Items", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Drop the file here과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string SetSettingDialog_DropLabel {
-            get {
-                return ResourceManager.GetString("SetSettingDialog_DropLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Add Settings Change Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string SetSettingDialog_Title {
-            get {
-                return ResourceManager.GetString("SetSettingDialog_Title", resourceCulture);
+                return ResourceManager.GetString("ScriptEditor_Menu_Text", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Portable과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Setting_Portable {
+        public static string Setting_Portable {
             get {
                 return ResourceManager.GetString("Setting_Portable", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Add Text Input Wizard과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Key Ignore과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string TextInputAddDialog_Title {
+        public static string VirtualInput_Menu_KeyIgnore {
             get {
-                return ResourceManager.GetString("TextInputAddDialog_Title", resourceCulture);
+                return ResourceManager.GetString("VirtualInput_Menu_KeyIgnore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Virtual input...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string VirtualInput_Menu_Name {
+            get {
+                return ResourceManager.GetString("VirtualInput_Menu_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Add virtual input과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string VirtualInput_Runtime_Add_Text {
+            get {
+                return ResourceManager.GetString("VirtualInput_Runtime_Add_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Undo|Redo|Enlarge brush|Shrink brush|Zoom in|Zoom out|Brush|Eraser|Paint|Hand|Magnifier|Disabled (ignore key)|Disable과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string VirtualInput_Sample_Menu_Items {
+            get {
+                return ResourceManager.GetString("VirtualInput_Sample_Menu_Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Primary key과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string VirtualInputDialog_SendKeys_Name {
+            get {
+                return ResourceManager.GetString("VirtualInputDialog_SendKeys_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   String input과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string VirtualInputDialog_TextEntry_Name {
+            get {
+                return ResourceManager.GetString("VirtualInputDialog_TextEntry_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Virtual input과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string VirtualInputDialog_Title {
+            get {
+                return ResourceManager.GetString("VirtualInputDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Virtual key과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string VirtualInputDialog_VirtualKey_Name {
+            get {
+                return ResourceManager.GetString("VirtualInputDialog_VirtualKey_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Virtual simultaneous input과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string VirtualInputDialog_VirtualSendKeys_Name {
+            get {
+                return ResourceManager.GetString("VirtualInputDialog_VirtualSendKeys_Name", resourceCulture);
             }
         }
     }

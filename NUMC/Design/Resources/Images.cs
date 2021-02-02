@@ -22,8 +22,7 @@ namespace NUMC.Design.Resources
 
         public static Bitmap GetImage(string name, bool bright = true)
         {
-            try
-            {
+            try {
                 object obj = Design.Images.ResourceManager.GetObject(name);
 
                 if (obj == null || obj.GetType() != typeof(Bitmap))
@@ -33,9 +32,7 @@ namespace NUMC.Design.Resources
                     return (Bitmap)obj;
                 else
                     return Render.Reversal((Bitmap)obj);
-            }
-            catch
-            {
+            } catch {
                 return Default;
             }
         }

@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>explorer.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,24 +47,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="DefaultLayout.cs">
+    <Compile Include="NUMPadLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DefaultLayout.Designer.cs">
-      <DependentUpon>DefaultLayout.cs</DependentUpon>
+    <Compile Include="NUMPadLayout.Designer.cs">
+      <DependentUpon>NUMPadLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DefaultLayout.resx">
-      <DependentUpon>DefaultLayout.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\NUMC\NUMC.csproj">
       <Project>{c3ab2bbe-5499-4c6d-b319-a6e9dde94450}</Project>
       <Name>NUMC</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NUMPadLayout.resx">
+      <DependentUpon>NUMPadLayout.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="explorer.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

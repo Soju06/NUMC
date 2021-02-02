@@ -24,15 +24,16 @@ namespace NUMC.Design.Controls
         public new ComboBoxStyle DropDownStyle { get; set; }
 
         private Bitmap _buffer;
+        private readonly Styles _styles = Styles.GetStyles();
 
         public ComboBox() : base()
         {
             SetStyle(ControlStyles.OptimizedDoubleBuffer |
                      ControlStyles.ResizeRedraw |
-                     ControlStyles.UserPaint, true);
-
+                     ControlStyles.UserPaint |
+                     ControlStyles.SupportsTransparentBackColor, true);
+            Font = _styles.Font;
             DrawMode = DrawMode.OwnerDrawVariable;
-
             base.FlatStyle = FlatStyle.Flat;
             base.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -109,12 +110,12 @@ namespace NUMC.Design.Controls
             {
                 var rect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
 
-                var textColor = Styles.Control.Color;
-                var borderColor = Styles.Control.SelectionBackgroundColor;
-                var fillColor = Styles.Control.BackgroundColor;
+                var textColor = _styles.Control.Color;
+                var borderColor = _styles.Control.SelectionBackgroundColor;
+                var fillColor = _styles.Control.BackgroundColor;
 
                 if (Focused && TabStop)
-                    borderColor = Styles.Control.EmphaColor;
+                    borderColor = _styles.Control.EmphaColor;
 
                 using (var b = new SolidBrush(fillColor))
                 {
@@ -170,18 +171,16 @@ namespace NUMC.Design.Controls
             var g = e.Graphics;
             var rect = e.Bounds;
 
-            var textColor = Styles.Control.Color;
-            var fillColor = Styles.Control.BackgroundColor;
+            var textColor = _styles.Control.Color;
+            var fillColor = Color.FromArgb(255, _styles.Control.BackgroundColor);
 
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected ||
                 (e.State & DrawItemState.Focus) == DrawItemState.Focus ||
                 (e.State & DrawItemState.NoFocusRect) != DrawItemState.NoFocusRect)
-                fillColor = Styles.Control.ColorSelectionBackgroundColor;
+                fillColor = Color.FromArgb(255, _styles.Control.ColorSelectionBackgroundColor);
 
             using (var b = new SolidBrush(fillColor))
-            {
                 g.FillRectangle(b, rect);
-            }
 
             if (e.Index >= 0 && e.Index < Items.Count)
             {

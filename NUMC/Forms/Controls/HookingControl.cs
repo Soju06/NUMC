@@ -1,5 +1,6 @@
-﻿using Hook;
+﻿using NUMC.Keyboard;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace NUMC.Forms.Controls
@@ -12,34 +13,56 @@ namespace NUMC.Forms.Controls
 
         public HookingControl()
         {
-            InitializeComponent();
-            label.Text = Language.Language.KeyAddDialog_TipLabel;
+            SetStyle(ControlStyles.ResizeRedraw | ControlStyles.DoubleBuffer |
+                    ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint |
+                    ControlStyles.SupportsTransparentBackColor, true);
 
             KeyboardHook.KeyDown += KeyboardHook_KeyDown;
         }
 
-        private bool KeyboardHook_KeyDown(int vkCode)
+        protected override void OnMouseEnter(EventArgs e)
         {
-            if (hook)
-                KeyChanged?.Invoke((Keys)vkCode);
-
-            return !hook;
-        }
-
-        private void Label_MouseEnter(object sender, EventArgs e)
-        {
+            base.OnMouseEnter(e);
+            Service.GetService()?.Pause();
             hook = true;
         }
 
-        private void Label_MouseLeave(object sender, EventArgs e)
+        protected override void OnMouseLeave(EventArgs e)
         {
+            base.OnMouseLeave(e);
+            Service.GetService()?.Start();
             hook = false;
         }
 
-        public void UnHook()
+        protected override void OnPaint(PaintEventArgs e)
         {
-            KeyboardHook.KeyDown -= KeyboardHook_KeyDown;
+            var g = e.Graphics;
+            var sf = new StringFormat {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            base.OnPaintBackground(e);
+
+            //using (var sb = new SolidBrush(BackColor))
+            //    g.FillRectangle(sb, ClientRectangle);
+
+            using (var sb = new SolidBrush(ForeColor))
+                g.DrawString(Language.Language.HookingControl_Text, 
+                    Font, sb, ClientRectangle, sf);
         }
+
+        private bool KeyboardHook_KeyDown(Keys key)
+        {
+            if (hook) KeyChanged?.Invoke(key);
+            return !hook;
+        }
+
+        private void Label_MouseEnter(object sender, EventArgs e) => hook = true;
+
+        private void Label_MouseLeave(object sender, EventArgs e) => hook = false;
+
+        public void UnHook() => KeyboardHook.KeyDown -= KeyboardHook_KeyDown;
     }
 
     public delegate void KeyChanged(Keys key);

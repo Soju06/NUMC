@@ -15,7 +15,7 @@ namespace NUMC.Design.Controls
 
         #region Field Region
 
-        private BrightScrollOrientation _scrollOrientation;
+        private ScrollOrientation _scrollOrientation;
 
         private int _value;
         private int _minimum = 0;
@@ -42,6 +42,7 @@ namespace NUMC.Design.Controls
         private Point _initialContact;
 
         private readonly Timer _scrollTimer;
+        private readonly Styles _styles = Styles.GetStyles();
 
         #endregion Field Region
 
@@ -49,8 +50,8 @@ namespace NUMC.Design.Controls
 
         [Category("Behavior")]
         [Description("The orientation type of the scrollbar.")]
-        [DefaultValue(BrightScrollOrientation.Vertical)]
-        public BrightScrollOrientation ScrollOrientation
+        [DefaultValue(ScrollOrientation.Vertical)]
+        public ScrollOrientation ScrollOrientation
         {
             get { return _scrollOrientation; }
             set
@@ -176,7 +177,7 @@ namespace NUMC.Design.Controls
                 _isScrolling = true;
                 _initialContact = e.Location;
 
-                if (_scrollOrientation == BrightScrollOrientation.Vertical)
+                if (_scrollOrientation == ScrollOrientation.Vertical)
                     _initialValue = _thumbArea.Top;
                 else
                     _initialValue = _thumbArea.Left;
@@ -206,13 +207,13 @@ namespace NUMC.Design.Controls
             if (_trackArea.Contains(e.Location) && e.Button == MouseButtons.Left)
             {
                 // Step 1. Check if our input is at least aligned with the thumb
-                if (_scrollOrientation == BrightScrollOrientation.Vertical)
+                if (_scrollOrientation == ScrollOrientation.Vertical)
                 {
                     var modRect = new Rectangle(_thumbArea.Left, _trackArea.Top, _thumbArea.Width, _trackArea.Height);
                     if (!modRect.Contains(e.Location))
                         return;
                 }
-                else if (_scrollOrientation == BrightScrollOrientation.Horizontal)
+                else if (_scrollOrientation == ScrollOrientation.Horizontal)
                 {
                     var modRect = new Rectangle(_trackArea.Left, _thumbArea.Top, _trackArea.Width, _thumbArea.Height);
                     if (!modRect.Contains(e.Location))
@@ -220,7 +221,7 @@ namespace NUMC.Design.Controls
                 }
 
                 // Step 2. Scroll to the area initially clicked.
-                if (_scrollOrientation == BrightScrollOrientation.Vertical)
+                if (_scrollOrientation == ScrollOrientation.Vertical)
                 {
                     var loc = e.Location.Y;
                     loc -= _upArrowArea.Bottom - 1;
@@ -240,7 +241,7 @@ namespace NUMC.Design.Controls
                 _initialContact = e.Location;
                 _thumbHot = true;
 
-                if (_scrollOrientation == BrightScrollOrientation.Vertical)
+                if (_scrollOrientation == ScrollOrientation.Vertical)
                     _initialValue = _thumbArea.Top;
                 else
                     _initialValue = _thumbArea.Left;
@@ -300,14 +301,14 @@ namespace NUMC.Design.Controls
 
                 var difference = new Point(e.Location.X - _initialContact.X, e.Location.Y - _initialContact.Y);
 
-                if (_scrollOrientation == BrightScrollOrientation.Vertical)
+                if (_scrollOrientation == ScrollOrientation.Vertical)
                 {
                     var thumbPos = (_initialValue - _trackArea.Top);
                     var newPosition = thumbPos + difference.Y;
 
                     ScrollToPhysical(newPosition);
                 }
-                else if (_scrollOrientation == BrightScrollOrientation.Horizontal)
+                else if (_scrollOrientation == ScrollOrientation.Horizontal)
                 {
                     var thumbPos = (_initialValue - _trackArea.Left);
                     var newPosition = thumbPos + difference.X;
@@ -355,7 +356,7 @@ namespace NUMC.Design.Controls
 
         public void ScrollToPhysical(int positionInPixels)
         {
-            var isVert = _scrollOrientation == BrightScrollOrientation.Vertical;
+            var isVert = _scrollOrientation == ScrollOrientation.Vertical;
 
             var trackAreaSize = isVert ? _trackArea.Height - _thumbArea.Height : _trackArea.Width - _thumbArea.Width;
 
@@ -374,7 +375,7 @@ namespace NUMC.Design.Controls
 
         public void ScrollByPhysical(int offsetInPixels)
         {
-            var isVert = _scrollOrientation == BrightScrollOrientation.Vertical;
+            var isVert = _scrollOrientation == ScrollOrientation.Vertical;
 
             var thumbPos = isVert ? (_thumbArea.Top - _trackArea.Top) : (_thumbArea.Left - _trackArea.Left);
 
@@ -388,23 +389,23 @@ namespace NUMC.Design.Controls
             var area = ClientRectangle;
 
             // Arrow buttons
-            if (_scrollOrientation == BrightScrollOrientation.Vertical)
+            if (_scrollOrientation == ScrollOrientation.Vertical)
             {
                 _upArrowArea = new Rectangle(area.Left, area.Top, Consts.ArrowButtonSize, Consts.ArrowButtonSize);
                 _downArrowArea = new Rectangle(area.Left, area.Bottom - Consts.ArrowButtonSize, Consts.ArrowButtonSize, Consts.ArrowButtonSize);
             }
-            else if (_scrollOrientation == BrightScrollOrientation.Horizontal)
+            else if (_scrollOrientation == ScrollOrientation.Horizontal)
             {
                 _upArrowArea = new Rectangle(area.Left, area.Top, Consts.ArrowButtonSize, Consts.ArrowButtonSize);
                 _downArrowArea = new Rectangle(area.Right - Consts.ArrowButtonSize, area.Top, Consts.ArrowButtonSize, Consts.ArrowButtonSize);
             }
 
             // Track
-            if (_scrollOrientation == BrightScrollOrientation.Vertical)
+            if (_scrollOrientation == ScrollOrientation.Vertical)
             {
                 _trackArea = new Rectangle(area.Left, area.Top + Consts.ArrowButtonSize, area.Width, area.Height - (Consts.ArrowButtonSize * 2));
             }
-            else if (_scrollOrientation == BrightScrollOrientation.Horizontal)
+            else if (_scrollOrientation == ScrollOrientation.Horizontal)
             {
                 _trackArea = new Rectangle(area.Left + Consts.ArrowButtonSize, area.Top, area.Width - (Consts.ArrowButtonSize * 2), area.Height);
             }
@@ -431,7 +432,7 @@ namespace NUMC.Design.Controls
             var positionRatio = (float)Value / (float)viewAreaSize;
 
             // Update area
-            if (_scrollOrientation == BrightScrollOrientation.Vertical)
+            if (_scrollOrientation == ScrollOrientation.Vertical)
             {
                 var thumbSize = (int)(_trackArea.Height * _viewContentRatio);
 
@@ -443,7 +444,7 @@ namespace NUMC.Design.Controls
 
                 _thumbArea = new Rectangle(_trackArea.Left + 3, _trackArea.Top + thumbPosition, Consts.ScrollBarSize - 6, thumbSize);
             }
-            else if (_scrollOrientation == BrightScrollOrientation.Horizontal)
+            else if (_scrollOrientation == ScrollOrientation.Horizontal)
             {
                 var thumbSize = (int)(_trackArea.Width * _viewContentRatio);
 
@@ -471,18 +472,15 @@ namespace NUMC.Design.Controls
         {
             var g = e.Graphics;
 
-            // DEBUG: Scrollbar bg
-            /*using (var b = new SolidBrush(Colors.MediumBackground))
-            {
+            using (var b = new SolidBrush(_styles.ScrollBar.BackgroundColor))
                 g.FillRectangle(b, ClientRectangle);
-            }*/
 
             // DEBUG: Arrow backgrounds
-            /*using (var b = new SolidBrush(Color.White))
+            /* using (var b = new SolidBrush(Color.White))
             {
                 g.FillRectangle(b, _upArrowArea);
                 g.FillRectangle(b, _downArrowArea);
-            }*/
+            } */
 
             // Up arrow
             var upIcon = _upArrowHot ? Icons.scrollbar_arrow_hot : Icons.scrollbar_arrow_standard;
@@ -493,9 +491,9 @@ namespace NUMC.Design.Controls
             if (!Enabled)
                 upIcon = Icons.scrollbar_arrow_disabled;
 
-            if (_scrollOrientation == BrightScrollOrientation.Vertical)
+            if (_scrollOrientation == ScrollOrientation.Vertical)
                 upIcon.RotateFlip(RotateFlipType.RotateNoneFlipY);
-            else if (_scrollOrientation == BrightScrollOrientation.Horizontal)
+            else if (_scrollOrientation == ScrollOrientation.Horizontal)
                 upIcon.RotateFlip(RotateFlipType.Rotate90FlipNone);
 
             g.DrawImageUnscaled(upIcon,
@@ -511,7 +509,7 @@ namespace NUMC.Design.Controls
             if (!Enabled)
                 downIcon = Icons.scrollbar_arrow_disabled;
 
-            if (_scrollOrientation == BrightScrollOrientation.Horizontal)
+            if (_scrollOrientation == ScrollOrientation.Horizontal)
                 downIcon.RotateFlip(RotateFlipType.Rotate270FlipNone);
 
             g.DrawImageUnscaled(downIcon,
@@ -521,15 +519,13 @@ namespace NUMC.Design.Controls
             // Draw thumb
             if (Enabled)
             {
-                var scrollColor = _thumbHot ? Styles.ScrollBar.BackgroundColor : Styles.Control.SelectionBackgroundColor;
+                var scrollColor = _thumbHot ? _styles.ScrollBar.HeaderDownColor : _styles.ScrollBar.HeaderColor;
 
                 if (_isScrolling)
-                    scrollColor = Styles.ScrollBar.ActiveColor;
+                    scrollColor = _styles.ScrollBar.ActiveColor;
 
                 using (var b = new SolidBrush(scrollColor))
-                {
                     g.FillRectangle(b, _thumbArea);
-                }
             }
         }
 
@@ -640,8 +636,8 @@ namespace NUMC.Design.Controls
             SetStyle(ControlStyles.Selectable |
                      ControlStyles.UserMouse, true);
 
-            _vScrollBar = new ScrollBar { ScrollOrientation = BrightScrollOrientation.Vertical };
-            _hScrollBar = new ScrollBar { ScrollOrientation = BrightScrollOrientation.Horizontal };
+            _vScrollBar = new ScrollBar { ScrollOrientation = ScrollOrientation.Vertical };
+            _hScrollBar = new ScrollBar { ScrollOrientation = ScrollOrientation.Horizontal };
 
             Controls.Add(_vScrollBar);
             Controls.Add(_hScrollBar);
@@ -952,7 +948,7 @@ namespace NUMC.Design.Controls
         #endregion Event Handler Region
     }
 
-    public enum BrightScrollOrientation
+    public enum ScrollOrientation
     {
         Vertical,
         Horizontal

@@ -12,9 +12,7 @@ namespace NUMC.Language
             string scode = Support[0, 1];
 
             if (code.ToLower() == "auto" || string.IsNullOrWhiteSpace(code))
-            {
                 code = CultureInfo.CurrentCulture.Name;
-            }
 
             for (int i = 0; i < Support.GetLength(0); i++)
             {
@@ -32,12 +30,8 @@ namespace NUMC.Language
         {
             string s = Language.resourceMan.BaseName;
             for (int i = 0; i < Support.GetLength(0); i++)
-            {
                 if (s == $"NUMC.Language.{Support[i, 1]}")
-                {
                     return Support[i, 0];
-                }
-            }
 
             return Support[0, 0];
         }
@@ -50,7 +44,7 @@ namespace NUMC.Language
 
             for (int i = 0; i < Support.GetLength(0); i++)
             {
-                var item = new ToolStripMenuItem(Support[i, 2]) { Tag = Support[i, 0], BackColor = Styles.Control.BackgroundColor };
+                var item = new ToolStripMenuItem(Support[i, 2]) { Tag = Support[i, 0], BackColor = Styles.GetStyles().Control.BackgroundColor };
 
                 item.Checked = (string)item.Tag == cl;
 
@@ -60,18 +54,16 @@ namespace NUMC.Language
             return langItems.ToArray();
         }
 
-        public static readonly string[,] Support = new string[2, 3]
-        {
-                {
-                    "en-US",
-                    "Language",
-                    "English"
-                },
-                {
-                    "ko-KR",
-                    "ko-KR",
-                    "한국어"
-                }
+        public static readonly string[,] Support = new string[2, 3] {
+            {
+                "en-US",
+                "Language",
+                "English"
+            }, {
+                "ko-KR",
+                "ko-KR",
+                "한국어"
+            }
         };
     }
 }

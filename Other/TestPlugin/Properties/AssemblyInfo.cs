@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 제어됩니다. 어셈블리와 관련된 정보를 수정하려면
 // 이러한 특성 값을 변경하세요.
 [assembly: AssemblyTitle("TestPlugin")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("teeeeeeeeeeeesssst")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Soju06")]
 [assembly: AssemblyProduct("TestPlugin")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]

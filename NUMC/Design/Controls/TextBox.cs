@@ -7,35 +7,48 @@ namespace NUMC.Design.Controls
 {
     public class TextBox : System.Windows.Forms.TextBox
     {
+        private float _fontSize;
+        private readonly Styles _styles = Styles.GetStyles();
+
+        public float FontSize { get => _fontSize; set { if (value == _fontSize) return;
+                _fontSize = value; Font = new Font(_styles.FontFamily, value, _styles.FontStyle); } }
+
         public TextBox()
         {
-            BackColor = Styles.Control.BackgroundColor;
-            ForeColor = Styles.Control.Color;
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.SupportsTransparentBackColor, true);
+
+            BackColor = _styles.Control.BackgroundColor;
+            ForeColor = _styles.Control.Color;
+            FontSize = _styles.FontSize;
             Padding = new Padding(2, 2, 2, 2);
-            BorderStyle = BorderStyle.FixedSingle;
-            ((Control)this).Paint += TextBox_Paint;
-
-            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
-
-            WinAPI.RedrawWindow(Handle, IntPtr.Zero, IntPtr.Zero, 0x400 | 0x100 | 0x1);
+            BorderStyle = BorderStyle.None;
+            Text = string.Empty;
         }
 
-        private void TextBox_Paint(object sender, PaintEventArgs e)
+        protected override void OnTextChanged(EventArgs e) => Invalidate(true);
+
+        protected override void OnPaint(PaintEventArgs e)
         {
-            WinAPI.RedrawWindow(Handle, IntPtr.Zero, IntPtr.Zero, 0x400 | 0x100 | 0x1);
+            base.OnPaint(e);
+
+            if (string.IsNullOrEmpty(Text.Trim()) && !string.IsNullOrEmpty(Text) && !Focused) {
+                StringFormat format = new StringFormat();
+
+                if (RightToLeft == RightToLeft.Yes) {
+                    format.LineAlignment = StringAlignment.Far;
+                    format.FormatFlags = StringFormatFlags.DirectionRightToLeft;
+                }
+
+                e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), ClientRectangle, format);
+            }
         }
 
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
-            if (m.Msg == 0x85)
-            {
-                var hdc = WinAPI.GetWindowDC(Handle);
-                using (var g = Graphics.FromHdcInternal(hdc))
-                using (var p = new Pen(Styles.Control.ColorSelectionBackgroundColor))
-                    g.DrawRectangle(p, new Rectangle(0, 0, Width - 1, Height - 1));
-                WinAPI.ReleaseDC(Handle, hdc);
-            }
+
+            if (m.Msg == Constants.WM_PAINT)
+                OnPaint(new PaintEventArgs(Graphics.FromHwnd(m.HWnd), ClientRectangle));
         }
     }
 }

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C3AB2BBE-5499-4C6D-B319-A6E9DDE94450}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>NUMC</RootNamespace>
     <AssemblyName>NUMC</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -42,13 +42,32 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Array\Sort.cs" />
+    <Compile Include="Expansion\Array.cs" />
+    <Compile Include="Client\APIClient.cs" />
+    <Compile Include="Client\AsyncImage.cs" />
+    <Compile Include="Client\Client.cs" />
+    <Compile Include="Client\NUMC\PluginManager.cs" />
+    <Compile Include="Client\NUMC\NUMC.cs" />
+    <Compile Include="Client\NUMC\NUMCUpdateHandler.cs" />
+    <Compile Include="Client\Update.cs" />
     <Compile Include="Constant.cs" />
+    <Compile Include="Design\Controls\Collections.cs" />
+    <Compile Include="Design\Controls\Label.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Design\Controls\TreeNode.cs" />
+    <Compile Include="Design\Controls\TreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Design\Controls\Button.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -111,106 +130,75 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Design\Controls\ProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Client\GitHub\GitHub.cs" />
+    <Compile Include="Client\GitHub\Releases.code.cs" />
+    <Compile Include="Client\GitHub\Releases.cs" />
+    <Compile Include="Expansion\Assembly.cs" />
+    <Compile Include="Forms\Dialogs\DebugConsole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\KeyboardLayouts\KeyboardLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Design\Controls\ProgressBar.Designer.cs">
-      <DependentUpon>ProgressBar.cs</DependentUpon>
+    <Compile Include="Plugins\KeyboardLayouts\KeyboardLayoutResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KeyboardLayoutResource.resx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Controls\DefaultLayout.cs">
+    <Compile Include="Plugins\PluginManager\PluginManagerApplicationMenu.cs" />
+    <Compile Include="Plugins\PluginManager\PluginManagerUtils.cs" />
+    <Compile Include="Plugins\PluginManager\PluginViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\Controls\DefaultLayout.Designer.cs">
-      <DependentUpon>DefaultLayout.cs</DependentUpon>
+    <Compile Include="Plugins\ScriptEditor\IScriptEditor.cs" />
+    <Compile Include="Plugins\_Debug\DebugConsoleApplicationMenu.cs" />
+    <Compile Include="Plugins\KeyboardLayouts\KeyboardLayoutSelector.cs" />
+    <Compile Include="Plugins\PluginManager\Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
     </Compile>
+    <Compile Include="Plugins\PluginManager\PluginManagerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\PluginManager\PluginManagerDialog.Designer.cs">
+      <DependentUpon>PluginManagerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\ScriptEditor\ScriptEditorKeyMenu.cs" />
+    <Compile Include="Plugin\IPluginExp.cs" />
+    <Compile Include="Plugins\VirtualInput\VirtualInputRuntimeMenu.cs" />
+    <Compile Include="Plugins\VirtualInput\VirtualInputRuntimeDialog.cs" />
+    <Compile Include="Plugin\Menu\IMenu.cs" />
+    <Compile Include="Plugin\Menu\Menu.cs" />
+    <Compile Include="Plugin\PluginExp.cs" />
+    <Compile Include="Plugin\ReleaseDownloader\ReleaseDownloadHandler.cs" />
+    <Compile Include="Plugin\Runtime\IRuntimeDialog.cs" />
     <Compile Include="Design\Resources\Images.cs" />
     <Compile Include="Design\Resources\Render.cs" />
-    <Compile Include="Design\Controls\TitleBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Design\Controls\TitleBar.designer.cs">
-      <DependentUpon>TitleBar.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Design\Designer\TitleBarDesigner.cs" />
     <Compile Include="Forms\Controls\FileDropControl.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Controls\FileDropControl.Designer.cs">
-      <DependentUpon>FileDropControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\HookingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\Controls\HookingControl.Designer.cs">
-      <DependentUpon>HookingControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Controls\IKeyboardLayout.cs" />
+    <Compile Include="Plugin\KeyboardLayout\IKeyboardLayout.cs" />
     <Compile Include="Forms\Controls\KeyboardLayoutControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\Dialogs\CustomKeyDialog.cs">
+    <Compile Include="Plugins\VirtualInput\VirtualInputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dialogs\CustomKeyDialog.Designer.cs">
-      <DependentUpon>CustomKeyDialog.cs</DependentUpon>
+    <Compile Include="Plugins\VirtualInput\VirtualInputDialog.Designer.cs">
+      <DependentUpon>VirtualInputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dialogs\JsonEditorDialog.cs">
+    <Compile Include="Forms\Dialogs\KeysDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dialogs\JsonEditorDialog.Designer.cs">
-      <DependentUpon>JsonEditorDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialogs\KeyDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialogs\KeyDialog.Designer.cs">
-      <DependentUpon>KeyDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\FunctionAddDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\FunctionAddDialog.Designer.cs">
-      <DependentUpon>FunctionAddDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\GotoFunctionDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\GotoFunctionDialog.Designer.cs">
-      <DependentUpon>GotoFunctionDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\RunFileDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\RunFileDialog.Designer.cs">
-      <DependentUpon>RunFileDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\SetSettingDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\SetSettingDialog.Designer.cs">
-      <DependentUpon>SetSettingDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\TextInputAddDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\TextInputAddDialog.Designer.cs">
-      <DependentUpon>TextInputAddDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\DelayAddDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\DelayAddDialog.Designer.cs">
-      <DependentUpon>DelayAddDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\KeyAddDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\KeyAddDialog.Designer.cs">
-      <DependentUpon>KeyAddDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\MacroSettingDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialogs\Macro\MacroSettingDialog.Designer.cs">
-      <DependentUpon>MacroSettingDialog.cs</DependentUpon>
+    <Compile Include="Forms\Dialogs\KeysDialog.Designer.cs">
+      <DependentUpon>KeysDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\ProgramInformation.cs">
       <SubType>Form</SubType>
@@ -218,21 +206,28 @@
     <Compile Include="Forms\Dialogs\ProgramInformation.Designer.cs">
       <DependentUpon>ProgramInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Handler\Handler.cs" />
+    <Compile Include="Plugins\ScriptEditor\ScriptEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\ScriptEditor\ScriptEditorDialog.Designer.cs">
+      <DependentUpon>ScriptEditorDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Language\Language.cs" />
-    <Compile Include="Menu\IKeyMenuModule.cs" />
-    <Compile Include="Menu\IApplicationMenuModule.cs" />
-    <Compile Include="Menu\INotifyMenuModule.cs" />
-    <Compile Include="Menu\Modules\ApplicationMenu.cs" />
-    <Compile Include="Menu\Modules\CustomKey.cs" />
-    <Compile Include="Menu\Modules\KeyIgnore.cs" />
-    <Compile Include="Menu\Modules\Macro.cs" />
+    <Compile Include="Plugin\Menu\IKeyMenu.cs" />
+    <Compile Include="Plugin\Menu\IApplicationMenu.cs" />
+    <Compile Include="Plugin\Menu\INotifyMenu.cs" />
+    <Compile Include="Plugins\Default\ApplicationMenu.cs" />
+    <Compile Include="Plugins\VirtualInput\VirtualInputKeyMenu.cs" />
+    <Compile Include="Plugins\VirtualInput\VirtualInputKeyMenuIgnore.cs" />
     <Compile Include="Menu\MenuStripSupport.cs" />
-    <Compile Include="Menu\Modules\NotifyMenu.cs" />
-    <Compile Include="Plugin\Handler.cs" />
-    <Compile Include="Reference\GlobalHook\Enums.cs" />
-    <Compile Include="Reference\GlobalHook\KeyboardHook.cs" />
-    <Compile Include="Reference\GlobalHook\KeyboardSimulation.cs" />
+    <Compile Include="Plugins\Default\NotifyMenu.cs" />
+    <Compile Include="Plugins\VirtualInput\VirtualInputKeyMenuSample.cs" />
+    <Compile Include="Plugin\Container.cs" />
+    <Compile Include="Plugin\Extract.cs" />
+    <Compile Include="Plugin\IPlugin.cs" />
+    <Compile Include="Plugin\Plugin.cs" />
+    <Compile Include="Keyboard\KeyboardHook.cs" />
+    <Compile Include="Keyboard\KeyboardSimulation.cs" />
     <Compile Include="Language\Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -260,33 +255,34 @@
     <Compile Include="Reference\WindowsInput\Native\XButton.cs" />
     <Compile Include="Reference\WindowsInput\WindowsInputDeviceStateAdaptor.cs" />
     <Compile Include="Reference\WindowsInput\WindowsInputMessageDispatcher.cs" />
-    <Compile Include="Script\Json.cs" />
-    <Compile Include="Script\Macro.cs" />
-    <Compile Include="Macro\BASIC_MACRO.cs" />
-    <Compile Include="Macro\IMacroModule.cs" />
+    <Compile Include="Script\Object.code.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="Setting\Json.cs" />
     <Compile Include="Script\Menu.cs" />
     <Compile Include="Script\Object.cs" />
+    <Compile Include="Plugin\Runtime\IRuntime.cs" />
+    <Compile Include="Plugins\VirtualInput\VirtualInputRuntime.cs" />
+    <Compile Include="Plugin\Runtime\IRuntimeMenu.cs" />
     <Compile Include="Script\Script.cs" />
+    <Compile Include="Setting\CmprsSerializer.cs" />
+    <Compile Include="Script\JsonObject.cs" />
     <Compile Include="Setting\Setting.cs" />
-    <Compile Include="Updater\Downloader.cs">
+    <Compile Include="Forms\Dialogs\ReleaseDownloader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Updater\Downloader.Designer.cs">
-      <DependentUpon>Downloader.cs</DependentUpon>
+    <Compile Include="Forms\Dialogs\ReleaseDownloader.Designer.cs">
+      <DependentUpon>ReleaseDownloader.cs</DependentUpon>
     </Compile>
-    <Compile Include="Updater\UpdateDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Updater\UpdateDialog.Designer.cs">
-      <DependentUpon>UpdateDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Updater\Updater.cs" />
+    <Compile Include="Client\Version.cs" />
+    <Compile Include="WinUtils\Dialogs\Cls_LockBits.cs" />
     <Compile Include="WinUtils\FormUtils.cs" />
+    <Compile Include="WinUtils\LayeredWindowHelper.cs" />
+    <Compile Include="WinUtils\Win10Style.cs" />
     <Compile Include="WinUtils\WinAPI.cs" />
-    <Compile Include="Forms\Main.cs">
+    <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main.Designer.cs">
+    <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -298,70 +294,42 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Design\Controls\RadioButton.resx">
-      <DependentUpon>RadioButton.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Design\Images.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Images.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\DefaultLayout.resx">
-      <DependentUpon>DefaultLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Design\Controls\TitleBar.resx">
-      <DependentUpon>TitleBar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\FileDropControl.resx">
-      <DependentUpon>FileDropControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\HookingControl.resx">
-      <DependentUpon>HookingControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\KeyboardLayoutControl.resx">
       <DependentUpon>KeyboardLayoutControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\CustomKeyDialog.resx">
-      <DependentUpon>CustomKeyDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Plugins\KeyboardLayouts\KeyboardLayoutResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>KeyboardLayoutResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\JsonEditorDialog.resx">
-      <DependentUpon>JsonEditorDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Plugins\PluginManager\Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\KeyDialog.resx">
-      <DependentUpon>KeyDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Plugins\PluginManager\PluginManagerDialog.resx">
+      <DependentUpon>PluginManagerDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\Macro\FunctionAddDialog.resx">
-      <DependentUpon>FunctionAddDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Plugins\VirtualInput\VirtualInputDialog.resx">
+      <DependentUpon>VirtualInputDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\Macro\GotoFunctionDialog.resx">
-      <DependentUpon>GotoFunctionDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\Macro\RunFileDialog.resx">
-      <DependentUpon>RunFileDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\Macro\SetSettingDialog.resx">
-      <DependentUpon>SetSettingDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\Macro\TextInputAddDialog.resx">
-      <DependentUpon>TextInputAddDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\Macro\DelayAddDialog.resx">
-      <DependentUpon>DelayAddDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\Macro\KeyAddDialog.resx">
-      <DependentUpon>KeyAddDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\Macro\MacroSettingDialog.resx">
-      <DependentUpon>MacroSettingDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Dialogs\KeysDialog.resx">
+      <DependentUpon>KeysDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\ProgramInformation.resx">
       <DependentUpon>ProgramInformation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main.resx">
+    <EmbeddedResource Include="Plugins\ScriptEditor\ScriptEditorDialog.resx">
+      <DependentUpon>ScriptEditorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Language\ko-KR.resx" />
     <EmbeddedResource Include="Language\Language.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Language.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -373,11 +341,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Updater\Downloader.resx">
-      <DependentUpon>Downloader.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Updater\UpdateDialog.resx">
-      <DependentUpon>UpdateDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Dialogs\ReleaseDownloader.resx">
+      <DependentUpon>ReleaseDownloader.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -439,6 +404,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NUMC_ICON_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\node_closed_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\node_closed_full.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\node_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\node_open_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloneToDesktop_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statusInstalled_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\discordpoop_256px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

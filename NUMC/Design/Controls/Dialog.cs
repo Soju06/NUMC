@@ -52,7 +52,7 @@ namespace NUMC.Design.Controls
         public new IButtonControl AcceptButton
         {
             get { return base.AcceptButton; }
-            private set { base.AcceptButton = value; }
+            set { base.AcceptButton = value; }
         }
 
         [Browsable(false)]
@@ -60,7 +60,7 @@ namespace NUMC.Design.Controls
         public new IButtonControl CancelButton
         {
             get { return base.CancelButton; }
-            private set { base.CancelButton = value; }
+            set { base.CancelButton = value; }
         }
 
         #endregion Property Region

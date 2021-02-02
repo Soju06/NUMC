@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CustomKeyDialog_KeyHook_Tip_Caption" xml:space="preserve">
+    <value>텍스트 박스에 마우스가 있으면 키 후킹을 시작합니다.
+후킹 중 입니다.</value>
+    <comment>텍스트 박스에 마우스가 있으면 키 후킹을 시작합니다.
+후킹 중 입니다.</comment>
+  </data>
+  <data name="CustomKeyDialog_KeyHook_Tip_Title" xml:space="preserve">
+    <value>후킹을 사용하려면...</value>
+    <comment>후킹을 사용하려면...</comment>
+  </data>
+  <data name="CustomKeyDialog_SendKeys_Caption" xml:space="preserve">
+    <value>일부 특수키 사용이 불가능 합니다. (WinKey)
+짧은 문자열 입력, 간단한 단축키 지정에 접합합니다.
+눌렀다 떼기가 불가능합니다.</value>
+    <comment>일부 특수키 사용이 불가능 합니다. (WinKey)
+짧은 문자열 입력, 간단한 단축키 지정에 접합합니다.
+눌렀다 떼기가 불가능합니다.</comment>
+  </data>
+  <data name="CustomKeyDialog_SendKeys_Name" xml:space="preserve">
+    <value>기본 키</value>
+    <comment>기본 키</comment>
+  </data>
+  <data name="CustomKeyDialog_TextEntry_Caption" xml:space="preserve">
+    <value>문자열 입력만 가능합니다.</value>
+    <comment>문자열 입력만 가능합니다.</comment>
+  </data>
+  <data name="CustomKeyDialog_TextEntry_Name" xml:space="preserve">
+    <value>문자열 입력</value>
+    <comment>문자열 입력</comment>
+  </data>
+  <data name="CustomKeyDialog_Title" xml:space="preserve">
+    <value>키 설정 마법사</value>
+    <comment>키 설정 마법사</comment>
+  </data>
+  <data name="CustomKeyDialog_VirtualKey_Caption" xml:space="preserve">
+    <value>키보드 전체를 제어할 수 있습니다.
+눌렀다 떼기를 지원합니다.
+단축키 지정에 적합합니다.
+문자열 입력에 부적합합니다.</value>
+    <comment>키보드 전체를 제어할 수 있습니다.
+눌렀다 떼기를 지원합니다.
+단축키 지정에 적합합니다.
+문자열 입력에 부적합합니다.</comment>
+  </data>
+  <data name="CustomKeyDialog_VirtualKey_Name" xml:space="preserve">
+    <value>가상 키</value>
+    <comment>가상 키</comment>
+  </data>
+  <data name="CustomKeyDialog_VirtualSendKeys_Caption" xml:space="preserve">
+    <value>키보드 전체를 제어할 수 있습니다.
+눌렀다 떼기를 사용하지 않은 단일 단축키에 적합합니다.
+눌렀다 떼기가 불가능합니다.</value>
+    <comment>키보드 전체를 제어할 수 있습니다.
+눌렀다 떼기를 사용하지 않은 단일 단축키에 적합합니다.
+눌렀다 떼기가 불가능합니다.</comment>
+  </data>
+  <data name="CustomKeyDialog_VirtualSendKeys_Name" xml:space="preserve">
+    <value>가상 동시 입력</value>
+    <comment>가상 동시 입력</comment>
+  </data>
+  <data name="DelayAddDialog_Title" xml:space="preserve">
+    <value>지연 추가 마법사</value>
+    <comment>지연 추가 마법사</comment>
+  </data>
+  <data name="EnumDialog_Title" xml:space="preserve">
+    <value>Enum 마법사</value>
+    <comment>Enum 마법사</comment>
+  </data>
+  <data name="FunctionAddDialog_Title" xml:space="preserve">
+    <value>함수 추가 마법사</value>
+    <comment>함수 추가 마법사</comment>
+  </data>
+  <data name="JsonEditorDialog_CleanUp" xml:space="preserve">
+    <value>코드 청소</value>
+    <comment>코드 청소</comment>
+  </data>
+  <data name="JsonEditorDialog_EditingMode" xml:space="preserve">
+    <value>편집 모드</value>
+    <comment>편집 모드</comment>
+  </data>
+  <data name="JsonEditorDialog_FindKey" xml:space="preserve">
+    <value>키 이름 찾기</value>
+    <comment>키 이름 찾기</comment>
+  </data>
+  <data name="JsonEditorDialog_FindVirtualKey" xml:space="preserve">
+    <value>가상 키 이름 찾기</value>
+    <comment>가상 키 이름 찾기</comment>
+  </data>
+  <data name="JsonEditorDialog_NewCustomKey" xml:space="preserve">
+    <value>새 사용자 지정 키</value>
+    <comment>새 사용자 지정 키</comment>
+  </data>
+  <data name="JsonEditorDialog_NewWhiteListKey" xml:space="preserve">
+    <value>새 화이트 리스트 키</value>
+    <comment>새 화이트 리스트 키</comment>
+  </data>
+  <data name="JsonEditorDialog_SaveAndApply" xml:space="preserve">
+    <value>저장 후 적용</value>
+    <comment>저장 후 적용</comment>
+  </data>
+  <data name="JsonEditorDialog_Title" xml:space="preserve">
+    <value>Json 편집기</value>
+    <comment>Json 편집기</comment>
+  </data>
+  <data name="KeyAddDialog_TipLabel" xml:space="preserve">
+    <value>사용할 키를 선택하거나
+여기에 마우스를 올리고, 키를 눌러주세요</value>
+    <comment>사용할 키를 선택하거나
+여기에 마우스를 올리고, 키를 눌러주세요</comment>
+  </data>
+  <data name="KeyAddDialog_Title" xml:space="preserve">
+    <value>키 추가 마법사</value>
+    <comment>키 추가 마법사</comment>
+  </data>
+  <data name="MacroSettingDialog_AddDelay" xml:space="preserve">
+    <value>지연 추가</value>
+    <comment>지연 추가</comment>
+  </data>
+  <data name="MacroSettingDialog_AddFunction" xml:space="preserve">
+    <value>함수 추가</value>
+    <comment>함수 추가</comment>
+  </data>
+  <data name="MacroSettingDialog_AddKeystroke" xml:space="preserve">
+    <value>키 입력 추가</value>
+    <comment>키 입력 추가</comment>
+  </data>
+  <data name="MacroSettingDialog_AddTextInput" xml:space="preserve">
+    <value>텍스트 입력 추가</value>
+    <comment>텍스트 입력 추가</comment>
+  </data>
+  <data name="MacroSettingDialog_ChangeSetting" xml:space="preserve">
+    <value>설정 변경</value>
+    <comment>설정 변경</comment>
+  </data>
+  <data name="MacroSettingDialog_Delay" xml:space="preserve">
+    <value>지연</value>
+    <comment>지연</comment>
+  </data>
+  <data name="MacroSettingDialog_Function" xml:space="preserve">
+    <value>함수</value>
+    <comment>함수</comment>
+  </data>
+  <data name="MacroSettingDialog_GotoFunction" xml:space="preserve">
+    <value>함수로 이동</value>
+    <comment>함수로 이동</comment>
+  </data>
+  <data name="MacroSettingDialog_KeyClick" xml:space="preserve">
+    <value>키 클릭</value>
+    <comment>키 클릭</comment>
+  </data>
+  <data name="MacroSettingDialog_Keydown" xml:space="preserve">
+    <value>키 누르기</value>
+    <comment>키 누르기</comment>
+  </data>
+  <data name="MacroSettingDialog_Keyup" xml:space="preserve">
+    <value>키 떼기</value>
+    <comment>키 떼기</comment>
+  </data>
+  <data name="MacroSettingDialog_KeyUpAll" xml:space="preserve">
+    <value>모든 키 떼기</value>
+    <comment>모든 키 떼기</comment>
+  </data>
+  <data name="MacroSettingDialog_Modules" xml:space="preserve">
+    <value>모듈...</value>
+    <comment>모듈...</comment>
+  </data>
+  <data name="MacroSettingDialog_Remove" xml:space="preserve">
+    <value>이벤트 제거</value>
+    <comment>이벤트 제거</comment>
+  </data>
+  <data name="MacroSettingDialog_RemoveAll" xml:space="preserve">
+    <value>이벤트 모두 제거</value>
+    <comment>이벤트 모두 제거</comment>
+  </data>
+  <data name="MacroSettingDialog_RunFile" xml:space="preserve">
+    <value>파일 실행</value>
+    <comment>파일 실행</comment>
+  </data>
+  <data name="MacroSettingDialog_TextInput" xml:space="preserve">
+    <value>텍스트 입력</value>
+    <comment>텍스트 입력</comment>
+  </data>
+  <data name="MacroSettingDialog_Title" xml:space="preserve">
+    <value>매크로 설정 마법사</value>
+    <comment>매크로 설정 마법사</comment>
+  </data>
+  <data name="Main_CustomKey" xml:space="preserve">
+    <value>사용자 지정 키...</value>
+    <comment>사용자 지정 키...</comment>
+  </data>
+  <data name="Main_JsonEditor" xml:space="preserve">
+    <value>Json 편집기</value>
+    <comment>Json 편집기</comment>
+  </data>
+  <data name="Main_KeyIgnore" xml:space="preserve">
+    <value>키 무시</value>
+    <comment>키 무시</comment>
+  </data>
+  <data name="Main_Macro" xml:space="preserve">
+    <value>매크로...</value>
+    <comment>매크로...</comment>
+  </data>
+  <data name="Main_StartProgram" xml:space="preserve">
+    <value>시작 프로그램</value>
+    <comment>시작 프로그램</comment>
+  </data>
+  <data name="Main_Title" xml:space="preserve">
+    <value>설정</value>
+    <comment>설정</comment>
+  </data>
+  <data name="Message_Error_ChangeStartProgram_Fail" xml:space="preserve">
+    <value>시작 프로그램 변경 실패!</value>
+    <comment>시작 프로그램 변경 실패!</comment>
+  </data>
+  <data name="Message_Error_CheckStartProgram_Fail" xml:space="preserve">
+    <value>시작 프로그램 확인 실패!</value>
+    <comment>시작 프로그램 확인 실패!</comment>
+  </data>
+  <data name="Message_Error_LoadSetting_Fail" xml:space="preserve">
+    <value>설정 불러오기 실패!
+설정을 초기화 하시겠습니까?
+
+
+메시지:</value>
+    <comment>설정 불러오기 실패!
+설정을 초기화 하시겠습니까?
+
+
+메시지:</comment>
+  </data>
+  <data name="Message_Information_SaveThisSetting" xml:space="preserve">
+    <value>이 설정을 저장 하시겠습니까?</value>
+    <comment>이 설정을 저장 하시겠습니까?</comment>
+  </data>
+  <data name="Message_Information_ThisSetting" xml:space="preserve">
+    <value>이 설정을 사용 하시겠습니까?</value>
+    <comment>이 설정을 사용 하시겠습니까?</comment>
+  </data>
+  <data name="Message_Warning_Editing" xml:space="preserve">
+    <value>편집 모드가 활성화되었습니다!
+설정을 편집하면 프로그램이 불안정해질 수 있습니다!
+계속 하시겠습니까?</value>
+    <comment>편집 모드가 활성화되었습니다!
+설정을 편집하면 프로그램이 불안정해질 수 있습니다!
+계속 하시겠습니까?</comment>
+  </data>
+  <data name="Message_Warning_Menu" xml:space="preserve">
+    <value>이 메뉴는 실험용 입니다!
+이 메뉴를 사용하면 프로그램이 불안전할 수 있습니다!
+계속 하시겠습니까?</value>
+    <comment>이 메뉴는 실험용 입니다!
+이 메뉴를 사용하면 프로그램이 불안전할 수 있습니다!
+계속 하시겠습니까?</comment>
+  </data>
+  <data name="Module_Exception" xml:space="preserve">
+    <value>{0} 모듈에서 {1} 예외가 발생하였습니다.
+{2}</value>
+    <comment>{0} 모듈에서 {1} 예외가 발생하였습니다.
+{2}</comment>
+  </data>
+  <data name="Program_Add_Button" xml:space="preserve">
+    <value>추가</value>
+    <comment>추가</comment>
+  </data>
+  <data name="Program_Edit_Button" xml:space="preserve">
+    <value>편집</value>
+    <comment>편집</comment>
+  </data>
+  <data name="Program_Exit" xml:space="preserve">
+    <value>끝내기</value>
+    <comment>끝내기</comment>
+  </data>
+  <data name="Program_File_Button" xml:space="preserve">
+    <value>파일</value>
+    <comment>파일</comment>
+  </data>
+  <data name="Program_Info" xml:space="preserve">
+    <value>정보</value>
+    <comment>정보</comment>
+  </data>
+  <data name="Program_Movedown" xml:space="preserve">
+    <value>아래로 이동</value>
+    <comment>아래로 이동</comment>
+  </data>
+  <data name="Program_Moveup" xml:space="preserve">
+    <value>위로 이동</value>
+    <comment>위로 이동</comment>
+  </data>
+  <data name="Program_Open" xml:space="preserve">
+    <value>열기</value>
+    <comment>열기</comment>
+  </data>
+  <data name="Program_Remove_Button" xml:space="preserve">
+    <value>제거</value>
+    <comment>제거</comment>
+  </data>
+  <data name="Program_Reset_Button" xml:space="preserve">
+    <value>초기화</value>
+    <comment>초기화</comment>
+  </data>
+  <data name="Program_Save_Button" xml:space="preserve">
+    <value>저장</value>
+    <comment>저장</comment>
+  </data>
+  <data name="RunFileDialog_Title" xml:space="preserve">
+    <value>파일 실행 추가 마법사</value>
+    <comment>파일 실행 추가 마법사</comment>
+  </data>
+  <data name="Sample_Menu_Items" xml:space="preserve">
+    <value>실행 취소|다시 실행|브러쉬 확대|브러쉬 축소|확대|축소|브러시|지우개|페인트|손|돋보기|사용 안함 (키  무시)|사용 안함</value>
+    <comment>실행 취소|다시 실행|브러쉬 확대|브러쉬 축소|확대|축소|브러시|지우개|페인트|손|돋보기|사용 안함 (키  무시)|사용 안함</comment>
+  </data>
+  <data name="SetSettingDialog_DropLabel" xml:space="preserve">
+    <value>여기에 파일을 올려주세요</value>
+    <comment>여기에 파일을 올려주세요</comment>
+  </data>
+  <data name="SetSettingDialog_Title" xml:space="preserve">
+    <value>설정 변경 추가 마법사</value>
+    <comment>설정 변경 추가 마법사</comment>
+  </data>
+  <data name="Setting_Portable" xml:space="preserve">
+    <value>포터블</value>
+    <comment>포터블</comment>
+  </data>
+  <data name="TextInputAddDialog_Title" xml:space="preserve">
+    <value>텍스트 입력 추가 마법사</value>
+    <comment>텍스트 입력 추가 마법사</comment>
+  </data>
+</root>

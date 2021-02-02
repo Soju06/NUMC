@@ -13,10 +13,15 @@ namespace NUMC.Design.Controls
         private ControlState _controlState = ControlState.Normal;
 
         private bool _spacePressed;
+        private float _fontSize;
+        private readonly Styles _styles = Styles.GetStyles();
 
         #endregion Field Region
 
         #region Property Region
+
+        public float FontSize { get => _fontSize; set { if (value == _fontSize) return;
+            _fontSize = value; Font = new System.Drawing.Font(_styles.FontFamily, value, _styles.FontStyle); } }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -129,6 +134,7 @@ namespace NUMC.Design.Controls
 
         public RadioButton()
         {
+            FontSize = _styles.FontSize;
             SetStyle(ControlStyles.SupportsTransparentBackColor |
                      ControlStyles.OptimizedDoubleBuffer |
                      ControlStyles.ResizeRedraw |
@@ -247,37 +253,37 @@ namespace NUMC.Design.Controls
 
             var size = Consts.RadioButtonSize;
 
-            var textColor = Styles.Control.Color;
-            var borderColor = Styles.Control.Color;
-            var fillColor = Styles.RadioButton.BackgroundColor;
+            var textColor = _styles.Control.Color;
+            var borderColor = _styles.Control.Color;
+            var fillColor = _styles.RadioButton.BackgroundColor;
 
             if (Enabled)
             {
                 if (Focused)
                 {
-                    borderColor = Styles.Control.EmphaColor;
-                    fillColor = Styles.Control.ColorSelectionBackgroundColor;
+                    borderColor = _styles.Control.EmphaColor;
+                    fillColor = _styles.Control.ColorSelectionBackgroundColor;
                 }
 
                 if (_controlState == ControlState.Hover)
                 {
-                    borderColor = Styles.Control.EmphaColor;
-                    fillColor = Styles.Control.ColorSelectionBackgroundColor;
+                    borderColor = _styles.Control.EmphaColor;
+                    fillColor = _styles.Control.ColorSelectionBackgroundColor;
                 }
                 else if (_controlState == ControlState.Pressed)
                 {
-                    borderColor = Styles.RadioButton.BackgroundColor;
-                    fillColor = Styles.Control.SelectionBackgroundColor;
+                    borderColor = _styles.RadioButton.BackgroundColor;
+                    fillColor = _styles.Control.SelectionBackgroundColor;
                 }
             }
             else
             {
-                textColor = Styles.Control.DisabledColor;
-                borderColor = Styles.RadioButton.BackgroundColor;
-                fillColor = Styles.Control.SelectionBackgroundColor;
+                textColor = _styles.Control.DisabledColor;
+                borderColor = _styles.RadioButton.BackgroundColor;
+                fillColor = _styles.Control.SelectionBackgroundColor;
             }
 
-            using (var b = new SolidBrush(Styles.Control.BackgroundColor))
+            using (var b = new SolidBrush(_styles.Control.BackgroundColor))
             {
                 g.FillRectangle(b, rect);
             }

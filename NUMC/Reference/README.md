@@ -49,7 +49,7 @@ Very simple mouse, keyboard global hooking library written in C#
 
 ### Hooking
 
-Add `KeyboardHook.HookStart()` or `MouseHook.HookStart()` at starts.
+Add `NUMC.Keyboard.HookStart()` or `MouseHook.HookStart()` at starts.
 **All events must return boolean value**. If returned value is false, that event go out.
 
 ### Simulation
@@ -61,7 +61,7 @@ Just call method
 Locking left windows key
 
 ```csharp
-KeyboardHook.KeyDown += (int vkCode) => (Keys)vkCode != Keys.LWin;
+NUMC.Keyboard.KeyDown += (int vkCode) => (Keys)vkCode != Keys.LWin;
 ```
 
 Watch all mouse down

@@ -117,23 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CustomKeyDialog_SendKeys_Name" xml:space="preserve">
+  <data name="VirtualInputDialog_SendKeys_Name" xml:space="preserve">
     <value>Primary key</value>
     <comment>기본 키</comment>
   </data>
-  <data name="CustomKeyDialog_TextEntry_Name" xml:space="preserve">
+  <data name="VirtualInputDialog_TextEntry_Name" xml:space="preserve">
     <value>String input</value>
     <comment>문자열 입력</comment>
   </data>
-  <data name="CustomKeyDialog_TextEntry_Caption" xml:space="preserve">
-    <value>Only string input is possible.</value>
-    <comment>문자열 입력만 가능합니다.</comment>
-  </data>
-  <data name="CustomKeyDialog_VirtualKey_Name" xml:space="preserve">
+  <data name="VirtualInputDialog_VirtualKey_Name" xml:space="preserve">
     <value>Virtual key</value>
     <comment>가상 키</comment>
   </data>
-  <data name="CustomKeyDialog_VirtualSendKeys_Name" xml:space="preserve">
+  <data name="VirtualInputDialog_VirtualSendKeys_Name" xml:space="preserve">
     <value>Virtual simultaneous input</value>
     <comment>가상 동시 입력</comment>
   </data>
@@ -149,104 +145,30 @@
     <value>Startup program verification failed!</value>
     <comment>시작 프로그램 확인 실패!</comment>
   </data>
-  <data name="Message_Error_LoadSetting_Fail" xml:space="preserve">
-    <value>Failed to load settings!
-Do you want to initialize settings?
-
-Message:</value>
+  <data name="Message_Error_Load_Setting_Fail" xml:space="preserve">
+    <value>Failed to load settings!</value>
     <comment>설정 불러오기 실패!
-설정을 초기화 하시겠습니까?
-
-
-메시지:</comment>
+</comment>
   </data>
-  <data name="Message_Warning_Menu" xml:space="preserve">
-    <value>This menu is for experimentation only!
-Using this menu may make the program unsafe!
-Do you want to continue?</value>
-    <comment>이 메뉴는 실험용 입니다!
-이 메뉴를 사용하면 프로그램이 불안전할 수 있습니다!
-계속 하시겠습니까?</comment>
-  </data>
-  <data name="Sample_Menu_Items" xml:space="preserve">
+  <data name="VirtualInput_Sample_Menu_Items" xml:space="preserve">
     <value>Undo|Redo|Enlarge brush|Shrink brush|Zoom in|Zoom out|Brush|Eraser|Paint|Hand|Magnifier|Disabled (ignore key)|Disable</value>
-    <comment>실행 취소|다시 실행|브러쉬 확대|브러쉬 축소|확대|축소|브러시|지우개|페인트|손|돋보기|사용 안함 (키  무시)|사용 안함</comment>
+    <comment>실행 취소|다시 실행|브러쉬 확대|브러쉬 축소|확대|축소|브러쉬|지우개|페인트|손|돋보기|사용 안함 (키  무시)|사용 안함</comment>
   </data>
   <data name="Setting_Portable" xml:space="preserve">
     <value>Portable</value>
     <comment>포터블</comment>
   </data>
-  <data name="CustomKeyDialog_KeyHook_Tip_Title" xml:space="preserve">
-    <value>To use hooking...</value>
-    <comment>후킹을 사용하려면...</comment>
+  <data name="VirtualInputDialog_Title" xml:space="preserve">
+    <value>Virtual input</value>
+    <comment>가상 입력기</comment>
   </data>
-  <data name="CustomKeyDialog_Title" xml:space="preserve">
-    <value>Key Setting Wizard</value>
-    <comment>키 설정 마법사</comment>
+  <data name="VirtualInput_Menu_Name" xml:space="preserve">
+    <value>Virtual input...</value>
+    <comment>가상 입력기...</comment>
   </data>
-  <data name="JsonEditorDialog_CleanUp" xml:space="preserve">
-    <value>Clean up Code</value>
-    <comment>코드 청소</comment>
-  </data>
-  <data name="JsonEditorDialog_EditingMode" xml:space="preserve">
-    <value>Editing Mode</value>
-    <comment>편집 모드</comment>
-  </data>
-  <data name="JsonEditorDialog_FindKey" xml:space="preserve">
-    <value>Find Keys Name</value>
-    <comment>키 이름 찾기</comment>
-  </data>
-  <data name="JsonEditorDialog_FindVirtualKey" xml:space="preserve">
-    <value>Find Virtual Keys Name</value>
-    <comment>가상 키 이름 찾기</comment>
-  </data>
-  <data name="JsonEditorDialog_NewCustomKey" xml:space="preserve">
-    <value>New CustomKey</value>
-    <comment>새 사용자 지정 키</comment>
-  </data>
-  <data name="JsonEditorDialog_NewWhiteListKey" xml:space="preserve">
-    <value>New WhiteListKey</value>
-    <comment>새 화이트 리스트 키</comment>
-  </data>
-  <data name="JsonEditorDialog_SaveAndApply" xml:space="preserve">
-    <value>Save And Apply</value>
-    <comment>저장 후 적용</comment>
-  </data>
-  <data name="JsonEditorDialog_Title" xml:space="preserve">
-    <value>Json Editor</value>
-    <comment>Json 편집기</comment>
-  </data>
-  <data name="EnumDialog_Title" xml:space="preserve">
-    <value>Enum Wizard</value>
-    <comment>Enum 마법사</comment>
-  </data>
-  <data name="Main_CustomKey" xml:space="preserve">
-    <value>Custom key...</value>
-    <comment>사용자 지정 키...</comment>
-  </data>
-  <data name="Main_JsonEditor" xml:space="preserve">
-    <value>Json Editor</value>
-    <comment>Json 편집기</comment>
-  </data>
-  <data name="Main_StartProgram" xml:space="preserve">
+  <data name="Program_StartProgram" xml:space="preserve">
     <value>Start Program</value>
     <comment>시작 프로그램</comment>
-  </data>
-  <data name="Message_Information_SaveThisSetting" xml:space="preserve">
-    <value>Do you want to save this setting?</value>
-    <comment>이 설정을 저장 하시겠습니까?</comment>
-  </data>
-  <data name="Message_Information_ThisSetting" xml:space="preserve">
-    <value>Would you like to use this setting?</value>
-    <comment>이 설정을 사용 하시겠습니까?</comment>
-  </data>
-  <data name="Message_Warning_Editing" xml:space="preserve">
-    <value>Edit mode is active!
-Editing the settings can cause the program to become unstable!
-Would you like to continue?</value>
-    <comment>편집 모드가 활성화되었습니다!
-설정을 편집하면 프로그램이 불안정해질 수 있습니다!
-계속 하시겠습니까?</comment>
   </data>
   <data name="Program_Add_Button" xml:space="preserve">
     <value>Add</value>
@@ -280,87 +202,15 @@ Would you like to continue?</value>
     <value>Save</value>
     <comment>저장</comment>
   </data>
-  <data name="DelayAddDialog_Title" xml:space="preserve">
-    <value>Add Delay Wizard</value>
-    <comment>지연 추가 마법사</comment>
-  </data>
-  <data name="FunctionAddDialog_Title" xml:space="preserve">
-    <value>Add Function Wizard</value>
-    <comment>함수 추가 마법사</comment>
-  </data>
-  <data name="KeyAddDialog_TipLabel" xml:space="preserve">
+  <data name="HookingControl_Text" xml:space="preserve">
     <value>Select the key to use, or
 Mouse over here and press the key</value>
     <comment>사용할 키를 선택하거나
 여기에 마우스를 올리고, 키를 눌러주세요</comment>
   </data>
-  <data name="KeyAddDialog_Title" xml:space="preserve">
-    <value>Add Key Wizard</value>
-    <comment>키 추가 마법사</comment>
-  </data>
-  <data name="MacroSettingDialog_AddDelay" xml:space="preserve">
-    <value>Add delay</value>
-    <comment>지연 추가</comment>
-  </data>
-  <data name="MacroSettingDialog_AddFunction" xml:space="preserve">
-    <value>Add Function</value>
-    <comment>함수 추가</comment>
-  </data>
-  <data name="MacroSettingDialog_AddKeystroke" xml:space="preserve">
-    <value>Add Keystroke</value>
-    <comment>키 입력 추가</comment>
-  </data>
-  <data name="MacroSettingDialog_AddTextInput" xml:space="preserve">
-    <value>Add Text Input</value>
-    <comment>텍스트 입력 추가</comment>
-  </data>
-  <data name="MacroSettingDialog_Delay" xml:space="preserve">
-    <value>Delay</value>
-    <comment>지연</comment>
-  </data>
-  <data name="MacroSettingDialog_Function" xml:space="preserve">
-    <value>Function</value>
-    <comment>함수</comment>
-  </data>
-  <data name="MacroSettingDialog_GotoFunction" xml:space="preserve">
-    <value>Go to Function</value>
-    <comment>함수로 이동</comment>
-  </data>
-  <data name="MacroSettingDialog_KeyClick" xml:space="preserve">
-    <value>Key Click</value>
-    <comment>키 클릭</comment>
-  </data>
-  <data name="MacroSettingDialog_Keydown" xml:space="preserve">
-    <value>Key down</value>
-    <comment>키 누르기</comment>
-  </data>
-  <data name="MacroSettingDialog_Keyup" xml:space="preserve">
-    <value>Key up</value>
-    <comment>키 떼기</comment>
-  </data>
-  <data name="MacroSettingDialog_KeyUpAll" xml:space="preserve">
-    <value>Release all keys</value>
-    <comment>모든 키 떼기</comment>
-  </data>
-  <data name="MacroSettingDialog_Remove" xml:space="preserve">
-    <value>Event removal</value>
-    <comment>이벤트 제거</comment>
-  </data>
-  <data name="MacroSettingDialog_RemoveAll" xml:space="preserve">
-    <value>Remove all events</value>
-    <comment>이벤트 모두 제거</comment>
-  </data>
-  <data name="MacroSettingDialog_TextInput" xml:space="preserve">
-    <value>Text Input</value>
-    <comment>텍스트 입력</comment>
-  </data>
-  <data name="MacroSettingDialog_Title" xml:space="preserve">
-    <value>Macro Setting Wizard</value>
-    <comment>매크로 설정 마법사</comment>
-  </data>
-  <data name="Main_Macro" xml:space="preserve">
-    <value>Macro...</value>
-    <comment>매크로...</comment>
+  <data name="KeysDialog_Title" xml:space="preserve">
+    <value>Keys</value>
+    <comment>키</comment>
   </data>
   <data name="Program_Movedown" xml:space="preserve">
     <value>Move down</value>
@@ -370,50 +220,98 @@ Mouse over here and press the key</value>
     <value>Move up</value>
     <comment>위로 이동</comment>
   </data>
-  <data name="TextInputAddDialog_Title" xml:space="preserve">
-    <value>Add Text Input Wizard</value>
-    <comment>텍스트 입력 추가 마법사</comment>
-  </data>
   <data name="Program_Info" xml:space="preserve">
     <value>Info</value>
     <comment>정보</comment>
   </data>
-  <data name="Main_KeyIgnore" xml:space="preserve">
+  <data name="VirtualInput_Menu_KeyIgnore" xml:space="preserve">
     <value>Key Ignore</value>
     <comment>키 무시</comment>
-  </data>
-  <data name="MacroSettingDialog_ChangeSetting" xml:space="preserve">
-    <value>Change Settings</value>
-    <comment>설정 변경</comment>
-  </data>
-  <data name="SetSettingDialog_DropLabel" xml:space="preserve">
-    <value>Drop the file here</value>
-    <comment>여기에 파일을 올려주세요</comment>
-  </data>
-  <data name="SetSettingDialog_Title" xml:space="preserve">
-    <value>Add Settings Change Wizard</value>
-    <comment>설정 변경 추가 마법사</comment>
-  </data>
-  <data name="MacroSettingDialog_Modules" xml:space="preserve">
-    <value>Modules...</value>
-    <comment>모듈...</comment>
-  </data>
-  <data name="MacroSettingDialog_RunFile" xml:space="preserve">
-    <value>File Execution</value>
-    <comment>파일 실행</comment>
-  </data>
-  <data name="RunFileDialog_Title" xml:space="preserve">
-    <value>Add Run File Wizard</value>
-    <comment>파일 실행 추가 마법사</comment>
-  </data>
-  <data name="Module_Exception" xml:space="preserve">
-    <value>Exception {1} occurred in module {0}.
-{2}</value>
-    <comment>{0} 모듈에서 {1} 예외가 발생하였습니다.
-{2}</comment>
   </data>
   <data name="ApplicationMenu_CurrentSettings" xml:space="preserve">
     <value>Current Settings: {0}</value>
     <comment>현재 설정: {0}</comment>
+  </data>
+  <data name="Message_Error_Save_Setting_Fail" xml:space="preserve">
+    <value>Failed to save settings!</value>
+    <comment>설정 저장을 실패했습니다!</comment>
+  </data>
+  <data name="Message_Warning_Reset_Setting" xml:space="preserve">
+    <value>Do you want to reset the settings?</value>
+    <comment>설정을 초기화 하시겠습니까?</comment>
+  </data>
+  <data name="FileDropControl_Text" xml:space="preserve">
+    <value>Please upload your file here</value>
+    <comment>여기에 파일을 올려주세요</comment>
+  </data>
+  <data name="Message_Error_Plugin_Exception" xml:space="preserve">
+    <value>{0}
+Plugin with exception: {1}
+Exception full message:
+{2}</value>
+    <comment>{0}
+예외가 발생한 플러그인: {1}
+예외 전체 메시지:
+{2}</comment>
+  </data>
+  <data name="107" xml:space="preserve">
+    <value>Installed</value>
+    <comment>설치됨</comment>
+  </data>
+  <data name="108" xml:space="preserve">
+    <value>Online</value>
+    <comment>온라인</comment>
+  </data>
+  <data name="109" xml:space="preserve">
+    <value>All</value>
+    <comment>모두</comment>
+  </data>
+  <data name="110" xml:space="preserve">
+    <value>loading plugins information..</value>
+    <comment>플러그인 정보 불러오는중...</comment>
+  </data>
+  <data name="111" xml:space="preserve">
+    <value>downloading list..</value>
+    <comment>리스트 다운로드중...</comment>
+  </data>
+  <data name="112" xml:space="preserve">
+    <value>Are you sure you want to uninstall the plug-in '{0}'?</value>
+    <comment>플러그인 '{0}'을(를) 제거 하시겠습니까?</comment>
+  </data>
+  <data name="113" xml:space="preserve">
+    <value>Are you sure you want to install the plug-in '{0}'?</value>
+    <comment>플러그인 '{0}'을(를) 설치 하시겠습니까?</comment>
+  </data>
+  <data name="114" xml:space="preserve">
+    <value>Preparing to download...</value>
+    <comment>다운로드 준비중...</comment>
+  </data>
+  <data name="115" xml:space="preserve">
+    <value>Downloading... {0]</value>
+    <comment>다운로드중... {0}</comment>
+  </data>
+  <data name="116" xml:space="preserve">
+    <value>Changing name...</value>
+    <comment>이름 변경중...</comment>
+  </data>
+  <data name="117" xml:space="preserve">
+    <value>Cleaning up...</value>
+    <comment>정리중...</comment>
+  </data>
+  <data name="ApplicationMenu_ReleaseAllKeys" xml:space="preserve">
+    <value>Release all keys</value>
+    <comment>모든 키 떼기</comment>
+  </data>
+  <data name="PluginManager_Menu_Text" xml:space="preserve">
+    <value>Plug-in Manager</value>
+    <comment>플러그인 관리</comment>
+  </data>
+  <data name="ScriptEditor_Menu_Text" xml:space="preserve">
+    <value>Script Editor</value>
+    <comment>스크립트 편집</comment>
+  </data>
+  <data name="VirtualInput_Runtime_Add_Text" xml:space="preserve">
+    <value>Add virtual input</value>
+    <comment>가상 입력 추가</comment>
   </data>
 </root>

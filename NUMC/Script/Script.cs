@@ -1,4 +1,11 @@
-﻿using System;
+﻿using NUMC.Plugin.Runtime;
+using NUMC.Setting;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput;
@@ -7,150 +14,214 @@ namespace NUMC.Script
 {
     public class Script
     {
+        private readonly IInputSimulator _simulator = new InputSimulator();
+        private readonly IList<IRuntime> _runtimes;
+        private ScriptObject _object = new ScriptObject();
+
         public Script()
         {
-            Simulator = new InputSimulator();
+            _runtimes = Plugin.Plugin.ExtractPlugin<IRuntime>();
+
+            for (int i = 0; i < _runtimes.Count; i++)
+                _runtimes[i].Initialize(this);
         }
 
-        public void StopInput() // 모든 키 떼기
+        public IInputSimulator GetSimulator() => _simulator;
+        public ScriptObject GetObject() => _object;
+        public IList<IRuntime> GetRuntimes() => _runtimes;
+
+        public void StopInput() => ReleaseKeys();
+
+        public void ReleaseKeys()
         {
-            foreach (Keys item in Enum.GetValues(typeof(Keys)))
-            {
-                if (Simulator.InputDeviceState.IsKeyDown(item))
-                    Simulator.Keyboard.KeyUp(item);
-            }
-        }
+            if (_simulator == null)
+                return;
 
-        private readonly InputSimulator Simulator;
-        public ScriptObject Object = new ScriptObject();
+            Debug.WriteLine("release keys");
 
-        public void SetScriptObject(ScriptObject script)
-        {
-            Object = script;
-        }
+            Keys[] keys = (Keys[])Enum.GetValues(typeof(Keys));
 
-        public void KeyDown(int vkCode)
-        {
-            if (IsAccessible) // 개체가 접근 가능한지
-            {
-                KeyObject key = Object.GetKeyObject((Keys)vkCode, true); // 작동할 키 개체
-
-                // 지정되지 않은 키 또는 설정
-                if (key == null || key.KeyScript == null)
-                    return;
-
-                for (int i = 0; i < key.KeyScript.Length; i++) // 스트립트 실행
-                {
-                    if (key.KeyScript[i] != null)
-                        RunKeyScript(key.KeyScript[i], true);
+            for (int i = 0; i < keys.Length; i++)
+                if (_simulator.InputDeviceState.IsKeyDown(keys[i])) {
+                    Debug.WriteLine($"release key: {keys[i]}");
+                    _simulator.Keyboard.KeyUp(keys[i]);
                 }
-            }
         }
 
-        public void KeyUp(int vkCode)
+#if DEBUG
+        private readonly List<long> ds = new List<long>();
+#endif
+
+        public bool Run(Keys keys, bool isDown)
         {
-            if (IsAccessible) // 개체가 접근 가능한지
-            {
-                KeyObject key = Object.GetKeyObject((Keys)vkCode, true); // 작동할 키 개체
+            if (_object == null)
+                return true;
 
-                // 지정되지 않은 키 또는 설정
-                if (key == null || key.KeyScript == null)
-                    return;
+            var obj = _object.Keys.GetObject(keys);
 
-                for (int i = 0; i < key.KeyScript.Length; i++) // 스트립트 실행
+            if (obj == null || obj.Script == null || obj.Script.Scripts == null)
+                return true;
+
+            var script = obj.Script;
+            var scriptInfo = new ScriptInfo(keys, obj, this);
+
+#if DEBUG
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+#endif
+            try {
+                for (scriptInfo.Index = 0; scriptInfo.Index >= 0 && scriptInfo.Index < script.Scripts.Count; scriptInfo.Index++)
                 {
-                    if (key.KeyScript[i] != null)
-                        RunKeyScript(key.KeyScript[i], false);
-                }
-            }
-        }
+                    var runtimeScript = script.Scripts[scriptInfo.Index];
 
-        private void RunKeyScript(KeyScript script, bool IsDown)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(script.Type) && script.Macro == null) //타입이 없고 매크로도 없으면
-                    return;
+                    if (runtimeScript == null)
+                        continue;
 
-                if (IsDown) // 키를 눌렀을때
-                {
-                    if (script.SendKeys != null && script.SendKeys.Text.Length >= 1) // WinForm SendKeys
+                    for (int l = 0; l < _runtimes.Count; l++)
                     {
-                        if (script.Type == "SendKeys")
-                            for (int i = 0; i < script.SendKeys.Text.Length; i++)
-                                System.Windows.Forms.SendKeys.SendWait(script.SendKeys.Text[i]);
-                        else if (script.Type == "TextEntry")
-                            for (int i = 0; i < script.SendKeys.Text.Length; i++)
-                                Simulator.Keyboard.TextEntry(script.SendKeys.Text[i]);
-                    }
-                    else if (script.VirtualKey != null && script.VirtualKey.Keys.Length >= 1) // Virtual Keyboard
-                    {
-                        if (script.Type == "VirtualKey")
-                            for (int i = 0; i < script.VirtualKey.Keys.Length; i++)
-                                Simulator.Keyboard.KeyDown(script.VirtualKey.Keys[i]);
-                        if (script.Type == "VirtualSendKeys")
-                        {
-                            // 키 누름
-                            for (int i = 0; i < script.VirtualKey.Keys.Length; i++)
-                                Simulator.Keyboard.KeyDown(script.VirtualKey.Keys[i]);
+                        var runtime = _runtimes[l];
 
-                            // 키 뗌
-                            for (int i = 0; i < script.VirtualKey.Keys.Length; i++)
-                                Simulator.Keyboard.KeyUp(script.VirtualKey.Keys[i]);
+                        try {
+                            string[] runtimeNames;
+
+                            if (runtime == null || (runtimeNames = runtime.RuntimeNames) == null)
+                                continue;
+
+                            if (runtimeNames.Contains(runtimeScript.RuntimeName))
+                                runtime.Run(scriptInfo, runtimeScript, isDown);
+                        } catch (Exception ex) {
+                            Plugin.Plugin.PluginException(ex, _runtimes[l].GetType(), "IRuntime Run invoke failed", "Script");
                         }
                     }
-
-                    // 독립 코드 실행
-
-                    if (script.Macro != null && script.Macro.Code.Length >= 1)
-                    {
-                        Task task = new Task(delegate ()
-                        {
-                            script.Macro.Compiler(Simulator);
-                        });
-
-                        task.Start();
-                    }
                 }
-                else // 키를 때었을때
-                {
-                    if (script.VirtualKey != null) // Virtual Keyboard KeyUp
-                    {
-                        if (script.Type == "VirtualKey")
-                            for (int i = 0; i < script.VirtualKey.Keys.Length; i++)
-                                Simulator.Keyboard.KeyUp(script.VirtualKey.Keys[i]);
-                    }
-                }
+            } catch (Exception ex) {
+                Debug.WriteLine(ex);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), Setting.Setting.GetTitleName("RunScript"),
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+#if DEBUG
+            stopwatch.Stop();
+            ds.Add(stopwatch.ElapsedTicks);
+            Debug.WriteLine("key{0}\t{1}\t\twt:\tms:\t{2}\ttick:\t{3}\tavg:\t{4}", isDown ? "down:" : "up:\t", 
+                keys, stopwatch.ElapsedMilliseconds, stopwatch.ElapsedTicks, Enumerable.Average(ds));
+            
+            if (ds.Count >= int.MaxValue - byte.MaxValue) {
+                Debug.WriteLine("key wt avg clear");
+                ds.Clear();
             }
+#endif
+
+            return !obj.Ignore;
         }
 
-        public bool GetIgnoreStatus(Keys key)
+        public string ScriptContent(RuntimeScript runtimeScript, KeyObject keyObject)
         {
-            if (IsAccessible)
+            if (runtimeScript == null)
+                return null;
+
+            for (int i = 0; i < _runtimes.Count; i++)
             {
-                for (int i = 0; i < Object.KeyObject.Length; i++)
+                var runtime = _runtimes[i];
+
+                try
                 {
-                    if (Object.KeyObject[i].Key == key)
-                        return Object.KeyObject[i].Ignore;
+                    string[] runtimeNames;
+
+                    if (runtime == null || (runtimeNames = runtime.RuntimeNames) == null)
+                        continue;
+
+                    if (runtimeNames.Contains(runtimeScript.RuntimeName))
+                        return runtime.ScriptContent(runtimeScript, keyObject);
+                } catch (Exception ex) {
+                    Plugin.Plugin.PluginException(ex, runtime.GetType(), "IRuntime ScriptContent invoke failed", "Script");
                 }
             }
 
-            return true;
+            return $"Unknown script ({runtimeScript.RuntimeName})";
         }
 
-        private bool IsAccessible
+        public void Save(string path)
         {
-            get
-            {
-                if (Object != null && Object.KeyObject != null)
-                    return true;
-                return false;
+            try {
+                Debug.WriteLine($"setting save {path}");
+                File.WriteAllBytes(path, CmprsSerializer.SerializeJsonObject(_object));
+
+                Saved?.Invoke(_object, path);
+            } catch (Exception ex) {
+                Debug.WriteLine($"setting save fail\n{ex}");
+
+                var a = ex.Message;
+
+                if (a.Length > 30)
+                    a = $"{a.Substring(0, 30)}\n...";
+
+                switch (MessageBox.Show($"{Language.Language.Message_Error_Save_Setting_Fail}\n{a}",
+                    Setting.Setting.TitleName, MessageBoxButtons.RetryCancel, MessageBoxIcon.Error))
+                {
+                    case DialogResult.Retry:
+                        Save(path);
+                        break;
+                }
             }
         }
+
+        public void Load(string path, bool readOnly = true)
+        {
+            try {
+                if(!File.Exists(path) && !readOnly) {
+                    Debug.WriteLine($"setting createload {path}");
+                    _object = new ScriptObject();
+
+                    Save(path);
+                }
+
+                Debug.WriteLine($"setting load {path}");
+                ScriptObject script = CmprsSerializer.DeserializeJsonObject<ScriptObject>(File.ReadAllBytes(path));
+
+                if (script == null)
+                    script = new ScriptObject();
+
+                _object = script;
+
+                Loaded?.Invoke(script, path);
+            } catch (Exception ex) {
+                Debug.WriteLine($"setting load fail\n{ex}");
+
+                var a = ex.Message;
+
+                if (a.Length > 30)
+                    a = $"{a.Substring(0, 30)}\n...";
+
+                switch (MessageBox.Show($"{Language.Language.Message_Error_Load_Setting_Fail}\n{a}",
+                    Setting.Setting.TitleName, MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)) {
+                    case DialogResult.Retry:
+                        Load(path);
+                        break;
+
+                    case DialogResult.Cancel:
+                        switch (MessageBox.Show(Language.Language.Message_Warning_Reset_Setting,
+                            Setting.Setting.TitleName, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)) {
+                            case DialogResult.Yes:
+                                Save(path);
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
+
+        public event Saved Saved;
+        public event Loaded Loaded;
+    }
+
+    public delegate void Saved(ScriptObject script, string path);
+    public delegate void Loaded(ScriptObject script, string path);
+
+    public class ScriptInfo
+    {
+        public ScriptInfo(Keys keys, KeyObject keyObject, Script script) { Keys = keys; Object = keyObject; Script = script; }
+
+        public int Index = 0;
+        public Keys Keys;
+        public KeyObject Object;
+        public readonly Script Script;
     }
 }
