@@ -10,10 +10,10 @@ namespace NUMC.Setting
     {
         public static string KeySettingPath = Path.Combine(Application.StartupPath, $"{Process.GetCurrentProcess().ProcessName}{Constant.Setting.FileExtension}");
 
-        public static string TitleName = $"NUMC - {Language.Language.Setting_Portable}";
+        public static string TitleName = $"NUMC - {Language.Language.Setting_Portable}" + (Constant.DEV_MODE ? " developer mode" : "");
 
         public static string GetTitleName(string subtitle) =>
-            string.Format("NUMC {0} - {1}", subtitle, Language.Language.Setting_Portable);
+            string.Format("NUMC {0} - {1}{2}", subtitle, Language.Language.Setting_Portable, (Constant.DEV_MODE ? " developer mode" : ""));
 
         private static readonly RegistryKey RunRegKey;
 

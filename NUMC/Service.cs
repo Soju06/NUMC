@@ -3,14 +3,6 @@ using NUMC.Plugin.Menu;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NUMC
@@ -48,7 +40,7 @@ namespace NUMC
             Script.Load(Setting.Setting.KeySettingPath, false);
         }
 
-        #endregion
+        #endregion Initialize_Script
 
         #region Initialize_Menu
 
@@ -72,7 +64,7 @@ namespace NUMC
             ApplicationMenus = Plugin.Plugin.ExtractPlugin<IApplicationMenu>();
         }
 
-        #endregion
+        #endregion Initialize_Plugin
 
         #region Initialize_KeyboardHook
 
@@ -83,7 +75,7 @@ namespace NUMC
             KeyboardHook.HookStart();
         }
 
-        #endregion
+        #endregion Initialize_KeyboardHook
 
         #region Initialize_Application
 
@@ -94,7 +86,7 @@ namespace NUMC
             Main = new Main(this);
         }
 
-        #endregion
+        #endregion Initialize_Application
 
         #region Initialize_Client
 
@@ -105,7 +97,7 @@ namespace NUMC
             Client.Initialize();
         }
 
-        #endregion
+        #endregion Initialize_Client
 
         #region KeyboardHook
 
@@ -143,7 +135,7 @@ namespace NUMC
 
         public void Show() => Main?.Show();
 
-        #endregion
+        #endregion Application
 
         #region Script
 
@@ -155,28 +147,38 @@ namespace NUMC
 
         public void Save() => Script?.Save(Setting.Setting.KeySettingPath);
 
-        public void Load(bool save = true) { if (save) Save(); Script?.Load(Setting.Setting.KeySettingPath); }
-        public void Load(string path, bool save = true) { if (save) Save(); Script?.Load(path); }
+        public void Load(bool save = true)
+        {
+            if (save) Save(); Script?.Load(Setting.Setting.KeySettingPath);
+        }
 
-        #endregion
-        
+        public void Load(string path, bool save = true)
+        {
+            if (save) Save(); Script?.Load(path);
+        }
+
+        #endregion Script
+
         #region static Servic
 
         private static Service service;
 
         public static Service GetService() => service;
 
-        #endregion
+        #endregion static Servic
 
         #region Get
 
         public Main GetMain() => Main;
+
         public Script.Script GetScript() => Script;
 
         public List<IKeyMenu> GetKeyMenus() => KeyMenus;
+
         public List<INotifyMenu> GetNotifyMenus() => NotifyMenus;
+
         public List<IApplicationMenu> GetApplicationMenus() => ApplicationMenus;
 
-        #endregion
+        #endregion Get
     }
 }

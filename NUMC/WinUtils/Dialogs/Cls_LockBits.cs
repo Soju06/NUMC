@@ -150,7 +150,7 @@ namespace WinUtils.Dialogs
                 Pixels[i + 2] = color.R;
             }
             if (Depth == 8)
-            // For 8 bpp set color value (Red, Green and Blue values are the same)
+                // For 8 bpp set color value (Red, Green and Blue values are the same)
                 Pixels[i] = color.B;
         }
     }

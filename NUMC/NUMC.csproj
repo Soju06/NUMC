@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C3AB2BBE-5499-4C6D-B319-A6E9DDE94450}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>NUMC</RootNamespace>
     <AssemblyName>NUMC</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -136,9 +136,6 @@
     <Compile Include="Client\GitHub\Releases.code.cs" />
     <Compile Include="Client\GitHub\Releases.cs" />
     <Compile Include="Expansion\Assembly.cs" />
-    <Compile Include="Forms\Dialogs\DebugConsole.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Plugins\KeyboardLayouts\KeyboardLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -153,7 +150,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Plugins\ScriptEditor\IScriptEditor.cs" />
-    <Compile Include="Plugins\_Debug\DebugConsoleApplicationMenu.cs" />
     <Compile Include="Plugins\KeyboardLayouts\KeyboardLayoutSelector.cs" />
     <Compile Include="Plugins\PluginManager\Images.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -167,6 +163,7 @@
       <DependentUpon>PluginManagerDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Plugins\ScriptEditor\ScriptEditorKeyMenu.cs" />
+    <Compile Include="Plugins\_Debug\DebugLogger.cs" />
     <Compile Include="Plugin\IPluginExp.cs" />
     <Compile Include="Plugins\VirtualInput\VirtualInputRuntimeMenu.cs" />
     <Compile Include="Plugins\VirtualInput\VirtualInputRuntimeDialog.cs" />

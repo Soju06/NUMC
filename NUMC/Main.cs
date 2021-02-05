@@ -24,7 +24,7 @@ namespace NUMC
         public Main(Service service)
         {
             Service = service;
-            
+
             InitializeComponent();
             InitializeLayout();
             InitializeForm();
@@ -68,7 +68,7 @@ namespace NUMC
                 ApplicationMenuShow(MousePosition);
         }
 
-        #endregion Main_MouseDown
+        #endregion Main_MouseClick
 
         #endregion FormEvents
 
@@ -94,7 +94,7 @@ namespace NUMC
             WinAPI.SetForegroundWindow(Handle);
         }
 
-        #endregion
+        #endregion Form
 
         #region Initialize
 
@@ -146,7 +146,7 @@ namespace NUMC
             ResumeLayout(false);
         }
 
-        #endregion
+        #endregion Initialize_Layout
 
         #region Initialize_Menu
 
@@ -161,7 +161,7 @@ namespace NUMC
             NUMContextMenu.Items.AddRange(Plugin.Menu.Menu.GetMenusItems(Service?.GetKeyMenus()));
         }
 
-        #endregion
+        #endregion Initialize_Menu
 
         #endregion Initialize
 
@@ -243,12 +243,12 @@ namespace NUMC
 
         public Forms.Controls.KeyboardLayoutControl GetKeyboardLayout() => KeyboardLayout;
 
-        #endregion
+        #endregion Get
 
         #region Design Member
 
         private Forms.Controls.KeyboardLayoutControl KeyboardLayout;
 
-        #endregion
+        #endregion Design Member
     }
 }

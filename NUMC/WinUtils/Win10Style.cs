@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace WinUtils
 {
@@ -65,8 +61,8 @@ namespace WinUtils
     {
         public static void EnableBlur(IntPtr HWnd, bool hasFrame = true)
         {
-
-            AccentPolicy accent = new AccentPolicy {
+            AccentPolicy accent = new AccentPolicy
+            {
                 AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND
             };
 
@@ -78,7 +74,8 @@ namespace WinUtils
             IntPtr accentPtr = Marshal.AllocHGlobal(accentStructSize);
             Marshal.StructureToPtr(accent, accentPtr, false);
 
-            WindowCompositionAttributeData data = new WindowCompositionAttributeData {
+            WindowCompositionAttributeData data = new WindowCompositionAttributeData
+            {
                 Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY,
                 SizeOfData = accentStructSize,
                 Data = accentPtr

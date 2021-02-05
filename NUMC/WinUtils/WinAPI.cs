@@ -21,7 +21,8 @@ namespace WinUtils
         public int x;
         public int y;
 
-        public POINT(int x, int y) {
+        public POINT(int x, int y)
+        {
             this.x = x; this.y = y;
         }
     }
@@ -32,7 +33,8 @@ namespace WinUtils
         public int cx;
         public int cy;
 
-        public SIZE(int cx, int cy) {
+        public SIZE(int cx, int cy)
+        {
             this.cx = cx; this.cy = cy;
         }
     }
@@ -45,8 +47,8 @@ namespace WinUtils
         private readonly byte SourceConstantAlpha;
         private readonly byte AlphaFormat;
 
-
-        public BLENDFUNCTION(byte op, byte flags, byte alpha, byte format) {
+        public BLENDFUNCTION(byte op, byte flags, byte alpha, byte format)
+        {
             BlendOp = op; BlendFlags = flags;
             SourceConstantAlpha = alpha; AlphaFormat = format;
         }
@@ -61,7 +63,6 @@ namespace WinUtils
         public int Time { get; set; }
         public int DwExtraInfo { get; set; }
     }
-
 
     [StructLayout(LayoutKind.Sequential)]
     public struct BITMAPINFO
@@ -114,7 +115,7 @@ namespace WinUtils
         PerMonitorAware = 2
     }
 
-    #endregion
+    #endregion Enums
 
     public static class WinAPI
     {
@@ -196,7 +197,7 @@ namespace WinUtils
 
         [DllImport("user32.dll", EntryPoint = "GetWindowLongPtrW")]
         private static extern IntPtr GetWindowLongPtr64(IntPtr hWnd, int nIndex);
-        
+
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool IsWindow(IntPtr hWnd);
@@ -230,10 +231,11 @@ namespace WinUtils
 
         [DllImport("dwmapi.dll")]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
+
         [DllImport("dwmapi.dll")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
 
-        #endregion
+        #endregion dwmAPI
 
         #region gdi32
 
@@ -271,19 +273,20 @@ namespace WinUtils
             return false;
         }
 
-        #endregion
+        #endregion gdi32
 
         #region SHCore
 
         [DllImport("SHCore.dll")]
         public static extern int SetProcessDpiAwareness(DpiAwareness processDpiAwareness);
 
-        #endregion
+        #endregion SHCore
     }
 
     #region Delegate
 
     public delegate IntPtr LowLevelProc(int nCode, IntPtr wParam, IntPtr lParam);
+
     public delegate IntPtr WndProcDelegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
     #endregion Delegate

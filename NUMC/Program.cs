@@ -21,6 +21,9 @@ namespace NUMC
 
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+#if DEBUG
+            Plugins._Debug.DebugLogger.Run();   
+#endif
             //Debug.Listeners.Add(new TextWriterTraceListener(Console.Out));
 
             Start();

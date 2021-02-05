@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
@@ -34,7 +33,6 @@ namespace WinUtils
             int height = host.ClientRectangle.Height + 14;
 
             m_bIsRefreshing = true;
-
 
             IntPtr hDC = WinAPI.GetDC(host.Handle);
             if (hDC == IntPtr.Zero)
@@ -72,7 +70,7 @@ namespace WinUtils
 
                 Graphics graphic = Graphics.FromHdcInternal(hdcMemory);
                 graphic.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-                //  graphic.SmoothingMode = SmoothingMode.HighQuality;               
+                //  graphic.SmoothingMode = SmoothingMode.HighQuality;
                 graphic.FillRectangle(new SolidBrush(BackColor), graphic.ClipBounds);
 
                 foreach (Control ctrl in host.Controls)
@@ -81,8 +79,10 @@ namespace WinUtils
                     realpos.Offset(7, 7);//BORDER COMPENSATE
                     Bitmap bmp = new Bitmap(ctrl.Width, ctrl.Height, PixelFormat.Format32bppArgb);
                     Rectangle rect = new Rectangle(0, 0, ctrl.Width, ctrl.Height);
-                    if (ctrl is Label) {
+                    if (ctrl is Label)
+                    {
                         #region Render_Label
+
                         if (ctrl is LinkLabel tti)
                         {
                             tti.Font = new Font(tti.Font, FontStyle.Underline);
@@ -109,10 +109,12 @@ namespace WinUtils
                             graphic.DrawString(ctrl.Text, ctrl.Font, drawBrush, realpos);
                         }
 
-                        #endregion
+                        #endregion Render_Label
                     }
-                    else if (ctrl is CheckBox) {
+                    else if (ctrl is CheckBox)
+                    {
                         #region Render_CheckBox
+
                         bmp = new Bitmap(13, ctrl.Height, PixelFormat.Format32bppArgb);
                         ctrl.DrawToBitmap(bmp, rect);
                         bmp.MakeTransparent();
@@ -123,10 +125,13 @@ namespace WinUtils
                             SolidBrush drawBrush = new SolidBrush(ctrl.ForeColor);
                             graphic.DrawString(ctrl.Text, ctrl.Font, drawBrush, realpos.X + 18, realpos.Y);
                         }
-                        #endregion
+
+                        #endregion Render_CheckBox
                     }
-                    else if (ctrl is RadioButton) {
+                    else if (ctrl is RadioButton)
+                    {
                         #region Render_RadioButton
+
                         bmp = new Bitmap(13, ctrl.Height, PixelFormat.Format32bppArgb);
                         ctrl.DrawToBitmap(bmp, rect);
                         bmp.MakeTransparent();
@@ -159,10 +164,13 @@ namespace WinUtils
                             SolidBrush drawBrush = new SolidBrush(ctrl.ForeColor);
                             graphic.DrawString(ctrl.Text, ctrl.Font, drawBrush, realpos.X + 18, realpos.Y);
                         }
-                        #endregion
+
+                        #endregion Render_RadioButton
                     }
-                    else if (ctrl is Button) {
+                    else if (ctrl is Button)
+                    {
                         #region Render_Button
+
                         ctrl.DrawToBitmap(bmp, rect);
                         if ((ctrl as Button).FlatStyle == FlatStyle.Flat)
                             graphic.DrawImage(bmp, realpos);
@@ -173,9 +181,11 @@ namespace WinUtils
                             bmp.Dispose();
                             graphic.DrawImage(cropBmp, realpos);
                         }
-                        #endregion
+
+                        #endregion Render_Button
                     }
-                    else {
+                    else
+                    {
                         ctrl.DrawToBitmap(bmp, rect);
                         graphic.DrawImage(bmp, realpos);
                     }
@@ -226,6 +236,7 @@ namespace WinUtils
         }
 
         #region Hooks
+
         private void HookChildControl(Control ctrl)
         {
             if (WinAPI.IsWindow(ctrl.Handle))
@@ -247,18 +258,20 @@ namespace WinUtils
         private void UnHookControls()
         {
             foreach (IntPtr hWnd in m_WndProcMap.Keys)
-                WinAPI.SetWindowLongPtr(hWnd, Constants.GWL_WNDPROC, 
+                WinAPI.SetWindowLongPtr(hWnd, Constants.GWL_WNDPROC,
                     m_WndProcMap[hWnd]);
         }
 
-        #endregion
+        #endregion Hooks
 
         public void Dispose()
         {
-            try {
+            try
+            {
                 UnHookControls();
-            } finally {
-
+            }
+            finally
+            {
             }
         }
     }

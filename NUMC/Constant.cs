@@ -16,7 +16,6 @@ namespace NUMC
 
             public static readonly Padding Padding =
                 new Padding(PaddingSize, TitleBarHeight + PaddingSize, PaddingSize, PaddingSize);
-
         }
 
         public static class Setting
