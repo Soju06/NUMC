@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NUMC.Client.GitHub
 {
@@ -14,6 +15,7 @@ namespace NUMC.Client.GitHub
         {
             try {
                 var client = APIClient.GetHttpClient();
+
                 var response = await client.GetAsync($"{GitHub.Repositories}/{repo}/releases");
 
                 response.EnsureSuccessStatusCode();

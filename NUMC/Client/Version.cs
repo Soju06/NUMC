@@ -47,14 +47,47 @@ namespace NUMC.Client
 
         public string ToString(string format, IFormatProvider formatProvider) => ToString();
 
-        public static bool operator >(Version version, Version version1) => 
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public static bool operator >(Version version, Version version1) =>
+            version != version1 &&
+            version.Major >= version1.Major &&
+            version.Minor >= version1.Minor &&
+            version.Build >= version1.Build &&
+            version.BuildType >= version1.BuildType &&
+            version.Revision >= version1.Revision;
+
+        public static bool operator <(Version version, Version version1) => !(version > version1);
+
+        public static bool operator >=(Version version, Version version1) => 
             version.Major >= version1.Major &&
             version.Minor >= version1.Minor && 
             version.Build >= version1.Build &&
             version.BuildType >= version1.BuildType &&
             version.Revision >= version1.Revision;
 
-        public static bool operator <(Version version, Version version1) => !(version > version1);
+        public static bool operator <=(Version version, Version version1) => !(version >= version1);
+
+        public static bool operator ==(Version version, Version version1) =>
+            (version is null && 
+            version1 is null) ||
+            version is object &&
+            version1 is object &&
+            version.Major == version1.Major &&
+            version.Minor == version1.Minor &&
+            version.Build == version1.Build &&
+            version.BuildType == version1.BuildType &&
+            version.Revision == version1.Revision;
+
+        public static bool operator !=(Version version, Version version1) => !(version == version1);
     }
 
     public class VersionObject<T>
