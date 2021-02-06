@@ -2,8 +2,11 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.log
+*.ns
 .vs/
 NUMC/obj/
-*.ns
+Debug/Plugin/
+Release/Plugin/
 Other/TestPlugin/obj/
 Other/TestProgram/obj/
