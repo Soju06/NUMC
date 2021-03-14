@@ -5,7 +5,7 @@ namespace NUMC
     public static class Constant
     {
         public const bool DEV_MODE = false;
-        public const string Verison = "2.0.0-alpha.1";
+        public const string Verison = "2.0.0-alpha.2";
 
         public static class Form
         {

@@ -43,7 +43,7 @@ namespace NUMC.Plugins.ScriptEditor
 
         public void MenuClicking(KeyObject keyObject, Keys selectedKey)
         {
-            var v = keyObject?.Script?.Scripts?.Count;
+            var v = keyObject?.Scripts?.Count;
             _menu.Checked = v != null && v.Value > 0;
             KeyObject = keyObject;
         }

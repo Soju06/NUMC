@@ -30,6 +30,20 @@ namespace TestProgram
             Debug.Listeners.Add(new TextWriterTraceListener(Console.Out));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            var asd = new asd() { fffffffffffffffffffff = "sasssssssssssssssss" };
+            asd.Add(new dasd() { asd = "sans1" });
+            asd.Add(new dasd() { asd = "sans2" });
+            asd.Add(new dasd() { asd = "sans3" });
+            asd.Add(new dasd() { asd = "sans4" });
+            asd.Add(new dasd() { asd = "sans5" });
+            asd.Add(new dasd() { asd = "sans6" });
+            var rr = new asedf()
+            {
+                asd = asd   
+            };
+            Console.WriteLine(NUMC.Json.Json.Convert(rr));
+            Console.Read();
+            Console.WriteLine(NUMC.Json.Json.Convert(NUMC.Json.Json.Convert<asedf>(NUMC.Json.Json.Convert(rr))));
 
             //var r = NUMC.Setting.Json.Convert(new Test1());
             //Console.WriteLine(r);
@@ -50,8 +64,8 @@ namespace TestProgram
             //Console.WriteLine(min);
             //Console.WriteLine(max);
 
-            Console.WriteLine(Encoding.UTF8.GetString(NUMC.Setting.CmprsSerializer.Deserialize(Convert.FromBase64String(NUMC.Plugins.KeyboardLayouts.KeyboardLayoutResource.KeyBoard))));
-            Console.WriteLine(Convert.ToBase64String(NUMC.Setting.CmprsSerializer.Serialize(Encoding.UTF8.GetBytes(File.ReadAllText(@"D:\Users\soju_\Downloads\asdasdasdasdasd.txt")))));
+            //Console.WriteLine(Encoding.UTF8.GetString(NUMC.Setting.CmprsSerializer.Deserialize(Convert.FromBase64String(NUMC.Plugins.KeyboardLayouts.KeyboardLayoutResource.KeyBoard))));
+            //Console.WriteLine(Convert.ToBase64String(NUMC.Setting.CmprsSerializer.Serialize(Encoding.UTF8.GetBytes(File.ReadAllText(@"D:\Users\soju_\Downloads\asdasdasdasdasd.txt")))));
             //var d = new NUMC.Plugins.KeyboardLayouts.Asdasdas();
             //var e = NUMC.Setting.CmprsSerializer.SerializeJsonObject(d.GAK());
             //Console.WriteLine(Convert.ToBase64String(e));
@@ -60,6 +74,8 @@ namespace TestProgram
             //Console.WriteLine(Convert.ToBase64String(es));
 
             Console.Read();
+
+            #region asd
 
             //new Form4().ShowDialog();
 
@@ -238,6 +254,7 @@ namespace TestProgram
 
             //Console.Read();
 
+            #endregion
 
             #region asfd
 
@@ -341,20 +358,43 @@ namespace TestProgram
             //Console.WriteLine("{1} {0}", stopwatch1.ElapsedTicks, stopwatch1.ElapsedMilliseconds);
             //Console.Read();
 
-#endregion
+            #endregion
 
             Application.Run(new Form3());
             Console.Read();
         }
 
         [DataContract]
-        public class Test1
+        private class asedf
         {
-            [DataMember(Name = "v")]
-            public string V { get; set; } = "1.0.0.0";
-            [DataMember(Name = "vd")]
-            public Version Vd { get; set; } = new Version(1, 3, 4, 6);
+            [DataMember(Name = "asd")]
+            public asd asd { get; set; }
         }
+
+        [DataContract]
+        private class asd : List<dasd>
+        {
+
+            [DataMember(Name = "ffffffffffffffffffffffff")]
+            public string fffffffffffffffffffff { get; set; }
+        }
+
+        [DataContract]
+        private class dasd {
+            [DataMember(Name = "asd")]
+            public string asd { get; set; }
+        }
+
+        #region adsda
+
+        //[DataContract]
+        //public class Test1
+        //{
+        //    [DataMember(Name = "v")]
+        //    public string V { get; set; } = "1.0.0.0";
+        //    [DataMember(Name = "vd")]
+        //    public Version Vd { get; set; } = new Version(1, 3, 4, 6);
+        //}
 
         //public struct ScriptInfo
         //{
@@ -378,6 +418,9 @@ namespace TestProgram
         //{
         //    public int a;
         //}
+
+        #endregion
+
 
         private static void Application_ApplicationExit(object sender, EventArgs e)
         {

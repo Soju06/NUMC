@@ -40,18 +40,18 @@ namespace NUMC.Plugins.VirtualInput
             KeyObject = keyObject;
 
             if (KeyObject != null)
-                Item.Checked = keyObject.Script.ScriptByRuntimeNames(VirtualInputRuntime.RuntimeNames) != null;
+                Item.Checked = keyObject.Scripts.ScriptByRuntimeNames(VirtualInputRuntime.RuntimeNames) != null;
         }
 
         private void Item_Click(object sender, EventArgs e)
         {
-            if (KeyObject == null || KeyObject.Script == null || KeyObject.Script.Scripts == null)
+            if (KeyObject == null || KeyObject.Scripts == null)
                 return;
 
-            var script = KeyObject.Script.ScriptByRuntimeNames(VirtualInputRuntime.RuntimeNames);
+            var script = KeyObject.Scripts.ScriptByRuntimeNames(VirtualInputRuntime.RuntimeNames);
 
             if (script == null)
-                KeyObject.Script.AddRuntimeScript(script = new RuntimeScript());
+                KeyObject.Scripts.AddRuntimeScript(script = new RuntimeScript());
 
             if(Runtime.Dialog.ShowDialog(script, KeyObject))
                 Service.GetService()?.Save();

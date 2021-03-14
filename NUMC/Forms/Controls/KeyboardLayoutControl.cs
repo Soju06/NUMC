@@ -169,7 +169,7 @@ namespace NUMC.Forms.Controls
             if(o != typeName) Service.GetService()?.Save();
         }
         private string GetLayoutSettings() => GetLayoutSettingsValue()?.GetString();
-        private JsonObject.Value GetLayoutSettingsValue() => _script?.GetObject()?
+        private Json.Value GetLayoutSettingsValue() => _script?.GetObject()?
             .Settings?["+NUMC"]?["+Main"]?.SubKeys?["+KeyboardLayout"]?.Values?["+DefaultLayout"];
     }
 }

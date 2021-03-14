@@ -165,7 +165,7 @@ namespace NUMC.Plugins.VirtualInput
         private void BtnOk_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(ScriptTextBox.Text)) {
-                KeyObject.Script.RemoveScriptByRuntimeScript(RuntimeScript);
+                KeyObject.Scripts.RemoveScriptByRuntimeScript(RuntimeScript);
                 RuntimeScript.RuntimeName = null;
                 DialogResult = DialogResult.Cancel;
             } else {

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C3AB2BBE-5499-4C6D-B319-A6E9DDE94450}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>NUMC</RootNamespace>
     <AssemblyName>NUMC</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -253,8 +253,11 @@
     <Compile Include="Reference\WindowsInput\WindowsInputDeviceStateAdaptor.cs" />
     <Compile Include="Reference\WindowsInput\WindowsInputMessageDispatcher.cs" />
     <Compile Include="Script\Object.code.cs" />
+    <Compile Include="Script\old\Convert.cs" />
+    <Compile Include="Script\old\v2.0.0-alpha.2.cs" />
+    <Compile Include="Script\old\v2.0.0-alpha.1.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="Setting\Json.cs" />
+    <Compile Include="Json\Json.cs" />
     <Compile Include="Script\Menu.cs" />
     <Compile Include="Script\Object.cs" />
     <Compile Include="Plugin\Runtime\IRuntime.cs" />
@@ -262,7 +265,7 @@
     <Compile Include="Plugin\Runtime\IRuntimeMenu.cs" />
     <Compile Include="Script\Script.cs" />
     <Compile Include="Setting\CmprsSerializer.cs" />
-    <Compile Include="Script\JsonObject.cs" />
+    <Compile Include="Json\JsonObject.cs" />
     <Compile Include="Setting\Setting.cs" />
     <Compile Include="Forms\Dialogs\ReleaseDownloader.cs">
       <SubType>Form</SubType>

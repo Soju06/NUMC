@@ -11,7 +11,7 @@ namespace NUMC.Script
     {
         private string _language;
         private KeyObjects _keys;
-        private JsonObject.RootObject _settings;
+        private Json.JsonObject _settings;
     }
 
     public partial class KeyObjects
@@ -21,12 +21,13 @@ namespace NUMC.Script
         /// </summary>
         public List<KeyObject> Keys
         {
-            get => _keys.ToList();
+            get => this;
             set {
                 if (value == null)
                     return;
 
-                _keys = value;
+                Clear();
+                AddRange(value);
                 //Initialize();
             }
         }
@@ -56,16 +57,12 @@ namespace NUMC.Script
 
         public KeyObject GetObject(Keys keys, bool readOnly = true)
         {
-            for (int i = 0; i < _keys.Count; i++)
-                if (_keys[i].Key == keys)
-                    return _keys[i];
+            for (int i = 0; i < Count; i++)
+                if (this[i].Key == keys)
+                    return this[i];
 
-            if (!readOnly)
-            {
-                var obj = new KeyObject(keys);
-
-                _keys.Add(obj);
-
+            if (!readOnly) {
+                var obj = new KeyObject(keys); Add(obj); 
                 return obj;
             }
 
@@ -81,14 +78,13 @@ namespace NUMC.Script
             if (obj == null)
                 return;
 
-            for (int i = 0; i < _keys.Count; i++)
-                if (_keys[i].Key == obj.Key)
-                {
-                    _keys[i] = obj;
+            for (int i = 0; i < Count; i++)
+                if (this[i].Key == obj.Key) {
+                    this[i] = obj;
                     return;
                 }
             //_wKeys.Add(obj.Key);
-            _keys.Add(obj);
+            Add(obj);
         }
 
         #endregion
@@ -100,7 +96,7 @@ namespace NUMC.Script
         private KeyScript _script;
 
 
-        public KeyObject Clone() => new KeyObject(Key, Ignore, Script?.Clone());
+        public KeyObject Clone() => new KeyObject(Key, Ignore, Scripts?.Clone());
 
         #region Paste
 
@@ -111,7 +107,7 @@ namespace NUMC.Script
 
             Key = keyObject.Key;
             Ignore = keyObject.Ignore;
-            Script = keyObject.Script == null ? new KeyScript() : keyObject.Script.Clone();
+            Scripts = keyObject.Scripts == null ? new KeyScript() : keyObject.Scripts.Clone();
         }
 
         #endregion
@@ -119,20 +115,18 @@ namespace NUMC.Script
 
     public partial class KeyScript
     {
-        private List<RuntimeScript> _scripts;
-
         #region ScriptsByRuntimeName
 
         public IList<RuntimeScript> ScriptsByRuntimeName(string runtimeName)
         {
-            if (Scripts == null)
+            if (this == null)
                 return null;
 
             var scripts = new List<RuntimeScript>();
 
-            for (int i = 0; i < Scripts.Count; i++)
-                if (Scripts[i].RuntimeName == runtimeName)
-                    scripts.Add(Scripts[i]);
+            for (int i = 0; i < Count; i++)
+                if (this[i].RuntimeName == runtimeName)
+                    scripts.Add(this[i]);
 
             return scripts;
         }
@@ -143,14 +137,14 @@ namespace NUMC.Script
 
         public IList<RuntimeScript> ScriptsByRuntimeNames(string[] runtimeNames)
         {
-            if (Scripts == null)
+            if (this == null)
                 return null;
 
             var scripts = new List<RuntimeScript>();
 
-            for (int i = 0; i < Scripts.Count; i++)
-                if (runtimeNames.Contains(Scripts[i].RuntimeName))
-                    scripts.Add(Scripts[i]);
+            for (int i = 0; i < Count; i++)
+                if (runtimeNames.Contains(this[i].RuntimeName))
+                    scripts.Add(this[i]);
 
             return scripts;
         }
@@ -161,12 +155,12 @@ namespace NUMC.Script
 
         public RuntimeScript ScriptByRuntimeName(string runtimeName)
         {
-            if (Scripts == null)
+            if (this == null)
                 return null;
 
-            for (int i = 0; i < Scripts.Count; i++)
-                if (Scripts[i].RuntimeName == runtimeName)
-                    return Scripts[i];
+            for (int i = 0; i < Count; i++)
+                if (this[i].RuntimeName == runtimeName)
+                    return this[i];
 
             return null;
         }
@@ -177,12 +171,12 @@ namespace NUMC.Script
 
         public RuntimeScript ScriptByRuntimeNames(string[] runtimeNames)
         {
-            if (Scripts == null)
+            if (this == null)
                 return null;
 
-            for (int i = 0; i < Scripts.Count; i++)
-                if (runtimeNames.Contains(Scripts[i].RuntimeName))
-                    return Scripts[i];
+            for (int i = 0; i < Count; i++)
+                if (runtimeNames.Contains(this[i].RuntimeName))
+                    return this[i];
 
             return null;
         }
@@ -193,15 +187,14 @@ namespace NUMC.Script
 
         public int RemoveScriptsByRuntimeName(string runtimeName)
         {
-            if (Scripts == null)
+            if (this == null)
                 return 0;
 
             int count = 0;
 
-            for (int i = 0; i < Scripts.Count; i++)
-                if (Scripts[i].RuntimeName == runtimeName)
-                {
-                    Scripts.RemoveAt(i);
+            for (int i = 0; i < Count; i++)
+                if (this[i].RuntimeName == runtimeName) {
+                    RemoveAt(i);
                     count++;
                 }
 
@@ -214,10 +207,10 @@ namespace NUMC.Script
 
         public bool RemoveScriptByRuntimeScript(RuntimeScript runtimeScript)
         {
-            if (runtimeScript == null || Scripts == null)
+            if (runtimeScript == null || this == null)
                 return false;
 
-            return Scripts.Remove(runtimeScript);
+            return Remove(runtimeScript);
         }
 
         #endregion
@@ -226,10 +219,10 @@ namespace NUMC.Script
 
         public void AddRuntimeScript(RuntimeScript runtimeScript)
         {
-            if (runtimeScript == null || Scripts == null)
+            if (runtimeScript == null || this == null)
                 return;
 
-            Scripts.Add(runtimeScript);
+            Add(runtimeScript);
         }
 
         #endregion
@@ -238,10 +231,10 @@ namespace NUMC.Script
 
         public void CreateAddRuntimeScript(string runtimeName, string data)
         {
-            if (Scripts == null)
+            if (this == null)
                 return;
 
-            Scripts.Add(new RuntimeScript(runtimeName, data));
+            Add(new RuntimeScript(runtimeName, data));
         }
 
         #endregion
@@ -250,15 +243,15 @@ namespace NUMC.Script
 
         public KeyScript Clone()
         {
-            if (Scripts == null)
+            if (this == null)
                 return new KeyScript();
 
-            var scripts = new List<RuntimeScript>();
+            var scripts = new KeyScript();
 
-            for (int i = 0; i < Scripts.Count; i++)
-                scripts.Add(Scripts[i].Clone());
+            for (int i = 0; i < Count; i++)
+                scripts.Add(this[i].Clone());
 
-            return new KeyScript(scripts);
+            return scripts;
         }
 
         #endregion
@@ -271,12 +264,12 @@ namespace NUMC.Script
                 return true;
 
             if (!(script1 != null && script2 != null)
-                || !(script1.Scripts != null && script2.Scripts != null)
-                || script1.Scripts.Count != script2.Scripts.Count)
+                || !(script1 != null && script2 != null)
+                || script1.Count != script2.Count)
                 return false;
 
-            for (int i = 0; i < script1.Scripts.Count; i++)
-                if (!script1.Scripts[i].Equals(script2.Scripts[i]))
+            for (int i = 0; i < script1.Count; i++)
+                if (!script1[i].Equals(script2[i]))
                     return false;
 
             return true;

@@ -1,6 +1,7 @@
 ﻿using NUMC.Plugin.Menu;
 using NUMC.Script;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace TestPlugin
@@ -9,23 +10,24 @@ namespace TestPlugin
     {
         public Asdf()
         {
-            Item = new ToolStripMenuItem()
-            {
-                Text = "sdadsa"
-            };
-
-            Item.Click += Item_Click;
+            var items = new List<ToolStripItem>();
+            NUMC.Menu.MenuStripSupport.AddMenuItem(items, "asdf", "asd").Click += Item_Click;
+            NUMC.Menu.MenuStripSupport.AddMenuItem(items, "dasdf", "asd").Click += Asdf_Click;
+            Menus = items.ToArray();
         }
 
-        private readonly ToolStripMenuItem Item;
+        private void Asdf_Click(object sender, EventArgs e)
+        {
+            NUMC.Plugin.Plugin.Initialize();
+        }
 
-        public ToolStripItem[] Menus => new ToolStripItem[] { Item };
+        public ToolStripItem[] Menus { get; private set; }
 
         public int Index => 5;
         
         private void Item_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            NUMC.Plugin.Plugin.DisposeAll();
         }
 
         public void Dispose()

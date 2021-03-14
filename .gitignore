@@ -4,9 +4,11 @@
 *.sln.docstates
 *.log
 *.ns
+*.bak
 .vs/
 NUMC/obj/
 Debug/Plugin/
+Debug/
 Release/Plugin/
 Other/TestPlugin/obj/
 Other/TestProgram/obj/

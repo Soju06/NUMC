@@ -13,6 +13,7 @@ namespace NUMC.Plugin.Runtime
     {
         ToolStripItem[] Menus { get; }
 
-        void MenuClicking(Plugins.ScriptEditor.IScriptEditor scriptEditor, IListViewItem listViewItem, RuntimeScript runtimeScript, KeyObject obj);
+        void Initialize(Plugins.ScriptEditor.IScriptEditor scriptEditor);
+        void MenuClicking(Plugins.ScriptEditor.IScriptEditor scriptEditor, Design.Controls.TreeNode node, RuntimeScript runtimeScript, KeyObject obj);
     }
 }

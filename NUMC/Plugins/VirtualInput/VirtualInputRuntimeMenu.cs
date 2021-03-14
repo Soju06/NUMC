@@ -1,5 +1,6 @@
 ﻿using NUMC.Design.Controls;
 using NUMC.Plugin.Runtime;
+using NUMC.Plugins.ScriptEditor;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -24,13 +25,13 @@ namespace NUMC.Plugins.VirtualInput
 
         private void AddMenu_Click(object sender, EventArgs e)
         {
-            if (ScriptEditor == null || KeyObject == null || KeyObject.Script == null)
+            if (ScriptEditor == null || KeyObject == null || KeyObject.Scripts == null)
                 return;
 
             var script = new RuntimeScript();
 
             if (Dialog.ShowDialog(script, KeyObject) && script != null && script.RuntimeName != null)
-                KeyObject.Script.AddRuntimeScript(script);
+                KeyObject.Scripts.AddRuntimeScript(script);
 
             ScriptEditor.RefreshView();
         }
@@ -42,7 +43,7 @@ namespace NUMC.Plugins.VirtualInput
 
             if (!Dialog.ShowDialog(RuntimeScript, KeyObject) &&
                 (RuntimeScript == null || RuntimeScript.RuntimeName == null))
-                    KeyObject?.Script?.RemoveScriptByRuntimeScript(RuntimeScript);
+                    KeyObject?.Scripts?.RemoveScriptByRuntimeScript(RuntimeScript);
 
             ScriptEditor.RefreshView();
         }
@@ -69,8 +70,8 @@ namespace NUMC.Plugins.VirtualInput
             }
         }
 
-        public void MenuClicking(ScriptEditor.IScriptEditor scriptEditor, 
-            IListViewItem listViewItem, RuntimeScript runtimeScript, KeyObject obj)
+        public void MenuClicking(IScriptEditor scriptEditor,
+            Design.Controls.TreeNode node, RuntimeScript runtimeScript, KeyObject obj)
         {
             ScriptEditor = scriptEditor;
             RuntimeScript = runtimeScript;
@@ -85,6 +86,11 @@ namespace NUMC.Plugins.VirtualInput
         {
             if (Menus != null)
                 Menu.MenuStripSupport.DisposeItems(_menus);
+        }
+
+        public void Initialize(IScriptEditor scriptEditor)
+        {
+
         }
     }
 }

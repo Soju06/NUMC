@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinUtils;
 
@@ -17,16 +18,43 @@ namespace NUMC.Keyboard
 
         public static event KeyboardEventCallback KeyDown;
         public static event KeyboardEventCallback KeyUp;
+        public static event KeyboardEventNonStopCallback NonStopKeyDown;
+        public static event KeyboardEventNonStopCallback NonStopKeyUp;
         //public static event KeyboardEventNonStopCallback NonStopKeyDown;
         //public static event KeyboardEventNonStopCallback NonStopKeyUp;
 
         private static readonly LowLevelProc _proc;
         private static IntPtr _hookID = IntPtr.Zero;
 
-        static KeyboardHook()
-        {
+        static KeyboardHook() {
             _proc = HookCallback;
+            Task.Run(Loop);
         }
+
+        private static async Task Loop() {
+            while (true) {
+                if(NonStopKeyDownKey.Count > 0) {
+                    var i = NonStopKeyDownKey[0];
+                    try {
+                        NonStopKeyDown?.Invoke(i);
+                    } catch (Exception ex) {
+                        Debug.WriteLine(ex);
+                    } NonStopKeyDownKey.Remove(i);
+                }
+                if(NonStopKeyUpKey.Count > 0) {
+                    var i = NonStopKeyUpKey[0];
+                    try {
+                        NonStopKeyUp?.Invoke(i);
+                    } catch (Exception ex) {
+                        Debug.WriteLine(ex);
+                    } NonStopKeyUpKey.Remove(i);
+                }
+                await Task.Delay(20);
+            }
+        }
+
+        private static List<Keys> NonStopKeyDownKey = new List<Keys>();
+        private static List<Keys> NonStopKeyUpKey = new List<Keys>();
 
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
@@ -36,10 +64,11 @@ namespace NUMC.Keyboard
                 var flags = hookStruct.Flags;
                 Keys vkCode = (Keys)hookStruct.VkCode;
 
-                if ((wParam == (IntPtr)Constants.WM_KEYDOWN || (GetSystemKeyEvent 
-                    && wParam == (IntPtr)Constants.WM_SYSKEYDOWN))
-                    && KeyDown?.Invoke(vkCode) == false)
-                        return (IntPtr)1;
+                if (wParam == (IntPtr)Constants.WM_KEYDOWN || (GetSystemKeyEvent
+                    && wParam == (IntPtr)Constants.WM_SYSKEYDOWN)) {
+                    NonStopKeyDownKey.Add(vkCode);
+                    if(KeyDown?.Invoke(vkCode) == false) return (IntPtr)1;
+                }
                 //new Thread(() => 
                 //{
                 //    for (int i = 0; i < keyDownCallbackEvents.Count; i++)
@@ -47,11 +76,11 @@ namespace NUMC.Keyboard
                 //            keyDownCallbackEvents[i].Callback.DynamicInvoke(vkCode);
                 //}) { IsBackground = true }.Start();
 
-                if ((wParam == (IntPtr)Constants.WM_KEYUP || (GetSystemKeyEvent 
-                    && wParam == (IntPtr)Constants.WM_SYSTEMKEYUP))
-                    && KeyUp?.Invoke(vkCode) == false)
-                        return (IntPtr)1;
-
+                if (wParam == (IntPtr)Constants.WM_KEYUP || (GetSystemKeyEvent 
+                    && wParam == (IntPtr)Constants.WM_SYSTEMKEYUP)) {
+                    NonStopKeyUpKey.Add(vkCode);
+                    if (KeyUp?.Invoke(vkCode) == false) return (IntPtr)1;
+                }
                 //new Thread(() =>
                 //{
                 //    for (int i = 0; i < keyUpCallbackEvents.Count; i++)

@@ -92,7 +92,7 @@ namespace NUMC.Plugins.VirtualInput
 
                 //if (System.Array.IndexOf(Items, menu) >= (Items.Length - 2))
                 script.Ignore = SampleScript.Ignore;
-                script.Script = SampleScript.Script;
+                script.Scripts = SampleScript.Scripts;
             }
 
             Service.GetService()?.Save();

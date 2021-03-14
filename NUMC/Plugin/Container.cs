@@ -26,9 +26,14 @@ namespace NUMC.Plugin
         {
             var l = new List<IPlugin>();
 
-            for (int i = 0; i < typeContainer.Types.Length; i++)
-                if (Activator.CreateInstance(typeContainer.Types[i]) is IPlugin f) l.Add(f);
-
+            for (int i = 0; i < typeContainer.Types.Length; i++) {
+                try {
+                    if (typeContainer.Types[i] == null) continue;
+                    if (Activator.CreateInstance(typeContainer.Types[i]) is IPlugin f) l.Add(f);
+                } catch (Exception ex) {
+                    Plugin.PluginException(ex, typeContainer.Types.TryGetValue(i)?.FullName, "create instance falied");
+                }
+            }
             var k = l.Cast<ISortIndex>().ToList();
             k.QuickSort(0, l.Count - 1);
             return new Container(typeContainer.BaseType, k.Cast<IPlugin>().ToArray());

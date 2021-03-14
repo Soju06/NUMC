@@ -10,6 +10,11 @@ namespace NUMC.Client
 {
     public class Version : IFormattable
     {
+        public Version() { }
+        public Version(int major, int minor, int build, VersionType buildType, int revision) {
+            Major = major; Minor = minor; Build = build; BuildType = buildType; Revision = revision;
+        }
+
         public int Major { get; set; }
         public int Minor { get; set; }
         public int Build { get; set; } 

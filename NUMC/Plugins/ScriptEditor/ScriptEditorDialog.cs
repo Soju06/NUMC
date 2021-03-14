@@ -12,6 +12,7 @@ using NUMC.Menu;
 using NUMC.Expansion;
 using System.Windows.Forms;
 using NUMC.Design.Controls;
+using System.Diagnostics;
 
 namespace NUMC.Plugins.ScriptEditor
 {
@@ -24,7 +25,8 @@ namespace NUMC.Plugins.ScriptEditor
         private IRuntimeMenu[] _runtimeMenus;
         private ToolStripMenuItem _removeMenu;
         private ToolStripSeparator _separatorMenu;
-        private IListViewItem _selectedItem;
+
+        public event ScriptAddingEventHandler ScriptAdding;
 
         public ScriptEditorDialog(KeyObject keyObject, Script.Script script)
         {
@@ -56,6 +58,12 @@ namespace NUMC.Plugins.ScriptEditor
 
                 if (runtimes[i] == null || (runtimeMenu = runtimes[i].Menu) == null)
                     continue;
+                        
+                try {
+                    runtimeMenu.Initialize(this);
+                } catch (Exception ex) {
+                    Plugin.Plugin.PluginException(ex, runtimeMenu.GetType().Name, "IRuntimeMenu initialize failed", "Script Editor");
+                }
 
                 try {
                     menus.AddRange(runtimeMenu.Menus);
@@ -74,18 +82,16 @@ namespace NUMC.Plugins.ScriptEditor
 
         private void Remove_Click(object sender, EventArgs e)
         {
-            if (KeyObject == null || KeyObject.Script == null || KeyObject.Script.Scripts == null)
+            if (KeyObject == null || KeyObject.Scripts == null)
                 return;
 
-            var f = SelectedItemIndex;
+            var item = SelectedItem;
 
-            if (f >= 0) {
-                var item = scriptsView.Items[f];
-
+            if (item != null) {
                 if (item.Tag != null && item.Tag.GetType() == typeof(RuntimeScript))
-                    KeyObject.Script.Scripts.Remove((RuntimeScript)item.Tag);
+                    KeyObject.Scripts.Remove((RuntimeScript)item.Tag);
 
-                scriptsView.Items.Remove(item);
+                scriptsView.Nodes.Remove(item);
             }
         }
 
@@ -97,15 +103,15 @@ namespace NUMC.Plugins.ScriptEditor
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
-            if (_ori_keyObject.Script == null || _ori_keyObject.Script.Scripts == null)
+            if (_ori_keyObject.Scripts == null)
                 return;
 
             var scripts = new List<RuntimeScript>();
             var type = typeof(RuntimeScript);
 
-            for (int i = 0; i < scriptsView.Items.Count; i++)
+            for (int i = 0; i < scriptsView.Nodes.Count; i++)
             {
-                var item = scriptsView.Items[i];
+                var item = scriptsView.Nodes[i];
 
                 if (item.Tag != null && item.Tag.GetType() == type)
                     scripts.Add((RuntimeScript)item.Tag);
@@ -116,57 +122,44 @@ namespace NUMC.Plugins.ScriptEditor
 
         public void RefreshView()
         {
-            if (KeyObject == null || KeyObject.Script == null || KeyObject.Script.Scripts == null)
+            if (KeyObject == null || KeyObject.Scripts == null)
                 return;
 
-            scriptsView.Items.Clear();
+            scriptsView.Nodes.Clear();
 
-            var scripts = KeyObject.Script.Scripts;
+            var scripts = KeyObject.Scripts;
 
             for (int i = 0; i < scripts.Count; i++)
             {
                 var script = scripts[i];
 
-                if (script == null)
-                    continue;
+                if (script == null) continue;
 
                 var content = Script.ScriptContent(script, KeyObject);
 
-                if (content == null)
-                    continue;
+                if (content == null) continue;
 
-                var item = new Design.Controls.ListViewItem()
-                {
+                var item = new Design.Controls.TreeNode() {
                     Text = content,
                     Tag = script
                 };
 
-                scriptsView.Items.Add(item);
+                ScriptAdding?.Invoke(this, script, item);
+                scriptsView.Nodes.Add(item);
             }
         }
 
         private void ShowContextMenu()
         {
-            var f = SelectedItemIndex;
-            var e = f != -1;
+            var f = SelectedItem;
+            var e = f != null;
 
             _separatorMenu.Visible = e;
             _removeMenu.Visible = e;
 
-            if (e)
-            {
-                if (f >= scriptsView.Items.Count)
-                    return;
-
-                _selectedItem = scriptsView.Items[f];
-            }
-            else
-                _selectedItem = null;
-
-            for (int i = 0; i < _runtimeMenus.Length; i++)
-            {
+            for (int i = 0; i < _runtimeMenus.Length; i++) {
                 try {
-                    _runtimeMenus[i].MenuClicking(this, _selectedItem, _selectedItem == null ? null : (RuntimeScript)_selectedItem.Tag, KeyObject);
+                    _runtimeMenus[i].MenuClicking(this, f, f?.Tag as RuntimeScript, KeyObject);
                 } catch (Exception ex) { 
                     Plugin.Plugin.PluginException(ex, _runtimeMenus.GetType(), "IRuntimeMenu MenuClicking invoke failed", "Script Editor");
                 }
@@ -175,18 +168,52 @@ namespace NUMC.Plugins.ScriptEditor
             contextMenuStrip.Show(MousePosition);
         }
 
-        private bool SelectedItem { get => scriptsView.SelectedIndices.Count == 1; }
-        private int SelectedItemIndex { get => SelectedItem ? scriptsView.SelectedIndices[0] : -1; }
+        private bool HasSelectedItem { get => scriptsView.SelectedNodes.Count == 1; }
+        private Design.Controls.TreeNode SelectedItem { get => HasSelectedItem ? scriptsView.SelectedNodes[0] : null; }
 
         private void ScriptsView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete && SelectedItem)
+            if (e.KeyCode == Keys.Delete && HasSelectedItem)
                 Remove_Click(null, null);
             else if (e.KeyCode == Keys.Apps)
                 ShowContextMenu();
         }
 
-        public IListViewItem GetSelectedItem() =>
-            scriptsView?.Items?.TryGetValue(SelectedItemIndex);
+        public Design.Controls.TreeNode GetSelectedItem() => SelectedItem;
+
+        private void Moveup_button_Click(object sender, EventArgs e)
+        {
+            var node = SelectedItem;
+            if (node == null || !(node.Tag is RuntimeScript script)) return;
+            var i = KeyObject.Scripts.IndexOf(script);
+            if (i < 1) return;
+            KeyObject.Scripts.Remove(script);
+            KeyObject.Scripts.Insert(i - 1, script);
+            RefreshView();
+            SelectScript(script);
+        }
+
+        private void Movedown_button_Click(object sender, EventArgs e)
+        {
+            var node = SelectedItem;
+            if (node == null || !(node.Tag is RuntimeScript script)) return;
+            var i = KeyObject.Scripts.IndexOf(script);
+            if (i >= KeyObject.Scripts.Count - 1) return;
+            KeyObject.Scripts.Remove(script);
+            KeyObject.Scripts.Insert(i + 1, script);
+            RefreshView();
+            SelectScript(script);
+        }
+
+        public void SelectScript(RuntimeScript script)
+        {
+            scriptsView.SelectedNodes.Clear();
+            foreach (var item in scriptsView.Nodes) {
+                if (item == null || !(item.Tag is RuntimeScript s)) continue;
+                if(s == script) {
+                    scriptsView.SelectedNodes.Add(item); continue;
+                }
+            }
+        }
     }
 }

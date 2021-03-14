@@ -14,7 +14,7 @@ namespace NUMC.Setting
     {
         public static byte[] SerializeJsonObject(object obj)
         {
-            var json = Json.Convert(obj);
+            var json = Json.Json.Convert(obj);
             Debug.WriteLine("json object compres serializing");
             return Serialize(Encoding.UTF8.GetBytes(json));
         }
@@ -40,10 +40,10 @@ namespace NUMC.Setting
         }
 
         public static object DeserializeJsonObject(byte[] bytes, Type type) =>
-            Json.Convert(Encoding.UTF8.GetString(Deserialize(bytes)), type);
+            Json.Json.Convert(Encoding.UTF8.GetString(Deserialize(bytes)), type);
 
-        public static T DeserializeJsonObject<T>(byte[] bytes) => 
-            Json.Convert<T>(Encoding.UTF8.GetString(Deserialize(bytes)));
+        public static T DeserializeJsonObject<T>(byte[] bytes) =>
+            Json.Json.Convert<T>(Encoding.UTF8.GetString(Deserialize(bytes)));
 
         public static byte[] Deserialize(byte[] bytes)
         {

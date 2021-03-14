@@ -18,12 +18,12 @@ namespace NUMC.Client
         {
             #region Updates
 
-//#if DEBUG
-//            Debug.WriteLine("debug mode update check ignored");
-//            await Task.Delay(20);
-//#else
+#if DEBUG
+            Debug.WriteLine("debug mode update check ignored");
+            await Task.Delay(20);
+#else
             await InitializeUpdates();
-//#endif
+#endif
 
             #endregion
         }

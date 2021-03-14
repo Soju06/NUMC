@@ -17,7 +17,7 @@ namespace NUMC
         private List<INotifyMenu> NotifyMenus;
         private List<IApplicationMenu> ApplicationMenus;
 
-        private int state;
+        public StateCode State { get; private set; }
 
         public Service()
         {
@@ -101,27 +101,29 @@ namespace NUMC
 
         #region KeyboardHook
 
-        public void Start() => state = 0;
+        public void Start() {
+            State = StateCode.Running;
+        }
 
         public void Pause()
         {
-            state = 1;
+            State = StateCode.Paused;
             Script?.StopInput();
         }
 
         public void Stop()
         {
-            if (state == 2)
+            if (State == StateCode.Stoped)
                 return;
 
-            state = 2;
+            State = StateCode.Stoped;
             Script?.StopInput();
             KeyboardHook.HookEnd();
         }
 
-        private bool Keyboard_KeyUp(Keys key) => Script == null || state != 0 || Script.Run(key, false);
+        private bool Keyboard_KeyUp(Keys key) => Script == null || State != 0 || Script.Run(key, false);
 
-        private bool Keyboard_KeyDown(Keys key) => Script == null || state != 0 || Script.Run(key, true);
+        private bool Keyboard_KeyDown(Keys key) => Script == null || State != 0 || Script.Run(key, true);
 
         #endregion KeyboardHook
 
@@ -180,5 +182,11 @@ namespace NUMC
         public List<IApplicationMenu> GetApplicationMenus() => ApplicationMenus;
 
         #endregion Get
+
+        public enum StateCode {
+            Running = 0,
+            Paused = 1,
+            Stoped = 2
+        }
     }
 }

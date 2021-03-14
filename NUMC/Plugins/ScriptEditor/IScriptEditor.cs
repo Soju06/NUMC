@@ -1,15 +1,17 @@
 ﻿using NUMC.Design.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NUMC.Script;
 
 namespace NUMC.Plugins.ScriptEditor
 {
     public interface IScriptEditor
     {
+        event ScriptAddingEventHandler ScriptAdding;
+
         void RefreshView();
-        IListViewItem GetSelectedItem();
+        void SelectScript(RuntimeScript script);
+        TreeNode GetSelectedItem();
     }
+
+    public delegate void ScriptAddingEventHandler(IScriptEditor scriptEditor, 
+        RuntimeScript runtimeScript, TreeNode node);
 }

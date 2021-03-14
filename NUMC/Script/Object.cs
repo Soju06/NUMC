@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Web.Script.Serialization;
 using System.Windows.Forms;
-using NUMC.Language;
 
 namespace NUMC.Script
 {
     [DataContract]
     public partial class ScriptObject
     {
+        public ScriptObject() {
+            Version = Constant.Verison;
+        }
+
         [DataMember(Name = "lng")]
         public string Language {
             get => _language ?? (_language = "auto");
@@ -23,16 +24,23 @@ namespace NUMC.Script
         }
 
         [DataMember(Name = "settings")]
-        public JsonObject.RootObject Settings {
-            get => _settings ?? (_settings = new JsonObject.RootObject());
+        public Json.JsonObject Settings {
+            get => _settings ?? (_settings = new Json.JsonObject());
             set => _settings = value;
         }
+
+
+        [DataMember(Name = "version")]
+        public string Version { get; set; }
     }
 
-    public partial class KeyObjects
+    public partial class KeyObjects : List<KeyObject>
     {
-        private List<KeyObject> _keys = new List<KeyObject>();
+        public KeyObjects() { }
+        public KeyObjects(params KeyObject[] objects) { if (objects != null) AddRange(objects); }
+        public KeyObjects(List<KeyObject> objects) { if (objects != null) AddRange(objects); }
     }
+
 
     [DataContract]
     public partial class KeyObject
@@ -41,7 +49,7 @@ namespace NUMC.Script
         public KeyObject(Keys keys) { Key = keys; }
         public KeyObject(Keys keys, bool ignore, KeyScript script) {
             Key = keys; Ignore = ignore;
-            if(script != null) Script = script;
+            if(script != null) Scripts = script;
         }
 
         [DataMember(Name = "k")]
@@ -50,24 +58,17 @@ namespace NUMC.Script
         public bool Ignore { get; set; }
 
         [DataMember(Name = "s")]
-        public KeyScript Script {
+        public KeyScript Scripts {
             get => _script ?? (_script = new KeyScript());
             set => _script = value;
         }
     }
 
-    [DataContract]
-    public partial class KeyScript
+    public partial class KeyScript : List<RuntimeScript>
     {
         public KeyScript() { }
-        public KeyScript(params RuntimeScript[] scripts) { if (scripts != null) Scripts = scripts.ToList(); }
-        public KeyScript(List<RuntimeScript> scripts) { if (scripts != null) Scripts = scripts; }
-
-        [DataMember(Name = "s")]
-        public List<RuntimeScript> Scripts {
-            get => _scripts ?? (_scripts = new List<RuntimeScript>());
-            set => _scripts = value;
-        }
+        public KeyScript(params RuntimeScript[] scripts) { if (scripts != null) AddRange(scripts); }
+        public KeyScript(List<RuntimeScript> scripts) { if (scripts != null) AddRange(scripts); }
     }
 
     [DataContract]

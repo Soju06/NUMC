@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput;
@@ -59,10 +60,10 @@ namespace NUMC.Script
 
             var obj = _object.Keys.GetObject(keys);
 
-            if (obj == null || obj.Script == null || obj.Script.Scripts == null)
+            if (obj == null || obj.Scripts == null)
                 return true;
 
-            var script = obj.Script;
+            var scripts = obj.Scripts;
             var scriptInfo = new ScriptInfo(keys, obj, this);
 
 #if DEBUG
@@ -70,9 +71,9 @@ namespace NUMC.Script
             stopwatch.Start();
 #endif
             try {
-                for (scriptInfo.Index = 0; scriptInfo.Index >= 0 && scriptInfo.Index < script.Scripts.Count; scriptInfo.Index++)
+                for (scriptInfo.Index = 0; scriptInfo.Index >= 0 && scriptInfo.Index < scripts.Count; scriptInfo.Index++)
                 {
-                    var runtimeScript = script.Scripts[scriptInfo.Index];
+                    var runtimeScript = scripts[scriptInfo.Index];
 
                     if (runtimeScript == null)
                         continue;
@@ -88,7 +89,7 @@ namespace NUMC.Script
                                 continue;
 
                             if (runtimeNames.Contains(runtimeScript.RuntimeName))
-                                runtime.Run(scriptInfo, runtimeScript, isDown);
+                                runtime?.Run(scriptInfo, runtimeScript, isDown);
                         } catch (Exception ex) {
                             Plugin.Plugin.PluginException(ex, _runtimes[l].GetType(), "IRuntime Run invoke failed", "Script");
                         }
@@ -117,12 +118,10 @@ namespace NUMC.Script
             if (runtimeScript == null)
                 return null;
 
-            for (int i = 0; i < _runtimes.Count; i++)
-            {
+            for (int i = 0; i < _runtimes.Count; i++) {
                 var runtime = _runtimes[i];
 
-                try
-                {
+                try {
                     string[] runtimeNames;
 
                     if (runtime == null || (runtimeNames = runtime.RuntimeNames) == null)
@@ -174,10 +173,26 @@ namespace NUMC.Script
                 }
 
                 Debug.WriteLine($"setting load {path}");
-                ScriptObject script = CmprsSerializer.DeserializeJsonObject<ScriptObject>(File.ReadAllBytes(path));
+                var json = Encoding.UTF8.GetString(CmprsSerializer.Deserialize(File.ReadAllBytes(path)));
+                var script = Json.Json.Convert<ScriptObject>(json);
+
+                if(script != null && script.Version != Constant.Verison)
+                {
+                    try {
+                        string bf = null;
+                        for (int i = 0; i < 10000; i++)
+                            if (!File.Exists(bf = (i == 0 ? path : 
+                                $"{Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path))}.ns ({i})") + ".bak")) break;
+                        File.Move(path, bf);
+                    } catch (Exception ex) {
+                        Debug.WriteLine($"setting backup failed!\n{ex}");
+                    }
+                    script = old.Convert.ConvertObject(script.Version, json);
+                }
 
                 if (script == null)
                     script = new ScriptObject();
+
 
                 _object = script;
 
@@ -187,8 +202,8 @@ namespace NUMC.Script
 
                 var a = ex.Message;
 
-                if (a.Length > 30)
-                    a = $"{a.Substring(0, 30)}\n...";
+                if (a.Length > 150)
+                    a = $"{a.Substring(0, 150)}\n...";
 
                 switch (MessageBox.Show($"{Language.Language.Message_Error_Load_Setting_Fail}\n{a}",
                     Setting.Setting.TitleName, MessageBoxButtons.RetryCancel, MessageBoxIcon.Error)) {

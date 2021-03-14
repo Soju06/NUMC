@@ -56,11 +56,11 @@ namespace NUMC.Script
         }
 
         public static bool CheckSampleKey(KeyObject var1, KeyObject var2, bool checkIgnoreVal = false) => var1 != null && var2 != null && 
-            KeyScript.Equals(var1.Script, var2.Script) && (!checkIgnoreVal || var1.Ignore == var2.Ignore);
+            KeyScript.Equals(var1.Scripts, var2.Scripts) && (!checkIgnoreVal || var1.Ignore == var2.Ignore);
 
         public static int CheckDisableSampleKey(KeyObject obj)
         {
-            if (obj != null && (obj.Script == null || obj.Script.Scripts.Count <= 0))
+            if (obj != null && (obj.Scripts == null || obj.Scripts.Count <= 0))
                 return obj.Ignore ? 1 : 2;
             else return 0;
         }
