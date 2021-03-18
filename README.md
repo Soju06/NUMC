@@ -1,5 +1,5 @@
 [![banner](https://user-images.githubusercontent.com/34199905/111627759-c16fbd00-8832-11eb-8c4d-152739112e7e.png)](#)
-키보드 레이아웃을 변경하거나 키 기능을 개조합니다.
+### 키보드 레이아웃을 변경하거나 키 기능을 개조합니다.
 
 ***
 ## Latest Version
