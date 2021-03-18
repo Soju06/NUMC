@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NUMC.Plugins.PluginManager
-{
-    public class PluginManagerApplicationMenu : Plugin.Menu.IApplicationMenu
-    {
+namespace NUMC.Plugins.PluginManager {
+    public class PluginManagerApplicationMenu : Plugin.Menu.IApplicationMenu {
         private readonly ToolStripItem[] _menus;
         private readonly ToolStripMenuItem pmItem;
 
@@ -33,7 +28,7 @@ namespace NUMC.Plugins.PluginManager
 
         public void Dispose() => Menu.MenuStripSupport.DisposeItems(_menus);
 
-        public void Initialize(Script.Script script) { }
+        public void Initialize(Service service) { }
 
         public void MenuClicking() { }
     }

@@ -1,19 +1,13 @@
-﻿using NUMC.Script;
+﻿using NUMC.Config.Object;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NUMC.Plugins.ScriptEditor
-{
-    public class ScriptEditorKeyMenu : Plugin.Menu.IKeyMenu
-    {
-        public ScriptEditorKeyMenu()
-        {
-            _menus = new ToolStripItem[] { _menu = new ToolStripMenuItem(Language.Language.ScriptEditor_Menu_Text, null, Click) };
-        }
+namespace NUMC.Plugins.ScriptEditor {
+    public class ScriptEditorKeyMenu : Plugin.Menu.IKeyMenu {
+        public ScriptEditorKeyMenu() =>
+            _menus = new [] { 
+                _menu = new ToolStripMenuItem(Language.Language.ScriptEditor_Menu_Text, null, Click) 
+            };
 
         public int Index => 0;
 
@@ -28,18 +22,17 @@ namespace NUMC.Plugins.ScriptEditor
         private readonly ToolStripItem[] _menus;
 
         private KeyObject KeyObject;
-        private Script.Script Script;
+        private Service Service;
 
-        public void Click(object sender, EventArgs e)
-        {
-            using (ScriptEditorDialog dialog = new ScriptEditorDialog(KeyObject, Script))
-                if(dialog.ShowDialog() == DialogResult.OK)
-                    Service.GetService()?.Save();
+        public void Click(object sender, EventArgs e) {
+            using ScriptEditorDialog dialog = new ScriptEditorDialog(KeyObject, Service.GetScript());
+            if (dialog.ShowDialog() == DialogResult.OK)
+                Service.GetService()?.Save();
         }
 
         public void Dispose() => Menu.MenuStripSupport.DisposeItems(Menus);
 
-        public void Initialize(Script.Script script) => Script = script;
+        public void Initialize(Service service) => Service = service;
 
         public void MenuClicking(KeyObject keyObject, Keys selectedKey)
         {

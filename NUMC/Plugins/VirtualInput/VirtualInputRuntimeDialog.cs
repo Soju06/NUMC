@@ -1,5 +1,6 @@
 ﻿using NUMC.Script;
 using NUMC.Plugin.Runtime;
+using NUMC.Config.Object;
 
 namespace NUMC.Plugins.VirtualInput
 {

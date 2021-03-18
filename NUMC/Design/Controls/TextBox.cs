@@ -1,20 +1,17 @@
-﻿using System;
+﻿using NUMC.WinUtils;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using WinUtils;
 
-namespace NUMC.Design.Controls
-{
-    public class TextBox : System.Windows.Forms.TextBox
-    {
+namespace NUMC.Design.Controls {
+    public class TextBox : System.Windows.Forms.TextBox {
         private float _fontSize;
         private readonly Styles _styles = Styles.GetStyles();
 
         public float FontSize { get => _fontSize; set { if (value == _fontSize) return;
                 _fontSize = value; Font = new Font(_styles.FontFamily, value, _styles.FontStyle); } }
 
-        public TextBox()
-        {
+        public TextBox() {
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.SupportsTransparentBackColor, true);
 
             BackColor = _styles.Control.BackgroundColor;
@@ -27,8 +24,7 @@ namespace NUMC.Design.Controls
 
         protected override void OnTextChanged(EventArgs e) => Invalidate(true);
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
+        protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
 
             if (string.IsNullOrEmpty(Text.Trim()) && !string.IsNullOrEmpty(Text) && !Focused) {
@@ -43,8 +39,7 @@ namespace NUMC.Design.Controls
             }
         }
 
-        protected override void WndProc(ref Message m)
-        {
+        protected override void WndProc(ref Message m) {
             base.WndProc(ref m);
 
             if (m.Msg == Constants.WM_PAINT)

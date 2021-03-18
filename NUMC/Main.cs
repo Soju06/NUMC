@@ -1,30 +1,15 @@
-﻿using NUMC.Keyboard;
-using NUMC.Menu;
-using NUMC.Plugin;
-using NUMC.Plugin.Menu;
-using NUMC.Script;
+﻿using NUMC.WinUtils;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using System.Windows.Forms;
-using WinUtils;
 
-namespace NUMC
-{
-    public partial class Main : Design.Form
-    {
+namespace NUMC {
+    public partial class Main : Design.Form {
         private readonly Service Service;
 
-        public Main(Service service)
-        {
+        public Main(Service service) {
             Service = service;
-
             InitializeComponent();
             InitializeLayout();
             InitializeForm();
@@ -88,8 +73,7 @@ namespace NUMC
 
         #endregion NotifyIcon
 
-        new public void Show()
-        {
+        new public void Show() {
             base.Show();
             WinAPI.SetForegroundWindow(Handle);
         }
@@ -116,22 +100,17 @@ namespace NUMC
 
         #region Initialize_Language
 
-        private void InitializeLanguage()
-        {
-            Text = Setting.Setting.GetTitleName(Language.Language.Main_Title);
-        }
+        private void InitializeLanguage() =>
+            Text = Service.GetTitleName(Language.Language.Main_Title);
 
         #endregion Initialize_Language
 
         #region Initialize_Layout
 
-        private void InitializeLayout()
-        {
+        private void InitializeLayout() {
             KeyboardLayout = new Forms.Controls.KeyboardLayoutControl();
-            KeyboardLayout.Initialize(Service?.GetScript());
-
+            KeyboardLayout.Initialize(Service);
             SuspendLayout();
-
             KeyboardLayout.Anchor = AnchorStyles.Top |
                 AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             KeyboardLayout.BackColor = Color.Transparent;
@@ -150,12 +129,10 @@ namespace NUMC
 
         #region Initialize_Menu
 
-        private void InitializeMenu()
-        {
+        private void InitializeMenu() {
             ApplicationContextMenu.Items.Clear();
             NotifyIconContextMenu.Items.Clear();
             NUMContextMenu.Items.Clear();
-
             ApplicationContextMenu.Items.AddRange(Plugin.Menu.Menu.GetMenusItems(Service?.GetApplicationMenus()));
             NotifyIconContextMenu.Items.AddRange(Plugin.Menu.Menu.GetMenusItems(Service?.GetNotifyMenus()));
             NUMContextMenu.Items.AddRange(Plugin.Menu.Menu.GetMenusItems(Service?.GetKeyMenus()));
@@ -167,8 +144,7 @@ namespace NUMC
 
         #region ReloadLanguage
 
-        public void ReloadLanguage()
-        {
+        public void ReloadLanguage() {
             InitializeLanguage();
             InitializeMenu();
             GC.Collect();
@@ -178,14 +154,12 @@ namespace NUMC
 
         #region LayoutMenu_Events
 
-        private void LayoutMenuShow(Keys keys, Point loc)
-        {
+        private void LayoutMenuShow(Keys keys, Point loc) {
             if (keys == Keys.None) return;
-            var keyObject = Service?.GetScript()?.GetObject()?.Keys.GetObject(keys, false);
+            var keyObject = Service?.GetConfig()?.Keys.GetObject(keys, false);
             var keyMenus = Service?.GetKeyMenus();
             Debug.WriteLine($"layout click ({keys})");
             if (keyMenus == null) return;
-
             for (int i = 0; i < keyMenus.Count; i++) {
                 var plugin = keyMenus[i];
                 if (plugin == null) continue;
@@ -194,16 +168,12 @@ namespace NUMC
                 } catch (Exception ex) {
                     Plugin.Plugin.PluginException(ex, plugin.GetType(), "IKeyMenu MenuClicking invoke failed", "Main");
                 }
-            }
-
-            NUMContextMenu.Show(MousePosition);
+            } NUMContextMenu.Show(MousePosition);
         }
 
-        private void LayoutMouseClick(Keys _, MouseButtons Button)
-        {
-            if(Button == MouseButtons.Right) {
-                ApplicationMenuShow(MousePosition); return;
-            }
+        private void LayoutMouseClick(Keys _, MouseButtons Button) {
+            if(Button == MouseButtons.Right)
+                ApplicationMenuShow(MousePosition);
         }
 
         #endregion LayoutMenu_Events

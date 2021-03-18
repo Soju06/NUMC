@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace WinUtils
+namespace NUMC.WinUtils
 {
     #region Structs
 

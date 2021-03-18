@@ -1,15 +1,13 @@
-﻿using NUMC.Design.Controls;
-using NUMC.Script;
+﻿using NUMC.Config.Object;
+using NUMC.Design.Controls;
 
-namespace NUMC.Plugins.ScriptEditor
-{
-    public interface IScriptEditor
-    {
+namespace NUMC.Plugins.ScriptEditor {
+    public interface IScriptEditor {
         event ScriptAddingEventHandler ScriptAdding;
 
-        void RefreshView();
-        void SelectScript(RuntimeScript script);
-        TreeNode GetSelectedItem();
+        public void RefreshView();
+        public void SelectScript(RuntimeScript script);
+        public TreeNode GetSelectedItem();
     }
 
     public delegate void ScriptAddingEventHandler(IScriptEditor scriptEditor, 

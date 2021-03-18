@@ -1,5 +1,5 @@
 ﻿using NUMC.Client.GitHub;
-using NUMC.Setting;
+using NUMC.Config;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,7 +28,7 @@ namespace NUMC.Client.NUMC
                 var client = APIClient.GetHttpClient();
                 var response = await client.GetAsync(host);
                 var store = response.StatusCode == System.Net.HttpStatusCode.OK ?
-                Json.Json.Convert<Store>(await response.Content.ReadAsStringAsync()) : null;
+                Json.JsonSerializer.Convert<Store>(await response.Content.ReadAsStringAsync()) : null;
                 return new Object<Store>() { ResponseMessage = response, ResponseObject = store };
             } catch (Exception ex) {
                 Debug.WriteLine("get plugin store failed\th:\t{0}\tex:\t{1}", host, ex);

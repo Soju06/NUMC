@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using WinUtils;
 
-namespace NUMC.Design.Designer
-{
-    public class TitleBarDesigner : IDisposable
-    {
+namespace NUMC.Design.Designer {
+    public class TitleBarDesigner : IDisposable {
         public event EventHandler Invalidate;
 
         private readonly Bitmap[] _buttonImages;
@@ -37,27 +31,25 @@ namespace NUMC.Design.Designer
         public bool Maximize { get => _maximize; set { _maximize = value; Invalidate?.Invoke(this, default); } }
         public bool Minimize { get => _minimize; set { _minimize = value; Invalidate?.Invoke(this, default); } }
 
-        public TitleBarDesigner(Styles styles)
-        {
+        public TitleBarDesigner(Styles styles) {
             _styles = styles;
             _color = _styles.Form.Color;
             _font = _styles.Font;
-            _backgroundColor = _styles.Control.BackgroundColor;
-            _downBackgroundColor = _styles.Button.HoverBackgroundColor;
-            _pressedBackgroundColor = _styles.Button.PressedBackgroundColor;
+            _backgroundColor = _styles.TitleBar.BackgroundColor;
+            _downBackgroundColor = _styles.TitleBar.HoverBackgroundColor;
+            _pressedBackgroundColor = _styles.TitleBar.PressedBackgroundColor;
             _buttonImages = new Bitmap[3];
             SetButtonImage();
             SetFont();
         }
 
-        private void SetFont()
-        {
+        private void SetFont() {
             _titleFont?.Dispose();
             _titleFont = GetFont(Font, 2);
         }
 
-        public void Drawing(Rectangle rect, Graphics g, byte[] rightButtonsState, out Rectangle rightButtonsRect, out Rectangle[] rightButtonRects, out Rectangle titleBarRect, out Rectangle clientRect)
-        {
+        public void Drawing(Rectangle rect, Graphics g, byte[] rightButtonsState, out Rectangle rightButtonsRect,
+            out Rectangle[] rightButtonRects, out Rectangle titleBarRect, out Rectangle clientRect) {
             var padding = 5;
             var leftPadding = 2;
             var buttonWidth = 50;
@@ -116,13 +108,11 @@ namespace NUMC.Design.Designer
                 rect.Width, rect.Height - titleBarRect.Height);
         }
 
-        public void Dispose()
-        {
+        public void Dispose() {
             _titleFont?.Dispose();
         }
 
-        private void SetButtonImage()
-        {
+        private void SetButtonImage() {
             try {
                 bool b = Resources.Render.IsBrightColor(BackgroundColor);
                 for (int i = 0; i < _buttonImages.Length; i++)

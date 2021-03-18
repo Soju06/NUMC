@@ -1,12 +1,9 @@
-﻿using NUMC.Design.Controls;
+﻿using NUMC.WinUtils;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using WinUtils;
 
 namespace NUMC.Design
 {

@@ -134,7 +134,7 @@
     <comment>가상 동시 입력</comment>
   </data>
   <data name="Main_Title" xml:space="preserve">
-    <value>Setting</value>
+    <value>Config</value>
     <comment>설정</comment>
   </data>
   <data name="Message_Error_ChangeStartProgram_Fail" xml:space="preserve">

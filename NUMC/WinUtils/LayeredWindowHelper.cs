@@ -5,47 +5,34 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace WinUtils
-{
-    public class LayeredWindowHelper : IDisposable
-    {
+namespace NUMC.WinUtils {
+    public class LayeredWindowHelper : IDisposable {
         private readonly WndProcDelegate m_CtrlWndProcDelegate;
         private readonly Dictionary<IntPtr, IntPtr> m_WndProcMap = new Dictionary<IntPtr, IntPtr>();
         private bool m_bIsRefreshing = false;
         private readonly Control host;
         public Color BackColor;
 
-        public LayeredWindowHelper(Control host)
-        {
+        public LayeredWindowHelper(Control host) {
             this.host = host;
             m_CtrlWndProcDelegate = CtrlWndProc;
-
             HookChildControl(host);
             RefreshCtrl();
         }
 
-        private void RefreshCtrl()
-        {
-            if (m_bIsRefreshing)
-                return;
-
-            int width = host.ClientRectangle.Width + 14;
-            int height = host.ClientRectangle.Height + 14;
-
+        private void RefreshCtrl() {
+            if (m_bIsRefreshing) return;
+            int width = host.ClientRectangle.Width + 14, 
+                height = host.ClientRectangle.Height + 14;
             m_bIsRefreshing = true;
-
-            IntPtr hDC = WinAPI.GetDC(host.Handle);
-            if (hDC == IntPtr.Zero)
-            {
+            var hDC = WinAPI.GetDC(host.Handle);
+            if (hDC == IntPtr.Zero) {
                 m_bIsRefreshing = false;
-                //Debug.Assert(false, "GetDC failed.");
                 return;
             }
-
-            IntPtr hdcMemory = WinAPI.CreateCompatibleDC(hDC);
-
+            var hdcMemory = WinAPI.CreateCompatibleDC(hDC);
             int nBytesPerLine = ((width * 32 + 31) & (~31)) >> 3;
-            BITMAPINFO stBmpInfoHeader = new BITMAPINFO();
+            var stBmpInfoHeader = new BITMAPINFO();
             stBmpInfoHeader.bmiHeader.biSize = Marshal.SizeOf(stBmpInfoHeader);
             stBmpInfoHeader.bmiHeader.biWidth = width;
             stBmpInfoHeader.bmiHeader.biHeight = height;
@@ -54,33 +41,19 @@ namespace WinUtils
             stBmpInfoHeader.bmiHeader.biCompression = 0;
             stBmpInfoHeader.bmiHeader.biClrUsed = 0;
             stBmpInfoHeader.bmiHeader.biSizeImage = nBytesPerLine * height;
-            IntPtr hbmpMem = WinAPI.CreateDIBSection(hDC
-                , ref stBmpInfoHeader
-                , Constants.DIB_RGB_COLORS
-                , out _
-                , IntPtr.Zero
-                , 0
-                );
-
-            //Debug.Assert(hbmpMem != IntPtr.Zero, "CreateDIBSection failed.");
-
-            if (hbmpMem != null)
-            {
-                IntPtr hbmpOld = WinAPI.SelectObject(hdcMemory, hbmpMem);
-
-                Graphics graphic = Graphics.FromHdcInternal(hdcMemory);
+            var hbmpMem = WinAPI.CreateDIBSection(hDC, ref stBmpInfoHeader,
+                Constants.DIB_RGB_COLORS, out _, IntPtr.Zero, 0);
+            if (hbmpMem != null) {
+                var hbmpOld = WinAPI.SelectObject(hdcMemory, hbmpMem);
+                var graphic = Graphics.FromHdcInternal(hdcMemory);
                 graphic.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-                //  graphic.SmoothingMode = SmoothingMode.HighQuality;
                 graphic.FillRectangle(new SolidBrush(BackColor), graphic.ClipBounds);
-
-                foreach (Control ctrl in host.Controls)
-                {
+                foreach (Control ctrl in host.Controls) {
                     Point realpos = ctrl.Location;
-                    realpos.Offset(7, 7);//BORDER COMPENSATE
+                    realpos.Offset(7, 7);
                     Bitmap bmp = new Bitmap(ctrl.Width, ctrl.Height, PixelFormat.Format32bppArgb);
                     Rectangle rect = new Rectangle(0, 0, ctrl.Width, ctrl.Height);
-                    if (ctrl is Label)
-                    {
+                    if (ctrl is Label) {
                         #region Render_Label
 
                         if (ctrl is LinkLabel tti)
@@ -111,8 +84,7 @@ namespace WinUtils
 
                         #endregion Render_Label
                     }
-                    else if (ctrl is CheckBox)
-                    {
+                    else if (ctrl is CheckBox) {
                         #region Render_CheckBox
 
                         bmp = new Bitmap(13, ctrl.Height, PixelFormat.Format32bppArgb);
@@ -128,8 +100,7 @@ namespace WinUtils
 
                         #endregion Render_CheckBox
                     }
-                    else if (ctrl is RadioButton)
-                    {
+                    else if (ctrl is RadioButton) {
                         #region Render_RadioButton
 
                         bmp = new Bitmap(13, ctrl.Height, PixelFormat.Format32bppArgb);
@@ -167,8 +138,7 @@ namespace WinUtils
 
                         #endregion Render_RadioButton
                     }
-                    else if (ctrl is Button)
-                    {
+                    else if (ctrl is Button) {
                         #region Render_Button
 
                         ctrl.DrawToBitmap(bmp, rect);
@@ -184,41 +154,31 @@ namespace WinUtils
 
                         #endregion Render_Button
                     }
-                    else
-                    {
+                    else {
                         ctrl.DrawToBitmap(bmp, rect);
                         graphic.DrawImage(bmp, realpos);
                     }
                 }
-
-                POINT ptSrc = new POINT(0, 0);
-                POINT ptWinPos = new POINT(host.Left, host.Top);
-                SIZE szWin = new SIZE(width, height);
-                BLENDFUNCTION stBlend = new BLENDFUNCTION(Constants.AC_SRC_OVER, 0, 0xFF, Constants.AC_SRC_ALPHA);
-
-                WinAPI.UpdateLayeredWindow(host.Handle, hDC, ref ptWinPos, ref szWin
-                    , hdcMemory, ref ptSrc, 0, ref stBlend, Constants.ULW_ALPHA);
-
+                var ptSrc = new POINT(0, 0);
+                var ptWinPos = new POINT(host.Left, host.Top);
+                var szWin = new SIZE(width, height);
+                var stBlend = new BLENDFUNCTION(Constants.AC_SRC_OVER, 0, 0xFF, Constants.AC_SRC_ALPHA);
+                WinAPI.UpdateLayeredWindow(host.Handle, hDC, ref ptWinPos, ref szWin,
+                    hdcMemory, ref ptSrc, 0, ref stBlend, Constants.ULW_ALPHA);
                 graphic.Dispose();
                 WinAPI.SelectObject(hbmpMem, hbmpOld);
                 WinAPI.DeleteObject(hbmpMem);
             }
-
             WinAPI.DeleteDC(hdcMemory);
             WinAPI.DeleteDC(hDC);
-
             m_bIsRefreshing = false;
         }
 
-        private IntPtr CtrlWndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
-        {
+        private IntPtr CtrlWndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam) {
             if (!m_WndProcMap.ContainsKey(hWnd))
                 return WinAPI.defWindowProc(hWnd, msg, wParam, lParam);
-
-            IntPtr nRet = WinAPI.CallWindowProc(m_WndProcMap[hWnd], hWnd, msg, wParam, lParam);
-
-            switch (msg)
-            {
+            var nRet = WinAPI.CallWindowProc(m_WndProcMap[hWnd], hWnd, msg, wParam, lParam);
+            switch (msg) {
                 case Constants.WM_PAINT:
                 case Constants.WM_CTLCOLOREDIT:
                 case Constants.WM_CTLCOLORBTN:
@@ -230,33 +190,25 @@ namespace WinUtils
                 case Constants.WM_CAPTURECHANGED:
                     RefreshCtrl();
                     break;
-            }
-
-            return nRet;
+            } return nRet;
         }
 
         #region Hooks
 
-        private void HookChildControl(Control ctrl)
-        {
-            if (WinAPI.IsWindow(ctrl.Handle))
-            {
+        private void HookChildControl(Control ctrl) {
+            if (WinAPI.IsWindow(ctrl.Handle)) {
                 m_WndProcMap[ctrl.Handle]
                     = WinAPI.GetWindowLongPtr(ctrl.Handle, Constants.GWL_WNDPROC);
-
                 WinAPI.SetWindowLongPtr(ctrl.Handle, Constants.GWL_WNDPROC,
                     Marshal.GetFunctionPointerForDelegate(m_CtrlWndProcDelegate));
             }
-
-            if (!ctrl.HasChildren)
-                return;
+            if (!ctrl.HasChildren) return;
 
             foreach (Control child in ctrl.Controls)
                 HookChildControl(child);
         }
 
-        private void UnHookControls()
-        {
+        private void UnHookControls() {
             foreach (IntPtr hWnd in m_WndProcMap.Keys)
                 WinAPI.SetWindowLongPtr(hWnd, Constants.GWL_WNDPROC,
                     m_WndProcMap[hWnd]);
@@ -264,14 +216,11 @@ namespace WinUtils
 
         #endregion Hooks
 
-        public void Dispose()
-        {
-            try
-            {
+        public void Dispose() {
+            try {
                 UnHookControls();
-            }
-            finally
-            {
+            } finally {
+
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace WinUtils
+namespace NUMC.WinUtils
 {
     public enum WindowCompositionAttribute
     {

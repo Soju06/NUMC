@@ -1,34 +1,23 @@
-﻿using NUMC.Client.GitHub;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Security.Policy;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NUMC.Plugins.PluginManager
-{
-    public partial class PluginManagerDialog : Design.Form
-    {
+namespace NUMC.Plugins.PluginManager {
+    public partial class PluginManagerDialog : Design.Form {
         private Client.NUMC.PluginManager.Store _onlinePlugins = null;
         private int _oNode = -1;
 
-        public PluginManagerDialog()
-        {
+        public PluginManagerDialog() {
             InitializeComponent();
             InitializeClassView();
         }
 
-        private void InitializeClassView()
-        {
+        private void InitializeClassView() {
             var installed = new Design.Controls.TreeNode(Language.Language._107, "installed");
             var online = new Design.Controls.TreeNode(Language.Language._108, "online");
             installed.Nodes.Add(new Design.Controls.TreeNode(Language.Language._109, "installed"));
@@ -36,11 +25,9 @@ namespace NUMC.Plugins.PluginManager
             _classView.Nodes.Add(installed);
             _classView.Nodes.Add(online);
             _classView.SelectedNodesChanged += ClassView_NodesChanged;
-            SetInstalled();
         }
 
-        private void ClassView_NodesChanged(object sender, EventArgs e)
-        {
+        private void ClassView_NodesChanged(object sender, EventArgs e) {
             if (_classView.SelectedNodes.Count <= 0)
                 return;
             var item = _classView.SelectedNodes[0];
@@ -57,16 +44,14 @@ namespace NUMC.Plugins.PluginManager
             return tag == "installed" ? 0 : tag == "online" ? 1 : -1;
         }
 
-        private void NodeChanged(int node)
-        {
+        private void NodeChanged(int node) {
             if (_oNode == node) return;
             _oNode = node;
             if (node == 1) SetOnline();
             else if (node == 0) SetInstalled();
         }
 
-        private void SetInstalled()
-        {
+        private void SetInstalled() {
             _pluginsView.Items.Clear();
             SetLoading(true, Language.Language._110);
             _pluginsView.SuspendLayout();
@@ -84,8 +69,7 @@ namespace NUMC.Plugins.PluginManager
             });
         }
 
-        private void SetOnline()
-        {
+        private void SetOnline() {
             _pluginsView.Items.Clear();
             SetLoading(true, Language.Language._111);
             _pluginsView.SuspendLayout();
@@ -101,15 +85,13 @@ namespace NUMC.Plugins.PluginManager
             });
         }
 
-        private void SetLoading(bool l, string text = null)
-        {
+        private void SetLoading(bool l, string text = null) {
             loadingProgressBar.Style = ProgressBarStyle.Marquee;
             loadingPanel.Visible = l; _pluginsView.Enabled = _classView.Enabled = !l;
             if(text != null) loadingLabel.Text = text;
         }
 
-        private async Task<Client.NUMC.PluginManager.Store> GetPluginStoreItems()
-        {
+        private async Task<Client.NUMC.PluginManager.Store> GetPluginStoreItems() {
             var r = await Client.NUMC.PluginManager.GetProxyStoreAsync();
             if (r == null) {
                 MessageBox.Show("Failed to load plugin list",
@@ -122,8 +104,7 @@ namespace NUMC.Plugins.PluginManager
             } return r.ResponseObject;
         }
 
-        private List<PluginManagerViewItem> PluginToPluginViewItem(IList<Client.NUMC.PluginManager.Plugin> plugins)
-        {
+        private List<PluginManagerViewItem> PluginToPluginViewItem(IList<Client.NUMC.PluginManager.Plugin> plugins) {
             var items = new List<PluginManagerViewItem>();
             if(plugins != null)
                 for (int i = 0; i < plugins.Count; i++)
@@ -131,23 +112,16 @@ namespace NUMC.Plugins.PluginManager
             return items;
         }
 
-        private void PluginsView_ItemDoubleClick(PluginManagerViewItem item, MouseEventArgs e)
-        {
+        private void PluginsView_ItemDoubleClick(PluginManagerViewItem item, MouseEventArgs e) =>
             InstallPluginItem(item);
-        }
 
-        private void PluginsView_ItemButtonClick(PluginManagerViewItem item, MouseEventArgs e)
-        {
+        private void PluginsView_ItemButtonClick(PluginManagerViewItem item, MouseEventArgs e) =>
             InstallPluginItem(item);
-        }
 
-        private void PluginManagerDialog_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void PluginManagerDialog_FormClosing(object sender, FormClosingEventArgs e) =>
             _pluginsView.Dispose();
-        }
 
-        private void InstallPluginItem(PluginManagerViewItem item)
-        {
+        private void InstallPluginItem(PluginManagerViewItem item) {
             if (item == null || !(MessageBox.Show(item.Installed ? string.Format(Language.Language._112, item.Title) :
                 string.Format(Language.Language._113, item.Title), "Plug-in Manager", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)) return;
             if(item.Installed) //uninstall
@@ -156,8 +130,7 @@ namespace NUMC.Plugins.PluginManager
                 Install(item);
         }
 
-        private void Install(PluginManagerViewItem item)
-        {
+        private void Install(PluginManagerViewItem item) {
             if (_onlinePlugins == null) return;
             SetLoading(true, Language.Language._114);
             Task.Run(install);
@@ -186,8 +159,7 @@ namespace NUMC.Plugins.PluginManager
 
         private string _tempFile;
 
-        private void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        {
+        private void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e) {
             var t = false;
             try {
                 if(!string.IsNullOrWhiteSpace(_tempFile) && File.Exists(_tempFile) && new FileInfo(_tempFile).Length > 0) {
@@ -222,8 +194,7 @@ namespace NUMC.Plugins.PluginManager
             }
         }
 
-        private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
+        private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e) {
             try {
                 Invoke(new MethodInvoker(delegate () {
                     loadingProgressBar.Value = e.ProgressPercentage * 0.01d;
@@ -233,9 +204,8 @@ namespace NUMC.Plugins.PluginManager
             }
         }
 
-        private void Uninstall(PluginManagerViewItem item)
-        {
-            if (_oNode != 0 || _pluginsView.Items.IndexOf(item) != 0) {
+        private void Uninstall(PluginManagerViewItem item) {
+            if (_oNode != 0) {
                 var a = PluginManagerUtils.IsInstalled(item.Hash);
                 if (a == null) return;
                 var f = new FileInfo(a.Location);
@@ -243,10 +213,10 @@ namespace NUMC.Plugins.PluginManager
                 f.MoveTo(fn);
                 Process.Start(Application.ExecutablePath, $"--removePlugin \"{Path.GetFileName(f.FullName)}\"");
                 Application.Exit();
-            } else {
-                MessageBox.Show("Are you sure?");
-                MessageBox.Show("Nope.");
             }
         }
+
+        private void PluginManagerDialog_Shown(object sender, EventArgs e) =>
+            SetInstalled();
     }
 }

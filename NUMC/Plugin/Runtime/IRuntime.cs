@@ -1,4 +1,5 @@
-﻿using NUMC.Plugin;
+﻿using NUMC.Config.Object;
+using NUMC.Plugin;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;

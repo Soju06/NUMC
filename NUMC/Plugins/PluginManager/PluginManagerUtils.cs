@@ -33,6 +33,7 @@ namespace NUMC.Plugins.PluginManager
         public static List<Client.NUMC.PluginManager.Plugin> GetInstalledPlugins()
         {
             var assemblies = Plugin.Plugin.GetAssemblies();
+            assemblies.Remove(Assembly.GetExecutingAssembly());
             var plugins = new List<Client.NUMC.PluginManager.Plugin>();
             for (int i = 0; i < assemblies.Count; i++) {
                 var assembly = assemblies[i];
