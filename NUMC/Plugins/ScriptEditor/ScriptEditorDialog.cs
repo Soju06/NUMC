@@ -13,11 +13,11 @@ using NUMC.Expansion;
 using System.Windows.Forms;
 using NUMC.Design.Controls;
 using System.Diagnostics;
+using NUMC.Config.Object;
 
 namespace NUMC.Plugins.ScriptEditor
 {
-    public partial class ScriptEditorDialog : Design.Dialog, IScriptEditor
-    {
+    public partial class ScriptEditorDialog : Design.Dialog, IScriptEditor {
         private readonly KeyObject KeyObject;
         private readonly KeyObject _ori_keyObject;
         private readonly Script.Script Script;
@@ -42,7 +42,7 @@ namespace NUMC.Plugins.ScriptEditor
 
         private void InitializeForm()
         {
-            Text = Setting.Setting.GetTitleName("Script editor");
+            Text = Service.GetTitleName("Script editor");
             btnOk.Click += BtnOk_Click;
         }
 

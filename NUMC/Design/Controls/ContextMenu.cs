@@ -1,11 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using WinUtils;
+﻿using System.Windows.Forms;
 
-namespace NUMC.Design.Controls
-{
-    public class ContextMenuStrip : System.Windows.Forms.ContextMenuStrip
-    {
+namespace NUMC.Design.Controls {
+    public class ContextMenuStrip : System.Windows.Forms.ContextMenuStrip {
         public ContextMenuStrip() {
             Renderer = new MenuRenderer();
         }

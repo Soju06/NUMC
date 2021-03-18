@@ -40,7 +40,7 @@ namespace TestPlugin
 
         }
 
-        public void Initialize(Script script)
+        public void Initialize(NUMC.Service service)
         {
 
         }

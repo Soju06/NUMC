@@ -1,4 +1,5 @@
-﻿using NUMC.Plugin.Runtime;
+﻿using NUMC.Config.Object;
+using NUMC.Plugin.Runtime;
 using NUMC.Script;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput;
 
-namespace NUMC.Plugins.VirtualInput
-{
-    public class VirtualInputRuntime : IRuntime
-    {
-        public VirtualInputRuntime()
-        {
+namespace NUMC.Plugins.VirtualInput {
+    public class VirtualInputRuntime : IRuntime {
+        public VirtualInputRuntime() {
             Dialog = new VirtualInputRuntimeDialog();
             Menu = new VirtualInputRuntimeMenu((VirtualInputRuntimeDialog)Dialog);
         }
@@ -27,13 +25,10 @@ namespace NUMC.Plugins.VirtualInput
 
         public IRuntimeMenu Menu { get; private set; }
 
-        public void Initialize(Script.Script script) => InputSimulator = script.GetSimulator();
+        public void Initialize(Service service) => InputSimulator = service.GetScript().GetSimulator();
 
-        public void Run(ScriptInfo scriptInfo, RuntimeScript runtimeScript, bool isDown)
-        {
-            if (runtimeScript == null || InputSimulator == null)
-                return;
-
+        public void Run(ScriptInfo scriptInfo, RuntimeScript runtimeScript, bool isDown) {
+            if (runtimeScript == null || InputSimulator == null) return;
             try {
                 if (isDown) {
                     switch (runtimeScript.RuntimeName) {
@@ -59,7 +54,6 @@ namespace NUMC.Plugins.VirtualInput
                     switch (runtimeScript.RuntimeName) {
                         case "NUMC.VirtualKey": {
                                 var a = ConvertKeys(runtimeScript.Data);
-
                                 for (int l = 0; l < a.Count; l++)
                                     InputSimulator.Keyboard.KeyUp(a[l]);
                             } break;
@@ -73,18 +67,13 @@ namespace NUMC.Plugins.VirtualInput
         }
 
 
-        public static IList<Keys> ConvertKeys(string data)
-        {
-            if (data == null)
-                return Array.Empty<Keys>();
-
+        public static IList<Keys> ConvertKeys(string data) {
+            if (data == null) return Array.Empty<Keys>();
             var keys = new List<Keys>();
             var kds = data.Split(',');
-
             for (int i = 0; i < kds.Length; i++)
                 if (int.TryParse(kds[i], out int key))
                     keys.Add((Keys)key);
-
             return keys;
         }
 
@@ -94,14 +83,14 @@ namespace NUMC.Plugins.VirtualInput
 
         public void Dispose() { }
 
-        public static string[] RuntimeNames { get; } = new string[] { "NUMC.VirtualKey", "NUMC.VirtualSendKeys", "NUMC.TextEntry" };
+        public static string[] RuntimeNames { get; } = new [] { 
+            "NUMC.VirtualKey", "NUMC.VirtualSendKeys", "NUMC.TextEntry" 
+        };
 
         string[] IRuntime.RuntimeNames { get; } = RuntimeNames;
 
-        public static string ScriptContent(RuntimeScript script)
-        {
+        public static string ScriptContent(RuntimeScript script) {
             string name;
-
             switch (script.RuntimeName) {
                 case "NUMC.VirtualKey":
                     name = Language.Language.VirtualInputDialog_VirtualKey_Name;
@@ -118,32 +107,15 @@ namespace NUMC.Plugins.VirtualInput
                 default:
                     return null;
             }
-
-            string content;
-
-            switch (script.RuntimeName) {
-                case "NUMC.VirtualKey":
-                case "NUMC.VirtualSendKeys":
-                    content = string.Join(", ", ConvertKeys(script.Data));
-                    break;
-
-                case "NUMC.TextEntry":
-                    content = script.Data;
-                    break;
-
-                default:
-                    content = null;
-                    break;
-            }
-
+            var content = script.RuntimeName switch {
+                "NUMC.VirtualKey" or "NUMC.VirtualSendKeys" => string.Join(", ", ConvertKeys(script.Data)),
+                "NUMC.TextEntry" => script.Data, _ => null,
+            };
             if (content != null) {
                 if (content.Length > 30)
                     content = content.Substring(0, 30) + " ...";
-
                 content = $" ({content})";
-            }
-
-            return $"{name}{content}";
+            } return $"{name}{content}";
         }
     }
 }

@@ -9,6 +9,7 @@
     <RootNamespace>NUMC</RootNamespace>
     <AssemblyName>NUMC</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>9.0</LangVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -51,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\Config.object.cs" />
+    <Compile Include="Config\old\v2.0.0-alpha.3.cs" />
+    <Compile Include="Config\Serializer\IConfigSerializer.cs" />
     <Compile Include="Expansion\Array.cs" />
     <Compile Include="Client\APIClient.cs" />
     <Compile Include="Client\AsyncImage.cs" />
@@ -252,21 +256,20 @@
     <Compile Include="Reference\WindowsInput\Native\XButton.cs" />
     <Compile Include="Reference\WindowsInput\WindowsInputDeviceStateAdaptor.cs" />
     <Compile Include="Reference\WindowsInput\WindowsInputMessageDispatcher.cs" />
-    <Compile Include="Script\Object.code.cs" />
-    <Compile Include="Script\old\Convert.cs" />
-    <Compile Include="Script\old\v2.0.0-alpha.2.cs" />
-    <Compile Include="Script\old\v2.0.0-alpha.1.cs" />
+    <Compile Include="Config\Object\Object.code.cs" />
+    <Compile Include="Config\old\Convert.cs" />
+    <Compile Include="Config\old\v2.0.0-alpha.2.cs" />
+    <Compile Include="Config\old\v2.0.0-alpha.1.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="Json\Json.cs" />
-    <Compile Include="Script\Menu.cs" />
-    <Compile Include="Script\Object.cs" />
+    <Compile Include="Json\JsonSerializer.cs" />
+    <Compile Include="Config\Object\Object.cs" />
     <Compile Include="Plugin\Runtime\IRuntime.cs" />
     <Compile Include="Plugins\VirtualInput\VirtualInputRuntime.cs" />
     <Compile Include="Plugin\Runtime\IRuntimeMenu.cs" />
     <Compile Include="Script\Script.cs" />
-    <Compile Include="Setting\CmprsSerializer.cs" />
+    <Compile Include="Config\Serializer\CmprsSerializer.cs" />
     <Compile Include="Json\JsonObject.cs" />
-    <Compile Include="Setting\Setting.cs" />
+    <Compile Include="Config\Config.cs" />
     <Compile Include="Forms\Dialogs\ReleaseDownloader.cs">
       <SubType>Form</SubType>
     </Compile>

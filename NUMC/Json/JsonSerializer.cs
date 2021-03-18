@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace NUMC.Json
 {
-    public static class Json
+    public static class JsonSerializer
     {
         //public static string Convert(object obj)
         //{

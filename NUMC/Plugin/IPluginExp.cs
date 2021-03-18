@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace NUMC.Plugin
-{
-    public interface IPluginExp
-    {
-        void Initialize(Script.Script script);
+﻿namespace NUMC.Plugin {
+    public interface IPluginExp {
+        void Initialize(Service service);
     }
 }

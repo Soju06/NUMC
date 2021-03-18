@@ -5,35 +5,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NUMC.Script.old
+namespace NUMC.Config.old
 {
     public static class Convert
     {
-        public static ScriptObject ConvertObject(string version, string json)
+        public static Config ConvertObject(string version, string json)
         {
             var v = new Client.Version(2, 0, 0, Client.VersionType.alpha, 0);
             if(!string.IsNullOrWhiteSpace(version)) Client.Version.TryParse(version, out v);
-            Debug.WriteLine($"setting version change: {v} => {Constant.Verison}");
+            Debug.WriteLine($"Config version change: {v} => {Constant.Verison}");
             switch (v.ToString()) {
                 case "2.0.0-alpha.0": { 
-                        var o = Json.Json.Convert<v200a1.ScriptObject>(json);
-                        KeyObjects keys = new KeyObjects();
+                        var o = Json.JsonSerializer.Convert<v200a1.ScriptObject>(json);
+                        Object.KeyObjects keys = new Object.KeyObjects();
                         if(o?.Keys?.Keys != null) {
                             foreach (var item in o.Keys.Keys) {
                                 if (item == null) continue;
-                                keys.Add(new KeyObject() {
+                                keys.Add(new Object.KeyObject() {
                                     Ignore = item.Ignore,
                                     Key = item.Key,
-                                    Scripts = new KeyScript(item.Script?.Scripts)
+                                    Scripts = new Object.KeyScript(item.Script?.Scripts)
                                 });
                             }
                         }
-                        return ConvertObject("2.0.0-alpha.1", Json.Json.Convert(new v200a2.ScriptObject() {
+                        return ConvertObject("2.0.0-alpha.1", Json.JsonSerializer.Convert(new v200a2.ScriptObject() {
                             Language = o.Language, Keys = keys, Settings = o.Settings
                         }));
                     }
                 case "2.0.0-alpha.1": {
-                        var o = Json.Json.Convert<v200a2.ScriptObject>(json);
+                        var o = Json.JsonSerializer.Convert<v200a2.ScriptObject>(json);
                         var settings = new Json.JsonObject();
 
                         if(o.Settings != null) {
@@ -60,15 +60,24 @@ namespace NUMC.Script.old
                             }
                         }
 
-                        return new ScriptObject() {
+                        
+                        return ConvertObject("2.0.0-alpha.2", Json.JsonSerializer.Convert(new v200a3.ScriptObject() {
                             Language = o.Language,
                             Keys = o.Keys,
                             Settings = settings
+                        }));
+                    }
+                case "2.0.0-alpha.2": {
+                        var o = Json.JsonSerializer.Convert<v200a3.ScriptObject>(json);
+
+                        return new Config() {
+                            Keys = o.Keys,
+                            Configs = o.Settings,
+                            Language = o.Language
                         };
                     }
-
                 default:
-                    return Json.Json.Convert<ScriptObject>(json);
+                    return Json.JsonSerializer.Convert<Config>(json);
             }
         }
     }

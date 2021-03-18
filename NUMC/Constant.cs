@@ -5,7 +5,7 @@ namespace NUMC
     public static class Constant
     {
         public const bool DEV_MODE = false;
-        public const string Verison = "2.0.0-alpha.2";
+        public const string Verison = "2.0.0-alpha.3";
 
         public static class Form
         {
@@ -18,10 +18,10 @@ namespace NUMC
                 new Padding(PaddingSize, TitleBarHeight + PaddingSize, PaddingSize, PaddingSize);
         }
 
-        public static class Setting
+        public static class Config
         {
             public const string FileExtension = ".ns";
-            public const string FileFilter = "NUMC Setting Files|*.ns";
+            public const string FileFilter = "NUMC Config Files|*.ns";
         }
     }
 }

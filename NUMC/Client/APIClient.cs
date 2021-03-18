@@ -25,7 +25,7 @@ namespace NUMC.Client
         }
 
         public static async Task<T> GetHttpApiJsonObject<T>(string url) =>
-            Json.Json.Convert<T>(await Client.GetStringAsync(url));
+            Json.JsonSerializer.Convert<T>(await Client.GetStringAsync(url));
 
         public static HttpClient GetHttpClient() => Client;
     }

@@ -37,7 +37,7 @@ namespace NUMC.Client.GitHub
         public static Releases ToReleases(string json)
         {
             var v = new Releases();
-            v.AddRange(Json.Json.Convert<List<Release>>(json));
+            v.AddRange(Json.JsonSerializer.Convert<List<Release>>(json));
             return v;
         }
 

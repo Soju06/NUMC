@@ -5,23 +5,17 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace NUMC.Plugins.Default
-{
-    public class NotifyMenu : INotifyMenu
-    {
+namespace NUMC.Plugins.Default {
+    public class NotifyMenu : INotifyMenu {
         private List<ToolStripItem> Items;
-        private Script.Script Script;
+        private Service Service;
 
-        public ToolStripItem[] Menus
-        {
-            get
-            {
+        public ToolStripItem[] Menus {
+            get {
                 MenuStripSupport.DisposeItems(Items);
-
-                if(Items == null)
-                    Items = new List<ToolStripItem>();
+                if(Items == null) Items = new();
                 MenuStripSupport.AddMenuItem(Items, Language.Language.Program_Open, "Open");
-                MenuStripSupport.AddMenuItem(Items, Language.Language.Program_StartProgram, "StartProgram").Checked = Setting.Setting.StartProgram;
+                MenuStripSupport.AddMenuItem(Items, Language.Language.Program_StartProgram, "StartProgram").Checked = Service.StartProgram;
                 MenuStripSupport.AddMenuItem(Items, Language.Language.Program_Info, "Info");
                 MenuStripSupport.AddSeparator(Items);
                 InitializeLanguageMenu(MenuStripSupport.AddMenuItem(Items, "Language", "Language"));
@@ -36,15 +30,11 @@ namespace NUMC.Plugins.Default
 
         private bool InfoShowed = false;
 
-        private void MenuItem_Click(object sender, EventArgs e)
-        {
+        private void MenuItem_Click(object sender, EventArgs e) {
             if (sender.GetType() != typeof(ToolStripMenuItem))
                 return;
-
             var menu = (ToolStripMenuItem)sender;
-
-            switch (menu.Tag)
-            {
+            switch (menu.Tag) {
                 case "Open":
                     Service.GetService().Show();
                     break;
@@ -54,9 +44,7 @@ namespace NUMC.Plugins.Default
                     break;
 
                 case "Info":
-                    if (InfoShowed)
-                        return;
-
+                    if (InfoShowed) return;
                     InfoShowed = true;
                     using (ProgramInformation dialog = new ProgramInformation())
                         dialog.ShowDialog();
@@ -64,17 +52,15 @@ namespace NUMC.Plugins.Default
                     break;
 
                 case "StartProgram":
-                    Setting.Setting.StartProgram = menu.Checked = !Setting.Setting.StartProgram;
+                    Service.StartProgram = menu.Checked = !Service.StartProgram;
                     break;
             }
         }
 
         #region Initialize_Language_Menu
 
-        private void InitializeLanguageMenu(ToolStripMenuItem item)
-        {
+        private void InitializeLanguageMenu(ToolStripMenuItem item) {
             var items = Language.Languages.GetToolStripItems();
-
             item.DropDownItems.Clear();
             MenuStripSupport.AddClickEventSubItemsAdding(item, items, Language_MenuItem_Click);
         }
@@ -87,7 +73,7 @@ namespace NUMC.Plugins.Default
         {
             string code = (string)((ToolStripMenuItem)sender).Tag;
             Language.Languages.Change(code);
-            Script.GetObject().Language = code;
+            Service.GetConfig().Language = code;
 
             Service.GetService()?.Save();
             Service.GetService()?.Load();
@@ -97,7 +83,7 @@ namespace NUMC.Plugins.Default
 
         public void Dispose() => MenuStripSupport.DisposeItems(Items);
 
-        public void Initialize(Script.Script script) { Script = script; }
+        public void Initialize(Service service) { Service = service; }
 
         public void MenuClicking() { }
     }

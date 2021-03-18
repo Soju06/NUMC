@@ -131,6 +131,7 @@
             this.Padding = new System.Windows.Forms.Padding(2, 38, 2, 3);
             this.Text = "PluginManagerDialog";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PluginManagerDialog_FormClosing);
+            this.Shown += new System.EventHandler(this.PluginManagerDialog_Shown);
             this.loadingPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

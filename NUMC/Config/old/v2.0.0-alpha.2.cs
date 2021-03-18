@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using NUMC.Config.Object;
+using NUMC.Config.old.v200a3;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Windows.Forms;
 
-namespace NUMC.Script.old.v200a2
+namespace NUMC.Config.old.v200a2
 {
     [DataContract]
     public class ScriptObject {

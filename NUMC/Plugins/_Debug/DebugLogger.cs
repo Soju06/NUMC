@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,11 +19,13 @@ namespace NUMC.Plugins._Debug
             try {
                 var stream = new FileStream(Path.Combine(Application.StartupPath,
                     Path.GetFileNameWithoutExtension(Application.ExecutablePath)
-                    + "-live-logger.log"), FileMode.Create);
+                    + "-live-logger.log"), FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read, 64);
                 Trace.Listeners.Add(new TextWriterTraceListener(new StreamWriter(stream, Encoding.UTF8)));
+                var tokenSource = new CancellationTokenSource();
+                var token = tokenSource.Token;
 
                 Task.Run(async () => {
-                    while (true) {
+                    while (!token.IsCancellationRequested && stream != null) {
                         try {
                             stream.Flush();
                         } catch (Exception ex) {
@@ -30,12 +33,14 @@ namespace NUMC.Plugins._Debug
                         }
                         await Task.Delay(2000);
                     }
-                });
+                }, token);
 
                 Application.ApplicationExit += a;
                 void a(object sender, EventArgs e) {
                     try {
+                        tokenSource?.Cancel();
                         stream.Flush();
+                        stream.Close();
                     } catch { }
                 };
             } catch (Exception ex) {

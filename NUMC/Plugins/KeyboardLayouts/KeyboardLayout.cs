@@ -1,36 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization;
 using NUMC.Plugin.KeyboardLayout;
-using System.Threading;
-using System.Diagnostics;
 
-namespace NUMC.Plugins.KeyboardLayouts
-{
-    public partial class KeyboardLayout : Design.Controls.UserControl, IKeyboardLayout
-    {
+namespace NUMC.Plugins.KeyboardLayouts {
+    public partial class KeyboardLayout : Design.Controls.UserControl, IKeyboardLayout {
         public new string Name => "KeyboardLayout";
         public int Index => 0;
 
         public event LayoutMenuShowEventHandler LayoutMenuShow;
         public new event MouseClickEventHandler MouseClick;
 
-        public KeyboardLayout()
-        {
+        public KeyboardLayout() {
             FontSize = 9F;
             BackColor = Color.Transparent;
             RemoveKeyLayout();
         }
 
-        void IKeyboardLayout.LayoutRemove()
-        {
+        void IKeyboardLayout.LayoutRemove() {
             Visible = false;
             SuspendLayout();
             RemoveKeyLayout();
@@ -38,22 +27,21 @@ namespace NUMC.Plugins.KeyboardLayouts
             Visible = true;
         }
 
-        void IKeyboardLayout.LayoutLoad()
-        {
+        void IKeyboardLayout.LayoutLoad() {
             Visible = false;
-            SetKeyLayout(Setting.CmprsSerializer.DeserializeJsonObject<KeyLayout>
-                (Convert.FromBase64String(KeyboardLayoutResource.KeyBoard)));
+            using var serializer = new Config.Serializer.CmprsSerializer();
+            serializer.DeserializeJsonObject<KeyLayout>
+                (Convert.FromBase64String(KeyboardLayoutResource.KeyBoard), out var layout);
+            SetKeyLayout(layout);
             Visible = true;
         }
 
-        public KeyLayout GetKeyLayout()
-        {
+        public KeyLayout GetKeyLayout() {
             var l = new KeyLayout() { MaximumSize = MaximumSize, MinimumSize = MinimumSize, Size = Size };
             var ls = new List<Key>();
             for (int i = 0; i < Controls.Count; i++) {
                 var c = Controls[i];
-                if (c.Tag?.GetType() != typeof(string))
-                    continue;
+                if (c.Tag?.GetType() != typeof(string)) continue;
                 var r = int.Parse((string)c.Tag);
                 var k = new Key() { Keys = (Keys)r, Rectangle = 
                     new Rectangle(c.Location, c.Size), Text = ((Keys)r).ToString() };
@@ -63,10 +51,8 @@ namespace NUMC.Plugins.KeyboardLayouts
             return l;
         }
 
-        public void SetKeyLayout(KeyLayout layout)
-        {
-            if (layout == null)
-                return;
+        public void SetKeyLayout(KeyLayout layout) {
+            if (layout == null) return;
             SuspendLayout();
             RemoveKeyLayout();
             MinimumSize = layout.MinimumSize;
@@ -94,8 +80,7 @@ namespace NUMC.Plugins.KeyboardLayouts
             ResumeLayout();
         }
 
-        private void Mouse_Up(object sender, MouseEventArgs e)
-        {
+        private void Mouse_Up(object sender, MouseEventArgs e) {
             var parentForm = ParentForm;
             if (parentForm == null || new Rectangle(parentForm.Location, parentForm.Size).Contains(MousePosition)) {
                 var k = GetSenderKeys(sender);
@@ -104,20 +89,17 @@ namespace NUMC.Plugins.KeyboardLayouts
             }
         }
 
-        private Keys GetSenderKeys(object sender)
-        {
+        private Keys GetSenderKeys(object sender) {
             var t = typeof(Button);
             if (sender?.GetType() != t) return Keys.None;
-            if (!(sender is Button b) || b.Tag == null || b.Tag?.GetType() != typeof(Keys))
+            if (sender is not Button b || b.Tag == null || b.Tag?.GetType() != typeof(Keys))
                 return Keys.None;
             return (Keys)b.Tag;
         }
 
-        private void RemoveKeyLayout()
-        {
+        private void RemoveKeyLayout() {
             foreach (Control item in Controls) {
-                if (item.IsDisposed || item.Disposing)
-                    continue;
+                if (item.IsDisposed || item.Disposing) continue;
                 Controls.Remove(item);
                 item.Dispose();
             }
@@ -126,8 +108,7 @@ namespace NUMC.Plugins.KeyboardLayouts
         }
 
         [DataContract]
-        public class KeyLayout
-        {
+        public class KeyLayout {
             [DataMember(Name = "maxSize")]
             public Size MaximumSize { get; set; }
             [DataMember(Name = "miniSize")]
@@ -139,8 +120,7 @@ namespace NUMC.Plugins.KeyboardLayouts
         }
 
         [DataContract]
-        public class Key
-        {
+        public class Key {
             [DataMember(Name = "k")]
             public Keys Keys { get; set; }
             [DataMember(Name = "r")]

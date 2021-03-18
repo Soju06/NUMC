@@ -1,99 +1,73 @@
 ﻿using NUMC.Plugin.KeyboardLayout;
-using NUMC.Script;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace NUMC.Forms.Controls
-{
-    public class KeyboardLayoutControl : Design.Controls.UserControl
-    {
+namespace NUMC.Forms.Controls {
+    public class KeyboardLayoutControl : Design.Controls.UserControl {
         public event LayoutMenuShowEventHandler LayoutMenuShow;
         new public event MouseClickEventHandler MouseClick;
 
-        private Script.Script _script;
+        private Service _service;
         private IKeyboardLayout _keyboardLayout;
 
-        public IKeyboardLayout KeyboardLayout
-        {
+        public IKeyboardLayout KeyboardLayout {
             get => _keyboardLayout;
             set {
                 if (SetLayout(value)) {
                     var v = _keyboardLayout == null;
-
                     _keyboardLayout = value;
                     var parentForm = ParentForm;
-
                     if (parentForm != null) CalcSize(parentForm);
                     if (v) SetFormLocationCenter();
-
                     var fn = value?.GetType().FullName;
-
-                    if(fn != null)
-                        SetLayoutSettings(fn);
+                    if(fn != null) SetLayoutSettings(fn);
                 }
             }
         }
 
-        public KeyboardLayoutControl()
-        {
+        public KeyboardLayoutControl() {
             SuspendLayout();
             BackColor = Color.Transparent;
-
             Load += KeyboardLayoutControl_Load;
-
             SetStyle(ControlStyles.DoubleBuffer | 
                 ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
-
             ResumeLayout();
         }
 
-        public void Initialize(Script.Script script) => _script = script;
+        public void Initialize(Service service) => _service = service;
 
-        private void KeyboardLayoutControl_Load(object sender, EventArgs e)
-        {
+        private void KeyboardLayoutControl_Load(object sender, EventArgs e) {
             var parentForm = ParentForm;
-
             if (parentForm != null) {
                 SuspendLayout();
                 CalcSize(parentForm);
                 ResumeLayout();
-            }
-
-            InitializeLayout();
+            } InitializeLayout();
         }
 
-        private void CalcSize(Form form)
-        {
+        private void CalcSize(Form form) {
             Location = new Point(Constant.Form.Padding.Left, Constant.Form.Padding.Top);
             Size = new Size(form.ClientSize.Width - (Constant.Form.Padding.Left + Constant.Form.Padding.Right),
                 form.ClientSize.Height - (Constant.Form.Padding.Top + Constant.Form.Padding.Bottom));
-
-            if (_keyboardLayout == null)
-                return;
-
+            if (_keyboardLayout == null) return;
             var control = (UserControl)_keyboardLayout;
             var miniSize = control.MinimumSize.IsEmpty ? control.Size : control.MinimumSize;
             var maxSize = control.MaximumSize.IsEmpty ? control.Size : control.MaximumSize;
             var size = control.Size;
-
             form.MaximumSize = CalcSize(maxSize);
             form.MinimumSize = CalcSize(miniSize);
             form.Size = CalcSize(size);
-
             control.Size = size;
         }
 
-        private Size CalcSize(Size insize)
-        {
+        private Size CalcSize(Size insize) {
             return new Size(insize.Width + Constant.Form.Padding.Left + Constant.Form.Padding.Right,
                 insize.Height + Constant.Form.Padding.Top + Constant.Form.Padding.Bottom);
         }
 
-        private bool SetLayout(IKeyboardLayout layout)
-        {
+        private bool SetLayout(IKeyboardLayout layout) {
             if (layout == null || !layout.GetType().IsSubclassOf(typeof(Control))) return false;
             Debug.WriteLine($"set layout {layout.GetType().FullName}");
             SuspendLayout();
@@ -119,27 +93,22 @@ namespace NUMC.Forms.Controls
             control.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
             Controls.Add(control);
             ResumeLayout();
-
             return true;
         }
 
-        private void MenuShow(Keys keys, Point loc)
-        {
+        private void MenuShow(Keys keys, Point loc) {
             var l = loc.IsEmpty ? MousePosition : loc;
             LayoutMenuShow?.Invoke(keys, l);
         }
 
-        private void ClearControls()
-        {
+        private void ClearControls() {
             for (int i = 0; i < Controls.Count; i++)
                 Controls.Remove(Controls[i]);
         }
 
-        private void InitializeLayout()
-        {
+        private void InitializeLayout() {
             var layouts = Plugin.Plugin.ExtractPlugin<IKeyboardLayout>();
             var type = typeof(Control);
-
             if (layouts != null)
                 for (int i = 0; i < layouts.Count; i++) {
                     var l = layouts[i]; var ts = l.GetType();
@@ -152,10 +121,8 @@ namespace NUMC.Forms.Controls
             KeyboardLayout = new Plugins.KeyboardLayouts.KeyboardLayout();
         }
 
-        public void SetFormLocationCenter()
-        {
+        public void SetFormLocationCenter() {
             var parentForm = ParentForm;
-
             if (parentForm != null) {
                 var r = Screen.FromPoint(Location).Bounds;
                 parentForm.Location = new Point(
@@ -168,8 +135,9 @@ namespace NUMC.Forms.Controls
             var o = GetLayoutSettings(); GetLayoutSettingsValue()?.SetString(typeName); 
             if(o != typeName) Service.GetService()?.Save();
         }
+
         private string GetLayoutSettings() => GetLayoutSettingsValue()?.GetString();
-        private Json.Value GetLayoutSettingsValue() => _script?.GetObject()?
-            .Settings?["+NUMC"]?["+Main"]?.SubKeys?["+KeyboardLayout"]?.Values?["+DefaultLayout"];
+        private Json.Value GetLayoutSettingsValue() => _service?.GetConfig()?
+            .Configs?["+NUMC"]?["+Main"]?.SubKeys?["+KeyboardLayout"]?.Values?["+DefaultLayout"];
     }
 }

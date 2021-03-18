@@ -81,7 +81,7 @@ namespace NUMC.Plugin
             Debug.WriteLine("em\t{0}\tpn:\t{1}\t\te:\t{2}", exceptionMessage, pluginName, ex);
 
             MessageBox.Show(string.Format(Language.Language.Message_Error_Plugin_Exception, exceptionMessage, pluginName, ex),
-                title == null ? Setting.Setting.TitleName : Setting.Setting.GetTitleName(title), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                title == null ? Service.TitleName : Service.GetTitleName(title), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public static void PluginException(Exception ex, Type pluginType, string exceptionMessage, string title = null) => 

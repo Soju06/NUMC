@@ -5,15 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NUMC.Script
+namespace NUMC.Config.Object
 {
-    public partial class ScriptObject
-    {
-        private string _language;
-        private KeyObjects _keys;
-        private Json.JsonObject _settings;
-    }
-
     public partial class KeyObjects
     {
         /// <summary>

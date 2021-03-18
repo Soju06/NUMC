@@ -1,28 +1,20 @@
-﻿using NUMC.Forms.Dialogs;
-using NUMC.Menu;
+﻿using NUMC.Menu;
 using NUMC.Plugin.Menu;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-namespace NUMC.Plugins.Default
-{
-    public class ApplicationMenu : IApplicationMenu
-    {
-        public ApplicationMenu()
-        {
+namespace NUMC.Plugins.Default {
+    public class ApplicationMenu : IApplicationMenu {
+        public ApplicationMenu() {
             _settingMenu = new ToolStripMenuItem();
-
             var items = new List<ToolStripItem> { _settingMenu };
-
             MenuStripSupport.AddSeparator(items);
             _releaseAllKeysMenus = MenuStripSupport.AddMenuItem(items, Language.Language.ApplicationMenu_ReleaseAllKeys, "releaseAllKeys");
             MenuStripSupport.AddSeparator(items);
             _exitMenu = MenuStripSupport.AddMenuItem(items, Language.Language.Program_Exit, "exit");
             MenuStripSupport.AddClickEvent(items, MenuItem_Click);
-            SetSettingName(Setting.Setting.KeySettingPath);
-
             _menus = items.ToArray();
         }
 
@@ -33,43 +25,34 @@ namespace NUMC.Plugins.Default
         private readonly ToolStripItem _releaseAllKeysMenus;
         private readonly ToolStripItem _exitMenu;
         private readonly ToolStripItem[] _menus;
-        private Script.Script Script;
+        private Service Service;
 
-        public ToolStripItem[] Menus 
-        {
+        public ToolStripItem[] Menus  {
             get {
                 _releaseAllKeysMenus.Text = Language.Language.ApplicationMenu_ReleaseAllKeys;
                 _exitMenu.Text = Language.Language.Program_Exit;
-
-                SetSettingName(Setting.Setting.KeySettingPath);
-
+                SetSettingName(Service.GetConfig().ConfigPath);
                 return _menus;
             }
         }
 
-        public void MenuClicking() => SetSettingName(Setting.Setting.KeySettingPath);
+        public void MenuClicking() => SetSettingName(Service.GetConfig().ConfigPath);
 
         public int Index => 30;
 
-        private void MenuItem_Click(object sender, EventArgs e)
-        {
-            if (sender.GetType() != typeof(ToolStripMenuItem))
-                return;
-
+        private void MenuItem_Click(object sender, EventArgs e) {
+            if (sender.GetType() != typeof(ToolStripMenuItem)) return;
             if (sender == _settingMenu) {
-                using (OpenFileDialog dialog = new OpenFileDialog()) {
-                    dialog.Filter = $"{Constant.Setting.FileFilter}|All Files|*.*";
-
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                        Service.GetService()?.Load(dialog.FileName);
-                }
+                using var dialog = new OpenFileDialog();
+                dialog.Filter = $"{Constant.Config.FileFilter}|All Files|*.*";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    Service.GetService()?.Load(dialog.FileName);
             } else {
                 var menu = (ToolStripMenuItem)sender;
-
                 switch (menu.Tag) {
                     case "releaseAllKeys":
-                        if (Script != null)
-                            Script.ReleaseKeys();
+                        if (Service != null)
+                            Service.GetScript().ReleaseKeys();
                         break;
 
                     case "exit":
@@ -81,6 +64,9 @@ namespace NUMC.Plugins.Default
 
         public void Dispose() => MenuStripSupport.DisposeItems(Menus);
 
-        public void Initialize(Script.Script script) => Script = script;
+        public void Initialize(Service service) {
+            Service = service; SetSettingName(service.GetConfig().ConfigPath);
+        }
+
     }
 }

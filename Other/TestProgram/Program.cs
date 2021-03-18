@@ -41,9 +41,9 @@ namespace TestProgram
             {
                 asd = asd   
             };
-            Console.WriteLine(NUMC.Json.Json.Convert(rr));
+            Console.WriteLine(NUMC.Json.JsonSerializer.Convert(rr));
             Console.Read();
-            Console.WriteLine(NUMC.Json.Json.Convert(NUMC.Json.Json.Convert<asedf>(NUMC.Json.Json.Convert(rr))));
+            Console.WriteLine(NUMC.Json.JsonSerializer.Convert(NUMC.Json.JsonSerializer.Convert<asedf>(NUMC.Json.JsonSerializer.Convert(rr))));
 
             //var r = NUMC.Setting.Json.Convert(new Test1());
             //Console.WriteLine(r);
